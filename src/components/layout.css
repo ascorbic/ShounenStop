@@ -196,6 +196,11 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
+.navbar *{
+  color: #5dbcd2;
+}
+
 body {
   color: hsla(0, 0%, 0%, 0.8);
   font-family: georgia, serif;

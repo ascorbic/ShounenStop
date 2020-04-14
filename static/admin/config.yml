@@ -1,10 +1,9 @@
-# In your static/admin/config.yml file
-
 backend: 
     name: git-gateway
 
-media_folder: static/assets
-public_folder: assets
+media_folder: static/images/uploads
+public_folder: images/uploads
+publish_mode: editorial_workflow
 
 collections:
   - label: "Pages"

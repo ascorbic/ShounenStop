@@ -35,7 +35,7 @@ module.exports = {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        purgeOnly: ['/layout.css'], // applies purging only on the bulma css file
+        purgeOnly: ['/layout.css', 'bulma'],
       },
     }, // must be after other CSS plugins
     // this (optional) plugin enables Progressive Web App + Offline functionality

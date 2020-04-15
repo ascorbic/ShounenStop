@@ -20,10 +20,11 @@ collections:
     label: "Products"
     create: true
     folder: "content/products"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: Name, name: name, widget: string}
       - {label: Product Type, name: producttype, widget: string}
       - {label: Series, name: series, widget: string}
-      - {label: Description, name: description, widget: text}
-      - {label: Max Quantity, name: maxquantity, valuetype: int,widget: number}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Max Quantity, name: maxquantity, valuetype: int, widget: number, default: 10}
       - {label: Image, name: image, widget: image}

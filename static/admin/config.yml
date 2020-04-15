@@ -20,7 +20,7 @@ collections:
     label: "Products"
     create: true
     folder: "content/products"
-    slug: "{{slug}}"
+    slug: "{{series}}"
     fields:
       - {label: Name, name: name, widget: string}
       - {label: Product Type, name: producttype, widget: string}

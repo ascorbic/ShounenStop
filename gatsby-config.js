@@ -2,7 +2,20 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const { createProxyMiddleware } = require('http-proxy-middleware');
+
 module.exports = {
+  developMiddleware: app => {
+    app.use(
+      "/.netlify/functions/",
+      createProxyMiddleware({
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "/.netlify/functions/": "",
+        },
+      })
+    )
+  },
   siteMetadata: {
     title: `Shounen Stop`,
     description: `Website for sales of Japanese/Anime goods.`,

@@ -13,6 +13,15 @@ const IndexPage = () => (
     <Checkout />
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       {/* <Image /> */}
+      <form action="/.netlify/functions/test" method="POST">
+        <p>
+          <label>What’s your name?
+            <input type="text" name="name">
+              </input>
+              </label>
+        </p>
+        <p><button type="submit">Say hello!</button></p>
+      </form>
     </div>
     <Link to="/advanced/"></Link>
   </Layout>

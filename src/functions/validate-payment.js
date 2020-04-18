@@ -37,29 +37,20 @@ const PRODUCTION_VERIFY_URI = "https://ipnpb.paypal.com/cgi-bin/webscr";
 const SANDBOX_VERIFY_URI = "https://ipnpb.sandbox.paypal.com/cgi-bin/webscr";
 
 const sandbox = true;
-import querystring from "querystring";
 
 function getPaypalURI() {
   return sandbox ? SANDBOX_VERIFY_URI : PRODUCTION_VERIFY_URI;
 }
 
 exports.handler =  async function(event, context, callback) {
-  let bo = event;
-  console.log("%j", bo);
   let res = {
     statusCode: 200,
-    body: "omg"
+    body: "OK"
   }
   
   callback(null, res);
 
   let postreq = 'cmd=_notify-validate&' + event.body;
-  // Iterate the original request payload object
-  // and prepend its keys and values to the post string
-  // Object.keys(body).map((key) => {
-  //   postreq = `${postreq}&${key}=${body[key]}`;
-  //   return key;
-  // });
 
   const axios = require('axios');
   let options = {
@@ -69,10 +60,12 @@ exports.handler =  async function(event, context, callback) {
       'Content-Length': postreq.length,
     },
     encoding: 'utf-8',
-    data: postreq
+    data: postreq,
+    strictSSL: true,
+    rejectUnauthorized: false,
+    requestCert: true,
+    agent: false
   };
-
-  console.log(options);
 
   const promise = await new Promise((resolve, reject) => {
     axios(options)
@@ -82,8 +75,10 @@ exports.handler =  async function(event, context, callback) {
 
         if (resBody.substring(0, 8) === 'VERIFIED') {
           resolve(response);
+          console.log("this was verified");
         } else if (resBody.substring(0, 7) === 'INVALID') {
           resolve(response);
+          console.log("this was invalid");
           // reject(new Error('IPN Message is invalid.'));
         } else {
           // reject(new Error('Unexpected response body.'));

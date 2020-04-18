@@ -70,10 +70,7 @@ exports.handler =  async function(event, context, callback) {
     },
     encoding: 'utf-8',
     data: postreq,
-    strictSSL: true,
     rejectUnauthorized: false,
-    requestCert: true,
-    agent: false
   };
 
   // console.log(body)	

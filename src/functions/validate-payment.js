@@ -37,13 +37,15 @@ const PRODUCTION_VERIFY_URI = "https://ipnpb.paypal.com/cgi-bin/webscr";
 const SANDBOX_VERIFY_URI = "https://ipnpb.sandbox.paypal.com/cgi-bin/webscr";
 
 const sandbox = true;
+import querystring from "querystring";
 
 function getPaypalURI() {
   return sandbox ? SANDBOX_VERIFY_URI : PRODUCTION_VERIFY_URI;
 }
 
 exports.handler =  async function(event, context, callback) {
-
+  let bo = event;
+  console.log("%j", bo);
   let res = {
     statusCode: 200,
     body: "omg"
@@ -52,8 +54,9 @@ exports.handler =  async function(event, context, callback) {
   callback(null, res);
 
   let postreq = 'cmd=_notify-validate';
-  let body = event.body;
-
+  let buff = Buffer.from(event.body, 'base64');  
+  let body = buff.toString('ascii')
+  console.log(JSON.stringify(event.body))
   // Iterate the original request payload object
   // and prepend its keys and values to the post string
   Object.keys(body).map((key) => {

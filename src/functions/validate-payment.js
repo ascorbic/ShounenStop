@@ -69,11 +69,10 @@ exports.handler =  async function(event, context, callback) {
       'Content-Length': postreq.length,
     },
     encoding: 'utf-8',
-    data: postreq,
-    rejectUnauthorized: false,
-  };
+    data: postreq
+    };
 
-  // console.log(body)	
+  console.log(options)	
 
   const promise = await new Promise((resolve, reject) => {
     axios(options)

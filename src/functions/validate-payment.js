@@ -53,16 +53,13 @@ exports.handler =  async function(event, context, callback) {
   
   callback(null, res);
 
-  let postreq = 'cmd=_notify-validate';
-  let buff = Buffer.from(event.body, 'base64');  
-  let body = buff.toString('ascii')
-  console.log(JSON.stringify(event.body))
+  let postreq = 'cmd=_notify-validate&' + event.body;
   // Iterate the original request payload object
   // and prepend its keys and values to the post string
-  Object.keys(body).map((key) => {
-    postreq = `${postreq}&${key}=${body[key]}`;
-    return key;
-  });
+  // Object.keys(body).map((key) => {
+  //   postreq = `${postreq}&${key}=${body[key]}`;
+  //   return key;
+  // });
 
   const axios = require('axios');
   let options = {
@@ -73,9 +70,9 @@ exports.handler =  async function(event, context, callback) {
     },
     encoding: 'utf-8',
     data: postreq
-    };
+  };
 
-  console.log(options)	
+  console.log(options);
 
   const promise = await new Promise((resolve, reject) => {
     axios(options)

@@ -63,7 +63,6 @@ exports.handler =  async function(event, context, callback) {
     data: postreq,
     strictSSL: true,
     rejectUnauthorized: false,
-    requestCert: true,
     agent: false
   };
 

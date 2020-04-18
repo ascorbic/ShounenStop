@@ -1,36 +1,3 @@
-/*const {Storage} = require('@google-cloud/storage');
-const storage = new Storage();
-
-exports.HandleIPN = (req, res) => {
-  let message = req.query.message || req.body.message || 'Hello World!';
-
-  res.set('Access-Control-Allow-Origin', 'https://google.com');
-  res.set('Access-Control-Allow-Methods', 'GET');
-	listFiles("value-ease").catch(console.error);
-  if (req.method === 'OPTIONS') {
-    // Send response to OPTIONS requests
-    res.set('Access-Control-Allow-Headers', 'Authorization');
-    res.set('Access-Control-Max-Age', '3600');
-    res.status(204).send('');
-  }
-  else{
-    console.log(req.body);
-    console.log(req.get('content-type'));
-    res.status(200).send(message);
-  }
-
-};
-
-async function listFiles(bucketName) {
-  // Lists files in the bucket
-  const [files] = await storage.bucket(bucketName).getFiles();
-
-  console.log('Files:');
-  files.forEach(file => {
-    console.log(file.name);
-  });
-}*/
-
 /** Production Postback URL */
 const PRODUCTION_VERIFY_URI = "https://ipnpb.paypal.com/cgi-bin/webscr";
 /** Sandbox Postback URL */
@@ -61,7 +28,6 @@ exports.handler =  async function(event, context, callback) {
     },
     encoding: 'utf-8',
     data: postreq,
-    strictSSL: true,
     rejectUnauthorized: false,
     agent: false
   };

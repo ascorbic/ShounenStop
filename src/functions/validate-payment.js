@@ -8,7 +8,6 @@ const sandbox = true;
 function getPaypalURI() {
   return sandbox ? SANDBOX_VERIFY_URI : PRODUCTION_VERIFY_URI;
 }
-const functions = require('firebase-functions');
 
 exports.handler =  async function(event, context, callback) {
   let res = {

@@ -8,6 +8,7 @@ const sandbox = true;
 function getPaypalURI() {
   return sandbox ? SANDBOX_VERIFY_URI : PRODUCTION_VERIFY_URI;
 }
+const functions = require('firebase-functions');
 
 exports.handler =  async function(event, context, callback) {
   let res = {
@@ -39,11 +40,15 @@ exports.handler =  async function(event, context, callback) {
         console.log('Response Body: ' + resBody);
 
         if (resBody.substring(0, 8) === 'VERIFIED') {
+          
+          // Check firestore
+          //google 
+
+          // Send email
+
           resolve(response);
-          console.log("this was verified");
         } else if (resBody.substring(0, 7) === 'INVALID') {
           resolve(response);
-          console.log("this was invalid");
           // reject(new Error('IPN Message is invalid.'));
         } else {
           // reject(new Error('Unexpected response body.'));

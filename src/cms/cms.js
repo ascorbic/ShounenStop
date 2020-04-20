@@ -1,5 +1,7 @@
 import CMS from 'netlify-cms-app'
 
+console.log("where does this even go?");
+
 CMS.registerEventListener({
   name: 'postPublish',
   handler: ({ author, entry }) => {

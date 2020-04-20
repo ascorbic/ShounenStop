@@ -1,5 +1,5 @@
 ---
-name: dadas
+name: TEST
 producttype: test
 series: dasfds
 maxquantity: 10

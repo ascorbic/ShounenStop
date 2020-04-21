@@ -34,13 +34,13 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build && netlify-lambda --config webpack.functions.js build src/functions",
-    "build:lambda": "netlify-lambda build --config webpack.functions.js src/functions",
+    "build": "gatsby build && netlify-lambda build src/functions",
+    "build:lambda": "netlify-lambda build src/functions",
     "build:app": "gatsby build",
     "develop": "gatsby develop",
     "start": "run-p start:**",
     "start:app": "npm run develop",
-    "start:lambda": "netlify-lambda serve --config webpack.functions.js src/functions",
+    "start:lambda": "netlify-lambda serve src/functions",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },

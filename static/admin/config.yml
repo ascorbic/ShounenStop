@@ -28,3 +28,15 @@ collections:
       - {label: Description, name: description, widget: text, required: false}
       - {label: Max Quantity, name: maxquantity, valuetype: int, widget: number, default: 10}
       - {label: Image, name: image, widget: image}
+  - name: "stuff"
+    label: "stuff"
+    create: true
+    folder: "content/stuff"
+    slug: "{{Name}} - {{series}}"
+    fields:
+      - {label: Name, name: name, widget: string}
+      - {label: Product Type, name: producttype, widget: string}
+      - {label: Series, name: series, widget: string}
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Max Quantity, name: maxquantity, valuetype: int, widget: number, default: 10}
+      - {label: Image, name: image, widget: image}

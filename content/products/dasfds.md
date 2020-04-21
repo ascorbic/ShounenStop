@@ -1,5 +1,5 @@
 ---
-name: new123
+name: change name
 producttype: test
 series: dasfds
 maxquantity: 10

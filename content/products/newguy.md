@@ -1,5 +1,5 @@
 ---
-name: newguy
+name: how
 producttype: dosa
 series: dosa
 maxquantity: 10

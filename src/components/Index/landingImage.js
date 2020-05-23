@@ -17,7 +17,7 @@ import BackgroundImage from 'gatsby-background-image'
 const LandingImage = () => {
   const { landingImage } = useStaticQuery(graphql`
     query {
-      landingImage: file(relativePath: { eq: "sao.jpg" }) {
+      landingImage: file(relativePath: { eq: "grandblue.png" }) {
         childImageSharp {
           fluid(maxWidth: 3000) {
             ...GatsbyImageSharpFluid
@@ -35,9 +35,9 @@ const LandingImage = () => {
       backgroundColor={`#fefefe`}
     >
       <div css={landingSection}>
-        <div css={landingText}>Weiss Boxes and Comiket Merchandise</div>
+        <div css={landingText}>Weiss Boxes and Comiket Merchandise at a great price</div>
         <div css={lineBreak}></div>
-        <Link to="/shop">
+        <Link to="/products">
           <div css={shopNow}>
             <span>SHOP NOW</span>
           </div>
@@ -60,7 +60,7 @@ const landingStyles = css`
 `
 
 const landingText = css`
-  width:100%;
+  width:80%;
   font-size:25px;
   color:#fff;
 `;

@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import ShopNavbar from './shopNavbar'
-import Checkout from './checkout'
+import Checkout from '../checkout'
 
 import './layout.css'
 // import 'bulma/css/bulma.css'
@@ -74,7 +74,6 @@ class Layout extends React.Component {
             <ShopNavbar CartSize={this.state.CartSize} title={data.site.siteMetadata.title}/>
             <div
               style={{
-                height: "2000px",
                 margin: `45px auto`,
                 padding: `0px`,
                 paddingTop: "0px",

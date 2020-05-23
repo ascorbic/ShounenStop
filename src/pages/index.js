@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Layout from '../components/layout'
-import LandingImage from '../components/landingImage'
-import SEO from '../components/seo'
+import Layout from '../components/Layout/layout'
+import LandingImage from '../components/Index/landingImage'
+import SEO from '../components/Common/seo'
 
 import Checkout from '../components/checkout'
 
@@ -13,6 +13,10 @@ const IndexPage = () => (
     {/* <Checkout /> */}
     <div style={{ marginBottom: `1.45rem` }}>
       <LandingImage />
+    </div>
+  </Layout>
+)
+
       {/* <form action="/.netlify/functions/test" method="POST">
         <p>
           <label>What’s your name?
@@ -22,9 +26,4 @@ const IndexPage = () => (
         </p>
         <p><button type="submit">Say hello!</button></p>
       </form> */}
-    </div>
-    <Link to="/advanced/"></Link>
-  </Layout>
-)
-
 export default IndexPage

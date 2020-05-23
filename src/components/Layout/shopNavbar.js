@@ -33,6 +33,13 @@ const ShopNavbar = class extends React.Component {
           </Link>
           <Navbar.Collapse id="basic-navbar-nav" css={navbarCollapsible} className="">
             <Nav className="" css = {navbarCollapse} activeKey={this.props && this.props.title}>
+              <Link to="/products" className="link-no-style">
+                <Nav.Link as="span" eventKey="products">
+                  Products
+                </Nav.Link>
+              </Link>
+            </Nav>
+            <Nav className="" activeKey={this.props && this.props.title}>
               <Link to="/weiss" className="link-no-style">
                 <Nav.Link as="span" eventKey="weiss">
                   Weiss  {this.state.collapsed.toString()}

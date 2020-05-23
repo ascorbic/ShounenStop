@@ -51,12 +51,12 @@ collections:
           options: ["Design", "UX", "Dev"],
           default: ["Design"]
         }
-      # - {
-      #     label: "City",
-      #     name: "airport-code",
-      #     widget: "select",
-      #     options:
-      #       - { label: "Chicago", value: "ORD" }
-      #       - { label: "Paris", value: "CDG" }
-      #       - { label: "Tokyo", value: "HND" }
-      #   }
+      - {
+          label: "City",
+          name: "airport-code",
+          widget: "select",
+          options:
+            - { label: "Chicago", value: "ORD" }
+            - { label: "Paris", value: "CDG" }
+            - { label: "Tokyo", value: "HND" }
+        }

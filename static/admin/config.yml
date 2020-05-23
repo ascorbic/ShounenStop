@@ -6,37 +6,32 @@ public_folder: images/uploads
 publish_mode: editorial_workflow
 
 collections:
-  - label: "Pages"
-    name: "pages"
+  - label: "Landing Page"
+    name: "Landing Page"
     files:
       - label: "Home Page"
         name: "home"
         file: "content/home.md"
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Intro text, name: intro, widget: text}
-          - {label: Image, name: image, widget: image}
-  - name: "products"
-    label: "Products"
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Intro text", name: "intro", widget: "text"}
+          - {label: "Image", name: "image", widget: "image"}
+  - name: "weiss"
+    label: "Weiss"
     create: true
-    folder: "content/products"
+    folder: "content/weiss"
     slug: "{{name}}"
     fields:
-      - {label: Name, name: name, widget: string}
-      - {label: Product Type, name: producttype, widget: string}
-      - {label: Series, name: series, widget: string}
-      - {label: Description, name: description, widget: text, required: false}
-      - {label: Max Quantity, name: maxquantity, valuetype: int, widget: number, default: 10}
-      - {label: Image, name: image, widget: image}
-  - name: "stuff"
-    label: "stuff"
-    create: true
-    folder: "content/stuff"
-    slug: "{{name}}"
-    fields:
-      - {label: Name, name: name, widget: string}
-      - {label: Product Type, name: producttype, widget: string}
-      - {label: Series, name: series, widget: string}
-      - {label: Description, name: description, widget: text, required: false}
-      - {label: Max Quantity, name: maxquantity, valuetype: int, widget: number, default: 10}
-      - {label: Image, name: image, widget: image}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "ASIN", name: "asin", widget: "string"}
+      - {label: "Product Type", name: "producttype", widget: "string"}
+      - {label: "Series", name: "series", widget: "string"}
+      - {
+          label: "Align Content",
+          name: "align",
+          widget: "select",
+          options: ["left", "center", "right"]
+        }
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Max Quantity", name: "maxquantity", valuetype: "int", widget: "number", default: 18}
+      - {label: "Image", name: "image", widget: "image"}

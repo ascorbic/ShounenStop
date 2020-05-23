@@ -26,7 +26,7 @@ const ShopNavbar = class extends React.Component {
           <Link to="/" className="link-no-style">
             <Navbar.Brand as="span" css={navbarBrand} >SHOUNEN STOP</Navbar.Brand>
           </Link>
-          <Link to="/cart" className="order-lg-last mr-2 ml-auto">
+          <Link to="/cart" className="order-lg-last ml-auto">
             <Nav css={navbarCart}>
               Cart: {this.props.CartSize}
             </Nav>

@@ -56,7 +56,7 @@ collections:
           name: "airport-code",
           widget: "select",
           options:
-            - { label: "Chicago", value: "ORD" }
-            - { label: "Paris", value: "CDG" }
+            - { label: "Chicago", value: "ORD" },
+            - { label: "Paris", value: "CDG" },
             - { label: "Tokyo", value: "HND" }
         }

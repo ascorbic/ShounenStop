@@ -29,12 +29,23 @@ const redirectToCheckout = async event => {
   // }
 }
 
-const Checkout = () => {
-  return (
-    <button style={buttonStyles} onClick={redirectToCheckout}>
-      BUY MY BOOK
-    </button>
-  )
-}
+
+
+class Checkout extends React.Component {
+  constructor(props){
+    super(props)
+    console.log(props);
+    
+  }
+
+  render()
+  {
+    return (
+      <button style={buttonStyles} onClick={this.props.updateCart}>
+        Button
+      </button>
+    )
+  };
+};
 
 export default Checkout

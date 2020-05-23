@@ -1,49 +1,90 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Navbar from './Navbar'
+import ShopNavbar from './shopNavbar'
+import Checkout from './checkout'
+
 import './layout.css'
-import 'bulma/css/bulma.css'
-import stripeLogo from '../images/powered_by_stripe.svg'
+// import 'bulma/css/bulma.css'
+// import stripeLogo from '../images/powered_by_stripe.svg'
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
+// console.log(localStorage.getItem("omg"));
+// Have a cart icon and set price
+
+class Layout extends React.Component {
+  constructor(props){
+    super(props);
+    this.updateCart = this.updateCart.bind(this)
+    localStorage.setItem("CartSize", JSON.stringify([1,2,3]));
+    console.log(JSON.parse(localStorage.getItem("CartSize")).length);
+    this.state = 
+    {
+      CartSize: JSON.parse(localStorage.getItem("CartSize")).length
+    };
+  }
+
+  updateCart(){
+    var items = JSON.parse(localStorage.getItem("CartSize")) || [];
+    items.push(4);
+    localStorage.setItem("CartSize", JSON.stringify(items));
+    this.setState({
+      CartSize: items.length
+    });
+    console.log(this.state.CartSize);
+
+  }
+
+  renderChildren() 
+  {
+    return React.Children.map(this.props.children, child => {
+      // console.log(child.type);
+      if (child.type === Checkout) {
+        return React.cloneElement(child, {
+          updateCart: this.updateCart
+        })
+      } 
+      else 
+      {
+        return child;
       }
-    `}
-    render={data => (
-      <>
-        <Navbar title={data.site.siteMetadata.title}/>
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          {children}
-          <footer>
-            <div>
-            </div>
-            <div>
-            </div>
-          </footer>
-        </div>
-        </>
-    )}
-  />
-)
+    });
+  }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+  render() 
+  {
+    return (
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
+            }
+          }
+        `}
+        render = {data => (
+          <>
+            <ShopNavbar CartSize={this.state.CartSize} title={data.site.siteMetadata.title}/>
+            <div
+              style={{
+                height: "2000px",
+                margin: `40px auto`,
+                padding: `0px`,
+                paddingTop: "0px",
+                fontFamily: "Montserrat",
+                fontWeight: 300
+              }}
+            >
+              {this.renderChildren()}
+              <footer>
+              </footer>
+            </div>
+            </>
+        )}
+      />
+    )
+  };
+};
 
 export default Layout

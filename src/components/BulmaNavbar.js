@@ -6,9 +6,19 @@ import { css } from "@emotion/core"
 
 const navbar = css`
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14)
-`
+`;
 
-const Navbar = class extends React.Component {
+
+const navbarContainer = css `display:flex important; flex-direction: row; justify-content: space-between`;
+const navbarMenu = css `margin-left:0`;
+const navbarCart = css ``;
+
+
+const navbarTitle = css ``;
+
+const navbarBurger = css `margin-left:0`;
+
+const BulmaNavbar = class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -46,14 +56,11 @@ const Navbar = class extends React.Component {
         aria-label="main-navigation"
         css = {navbar}
       >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              {/* <img src={stripeLogo} alt="Kaldi" style={{ width: '88px' }} /> */}
-              <b>{this.state.title}</b>
-            </Link>
-            {/* Hamburger menu */}
-            <div
+        <div css={navbarContainer} className="container">
+          <div css = {navbarMenu} className="navbar-brand">
+              {/* Hamburger menu */}
+              <div
+              css={navbarBurger}
               className={`navbar-burger burger ${this.state.navBarActiveClass}`}
               data-target="navMenu"
               onClick={() => this.toggleHamburger()}
@@ -63,6 +70,10 @@ const Navbar = class extends React.Component {
               <span />
             </div>
           </div>
+          <Link to="/" css={navbarTitle} className="navbar-item" title="Logo">
+              {/* <img src={stripeLogo} alt="Kaldi" style={{ width: '88px' }} /> */}
+              <b>{this.state.title}</b>
+            </Link>
           <div
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
@@ -84,19 +95,8 @@ const Navbar = class extends React.Component {
                 Form Examples
               </Link>
             </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  {/* <img src={github} alt="Github" /> */}
-                </span>
-              </a>
-            </div>
-          </div>
+          </div>   
+         <div css={navbarCart}>Cart</div>
         </div>
       </nav>
     )

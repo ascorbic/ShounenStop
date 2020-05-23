@@ -30,7 +30,7 @@ collections:
           label: "Quantities",
           name: "quantities",
           widget: "select",
-          options: ["left", "center", "right"]
+          options: [1, 2, 4]
         }
       - {label: "Description", name: "description", widget: "text", required: false}
       - {
@@ -51,12 +51,12 @@ collections:
           options: ["Design", "UX", "Dev"],
           default: ["Design"]
         }
-        - {
-            label: "City",
-            name: "airport-code",
-            widget: "select",
-            options:
-              - { label: "Chicago", value: "ORD" }
-              - { label: "Paris", value: "CDG" }
-              - { label: "Tokyo", value: "HND" }
-          }
+      # - {
+      #     label: "City",
+      #     name: "airport-code",
+      #     widget: "select",
+      #     options:
+      #       - { label: "Chicago", value: "ORD" }
+      #       - { label: "Paris", value: "CDG" }
+      #       - { label: "Tokyo", value: "HND" }
+      #   }

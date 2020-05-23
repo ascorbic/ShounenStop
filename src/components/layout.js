@@ -14,23 +14,29 @@ import './layout.css'
 class Layout extends React.Component {
   constructor(props){
     super(props);
-    this.updateCart = this.updateCart.bind(this)
-    // localStorage.setItem("CartSize", JSON.stringify([1,2,3]));
-    // console.log(JSON.parse(localStorage.getItem("CartSize")).length);
     this.state = 
     {
-      // CartSize: JSON.parse(localStorage.getItem("CartSize")).length
-    };
+      CartSize:0
+    }
+  }
+
+  componentDidMount() {
+    this.updateCart = this.updateCart.bind(this)
+    localStorage.setItem("CartSize", JSON.stringify([1,2,3]));
+    console.log(JSON.parse(localStorage.getItem("CartSize")).length);
+    this.setState({
+      CartSize: JSON.parse(localStorage.getItem("CartSize")).length
+    });
   }
 
   updateCart(){
-    // var items = JSON.parse(localStorage.getItem("CartSize")) || [];
-    // items.push(4);
-    // localStorage.setItem("CartSize", JSON.stringify(items));
+    var items = JSON.parse(localStorage.getItem("CartSize")) || [];
+    items.push(4);
+    localStorage.setItem("CartSize", JSON.stringify(items));
     this.setState({
-      // CartSize: items.length
+      CartSize: items.length
     });
-    // console.log(this.state.CartSize);
+    console.log(this.state.CartSize);
 
   }
 
@@ -69,7 +75,7 @@ class Layout extends React.Component {
             <div
               style={{
                 height: "2000px",
-                margin: `40px auto`,
+                margin: `45px auto`,
                 padding: `0px`,
                 paddingTop: "0px",
                 fontFamily: "Montserrat",

@@ -29,7 +29,7 @@ collections:
       - {
           label: Quantities,
           name: quantities,
-          widget: select,
+          widget: list,
           options: [1, 2, 4],
         }
       - { label: Description, name: description, widget: text, required: false }
@@ -44,10 +44,25 @@ collections:
           options: ['Design', 'UX', 'Dev'],
           default: ['Design'],
         }
-      - label: 'City'
-        name: 'airport-code'
-        widget: 'select'
-        options:
-          - { label: 'Chicago', value: 'ORD' }
-          - { label: 'Paris', value: 'CDG' }
-          - { label: 'Tokyo', value: 'HND' }
+      - label: 'Testimonials'
+        name: 'testimonials'
+        widget: 'list'
+        summary: '{{fields.quote}} - {{fields.author.name}}'
+        fields:
+          - {
+              label: Quote,
+              name: quote,
+              widget: string,
+              default: 'Everything is awesome!',
+            }
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string, default: 'Emmet' }
+              - {
+                  label: Avatar,
+                  name: avatar,
+                  widget: image,
+                  default: '/img/emmet.jpg',
+                }

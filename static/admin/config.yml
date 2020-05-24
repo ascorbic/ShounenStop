@@ -26,12 +26,6 @@ collections:
       - { label: ASIN, name: asin", widget: string }
       - { label: Product Type, name: producttype, widget: string }
       - { label: Series, name: series, widget: string }
-      - {
-          label: Quantities,
-          name: quantities,
-          widget: list,
-          options: [1, 2, 4],
-        }
       - { label: Description, name: description, widget: text, required: false }
       - { label: Image, name: image, widget: image }
       - {
@@ -45,15 +39,17 @@ collections:
           default: ['Design'],
         }
       - label: 'Pricings'
-        name: 'pricings'
+        name: 'Pricing'
         widget: 'list'
-        summary: '{{fields.price}} - {{fields.price}}'
+        summary: 'Quantity:{{fields.quantity}} - ${{fields.price}}'
         fields:
           - label: Quantity
             name: quantity
             widget: number
+            min: 1
             valueType: int
           - label: Price
             name: price
+            min: 0
             widget: number
             valueType: float

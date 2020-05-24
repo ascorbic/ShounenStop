@@ -29,13 +29,13 @@ collections:
       - {label: Quantities,name: quantities, widget: select, options: [1,2,4] }
       - {label: Description, name: description, widget: text, required: false}
       - {label: Image, name: image, widget: image}
-      - label: Tags,
-        name: tags,
-        widget: select,
-        multiple: true,
-        min: 1,
-        max: 3,
-        options: ["Design", "UX", "Dev"],
+      - label: Tags
+        name: tags
+        widget: select
+        multiple: true
+        min: 1
+        max: 3
+        options: ["Design", "UX", "Dev"]
         default: ["Design"]
       - label: Year
         name: year
@@ -43,7 +43,7 @@ collections:
         multiple: false
         required: false
         options: 
-          - { label: "1999", value: "1999" }
+        	- { label: "1999", value: "1999" }
           - { label: "2000", value: "2000" }
           - { label: "2001", value: "2001" }
           - { label: "2002", value: "2002" }

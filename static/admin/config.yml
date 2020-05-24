@@ -46,7 +46,7 @@ collections:
         name: pricings
         widget: list
         minimize_collapsed: true
-        summary: '{{fields.quantity}} costs ${{fields.price}}'
+        summary: '{{fields.quantity}} cost(s) ${{fields.price}}'
         fields:
           - label: Quantity
             name: quantity
@@ -70,10 +70,12 @@ collections:
           name: preorder,
           widget: datetime,
           dateFormat: 'MM.DD.YYYY',
+          timeFormat: false
         }
       - {
           label: Release date,
           name: release,
           widget: datetime,
           dateFormat: 'MM.DD.YYYY',
+          timeFormat: false
         }

@@ -52,7 +52,8 @@ collections:
           - label: Quantity
             name: quantity
             widget: number
-            default: 1,
+            valueType: int
           - label: Price
             name: price
             widget: number
+            valueType: float

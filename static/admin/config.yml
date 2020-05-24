@@ -38,9 +38,9 @@ collections:
           options: ['Design', 'UX', 'Dev'],
           default: ['Design'],
         }
-      - label: 'Pricings'
-        name: 'Pricing'
-        widget: 'list'
+      - label: Pricings
+        name: pricings
+        widget: list
         summary: 'Quantity:{{fields.quantity}} - ${{fields.price}}'
         fields:
           - label: Quantity
@@ -53,3 +53,25 @@ collections:
             min: 0
             widget: number
             valueType: float
+      - label: 'Testimonials'
+        name: 'testimonials'
+        widget: 'list'
+        summary: '{{fields.quote}} - {{fields.author.name}}'
+        fields:
+          - {
+              label: Quote,
+              name: quote,
+              widget: string,
+              default: 'Everything is awesome!',
+            }
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - { label: Name, name: name, widget: string, default: 'Emmet' }
+              - {
+                  label: Avatar,
+                  name: avatar,
+                  widget: image,
+                  default: '/img/emmet.jpg',
+                }

@@ -33,13 +33,6 @@ collections:
           options: ["1", "2", "4"]
         }
       - {label: "Description", name: "description", widget: "text", required: false}
-      - {
-          label: "Max Quantity",
-          name: "maxquantity",
-          valuetype: "int",
-          widget: "number",
-          default: 18
-        }
       - {label: "Image", name: "image", widget: "image"}
       - {
           label: "Tags",
@@ -51,12 +44,11 @@ collections:
           options: ["Design", "UX", "Dev"],
           default: ["Design"]
         }
-      - {
-          label: "City",
-          name: "City",
-          widget: "select",
-          options:
-            - { label: "Chicago", value: "ORD" }
-            - { label: "Paris", value: "CDG" }
-            - { label: "Tokyo", value: "HND" }
-        }
+      - label: "City",
+        name: "City",
+        widget: "select",
+        options:
+          - { label: "Chicago", value: "ORD" }
+          - { label: "Paris", value: "CDG" }
+          - { label: "Tokyo", value: "HND" }
+        

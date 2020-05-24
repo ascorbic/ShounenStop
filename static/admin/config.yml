@@ -9,9 +9,9 @@ collections:
   - label: 'Landing Page'
     name: 'Landing Page'
     files:
-      - label: Home Page
-        name: home
-        file: content/home.md
+      - label: Landing Page
+        name: landing
+        file: content/landingPage.md
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Intro text, name: intro, widget: text }
@@ -56,7 +56,7 @@ collections:
       - label: 'Testimonials'
         name: 'testimonials'
         widget: 'list'
-        summary: '{{fields.quote}} - {{fields.author.name}}'
+        summary: '{{fields.author.name}}'
         fields:
           - {
               label: Quote,

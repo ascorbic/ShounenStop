@@ -44,25 +44,15 @@ collections:
           options: ['Design', 'UX', 'Dev'],
           default: ['Design'],
         }
-      - label: 'Testimonials'
-        name: 'testimonials'
+      - label: 'Pricings'
+        name: 'pricings'
         widget: 'list'
-        summary: '{{fields.quote}} - {{fields.author.name}}'
+        summary: '{{fields.price}} - {{fields.price}}'
         fields:
-          - {
-              label: Quote,
-              name: quote,
-              widget: string,
-              default: 'Everything is awesome!',
-            }
-          - label: Author
-            name: author
-            widget: object
-            fields:
-              - { label: Name, name: name, widget: string, default: 'Emmet' }
-              - {
-                  label: Avatar,
-                  name: avatar,
-                  widget: image,
-                  default: '/img/emmet.jpg',
-                }
+          - label: Quantity
+            name: quantity
+            widget: number
+            default: 1,
+          - label: Price
+            name: price
+            widget: number

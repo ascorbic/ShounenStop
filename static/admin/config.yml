@@ -9,26 +9,26 @@ collections:
   - label: "Landing Page"
     name: "Landing Page"
     files:
-      - label: "Home Page"
-        name: "home"
-        file: "content/home.md"
+      - label: Home Page
+        name: home
+        file: content/home.md
         fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Intro text", name: "intro", widget: "text"}
-          - {label: "Image", name: "image", widget: "image"}
-  - name: "weiss"
-    label: "Weiss"
+          - {label: Title, name: title, widget: string}
+          - {label: Intro text, name: intro, widget: text}
+          - {label: Image, name: image, widget: image}
+  - name: weiss
+    label: Weiss
     create: true
-    folder: "content/weiss"
+    folder: content/weiss
     slug: "{{name}}"
     fields:
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "ASIN", name: "asin", widget: "string"}
-      - {label: "Product Type", name: "producttype", widget: "string"}
-      - {label: "Series", name: "series", widget: "string"}
-      - {label: "Quantities",name: "quantities", widget: "select", options: [1,2,4] }
-      - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Image", name: "image", widget: "image"}
+      - {label: Name, name: name, widget: string}
+      - {label: ASIN, name: asin", widget: string}
+      - {label: Product Type, name: producttype, widget: string}
+      - {label: Series, name: series, widget: string}
+      - {label: Quantities,name: quantities, widget: select, options: [1,2,4] }
+      - {label: Description, name: description, widget: text, required: false}
+      - {label: Image, name: image, widget: image}
       - label: Tags,
         name: tags,
         widget: select,

@@ -44,11 +44,13 @@ collections:
           options: ["Design", "UX", "Dev"],
           default: ["Design"]
         }
-      - label: "City",
-        name: "City",
-        widget: "select",
-        options:
-          - { label: "Chicago", value: "ORD" }
-          - { label: "Paris", value: "CDG" }
-          - { label: "Tokyo", value: "HND" }
-        
+       - label: "Year"
+        name: "year"
+        widget: "select"
+        multiple: false
+        required: false
+        options: 
+          - { label: "1999", value: "1999" }
+          - { label: "2000", value: "2000" }
+          - { label: "2001", value: "2001" }
+          - { label: "2002", value: "2002" }

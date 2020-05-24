@@ -26,25 +26,18 @@ collections:
       - {label: "ASIN", name: "asin", widget: "string"}
       - {label: "Product Type", name: "producttype", widget: "string"}
       - {label: "Series", name: "series", widget: "string"}
-      - {
-          label: "Quantities",
-          name: "quantities",
-          widget: "select",
-          options: ["1", "2", "4"]
-        }
+      - {label: "Quantities",name: "quantities", widget: "select", options: [1,2,4] }
       - {label: "Description", name: "description", widget: "text", required: false}
       - {label: "Image", name: "image", widget: "image"}
-      - {
-          label: "Tags",
-          name: "tags",
-          widget: "select",
-          multiple: true,
-          min: 1,
-          max: 3,
-          options: ["Design", "UX", "Dev"],
-          default: ["Design"]
-        }
-       - label: "Year"
+      - label: "Tags",
+        name: "tags",
+        widget: "select",
+        multiple: true,
+        min: 1,
+        max: 3,
+        options: ["Design", "UX", "Dev"],
+        default: ["Design"]
+      - label: "Year"
         name: "year"
         widget: "select"
         multiple: false

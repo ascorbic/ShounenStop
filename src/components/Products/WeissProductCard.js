@@ -17,16 +17,17 @@ const WeissProductCard = () =>
 };
 
 const cardPadding = css`
-  margin: 0px auto;
-  max-width:350px;
-  width:100%;
+  flex: 0 0 auto
+  // margin: 20px auto;
+  // max-width:350px;
+  // width:100%;
 `
 
 const imageStyles = css`
-padding-left:20px;
-padding-right:20px;
+// padding-left:10px;
+// padding-right:10px;
 
-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14);
 `;
 
 export default WeissProductCard;

@@ -13,7 +13,7 @@ const NewReleases = () => {
         <div css={releasesHeader}>New Releases</div>
         <div css={headerRight}></div>
       </div>
-      <div css={lineBreak}></div>
+      {/* <div css={lineBreak}></div> */}
       <div className="container" css={productsContainer}>
         <WeissProductCard />
         <WeissProductCard />
@@ -42,10 +42,12 @@ const releasesContainer = css`
 `
 
 const productsContainer = css`
+  width:100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   padding:0;
+  // margin:none;
 `
 
 const cardStyles = css`
@@ -83,8 +85,7 @@ const releasesHeader = css`
 `
 
 const lineBreak = css`
-  height: 20px;
-  flex-grow: 1;
+  // flex-grow: 1;
 `
 
 export default NewReleases

@@ -89,7 +89,7 @@ module.exports = {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        // purgeOnly: ['${__dirname}/src/components/Layout/Layout.css'],
+        purgeOnly: ['${__dirname}/src/components/Layout/Layout.css'],
       },
     }, 
     // must be after other CSS plugins

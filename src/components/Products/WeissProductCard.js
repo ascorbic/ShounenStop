@@ -11,7 +11,7 @@ const WeissProductCard = ({imgData}) =>
     <div css={cardPadding} className="col-md-4">
       <div css={cardContainer}>
         <Img 
-          fluid={{...imgData, aspectRatio: .75}} 
+          fluid={{...imgData, aspectRatio: .63}} 
           />
       </div>
     </div>
@@ -24,6 +24,8 @@ const cardPadding = css`
 `
 
 const cardContainer = css`
+  // opacity:.5;
+  background-color: rgba(0, 0, 0, 0.6);
   // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14);
 `;
 

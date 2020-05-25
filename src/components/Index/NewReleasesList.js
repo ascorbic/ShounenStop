@@ -13,7 +13,7 @@ const NewReleasesList = () => {
     <Container css={productsContainer}>
       <WeissProductCard imgData={data.DateALive.childImageSharp.fluid}></WeissProductCard>
       <WeissProductCard imgData={data.ReZero.childImageSharp.fluid}></WeissProductCard>
-      <WeissProductCard imgData={data.DateALive.childImageSharp.fluid}></WeissProductCard>
+      <WeissProductCard imgData={data.Madoka.childImageSharp.fluid}></WeissProductCard>
     </Container>
   )
 }
@@ -37,6 +37,13 @@ export const query = graphql`
       }
     }
     ReZero: file(relativePath: { eq: "ReZero.jpeg" }) {
+      childImageSharp {
+        fluid(maxWidth: 500, quality:100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    Madoka: file(relativePath: { eq: "Madoka.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 500, quality:100) {
           ...GatsbyImageSharpFluid

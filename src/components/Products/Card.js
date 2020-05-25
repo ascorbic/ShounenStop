@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Image from './Image'
+// import Image from './Image'
 import './Card.css'
 
 const Card = ({
@@ -16,7 +16,7 @@ const Card = ({
   <Link to={slug} className={`Card ${className}`}>
     {featuredImage && (
       <div className="Card--Image relative">
-        <Image background src={featuredImage} alt={title} />
+        {/* <Image background src={featuredImage} alt={title} /> */}
       </div>
     )}
     <div className="Card--Content">

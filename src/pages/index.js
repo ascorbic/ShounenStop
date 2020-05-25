@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/Layout/layout'
 import LandingImage from '../components/Index/landingImage'
+import NewReleases from '../components/Index/newReleases'
 import SEO from '../components/Common/seo'
 
 import Checkout from '../components/checkout'
@@ -13,6 +14,7 @@ const IndexPage = () => (
     {/* <Checkout /> */}
     <div style={{ marginBottom: `1.45rem` }}>
       <LandingImage />
+      <NewReleases />
     </div>
   </Layout>
 )

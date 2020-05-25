@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import ShopNavbar from './shopNavbar'
 import Checkout from '../checkout'
 
-import './layout.css'
+import './Layout.css'
 // import 'bulma/css/bulma.css'
 // import stripeLogo from '../images/powered_by_stripe.svg'
 
@@ -74,7 +74,7 @@ class Layout extends React.Component {
             <ShopNavbar CartSize={this.state.CartSize} title={data.site.siteMetadata.title}/>
             <div
               style={{
-                margin: `45px auto`,
+                margin: `40px auto`,
                 padding: `0px`,
                 paddingTop: "0px",
                 fontFamily: "Montserrat",

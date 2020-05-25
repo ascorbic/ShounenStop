@@ -74,14 +74,6 @@ const ShopNavbar = class extends React.Component {
   }
 }
 
-// const navbarCSS = css`
-//   background-color: $color-primary;
-//   position: -webkit-sticky;
-//   position: sticky;
-//   top: 0;
-//   z-index: 100;
-// `
-
 const navbar = css`
   background-color:#fff;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14);

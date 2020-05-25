@@ -35,8 +35,12 @@ const LandingImage = () => {
       backgroundColor={`#fefefe`}
     >
       <div css={landingSection}>
-        <div css={landingText}>Weiss Boxes and Comiket Merchandise at a great price</div>
-        <div css={lineBreak}></div>
+        <div css={landingText}>
+          Weiss Boxes and Comiket Merchandise at a great price
+          <div css={lineBreakSm}></div>
+          <span css={shippingText}>$5 Shipping on all products</span>
+        </div>
+        <div css={lineBreakLg}></div>
         <Link to="/products">
           <div css={shopNow}>
             <span>SHOP NOW</span>
@@ -60,9 +64,15 @@ const landingStyles = css`
 `
 
 const landingText = css`
-  width:80%;
+  width:85%;
   font-size:25px;
   color:#fff;
+`;
+
+const shippingText = css`
+  width:80%;
+  font-size:20px;
+  color:#f0f0f0;
 `;
 
 const shopNow = css`
@@ -76,13 +86,16 @@ const shopNow = css`
   text-align:center;
   align-items: center;
   justify-content: center;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
 
   &:hover{
+    font-size:24px;
     background-color:#fff;
     color:#000;
-    -webkit-transition: all .3s;
-    -o-transition: all .3s;
-    transition: all .3s;
+    width:190px;
+    height:90px;
   }
 `;
 
@@ -95,8 +108,14 @@ const landingSection = css`
   justify-content: center;
 `
 
-const lineBreak = css`
+const lineBreakLg = css`
   height:50px;
+  width:100%;
+`;
+
+
+const lineBreakSm = css`
+  height:10px;
   width:100%;
 `;
 

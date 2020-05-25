@@ -1,8 +1,8 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
 import { css } from '@emotion/core'
+import NewReleasesList from './NewReleasesList'
 
-import WeissProductCard from '../Products/WeissProductCard'
+
 import Card from '../Products/Card'
 
 const NewReleases = () => {
@@ -13,16 +13,8 @@ const NewReleases = () => {
         <div css={releasesHeader}>New Releases</div>
         <div css={headerRight}></div>
       </div>
-      {/* <div css={lineBreak}></div> */}
-      <div className="container" css={productsContainer}>
-        <WeissProductCard />
-        <WeissProductCard />
-        <WeissProductCard />
-      </div>
-
-      {/* <Card title="omdsadsdag">Weiss Box 1</Card>
-      <Card title="omdsadsdag">Weiss Box 1</Card>
-      <Card title="omdsadsdag">Weiss Box 1</Card> */}
+      <NewReleasesList>
+      </NewReleasesList>
     </div>
   )
 }
@@ -39,15 +31,6 @@ const releasesContainer = css`
   padding-left: 50px;
   padding-right: 50px;
   // background-color:#f0f0f0;
-`
-
-const productsContainer = css`
-  width:100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding:0;
-  // margin:none;
 `
 
 const cardStyles = css`

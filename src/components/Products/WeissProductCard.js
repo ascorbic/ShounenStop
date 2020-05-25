@@ -1,33 +1,30 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Image from '../Common/Image'
+import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 
 
 
-const WeissProductCard = () =>
+const WeissProductCard = ({imgData}) =>
 {
   return(
-    <div css={cardPadding} className="col-sm-4">
-      <div css={imageStyles}>
-        <Image  imgFile="DateALive.jpg"></Image>
+    <div css={cardPadding} className="col-md-4">
+      <div css={cardContainer}>
+        <Img 
+          fluid={{...imgData, aspectRatio: .75}} 
+          />
       </div>
     </div>
   )
 };
 
 const cardPadding = css`
-  flex: 0 0 auto
-  // margin: 20px auto;
-  // max-width:350px;
-  // width:100%;
+  flex: 0 0 auto;
+  margin-top:20px;
 `
 
-const imageStyles = css`
-// padding-left:10px;
-// padding-right:10px;
-
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14);
+const cardContainer = css`
+  // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14);
 `;
 
 export default WeissProductCard;

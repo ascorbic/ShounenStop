@@ -8,7 +8,7 @@ const Image = (imgFile) => (
       query {
         Anime: file(relativePath: { eq: "DateALive.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 300) {
+            fluid(maxWidth: 500) {
               ...GatsbyImageSharpFluid
             }
           }

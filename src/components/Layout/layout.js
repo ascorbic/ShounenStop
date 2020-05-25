@@ -5,8 +5,6 @@ import ShopNavbar from './shopNavbar'
 import Checkout from '../checkout'
 
 import './layout.css'
-// import 'bulma/css/bulma.css'
-// import stripeLogo from '../images/powered_by_stripe.svg'
 
 // console.log(localStorage.getItem("omg"));
 // Have a cart icon and set price

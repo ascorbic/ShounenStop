@@ -5,18 +5,20 @@ import { css } from '@emotion/core'
 
 
 
-const WeissProductCard = ({imgData, content}) =>
+const WeissProductCard = ({imgData, title, className}) =>
 {
   return(
-    <div css={cardPadding} className="col-lg-4 col-md-4 col-sm-6">
+    <div css={cardPadding} className={className}>
       <div css={cardContainer}>
         <div css={imgContainer}>
           <Img 
             css={imgStyles}
-            fluid={{...imgData, aspectRatio:1}} 
+            fluid={{...imgData, aspectRatio:1 }} 
           />
         </div>
-        <div className="cardBottom" css={cardBottom}>{content}</div>
+        <div className="cardBottom" css={cardBottom}>
+          {title}
+        </div>
       </div>
     </div>
   )
@@ -29,64 +31,81 @@ const cardPadding = css`
 `
 
 const cardContainer = css`
+  border:solid 1px #e5e5e5;
   background-color:#fff;
   box-shadow: 0 5px 30px -15px rgba(0,0,0,.2);
   -webkit-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
-  border-radius:3px;
+  border-radius:6px;
   
   position:relative;
   &:hover{
     // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.4);
   }
 
-  // &:hover .cardBottom{
-  //     height:20px;
-  //     opacity:0;
-  // }
+  &:hover .cardBottom{
+      // height:20px;
+      // opacity:.9;
+  }
 `;
 
 const imgContainer = css`
   // filter:brightness(80%);
-  // filter: grayscale(60%) blur(5px);
+
   -webkit-transition: all .5s;
   -o-transition: all .5s;
   transition: all .5s;
-// height:100%;
-  padding-top:10px;
+  padding-top:20px;
   padding-left:20px;
   padding-right:20px;
+  padding-bottom:20px;
   &:hover{
+    // padding-top:20px;
+    // padding-left:40px;
+    // padding-right:40px;
     // filter: grayscale(0%) blur(0px);
   }
 `;
 
+const cardTop = css`
+  transform: rotate(45deg);
+  position:absolute;
+  top:10px;
+  right:0;
+  border-radius:10px;
+  // line-height:30px;
+  background-color:#0f346c;
+  z-index:1;
+  color:#fff;
+`;
+
 const imgStyles = css`
-border-radius:3px;
-
-padding-bottom:20%;
-
-// padding-left:10px;
-// padding-right:10px;
-// margin-bottom:50px;
+  border-radius:6px;
+  padding-bottom:120px;
   // filter: grayscale(60%) blur(5px);
 `;
 
 const cardBottom = css`
+  font-family:varela round;
+  color:#0f346c;
   -webkit-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
-  border-bottom-left-radius:3px;
-  border-bottom-right-radius:3px;
-  // height:calc(10% + 50px);
+  border-bottom-left-radius:6px;
+  border-bottom-right-radius:6px;
+  height:calc(10% + 80px);
   width:100%;
-  background-color:#fff;
+  background-color:#f9f9f9;
   position:absolute;
   bottom:0;
   left:0;
+  padding-top:5px;
+  padding-left:20px;
+  padding-right:20px;
+
   // border-top: solid #f0f0f0 1px;
-  opacity:.8
+  // opacity:.95;
   
 `;
 

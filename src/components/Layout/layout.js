@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import ShopNavbar from './shopNavbar'
 import Checkout from '../checkout'
-
+import LayoutFooter from './LayoutFooter'
 
 import './layout.css'
 
@@ -70,7 +70,7 @@ class Layout extends React.Component {
         `}
         render = {data => (
           <>
-            <ShopNavbar CartSize={this.state.CartSize} title={data.site.siteMetadata.title}/>
+            <ShopNavbar pageInfo={this.props.pageInfo} CartSize={this.state.CartSize} title={data.site.siteMetadata.title}/>
             <div
               style={{
                 marginTop: `40px`,
@@ -82,14 +82,8 @@ class Layout extends React.Component {
               }}
             >
               {this.renderChildren()}
-              {/* <footer
-              style={{
-                backgroundColor:`#f4f7f9`,
-              }}
-              >
-                feet stuff
-              </footer> */}
             </div>
+            <LayoutFooter/>
             </>
         )}
       />

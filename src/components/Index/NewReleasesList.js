@@ -11,9 +11,21 @@ const NewReleasesList = () => {
   const data = useStaticQuery(query);
   return (
     <Container css={productsContainer}>
-      <WeissProductCard content="Card 1" imgData={data.DateALive.childImageSharp.fluid}></WeissProductCard>
-      <WeissProductCard content="Card 2" imgData={data.ReZero.childImageSharp.fluid}></WeissProductCard>
-      <WeissProductCard content="Card 3" imgData={data.Madoka.childImageSharp.fluid}></WeissProductCard>
+      <WeissProductCard 
+        className="col-lg-4 col-md-6 col-sm-6"
+        title="Weiss Schwarz Trial Deck+ (Plus)Puella Magi Madoka Magica Side Story Magia Record Pack"
+        imgData={data.DateALiveDeck.childImageSharp.fluid}
+        />
+      <WeissProductCard
+        className="col-lg-4 col-md-6 col-sm-6"
+        title="Card 2"
+        imgData={data.ReZero.childImageSharp.fluid}
+        />
+      <WeissProductCard
+        className="col-lg-4 col-md-6 col-sm-6"
+        title="Card 3"
+        imgData={data.DateALiveCarton.childImageSharp.fluid}
+        />
     </Container>
   )
 }
@@ -23,13 +35,20 @@ const productsContainer = css`
   width:100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   padding:0;
 `
 
 export const query = graphql`
   query {
-    DateALive: file(relativePath: { eq: "DateALive.jpg" }) {
+    DateALiveDeck: file(relativePath: { eq: "DateALive-deck.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 500, quality:100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    DateALiveCarton: file(relativePath: { eq: "DateALive-carton.png" }) {
       childImageSharp {
         fluid(maxWidth: 500, quality:100) {
           ...GatsbyImageSharpFluid

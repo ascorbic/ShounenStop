@@ -54,14 +54,14 @@ const header = css`
 const headerLeft = css`
   height: 3px;
   flex-grow: 1;
-  background-color: #4f4f4f;
+  background-color: #303235;
   border-radius:2px;
 `
 
 const headerRight = css`
   height: 3px;
   flex-grow: 1;
-  background-color: #4f4f4f;
+  background-color: #303235;
   border-radius:2px;
 `
 
@@ -70,7 +70,7 @@ const releasesHeader = css`
   font-size: 30px;
   font-family: 'varela round';
   margin:0px 20px;
-  color: #4f4f4f;
+  color: #303235;
 `
 
 const lineBreak = css`

@@ -4,39 +4,10 @@ html {
 }
 body {
   font-family: 'varela round', sans-serif;
+  background-color: #f4f7f9;
   margin: 0;
 }
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
-}
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-}
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-progress {
-  vertical-align: baseline;
-}
-[hidden],
-template {
-  display: none;
-}
+
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -63,10 +34,6 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-mark {
-  background-color: #ff0;
-  color: #000;
-}
 small {
   font-size: 80%;
 }
@@ -89,21 +56,7 @@ img {
 svg:not(:root) {
   overflow: hidden;
 }
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
-}
-figure {
-  margin: 1em 40px;
-}
-hr {
-  box-sizing: content-box;
-  height: 0;
-  overflow: visible;
-}
+
 button,
 input,
 optgroup,
@@ -112,9 +65,7 @@ textarea {
   font: inherit;
   margin: 0;
 }
-optgroup {
-  font-weight: 700;
-}
+
 button,
 input {
   overflow: visible;
@@ -199,7 +150,7 @@ html {
 }
 
 body {
-  color: hsla(0, 0%, 0%, 0.8);
+  color: #6a6d75;
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -608,6 +559,12 @@ pre tt:after {
 /* .card ~ .card {
   box-shadow: none;
 } */
+
+.navbar-light .navbar-nav .nav-link{
+  color: #6a6d75;
+  font-size:13px;
+  letter-spacing: 1.3px;
+}
 
 /* .navbar{
   margin:0;

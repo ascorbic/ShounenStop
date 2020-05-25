@@ -5,7 +5,7 @@ import Layout from '../components/Layout/layout'
 import SEO from '../components/Common/seo'
 
 const Products = () => (
-  <Layout>
+  <Layout pageInfo={{pageName:"PRODUCTS"}}>
     <SEO title="Shop" />
     <h1>Sucess!</h1>
     <Link to="/">Shop again</Link>

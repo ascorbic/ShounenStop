@@ -9,10 +9,10 @@ import SEO from '../components/Common/seo'
 import Checkout from '../components/checkout'
 
 const IndexPage = () => (
-  <Layout>
+  <Layout pageInfo={{ pageName: "index" }}>
     <SEO title="Home" keywords={[`Shounen`, `Stop`, `Weiss`]} />
     {/* <Checkout /> */}
-    <div style={{ marginBottom: `1.45rem` }}>
+    <div>
       <LandingImage />
       <NewReleases />
     </div>

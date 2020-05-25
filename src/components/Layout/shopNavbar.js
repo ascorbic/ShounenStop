@@ -6,6 +6,7 @@ import { Navbar, Nav } from 'react-bootstrap'
 
 const ShopNavbar = class extends React.Component {
   constructor(props) {
+    console.log(props.pageInfo);
     super(props);
     this.state = {
       collapsed: false
@@ -32,27 +33,37 @@ const ShopNavbar = class extends React.Component {
             </Nav>
           </Link>
           <Navbar.Collapse id="basic-navbar-nav" css={navbarCollapsible} className="">
-            <Nav className="" css = {navbarCollapse} activeKey={this.props && this.props.title}>
+            <Nav className="" css = {navbarCollapse} activeKey={this.props.pageInfo && this.props.pageInfo.pageName}>
               <Link to="/products" className="link-no-style">
-                <Nav.Link as="span" eventKey="products">
-                  Products
+                <Nav.Link as="span" eventKey="PRODUCTS">
+                  PRODUCTS
+                </Nav.Link>
+              </Link>
+              <Link to="/products/weiss" className="link-no-style">
+                <Nav.Link as="span" eventKey="WEISS">
+                  WEISS
+                </Nav.Link>
+              </Link>
+              <Link to="/products/comiket" className="link-no-style">
+                <Nav.Link as="span" eventKey="COMIKET">
+                  COMIKET
+                </Nav.Link>
+              </Link>
+              <Link to="/contact" className="link-no-style">
+                <Nav.Link as="span" eventKey="CONTACT">
+                  CONTACT
                 </Nav.Link>
               </Link>
             </Nav>
-            <Nav className="" activeKey={this.props && this.props.title}>
-              <Link to="/weiss" className="link-no-style">
-                <Nav.Link as="span" eventKey="weiss">
-                  Weiss  {this.state.collapsed.toString()}
-                </Nav.Link>
-              </Link>
+            {/* <Nav className="" activeKey={this.props && this.props.pageInfo.pageName}>
+
             </Nav>
-            <Nav className="" activeKey={this.props && this.props.title}>
-              <Link to="/comiket" className="link-no-style">
-                <Nav.Link as="span" eventKey="comiket">
-                  Comiket
-                </Nav.Link>
-              </Link>
+            <Nav className="" activeKey={this.props && this.props.pageInfo.pageName}>
+
             </Nav>
+            <Nav className="" activeKey={this.props && this.props.pageInfo.pageName}>
+
+            </Nav> */}
             {/* <Nav className="">
               <Form inline onSubmit={e => e.preventDefault()}>
                 <Form.Group>
@@ -157,12 +168,7 @@ const navbarBurger = css`
 `;
 
 const navbarCart = css`
-  // position:absolute;
-  // float:right !important;
 
-  // top:20px;
-  // right:10px;
-  flex-direction: row;
   color: #5e727d;
 
   &:hover{
@@ -176,6 +182,11 @@ const navbarCart = css`
 
 const navbarCollapse = css`
   border-top: solid 1px #f0f0f0;
+
+  span.nav-link.active{
+    font-weight: bold;
+    color:#003087 !important;
+  }
 `;
 
 const navbarCollapsible = css`

@@ -11,9 +11,9 @@ const NewReleasesList = () => {
   const data = useStaticQuery(query);
   return (
     <Container css={productsContainer}>
-      <WeissProductCard imgData={data.DateALive.childImageSharp.fluid}></WeissProductCard>
-      <WeissProductCard imgData={data.ReZero.childImageSharp.fluid}></WeissProductCard>
-      <WeissProductCard imgData={data.Madoka.childImageSharp.fluid}></WeissProductCard>
+      <WeissProductCard content="Card 1" imgData={data.DateALive.childImageSharp.fluid}></WeissProductCard>
+      <WeissProductCard content="Card 2" imgData={data.ReZero.childImageSharp.fluid}></WeissProductCard>
+      <WeissProductCard content="Card 3" imgData={data.Madoka.childImageSharp.fluid}></WeissProductCard>
     </Container>
   )
 }

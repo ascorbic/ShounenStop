@@ -5,28 +5,86 @@ import { css } from '@emotion/core'
 
 
 
-const WeissProductCard = ({imgData}) =>
+const WeissProductCard = ({imgData, content}) =>
 {
   return(
     <div css={cardPadding} className="col-md-4">
       <div css={cardContainer}>
-        <Img 
-          fluid={{...imgData, aspectRatio: .63}} 
+        <div css={imgContainer}>
+          <Img 
+            css={imgStyles}
+            fluid={{...imgData, aspectRatio: .63}} 
           />
+        </div>
+        <div className="cardBottom" css={cardBottom}>{content}</div>
       </div>
     </div>
   )
 };
 
 const cardPadding = css`
-  flex: 0 0 auto;
+  // flex: 0 0 auto;
   margin-top:20px;
+  position: relative;
+
 `
 
 const cardContainer = css`
-  // opacity:.5;
-  background-color: rgba(0, 0, 0, 0.6);
-  // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.14);
+  // box-shadow: 0 3px 3px 0 rgba(0,0,0,0.15);
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  border-radius:3px;
+  
+  position:relative;
+  &:hover{
+    // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.4);
+  }
+
+  // &:hover .cardBottom{
+  //     height:20px;
+  //     opacity:0;
+  // }
+`;
+
+const imgContainer = css`
+  filter:brightness(80%);
+  // filter: grayscale(60%) blur(5px);
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+
+  padding-top:10px;
+  padding-left:20px;
+  padding-right:20px;
+  &:hover{
+    // filter: grayscale(0%) blur(0px);
+  }
+`;
+
+const imgStyles = css`
+border-radius:3px;
+// padding-left:10px;
+// padding-right:10px;
+// margin-bottom:50px;
+  // filter: grayscale(60%) blur(5px);
+`;
+
+const cardBottom = css`
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+  border-bottom-left-radius:3px;
+  border-bottom-right-radius:3px;
+  // height:calc(10% + 50px);
+  width:100%;
+  background-color:#fff;
+  position:absolute;
+  bottom:0;
+  left:0;
+  // border-top: solid #f0f0f0 1px;
+  opacity:.8
+  
 `;
 
 export default WeissProductCard;

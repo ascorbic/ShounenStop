@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import ShopNavbar from './shopNavbar'
 import Checkout from '../checkout'
 
+
 import './layout.css'
 
 // console.log(localStorage.getItem("omg"));
@@ -72,7 +73,8 @@ class Layout extends React.Component {
             <ShopNavbar CartSize={this.state.CartSize} title={data.site.siteMetadata.title}/>
             <div
               style={{
-                margin: `40px auto`,
+                marginTop: `40px`,
+                marginLeft: ` auto`,
                 padding: `0px`,
                 paddingTop: "0px",
                 fontFamily: "Montserrat",
@@ -81,6 +83,7 @@ class Layout extends React.Component {
             >
               {this.renderChildren()}
               <footer>
+                feet stuff
               </footer>
             </div>
             </>

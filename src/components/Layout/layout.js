@@ -1,10 +1,10 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import ShopNavbar from './ShopNavbar'
-import Checkout from '../checkout'
+import ShopNavbar from './shopNavbar'
+// import Checkout from '../checkout'
 
-import './Layout.css'
+import './layout.css'
 // import 'bulma/css/bulma.css'
 // import stripeLogo from '../images/powered_by_stripe.svg'
 

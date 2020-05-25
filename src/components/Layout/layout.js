@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import ShopNavbar from './shopNavbar'
-// import Checkout from '../checkout'
+import Checkout from '../checkout'
 
 import './layout.css'
 // import 'bulma/css/bulma.css'

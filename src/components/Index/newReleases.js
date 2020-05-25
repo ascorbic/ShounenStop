@@ -7,19 +7,25 @@ import Card from '../Products/Card'
 
 const NewReleases = () => {
   return (
-    <div className="" css={releasesContainer}>
-      <div css={header}>
-        <div css={headerLeft}></div>
-        <div css={releasesHeader}>New Releases</div>
-        <div css={headerRight}></div>
+    <div css={releasesContainer}>
+      <div css={releasesContent}>
+        <div css={header}>
+          <div css={headerLeft}></div>
+          <div css={releasesHeader}>New Releases</div>
+          <div css={headerRight}></div>
+        </div>
+        <NewReleasesList>
+        </NewReleasesList>
       </div>
-      <NewReleasesList>
-      </NewReleasesList>
     </div>
   )
 }
 
 const releasesContainer = css`
+  background-color: #f4f7f9;
+`;
+
+const releasesContent = css`
   // width: 100%;
   display: flex;
   flex-wrap: nowrap;

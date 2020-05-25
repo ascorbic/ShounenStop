@@ -8,12 +8,12 @@ import { css } from '@emotion/core'
 const WeissProductCard = ({imgData, content}) =>
 {
   return(
-    <div css={cardPadding} className="col-md-4">
+    <div css={cardPadding} className="col-lg-4 col-md-4 col-sm-6">
       <div css={cardContainer}>
         <div css={imgContainer}>
           <Img 
             css={imgStyles}
-            fluid={{...imgData, aspectRatio: .63}} 
+            fluid={{...imgData, aspectRatio:1}} 
           />
         </div>
         <div className="cardBottom" css={cardBottom}>{content}</div>
@@ -26,11 +26,11 @@ const cardPadding = css`
   // flex: 0 0 auto;
   margin-top:20px;
   position: relative;
-
 `
 
 const cardContainer = css`
-  // box-shadow: 0 3px 3px 0 rgba(0,0,0,0.15);
+  background-color:#fff;
+  box-shadow: 0 5px 30px -15px rgba(0,0,0,.2);
   -webkit-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
@@ -48,12 +48,12 @@ const cardContainer = css`
 `;
 
 const imgContainer = css`
-  filter:brightness(80%);
+  // filter:brightness(80%);
   // filter: grayscale(60%) blur(5px);
   -webkit-transition: all .5s;
   -o-transition: all .5s;
   transition: all .5s;
-
+// height:100%;
   padding-top:10px;
   padding-left:20px;
   padding-right:20px;
@@ -64,6 +64,9 @@ const imgContainer = css`
 
 const imgStyles = css`
 border-radius:3px;
+
+padding-bottom:20%;
+
 // padding-left:10px;
 // padding-right:10px;
 // margin-bottom:50px;

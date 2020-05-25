@@ -82,9 +82,13 @@ class Layout extends React.Component {
               }}
             >
               {this.renderChildren()}
-              <footer>
+              {/* <footer
+              style={{
+                backgroundColor:`#f4f7f9`,
+              }}
+              >
                 feet stuff
-              </footer>
+              </footer> */}
             </div>
             </>
         )}

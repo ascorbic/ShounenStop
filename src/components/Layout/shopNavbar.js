@@ -98,14 +98,14 @@ const navbarBrand = css`
     -webkit-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
-    color: #003087 !important;
+    color: #0f346c !important;
   }
 
 `;
 
 const navbarBurger = css`
 .navbar-toggle:hover > .icon-bar {
-  background-color: #003087;
+  background-color: #0f346c;
 }
 
 .navbar-toggle {
@@ -125,7 +125,7 @@ const navbarBurger = css`
   }
 
   &:hover > .icon-bar {
-    color: #003087;
+    color: #0f346c;
   }
 
   .top-bar {
@@ -147,7 +147,7 @@ const navbarBurger = css`
   width: 22px;
   height: 2px;
   border-radius: 1px;
-  background-color: #003087;
+  background-color: #0f346c;
 }
 
 .icon-bar+.icon-bar{
@@ -176,7 +176,7 @@ const navbarCart = css`
     -webkit-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
-    color: #003087 !important;
+    color: #0f346c !important;
   }
 `;
 
@@ -185,7 +185,7 @@ const navbarCollapse = css`
 
   span.nav-link.active{
     font-weight: bold;
-    color:#003087 !important;
+    color:#0f346c !important;
   }
 `;
 

@@ -5,6 +5,7 @@ import ShopNavbar from './shopNavbar'
 import Checkout from '../checkout'
 import LayoutFooter from './LayoutFooter'
 
+
 import './layout.css'
 
 // console.log(localStorage.getItem("omg"));

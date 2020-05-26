@@ -3,13 +3,17 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 
-
+import WeissBackground from './WeissBackground'
 
 const WeissProductCard = ({imgData, title, className}) =>
 {
   return(
     <div css={cardPadding} className={className}>
+        <div css={cardTop}>
+          PREORDER
+        </div>
       <div css={cardContainer}>
+
         <div css={imgContainer}>
           <Img 
             css={imgStyles}
@@ -19,6 +23,7 @@ const WeissProductCard = ({imgData, title, className}) =>
         <div className="cardBottom" css={cardBottom}>
           {title}
         </div>
+        <WeissBackground />
       </div>
     </div>
   )
@@ -37,11 +42,13 @@ const cardContainer = css`
   -webkit-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
-  border-radius:6px;
+  border-radius:10px;
   
   position:relative;
   &:hover{
     // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.4);
+    // background-color: rgba(0,0,0,.1);
+    // opacity:.8;
   }
 
   &:hover .cardBottom{
@@ -51,8 +58,6 @@ const cardContainer = css`
 `;
 
 const imgContainer = css`
-  // filter:brightness(80%);
-
   -webkit-transition: all .5s;
   -o-transition: all .5s;
   transition: all .5s;
@@ -69,19 +74,21 @@ const imgContainer = css`
 `;
 
 const cardTop = css`
-  transform: rotate(45deg);
   position:absolute;
-  top:10px;
-  right:0;
-  border-radius:10px;
-  // line-height:30px;
+  top:15px;
+  left:0;
+  letter-spacing:1.5px;
+  line-height:40px;
+  padding-left:5px;
+  padding-right:5px;
+  font-weight:300;
   background-color:#0f346c;
   z-index:1;
   color:#fff;
 `;
 
 const imgStyles = css`
-  border-radius:6px;
+  border-radius:10px;
   padding-bottom:120px;
   // filter: grayscale(60%) blur(5px);
 `;
@@ -89,24 +96,29 @@ const imgStyles = css`
 const cardBottom = css`
   font-family:varela round;
   color:#0f346c;
+  border-top: solid 3px #0f346c;
+
   -webkit-transition: all .3s;
   -o-transition: all .3s;
   transition: all .3s;
-  border-bottom-left-radius:6px;
-  border-bottom-right-radius:6px;
+  border-radius:4px;
+  // border-bottom-left-radius:4px;
+  // border-bottom-right-radius:4px;
   height:calc(10% + 80px);
-  width:100%;
-  background-color:#f9f9f9;
+  width:calc(100% - 20px);
+  // filter: brightness(60%);
+
+  background-color:#fff;
   position:absolute;
-  bottom:0;
-  left:0;
+  bottom:10px;
+  left:10px;
+
   padding-top:5px;
   padding-left:20px;
   padding-right:20px;
 
   // border-top: solid #f0f0f0 1px;
-  // opacity:.95;
-  
+  opacity:.95;
 `;
 
 export default WeissProductCard;

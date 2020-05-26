@@ -27,12 +27,10 @@ const WeissBackground = () =>
 
 
 const imgStyles = css `
-  // width:100%;
-  // height:200px;
+
   position:absolute;
-  bottom:-10px;;
+  bottom:-6px;
   left:0;
-  z-index:2000;
 `;
 
 export default WeissBackground;

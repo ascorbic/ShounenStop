@@ -67,7 +67,7 @@ module.exports = {
       options: {
         fonts: [
           `Varela Round\:400`,
-          `Montserrat\:300,400`
+          `Montserrat\:300,400,700`
         ],
         display: 'swap'
       }

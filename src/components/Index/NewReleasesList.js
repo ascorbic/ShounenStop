@@ -12,18 +12,21 @@ const NewReleasesList = () => {
   return (
     <Container css={productsContainer}>
       <WeissProductCard 
-        className="col-lg-4 col-md-6 col-sm-6"
-        title="Weiss Schwarz Trial Deck+ (Plus)Puella Magi Madoka Magica Side Story Magia Record Pack"
+        className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
+        series="DATE A LIVE 🇯🇵"
+        productType="TRIAL DECK+"
         imgData={data.DateALiveDeck.childImageSharp.fluid}
         />
       <WeissProductCard
-        className="col-lg-4 col-md-6 col-sm-6"
-        title="Card 2"
+        className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
+        series="RE:ZERO 🇯🇵"
+        productType="EXTRA BOOSTER"
         imgData={data.ReZero.childImageSharp.fluid}
         />
       <WeissProductCard
-        className="col-lg-4 col-md-6 col-sm-6"
-        title="Card 3"
+        className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
+        series="DATE A LIVE 🇯🇵"
+        productType=""
         imgData={data.DateALiveCarton.childImageSharp.fluid}
         />
     </Container>

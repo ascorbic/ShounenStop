@@ -1,7 +1,10 @@
 import CMS from 'netlify-cms-app';
 import axios from 'axios';
+import * as NativeColorWidget from 'netlify-cms-widget-native-color'
+import * as ColorWidget from "netlify-cms-widget-color";
 
-console.log("where does this even go?");
+CMS.registerWidget('native-color', NativeColorWidget.Control)
+CMS.registerWidget("color", ColorWidget.Control);
 
 CMS.registerEventListener({
   name: 'postPublish',

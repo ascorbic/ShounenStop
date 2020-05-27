@@ -16,6 +16,12 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Intro text, name: intro, widget: text }
           - { label: Image, name: image, widget: image }
+          - name: <fieldname>
+            label: <fieldlabel>
+            widget: color
+          - name: <fieldname>
+            label: <fieldlabel>
+            widget: native-color
   - name: weiss
     label: Weiss
     create: true
@@ -70,12 +76,12 @@ collections:
           name: preorder,
           widget: datetime,
           dateFormat: 'MM.DD.YYYY',
-          timeFormat: false
+          timeFormat: false,
         }
       - {
           label: Release date,
           name: release,
           widget: datetime,
           dateFormat: 'MM.DD.YYYY',
-          timeFormat: false
+          timeFormat: false,
         }

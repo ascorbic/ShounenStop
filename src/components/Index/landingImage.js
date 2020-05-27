@@ -31,7 +31,6 @@ const LandingImage = () => {
     <BackgroundImage
       css={landingStyles}
       fluid={imageData}
-      // objectFit="fit"
       backgroundColor={`#fefefe`}
     >
       <div css={landingSection}>

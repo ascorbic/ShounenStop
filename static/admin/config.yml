@@ -21,11 +21,11 @@ collections:
               name: release1,
               widget: relation,
               collection: weiss,
-              searchFields: ['name','series', 'producttype'],
+              searchFields: ['name', 'series', 'producttype'],
               valueField: 'producttype',
               displayFields: ['name', 'asin', 'series', 'producttype'],
             }
-            - {
+          - {
               label: New Release 2,
               name: release2,
               widget: relation,

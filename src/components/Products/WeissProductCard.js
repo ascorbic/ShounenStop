@@ -29,7 +29,7 @@ const WeissProductCard = ({
 
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 
-    height: calc(10% + 120px);
+    height: calc(10% + 145px);
     width: calc(100% - 20px);
 
     background-color: #fff;
@@ -52,7 +52,7 @@ const WeissProductCard = ({
     float: left;
     font-weight: 700;
     font-size: 20px;
-    max-width: 60%;
+    max-width: 70%;
     text-align: left;
     line-height: 20px;
   `
@@ -91,7 +91,7 @@ const WeissProductCard = ({
     float: right;
     font-weight: 700;
     font-size: 23px;
-    max-width: 40%;
+    max-width: 30%;
     text-align: right;
     line-height: 20px;
   `

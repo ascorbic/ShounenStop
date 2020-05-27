@@ -16,12 +16,6 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Intro text, name: intro, widget: text }
           - { label: Image, name: image, widget: image }
-          - name: <fieldname>
-            label: <fieldlabel>
-            widget: color
-          - name: <fieldname>
-            label: <fieldlabel>
-            widget: native-color
   - name: weiss
     label: Weiss
     create: true
@@ -85,3 +79,5 @@ collections:
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
+      - { name: Primary, label: Primary, widget: color }
+      - { name: Secondary, label: Secondary, widget: native-color }

@@ -21,9 +21,18 @@ collections:
               name: release1,
               widget: relation,
               collection: weiss,
-              searchFields: ['name.first', 'producttype'],
-              valueField: 'name.first',
-              displayFields: ['name', 'asin', 'producttype'],
+              searchFields: ['name','series', 'producttype'],
+              valueField: 'producttype',
+              displayFields: ['name', 'asin', 'series', 'producttype'],
+            }
+            - {
+              label: New Release 2,
+              name: release2,
+              widget: relation,
+              collection: weiss,
+              searchFields: ['name', 'asin', 'series', 'producttype'],
+              valueField: 'producttype',
+              displayFields: ['name', 'asin', 'series', 'producttype'],
             }
   - name: weiss
     label: Weiss

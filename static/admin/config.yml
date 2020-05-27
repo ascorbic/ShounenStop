@@ -24,6 +24,8 @@ collections:
               searchFields: ['name', 'asin', 'series', 'producttype'],
               valueField: 'asin',
               displayFields: ['name', 'asin', 'series', 'producttype'],
+              multiple: true,
+              optionsLength: 3
             }
           - {
               label: New Release 2,
@@ -33,6 +35,8 @@ collections:
               searchFields: ['name', 'asin', 'series', 'producttype'],
               valueField: 'asin',
               displayFields: ['name', 'asin', 'series', 'producttype'],
+              multiple: true,
+              optionsLength: 5
             }
   - name: weiss
     label: Weiss

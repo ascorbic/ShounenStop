@@ -1,23 +1,13 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import { css } from '@emotion/core'
+
 import BackgroundImage from 'gatsby-background-image'
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `StaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.app/gatsby-image
- * - `StaticQuery`: https://gatsby.app/staticquery
- */
-
-const LandingImage = () => {
+const ComiketBanner = () => {
   const { landingImage } = useStaticQuery(graphql`
     query {
-      landingImage: file(relativePath: { eq: "sao.jpg" }) {
+      landingImage: file(relativePath: { eq: "comiket.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 3000) {
             ...GatsbyImageSharpFluid
@@ -31,27 +21,22 @@ const LandingImage = () => {
     <BackgroundImage
       css={landingStyles}
       fluid={imageData}
-      // objectFit="fit"
       backgroundColor={`#fefefe`}
     >
       <div css={landingSection}>
         <div css={landingText}>
-          Weiss Boxes and Comiket Merchandise at a great price
+          COMIKET MERCHANDISE 
           <div css={lineBreakSm}></div>
-          <span css={shippingText}>$5 Shipping on all products</span>
+          <span css={shippingText}>COMING SOON</span>
         </div>
-        <div css={lineBreakLg}></div>
-        <Link to="/products">
-          <div css={shopNow}>
-            <span>SHOP NOW</span>
-          </div>
-        </Link>
+        {/* <div css={lineBreakLg}></div> */}
       </div>
     </BackgroundImage>
   )
 }
 
 const landingStyles = css`
+  margin-top:50px;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   opacity: 1 !important;
@@ -61,10 +46,11 @@ const landingStyles = css`
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2),0 1px 0 0 rgba(0,0,0,0.2);
+
 `
 
 const landingText = css`
-  width: 85%;
+  width: 100%;
   font-size: 25px;
   color: #fff;
 `
@@ -102,11 +88,8 @@ const shopNow = css`
 `
 
 const landingSection = css`
-  margin-top: 120px;
   max-width: 800px;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
   justify-content: center;
 `
 
@@ -120,4 +103,5 @@ const lineBreakSm = css`
   width: 100%;
 `
 
-export default LandingImage
+
+export default ComiketBanner

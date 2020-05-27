@@ -29,7 +29,7 @@ const WeissBackground = () =>
 const imgStyles = css `
 
   position:absolute;
-  bottom:-6px;
+  bottom:-8px;
   left:0;
 `;
 

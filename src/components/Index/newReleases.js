@@ -14,8 +14,7 @@ const NewReleases = () => {
           <div css={releasesHeader}>New Releases</div>
           <div css={headerRight}></div>
         </div>
-        <NewReleasesList>
-        </NewReleasesList>
+        <NewReleasesList/>
       </div>
     </div>
   )
@@ -77,19 +76,4 @@ const lineBreak = css`
   // flex-grow: 1;
 `
 
-export default NewReleases
-
-// export const pageQuery = graphql`
-// 	query IndexQuery {
-// 		allWordpressWpMe {
-// 			edges {
-// 				node {
-// 					name
-// 					description
-// 					avatar_urls {
-// 						wordpress_96
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}`
+export default NewReleases;

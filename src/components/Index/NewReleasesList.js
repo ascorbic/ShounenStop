@@ -2,7 +2,6 @@ import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 
 import { css } from '@emotion/core'
-import Img from 'gatsby-image'
 
 import WeissProductCard from '../Products/WeissProductCard'
 import { Container } from 'react-bootstrap'
@@ -15,18 +14,30 @@ const NewReleasesList = () => {
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
         series="DATE A LIVE 🇯🇵"
         productType="TRIAL DECK+"
+        preorderDate="Jun 5"
+        releaseDate="Jul 10"
+        price="$15"
+        color="#000"
         imgData={data.DateALiveDeck.childImageSharp.fluid}
         />
       <WeissProductCard
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
         series="RE:ZERO 🇯🇵"
         productType="EXTRA BOOSTER"
+        preorderDate="Jun 5"
+        releaseDate="Jul 17"
+        price="$30"
+        color="#84C3A6"
         imgData={data.ReZero.childImageSharp.fluid}
         />
       <WeissProductCard
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
         series="DATE A LIVE 🇯🇵"
-        productType=""
+        productType="BOOSTER BOX"
+        preorderDate="Jun 5"
+        releaseDate="Jul 10"
+        price="$65"
+        color="#000"
         imgData={data.DateALiveCarton.childImageSharp.fluid}
         />
     </Container>

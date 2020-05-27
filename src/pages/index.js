@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/Layout/layout'
 import LandingImage from '../components/Index/landingImage'
+import ComiketBanner from '../components/Index/ComiketBanner'
 import NewReleases from '../components/Index/newReleases'
 import SEO from '../components/Common/seo'
 
@@ -15,6 +16,7 @@ const IndexPage = () => (
     <div>
       <LandingImage />
       <NewReleases />
+      <ComiketBanner/>
     </div>
   </Layout>
 )

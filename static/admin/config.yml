@@ -16,6 +16,15 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Intro text, name: intro, widget: text }
           - { label: Image, name: image, widget: image }
+          - {
+              label: New Release 1,
+              name: release1,
+              widget: relation,
+              collection: weiss,
+              searchFields: ['name.first', 'producttype'],
+              valueField: 'name.first',
+              displayFields: ['name', 'asin', 'producttype'],
+            }
   - name: weiss
     label: Weiss
     create: true
@@ -31,15 +40,17 @@ collections:
           options:
             [
               'Trial Deck',
+              'Trial Deck+',
               'Box of Trial Decks',
               'Booster Box',
               'Carton of Booster Boxes',
-              'Extra Booster Box',
+              'Extra Booster',
               'Other',
             ],
           default: ['Booster Box'],
         }
       - { label: Series, name: series, widget: string }
+      - { label: Product Primary Color Hex, name: color, widget: string }
       - { label: Description, name: description, widget: text, required: false }
       - { label: Image, name: image, widget: image }
       - label: Pricings
@@ -79,5 +90,3 @@ collections:
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
-      - { name: Primary, label: Primary, widget: color }
-      - { name: Secondary, label: Secondary, widget: native-color }

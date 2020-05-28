@@ -1,7 +1,7 @@
 ---
 name: dsfsdljlkfjdsl
 asin: dsajkdlsajl
-producttype: Trial Deck+
+producttype: Box of Trial Decks
 series: ffdsfs
 color: fdsadsa
 image: images/datealive-carton.png

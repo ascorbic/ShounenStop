@@ -2,7 +2,7 @@ backend:
   name: git-gateway
 
 media_folder: static/images
-public_folder: images
+public_folder: /images
 publish_mode: editorial_workflow
 
 collections:
@@ -13,10 +13,10 @@ collections:
         name: landing
         file: content/landingPage.md
         media_folder: 'images'
-        public_folder: ''
+        public_folder: '/images'
         fields:
           - { label: Landing Text, name: landingText, widget: string }
-          - { label: Landing Subtitle, name: landingSubtitle, widget: text }
+          - { label: Landing Subtitle, name: landingSubtitle, widget: string }
           - { label: Landing Image, name: landingImage, widget: image }
           - {
               label: New Release 1,
@@ -50,7 +50,7 @@ collections:
     create: true
     folder: content/weiss
     media_folder: 'images'
-    public_folder: ''
+    public_folder: '/images'
     slug: '{{name}}'
     fields:
       - { label: Name, name: name, widget: string }

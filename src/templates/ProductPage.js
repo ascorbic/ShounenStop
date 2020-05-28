@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import { css } from '@emotion/core'
 
-import WeissProductCard from '../Components/Products/WeissProductCard'
+import WeissProductCard from '../components/Products/WeissProductCard'
 import { Container } from 'react-bootstrap'
 
 const ProductPage = ({ data }) => {
@@ -20,12 +20,9 @@ const ProductPage = ({ data }) => {
     preorder,
     release,
   } = data.markdownRemark.frontmatter;
-  console.log(image);
 
 
   return (
-    // <div>dsAdjasdjasojdisaojdsaj</div>
-
     <Layout pageInfo={{ pageName: "" }}>
       <WeissProductCard 
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
@@ -34,7 +31,7 @@ const ProductPage = ({ data }) => {
         preorderDate="Jun 5"
         releaseDate="Jul 10"
         price="$15"
-        color="#000"
+        color=""
         imgData={image.childImageSharp.fluid}
         />
     </Layout>

@@ -1,8 +1,8 @@
 ---
-name: dsfsdljlkfjdsl
-asin: dsajkdlsajl
+name: Date A Live Trial Deck +
+asin: A90dkab102
 producttype: Trial Deck+
-series: ffdsfs
+series: Date A Live
 color: "#000"
 image: images/datealive-carton.png
 pricings:

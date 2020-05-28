@@ -1,5 +1,5 @@
 ---
-name: dsfsdljlkfjdsl
+name: Date A Live Trial Deck +
 asin: A90dkab102
 producttype: Trial Deck+
 series: Date A Live

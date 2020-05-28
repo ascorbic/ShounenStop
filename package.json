@@ -11,7 +11,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "codemirror": "^5.53.2",
-    "gatsby": "^2.22.9",
+    "gatsby": "^2.22.12",
     "gatsby-background-image": "^1.1.1",
     "gatsby-image": "^2.2.41",
     "gatsby-plugin-emotion": "^4.2.1",
@@ -47,7 +47,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build && netlify-lambda build src/functions",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build && netlify-lambda build src/functions",
     "build:lambda": "netlify-lambda build src/functions",
     "build:app": "gatsby build",
     "develop": "gatsby develop",

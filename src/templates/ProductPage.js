@@ -21,17 +21,16 @@ const ProductPage = ({ data }) => {
     release,
   } = data.markdownRemark.frontmatter;
 
-
   return (
     <Layout pageInfo={{ pageName: "" }}>
       <WeissProductCard 
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
-        series="{DATE A LIVE} 🇯🇵"
-        productType="TRIAL DECK+"
-        preorderDate="Jun 5"
-        releaseDate="Jul 10"
+        series={series+" 🇯🇵"}
+        productType={producttype}
+        preorderDate={preorder}
+        releaseDate={release}
         price="$15"
-        color=""
+        color={color}
         imgData={image.childImageSharp.fluid}
         />
     </Layout>
@@ -57,8 +56,8 @@ query ProductPageQuery($slug: String!) {
         }
       },
       weight,
-      preorder,
-      release
+      preorder(formatString:"MMM DD"),
+      release(formatString:"MMM DD"),
     }
     html
   }

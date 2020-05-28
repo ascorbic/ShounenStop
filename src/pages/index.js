@@ -9,25 +9,43 @@ import SEO from '../components/Common/seo'
 
 import Checkout from '../components/checkout'
 
-const IndexPage = () => (
-  <Layout pageInfo={{ pageName: "index" }}>
-    <SEO title="Home" keywords={[`Shounen`, `Stop`, `Weiss`]} />
-    {/* <Checkout /> */}
-    <div>
-      <LandingImage />
-      <NewReleases />
-      <ComiketBanner/>
-    </div>
-  </Layout>
-)
-
-      {/* <form action="/.netlify/functions/test" method="POST">
-        <p>
-          <label>What’s your name?
-            <input type="text" name="name">
-              </input>
-              </label>
-        </p>
-        <p><button type="submit">Say hello!</button></p>
-      </form> */}
+const IndexPage = ({data}) => {
+  console.log(data);
+  
+  return(
+    <Layout pageInfo={{ pageName: "index" }}>
+      <SEO title="Home" keywords={[`Shounen`, `Stop`, `Weiss`]} />
+      {/* <Checkout /> */}
+      <div>
+        <LandingImage />
+        <NewReleases />
+        <ComiketBanner/>
+      </div>
+    </Layout>
+  )
+}
 export default IndexPage
+
+// export const IndexQuery = graphql`
+// query IndexPageQuery($slug: String!) {
+//   markdownRemark(fields: { slug: { eq: $slug } }) {
+//     frontmatter {
+//       name,
+//       asin,
+//       producttype,
+//       series,
+//       color,
+//       image {
+//         childImageSharp {
+//           fluid(maxWidth: 500, quality:100) {
+//             ...GatsbyImageSharpFluid
+//           }
+//         }
+//       },
+//       weight,
+//       preorder(formatString:"MMM DD"),
+//       release(formatString:"MMM DD"),
+//     }
+//   }
+// }
+// `;

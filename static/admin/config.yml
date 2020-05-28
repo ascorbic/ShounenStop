@@ -2,7 +2,6 @@ backend:
   name: git-gateway
 
 media_folder: static/images/uploads
-media_folder_relative: true
 public_folder: images/uploads
 publish_mode: editorial_workflow
 
@@ -16,9 +15,9 @@ collections:
         media_folder: 'images'
         public_folder: ''
         fields:
-          - { label: Title, name: title, widget: string }
-          - { label: Intro text, name: intro, widget: text }
-          - { label: Image, name: image, widget: image }
+          - { label: Landing Text, name: landingText, widget: string }
+          - { label: Landing Subtitle, name: landingSubtitle, widget: text }
+          - { label: Landing Image, name: landingImage, widget: image }
           - {
               label: New Release 1,
               name: release1,

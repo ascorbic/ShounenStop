@@ -5,7 +5,7 @@ import ShopNavbar from './shopNavbar'
 import Checkout from '../checkout'
 import LayoutFooter from './LayoutFooter'
 
-import './layout.css'
+import './Layout.css'
 
 // console.log(localStorage.getItem("omg"));
 // Have a cart icon and set price

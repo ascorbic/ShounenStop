@@ -3,6 +3,7 @@ name: FGO Absolute Demonic Front Bablyonia
 asin: B084L95ZGN
 producttype: Booster Box
 series: Fate Grand Order
+color: "#f0f0f0"
 description: |-
   ブースターパック Fate/Grand Order -絶対魔獣戦線バビロニア-
   1パック9枚入り 　400円＋税

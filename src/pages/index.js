@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Layout from '../components/Layout/layout'
+import Layout from '../components/LayoutItems/Layout'
 import LandingImage from '../components/Index/landingImage'
 import ComiketBanner from '../components/Index/ComiketBanner'
 import NewReleases from '../components/Index/newReleases'

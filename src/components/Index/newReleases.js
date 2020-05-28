@@ -25,7 +25,6 @@ const releasesContainer = css`
 `;
 
 const releasesContent = css`
-  // width: 100%;
   display: flex;
   flex-wrap: nowrap;
   max-width: 1200px;
@@ -33,9 +32,8 @@ const releasesContent = css`
   margin-left: auto;
   margin-right: auto;
   padding-top: 25px;
-  padding-left: 50px;
-  padding-right: 50px;
-  // background-color:#f0f0f0;
+  padding-left: 8%;
+  padding-right: 8%;
 `
 
 const cardStyles = css`

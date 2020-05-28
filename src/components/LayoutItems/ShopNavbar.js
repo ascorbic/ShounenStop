@@ -76,7 +76,7 @@ const ShopNavbar = ({ pageInfo, CartSize, title }) => {
       </Link>
       <Link to="/cart" className="order-lg-last ml-auto">
         <Nav css={navbarCart}>
-          <Img css={navImage} fixed={cartImage.childImageSharp.fixed} />
+          <Img fixed={cartImage.childImageSharp.fixed} />
           <span css={cartSizeStyles}>{CartSize}</span>
         </Nav>
       </Link>
@@ -134,9 +134,6 @@ const ShopNavbar = ({ pageInfo, CartSize, title }) => {
   )
 }
 
-const navImage = css`
-  display: inline-flex;
-`
 
 const navbar = css`
   background-color: #fff;
@@ -231,20 +228,10 @@ const cartSizeStyles = css`
   right: -5px;
   top: -2px;
 
+
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  //   position: absolute;
-  //   background-color: #edaf4c;
-  // color: #fff;
-  //   margin-top: -6px;
-  //   margin-left: 35px;
-  //   line-height: 22px;
-  //   min-width: 22px;
-  //   padding: 0 3px 0 4px;
-  //   text-align: center;
-  //   border-radius: 50%;
 `
 
 const navbarCart = css`
@@ -252,12 +239,13 @@ const navbarCart = css`
   position: absolute;
   right: 16px;
   top: 5px;
-  &:hover {
+  &:hover span{
     cursor: pointer;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-    color: #0f346c !important;
+    transform: scale(1.10);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
   }
 `
 

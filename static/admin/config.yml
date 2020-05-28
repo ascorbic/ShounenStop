@@ -2,6 +2,7 @@ backend:
   name: git-gateway
 
 media_folder: static/images/uploads
+media_folder_relative: true
 public_folder: images/uploads
 publish_mode: editorial_workflow
 
@@ -12,6 +13,8 @@ collections:
       - label: Landing Page
         name: landing
         file: content/landingPage.md
+        media_folder: ''
+        public_folder: ''
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Intro text, name: intro, widget: text }
@@ -21,27 +24,34 @@ collections:
               name: release1,
               widget: relation,
               collection: weiss,
-              searchFields: ['name', 'asin', 'series', 'producttype'],
+              searchFields: ['series', 'producttype','name', 'asin'],
               valueField: 'asin',
-              displayFields: ['name', 'asin', 'series', 'producttype'],
-              multiple: true,
-              optionsLength: 3
+              displayFields: ['series', 'producttype','name', 'asin'],
             }
           - {
               label: New Release 2,
               name: release2,
               widget: relation,
               collection: weiss,
-              searchFields: ['name', 'asin', 'series', 'producttype'],
+              searchFields: ['series', 'producttype','name', 'asin'],
               valueField: 'asin',
-              displayFields: ['name', 'asin', 'series', 'producttype'],
-              multiple: true,
-              optionsLength: 5
+              displayFields: ['series', 'producttype','name', 'asin'],
+            }
+          - {
+              label: New Release 3,
+              name: release3,
+              widget: relation,
+              collection: weiss,
+              searchFields: ['series', 'producttype','name', 'asin'],
+              valueField: 'asin',
+              displayFields: ['series', 'producttype','name', 'asin'],
             }
   - name: weiss
     label: Weiss
     create: true
     folder: content/weiss
+    media_folder: ''
+    public_folder: ''
     slug: '{{name}}'
     fields:
       - { label: Name, name: name, widget: string }
@@ -88,11 +98,13 @@ collections:
           widget: number,
           valueType: float,
           required: false,
+          min: 0
         }
       - {
           label: Preorder date,
           name: preorder,
           widget: datetime,
+          required: false,
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
@@ -100,6 +112,7 @@ collections:
           label: Release date,
           name: release,
           widget: datetime,
+          required: false,
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }

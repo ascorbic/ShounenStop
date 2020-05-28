@@ -1,13 +1,13 @@
 backend:
   name: git-gateway
 
-media_folder: static/images/uploads
-public_folder: images/uploads
+media_folder: static/images
+public_folder: images
 publish_mode: editorial_workflow
 
 collections:
   - label: 'Landing Page'
-    name: 'Landing Page'
+    name: 'landingPage'
     files:
       - label: Landing Page
         name: landing

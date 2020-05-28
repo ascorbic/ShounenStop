@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
-import ShopNavbar from './shopNavbar'
+import ShopNavbar from './ShopNavbar'
 import Checkout from '../checkout'
 import LayoutFooter from './LayoutFooter'
 

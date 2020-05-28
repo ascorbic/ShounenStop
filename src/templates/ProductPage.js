@@ -17,6 +17,7 @@ const ProductPage = ({ data }) => {
     color,
     image,
     weight,
+    pricings,
     preorder,
     release,
   } = data.markdownRemark.frontmatter;
@@ -55,11 +56,14 @@ query ProductPageQuery($slug: String!) {
           }
         }
       },
+      pricings{
+        quantity,
+        price
+      },
       weight,
       preorder(formatString:"MMM DD"),
       release(formatString:"MMM DD"),
     }
-    html
   }
 }
 `;

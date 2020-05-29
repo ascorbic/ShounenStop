@@ -6,39 +6,39 @@ import { css } from '@emotion/core'
 import WeissProductCard from '../Products/WeissProductCard'
 import { Container } from 'react-bootstrap'
 
-const NewReleasesList = () => {
+const NewReleasesList = ({release1, release2, release3}) => {
   const data = useStaticQuery(query);
   return (
     <Container css={productsContainer}>
       <WeissProductCard 
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
-        series="DATE A LIVE 🇯🇵"
-        productType="TRIAL DECK+"
-        preorderDate="Jun 5"
-        releaseDate="Jul 10"
-        price="$15"
-        color="#000"
-        imgData={data.DateALiveDeck.childImageSharp.fluid}
+        series={release1.series+" 🇯🇵"}
+        productType={release1.producttype}
+        preorderDate={release1.preorder}
+        releaseDate={release1.release}
+        price={"$"+release1.pricings.find(x => x.quantity === 1).price}
+        color={release1.color}
+        imgData={release1.image.childImageSharp.fluid}
         />
       <WeissProductCard
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
-        series="RE:ZERO 🇯🇵"
-        productType="EXTRA BOOSTER"
-        preorderDate="Jun 5"
-        releaseDate="Jul 17"
-        price="$30"
-        color="#84C3A6"
-        imgData={data.ReZero.childImageSharp.fluid}
+        series={release2.series+" 🇯🇵"}
+        productType={release2.producttype}
+        preorderDate={release2.preorder}
+        releaseDate={release2.release}
+        price={"$"+release2.pricings.find(x => x.quantity === 1).price}
+        color={release2.color}
+        imgData={release2.image.childImageSharp.fluid}
         />
       <WeissProductCard
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
-        series="DATE A LIVE 🇯🇵"
-        productType="BOOSTER BOX"
-        preorderDate="Jun 5"
-        releaseDate="Jul 10"
-        price="$65"
-        color="#000"
-        imgData={data.DateALiveCarton.childImageSharp.fluid}
+        series={release3.series+" 🇯🇵"}
+        productType={release3.producttype}
+        preorderDate={release3.preorder}
+        releaseDate={release3.release}
+        price={"$"+release3.pricings.find(x => x.quantity === 1).price}
+        color={release3.color}
+        imgData={release3.image.childImageSharp.fluid}
         />
     </Container>
   )

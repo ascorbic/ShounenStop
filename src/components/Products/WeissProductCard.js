@@ -18,6 +18,7 @@ const WeissProductCard = ({
 }) => {
   const cardBottom = css`
     color: #0f346c;
+    font-family: varela round;
     border-top: solid 3px ${color};
 
     -webkit-transition: all 0.3s;
@@ -29,7 +30,7 @@ const WeissProductCard = ({
 
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 
-    height: calc(10% + 145px);
+    height: calc(10% + 155px);
     width: calc(100% - 20px);
 
     background-color: #fff;
@@ -51,10 +52,16 @@ const WeissProductCard = ({
     position: relative;
     float: left;
     font-weight: 700;
-    font-size: 20px;
-    max-width: 70%;
+    font-size: 19px;
+    max-width: calc(75% - 31px);
     text-align: left;
     line-height: 20px;
+    overflow: hidden;
+    max-height:65px;
+
+    @media only screen and (max-width: 450px) {
+      font-size: 17px;
+    }
   `
 
   const addToCartButton = css`
@@ -74,6 +81,8 @@ const WeissProductCard = ({
     left: 2.5%;
     bottom: 10px;
     border-radius: 3px;
+    border-top: solid 1px #e6e6ea;
+
     text-align: center;
     letter-spacing: 1.5px;
     &:hover {
@@ -91,9 +100,12 @@ const WeissProductCard = ({
     float: right;
     font-weight: 700;
     font-size: 23px;
-    max-width: 30%;
+    max-width: calc(25% + 31px);
     text-align: right;
     line-height: 20px;
+    @media only screen and (max-width: 450px) {
+      font-size: 20px;
+    }
   `
 
   return (
@@ -107,10 +119,16 @@ const WeissProductCard = ({
           <div css={seriesText}>{series}</div>
           <div css={priceText}>{price}</div>
           <div css={productTypeText}>{productType}</div>
-          <div css={preorderText}>PREORDER</div>
-          <div css={preorderDateText}>{preorderDate}</div>
-          <div css={releaseText}>RELEASE</div>
-          <div css={releaseDateText}>{releaseDate}</div>
+          <div css={dateContainer}>
+            <div css={preorderContainer}>
+              <div css={preorderText}>PREORDER</div>
+              <div css={preorderDateText}>{preorderDate}</div>
+            </div>
+            <div css={releaseContainer}>
+              <div css={releaseText}>RELEASE</div>
+              <div css={releaseDateText}>{releaseDate}</div>
+            </div>
+          </div>
           <div className="addToCartButton" css={addToCartButton}>
             ADD TO CART
           </div>
@@ -129,7 +147,6 @@ const cardPadding = css`
 
 const cardContainer = css`
   cursor: pointer;
-  // border: solid 1px #e5e5e5;
   background-color: #fff;
   box-shadow: 0px 2px 8px 0px rgba(31, 32, 68, 0.16);
 
@@ -156,7 +173,7 @@ const imgContainer = css`
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 130px;
+  padding-bottom: 160px;
   &:hover {
     transform: scale(1.05);
     // padding-bottom: 150px;
@@ -197,62 +214,65 @@ const productTypeText = css`
   max-width: 60%;
   text-align: left;
   position: relative;
-  clear both;
   float: left;
+  clear:left;
   font-weight: 400;
   border-radius:5px;
-  color: #9EABB9;
+  color: #B4B9C4;
+`
+
+const dateContainer = css`
+  // border-top: solid 1px #e6e6ea;
+  // padding-bottom:15px;
+  margin-top: 15px;
+  position: relative;
+  width: 100%;
+  display: inline-block;
+`
+
+const preorderContainer = css`
+  text-align: center;
+
+  float: left;
+  width: 50%;
 `
 
 const preorderText = css`
-  font-size: 15px;
-  padding-top: 5px;
-  clear: both;
-  position: relative;
-  float: left;
+  font-size: 14px;
   font-weight: 400;
-  max-width: 50%;
-  text-align: left;
-  line-height: 30px;
+  line-height: 20px;
 
-  color: #898b92;
-`
-const releaseText = css`
-  font-size: 15px;
-  clear: both;
-  position: relative;
-  float: left;
-  font-weight: 400;
-  max-width: 50%;
-  text-align: left;
-  line-height: 30px;
-
-  color: #898b92;
+  color: #b4b9c4;
 `
 
 const preorderDateText = css`
-  padding-top: 5px;
   line-height: 30px;
   font-size: 18px;
-  clear: right;
-  position: relative;
-  float: right;
   font-weight: 700;
-  max-width: 50%;
-  text-align: right;
 
   color: #303235;
 `
 
-const releaseDateText = css`
-  clear: right;
-  text-align: right;
-  line-height: 30px;
+const releaseContainer = css`
+  border-left: solid 1px #e6e6ea;
+  text-align: center;
 
-  max-width: 50%;
+  float: right;
+  width: 50%;
+`
+
+const releaseText = css`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+
+  color: #b4bac5;
+`
+
+const releaseDateText = css`
+  line-height: 30px;
   font-size: 18px;
   position: relative;
-  float: right;
   font-weight: 700;
   color: #303235;
 `

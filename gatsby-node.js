@@ -9,7 +9,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const fileNode = getNode(node.parent)
     const slug = createFilePath({ node, getNode, basePath: `pages` })
     // slug = slug.replace(/\//g, '')
-
     createNodeField({
       node,
       name: `slug`,

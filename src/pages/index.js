@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Layout from '../components/LayoutItems/Layout'
 import LandingImage from '../components/Index/landingImage'
@@ -9,43 +9,91 @@ import SEO from '../components/Common/seo'
 
 import Checkout from '../components/checkout'
 
-const IndexPage = ({data}) => {
-  console.log(data);
-  
-  return(
-    <Layout pageInfo={{ pageName: "index" }}>
+const IndexPage = () => {
+  const data = useStaticQuery(query)
+
+  const {
+    landingText,
+    landingSubtitle,
+    landingImage,
+    release1,
+    release2,
+    release3,
+  } = data.landingPageInfo.frontmatter
+  const newReleaseData = {
+    release1: data.weissProducts.edges.find(
+      x => x.node.frontmatter.asin === release1
+    ).node.frontmatter,
+    release2: data.weissProducts.edges.find(
+      x => x.node.frontmatter.asin === release2
+    ).node.frontmatter,
+    release3: data.weissProducts.edges.find(
+      x => x.node.frontmatter.asin === release3
+    ).node.frontmatter,
+  }
+
+  return (
+    <Layout pageInfo={{ pageName: 'index' }}>
       <SEO title="Home" keywords={[`Shounen`, `Stop`, `Weiss`]} />
       {/* <Checkout /> */}
-      <div>
-        <LandingImage />
-        <NewReleases />
-        <ComiketBanner/>
-      </div>
+      <LandingImage
+        landingImageData={landingImage}
+        landingText={landingText}
+        landingSubtitle={landingSubtitle}
+      />
+      <NewReleases releaseList={newReleaseData} />
+      <ComiketBanner />
     </Layout>
   )
 }
 export default IndexPage
 
-// export const IndexQuery = graphql`
-// query IndexPageQuery($slug: String!) {
-//   markdownRemark(fields: { slug: { eq: $slug } }) {
-//     frontmatter {
-//       name,
-//       asin,
-//       producttype,
-//       series,
-//       color,
-//       image {
-//         childImageSharp {
-//           fluid(maxWidth: 500, quality:100) {
-//             ...GatsbyImageSharpFluid
-//           }
-//         }
-//       },
-//       weight,
-//       preorder(formatString:"MMM DD"),
-//       release(formatString:"MMM DD"),
-//     }
-//   }
-// }
-// `;
+export const query = graphql`
+  query IndexPageQuery {
+    landingPageInfo: markdownRemark(fields: { slug: { eq: "/landingPage/" } }) {
+      frontmatter {
+        landingText
+        landingSubtitle
+        producttype
+        landingImage {
+          childImageSharp {
+            fluid(maxWidth: 3000, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        release1
+        release2
+        release3
+      }
+    }
+    weissProducts: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/weiss/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            asin
+            producttype
+            series
+            color
+            image {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+            pricings {
+              quantity
+              price
+            }
+            weight
+            preorder(formatString: "MMM DD")
+            release(formatString: "MMM DD")
+          }
+        }
+      }
+    }
+  }
+`

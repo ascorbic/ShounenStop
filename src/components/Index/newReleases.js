@@ -1,11 +1,10 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import NewReleasesList from './NewReleasesList'
+import { useStaticQuery, graphql } from 'gatsby'
 
+const NewReleases = ({ releaseList }) => {
 
-import Card from '../Products/Card'
-
-const NewReleases = () => {
   return (
     <div css={releasesContainer}>
       <div css={releasesContent}>
@@ -14,7 +13,11 @@ const NewReleases = () => {
           <div css={releasesHeader}>New Releases</div>
           <div css={headerRight}></div>
         </div>
-        <NewReleasesList/>
+        <NewReleasesList
+          release1={releaseList.release1}
+          release2={releaseList.release2}
+          release3={releaseList.release3}
+        />
       </div>
     </div>
   )
@@ -22,12 +25,12 @@ const NewReleases = () => {
 
 const releasesContainer = css`
   background-color: #f4f7f9;
-`;
+`
 
 const releasesContent = css`
   display: flex;
   flex-wrap: nowrap;
-  max-width: 1200px;
+  max-width: 1400px;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
@@ -49,24 +52,22 @@ const header = css`
 `
 
 const headerLeft = css`
-  height: 3px;
+  height: 1.5px;
   flex-grow: 1;
   background-color: #303235;
-  border-radius:2px;
 `
 
 const headerRight = css`
-  height: 3px;
+  height: 1.5px;
   flex-grow: 1;
   background-color: #303235;
-  border-radius:2px;
 `
 
 const releasesHeader = css`
-  flex-grow:fill;
+  flex-grow: fill;
   font-size: 30px;
-  font-family: 'varela round';
-  margin:0px 20px;
+  font-family: 'montserrat';
+  margin: 0px 20px;
   color: #303235;
 `
 
@@ -74,4 +75,4 @@ const lineBreak = css`
   // flex-grow: 1;
 `
 
-export default NewReleases;
+export default NewReleases

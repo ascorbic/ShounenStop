@@ -9,6 +9,7 @@ import WeissProductCard from '../components/Products/WeissProductCard'
 import { Container } from 'react-bootstrap'
 
 const ProductPage = ({ data }) => {
+  
   const {
     name,
     asin,
@@ -22,6 +23,7 @@ const ProductPage = ({ data }) => {
     release,
   } = data.markdownRemark.frontmatter;
 
+
   return (
     <Layout pageInfo={{ pageName: "" }}>
       <WeissProductCard 
@@ -30,7 +32,7 @@ const ProductPage = ({ data }) => {
         productType={producttype}
         preorderDate={preorder}
         releaseDate={release}
-        price="$15"
+        price={"$"+pricings.find(x => x.quantity === 1).price}
         color={color}
         imgData={image.childImageSharp.fluid}
         />

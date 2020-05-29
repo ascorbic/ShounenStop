@@ -14,19 +14,8 @@ import BackgroundImage from 'gatsby-background-image'
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const LandingImage = () => {
-  const { landingImage } = useStaticQuery(graphql`
-    query {
-      landingImage: file(relativePath: { eq: "sao.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 3000) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-  const imageData = landingImage.childImageSharp.fluid
+const LandingImage = ({ landingImageData, landingText, landingSubtitle }) => {
+  const imageData = landingImageData.childImageSharp.fluid
   return (
     <BackgroundImage
       css={landingStyles}
@@ -34,10 +23,10 @@ const LandingImage = () => {
       backgroundColor={`#fefefe`}
     >
       <div css={landingSection}>
-        <div css={landingText}>
-          Weiss Boxes and Comiket Merchandise at a great price
+        <div css={landingTextStyles}>
+          {landingText}
           <div css={lineBreakSm}></div>
-          <span css={shippingText}>$5 Shipping on all products</span>
+          <span css={shippingText}>{landingSubtitle}</span>
         </div>
         <div css={lineBreakLg}></div>
         <Link to="/products">
@@ -59,10 +48,10 @@ const landingStyles = css`
   text-align: center;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2),0 1px 0 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 rgba(0, 0, 0, 0.2);
 `
 
-const landingText = css`
+const landingTextStyles = css`
   width: 85%;
   font-size: 25px;
   color: #fff;

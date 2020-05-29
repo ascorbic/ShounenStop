@@ -11,11 +11,12 @@ import './Layout.css'
 // Have a cart icon and set price
 
 class Layout extends React.Component {
+  state = {
+    CartSize: 0,
+  }
+
   constructor(props) {
     super(props)
-    this.state = {
-      CartSize: 0,
-    }
   }
 
   componentDidMount() {
@@ -51,6 +52,7 @@ class Layout extends React.Component {
   }
 
   render() {
+    // good way to use const for props const {children, pageInfo} = this.props
     return (
       <StaticQuery
         query={graphql`

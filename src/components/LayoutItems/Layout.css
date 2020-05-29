@@ -568,6 +568,7 @@ pre tt:after {
   padding-left:.4rem;
   padding-right:.1rem;
   padding-bottom:.55em;
+  font-family:montserrat;
 }
 
 .navbar-light .navbar-nav .nav-link:hover{

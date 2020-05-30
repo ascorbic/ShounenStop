@@ -100,14 +100,16 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     console.log(node)
 
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/templates/ProductPage.js`),
-      context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        slug: node.fields.slug,
-      },
-    })
+    if(node.fields.slug.contains("weiss")){
+      createPage({
+        path: node.fields.slug,
+        component: path.resolve(`./src/templates/ProductPage.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.fields.slug,
+        },
+      })
+    }
   })
 }

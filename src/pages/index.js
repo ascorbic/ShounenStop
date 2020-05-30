@@ -94,9 +94,9 @@ export const query = graphql`
             series
             color
             image {
-              childImageSharp {
-                fluid {
-                  src
+              childImageSharp{
+                fluid(maxWidth: 500, quality: 100) {
+                  ...GatsbyImageSharpFluid
                 }
               }
             }

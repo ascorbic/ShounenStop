@@ -26,7 +26,7 @@ const ProductPage = ({ data }) => {
 
   return (
     <Layout pageInfo={{ pageName: "" }}>
-      <WeissProductCard 
+      <WeissProductCard
         className="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
         series={series+" 🇯🇵"}
         productType={producttype}

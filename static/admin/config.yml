@@ -118,3 +118,9 @@ collections:
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
+      - {
+          label: 'Merchandise',
+          name: 'merchandise',
+          widget: 'hidden',
+          default: 'weiss',
+        }

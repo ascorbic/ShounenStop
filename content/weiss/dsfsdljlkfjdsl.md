@@ -11,4 +11,5 @@ pricings:
 weight: 1
 preorder: 2020-05-28T07:32:08.854Z
 release: 2020-06-24T07:32:08.906Z
+merchandise: weiss
 ---

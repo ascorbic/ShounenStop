@@ -3,18 +3,18 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 
-import WeissBackground from './WeissBackground'
-
 // price, primary color
 const WeissProductCard = ({
   imgData,
-  className,
+  cardClassName,
   series,
+  productName,
   productType,
   preorderDate,
   releaseDate,
   price,
   color,
+  merchandise
 }) => {
   const cardBottom = css`
     color: #0f346c;
@@ -109,8 +109,9 @@ const WeissProductCard = ({
   `
 
   return (
-    <div css={cardPadding} className={className}>
+    <div css={cardPadding} className={cardClassName}>
       <div css={cardStatus}>PREORDER</div>
+      <Link to={"/products/"+merchandise+"/"+productName} className="link-no-style">
       <div css={cardContainer}>
         <div css={imgContainer}>
           <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
@@ -133,8 +134,8 @@ const WeissProductCard = ({
             ADD TO CART
           </div>
         </div>
-        {/* <WeissBackground /> */}
       </div>
+      </Link>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 const { createFilePath } = require('gatsby-source-filesystem')
-const {fmImagesToRelative} = require('gatsby-remark-relative-images')
+const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 const path = require(`path`)
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -8,19 +8,78 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (node.internal.type === 'MarkdownRemark') {
     const fileNode = getNode(node.parent)
     const slug = createFilePath({ node, getNode, basePath: `pages` })
-    // slug = slug.replace(/\//g, '')
     createNodeField({
       node,
       name: `slug`,
       value: slug,
     })
   }
+  // else if(node.internal.type === 'ReleaseNodes'){
+  //   console.log(node);
+  //   const slug = createFilePath({ node, getNode, basePath: `pages` })
+  //   createNodeField({
+  //     node,
+  //     name: `slug`,
+  //     value: slug,
+  //   })
+  // }
 }
+
+// exports.sourceNodes = ({ actions, getNodes, getNode }) => {
+//   const { createNodeField, createNode } = actions
+
+//   const landingNode = getNodes()
+//     .filter(node => node.internal.type === `MarkdownRemark`)
+//     .find(node => node.fields.slug === '/landingPage/')
+
+//   const releaseNodes = filterReleaseAsin(landingNode)
+
+//   Object.keys(releaseNodes).forEach(function(release) {
+//     const releaseNodeData = getNodes().find(
+//       node =>
+//         node.internal.type === `MarkdownRemark` &&
+//         node.frontmatter.asin === releaseNodes[release]
+//     )
+//     var releaseNode = JSON.parse(JSON.stringify(releaseNodeData));
+  
+//     // console.log(releaseNodeData);
+
+//     releaseNode.id = Math.floor((Math.random()) * 0x10000).toString(16)
+//     releaseNode.name = release
+//     releaseNode.parent = landingNode.id
+//     releaseNode.internal.owner = null
+//     releaseNode.internal.type = "ReleaseNodes"
+//     releaseNode.internal.fieldOwners = {}
+
+//     createNode({
+//       frontmatter:releaseNode.frontmatter,
+//       name: releaseNode.name,
+//       id:releaseNode.id,
+//       parent:releaseNode.parent,
+//       children:releaseNode.children,
+//       internal: releaseNode.internal,
+//     })
+
+
+//     // id:releaseNode.id,
+//     // parent:releaseNode.parent,
+//     // children:releaseNode.children,
+//     // internal: releaseNode.internal,
+//   })
+// }
+
+// const filterReleaseAsin = node => {
+//   const releaseKeys = ['release1', 'release2', 'release3']
+//   return releaseKeys.reduce(
+//     (obj, key) => ({ ...obj, [key]: node.frontmatter[key] }),
+//     {}
+//   )
+// }
 
 exports.createPages = async ({ graphql, actions }) => {
   // **Note:** The graphql function call returns a Promise
   // see: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise for more info
-  const { createPage } = actions;
+  const { createPage } = actions
 
   const result = await graphql(`
     query {
@@ -35,7 +94,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
-  
+
   console.log(JSON.stringify(result, null, 4))
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {

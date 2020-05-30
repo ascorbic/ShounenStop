@@ -31,6 +31,21 @@ const IndexPage = () => {
       x => x.node.frontmatter.asin === release3
     ).node.frontmatter,
   }
+  const typeSizes = {
+    "undefined": () => 0,
+    "boolean": () => 4,
+    "number": () => 8,
+    "string": item => 2 * item.length,
+    "object": item => !item ? 0 : Object
+      .keys(item)
+      .reduce((total, key) => sizeOf(key) + sizeOf(item[key]) + total, 0)
+  };
+  
+  const sizeOf = value => typeSizes[typeof value](value);
+  console.log(sizeOf(data));
+  console.log(sizeOf(data.landingPageInfo.frontmatter));
+  console.log(sizeOf(data.weissProducts));
+
 
   return (
     <Layout pageInfo={{ pageName: 'index' }}>
@@ -74,6 +89,7 @@ export const query = graphql`
         node {
           frontmatter {
             asin
+            name
             producttype
             series
             color
@@ -91,6 +107,7 @@ export const query = graphql`
             weight
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
+            merchandise
           }
         }
       }

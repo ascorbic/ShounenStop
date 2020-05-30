@@ -72,8 +72,8 @@ export const query = graphql`
         producttype
         landingImage {
           childImageSharp {
-            fluid(maxWidth: 3000, quality: 100) {
-              ...GatsbyImageSharpFluid
+            fluid {
+              src
             }
           }
         }

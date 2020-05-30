@@ -71,6 +71,26 @@ module.exports = {
     },
 
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        type: `ReleaseNodes`,
+        plugins: [
+          'gatsby-remark-relative-images',
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 2000,
+              backgroundColor: 'transparent', // required to display blurred image first
+            },
+          },
+        ],
+      },
+    },
+
+    {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [`Varela Round\:400`, `Montserrat\:300,400,700`],

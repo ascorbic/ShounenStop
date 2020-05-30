@@ -53,8 +53,8 @@ collections:
     create: true
     folder: content/weiss
     media_folder: 'images'
-    public_folder: ''
-    slug: '{{name}}'
+    public_folder: '/images'
+    slug: '{{displayName}}-{{producttype}}'
     fields:
       - { label: Name, name: name, widget: string }
       - { label: ASIN, name: asin, widget: string }
@@ -74,6 +74,7 @@ collections:
             ],
           default: ['Booster Box'],
         }
+      - { label: Display Name, name: displayName, widget: string }
       - { label: Series, name: series, widget: string }
       - { label: Product Primary Color Hex, name: color, widget: string }
       - { label: Description, name: description, widget: text, required: false }

@@ -4,8 +4,10 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const path = require(`path`)
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
+
   fmImagesToRelative(node)
   if (node.internal.type === 'MarkdownRemark') {
+    console.log(node)
     const fileNode = getNode(node.parent)
     const slug = createFilePath({ node, getNode, basePath: `pages` })
     createNodeField({
@@ -14,18 +16,9 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: slug,
     })
   }
-  // else if(node.internal.type === 'ReleaseNodes'){
-  //   console.log(node);
-  //   const slug = createFilePath({ node, getNode, basePath: `pages` })
-  //   createNodeField({
-  //     node,
-  //     name: `slug`,
-  //     value: slug,
-  //   })
-  // }
 }
 
-// exports.sourceNodes = ({ actions, getNodes, getNode }) => {
+// exports.sourceNodes = ({ actions, createNodeId, getNodes, getNode }) => {
 //   const { createNodeField, createNode } = actions
 
 //   const landingNode = getNodes()
@@ -40,26 +33,26 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 //         node.internal.type === `MarkdownRemark` &&
 //         node.frontmatter.asin === releaseNodes[release]
 //     )
-//     var releaseNode = JSON.parse(JSON.stringify(releaseNodeData));
-  
+//     var releaseNode = JSON.parse(JSON.stringify(releaseNodeData))
+
 //     // console.log(releaseNodeData);
 
-//     releaseNode.id = Math.floor((Math.random()) * 0x10000).toString(16)
+//     releaseNode.id = createNodeId(release)
 //     releaseNode.name = release
 //     releaseNode.parent = landingNode.id
 //     releaseNode.internal.owner = null
-//     releaseNode.internal.type = "ReleaseNodes"
+//     releaseNode.internal.type = 'ReleaseNodes'
 //     releaseNode.internal.fieldOwners = {}
 
 //     createNode({
-//       frontmatter:releaseNode.frontmatter,
+//       image:releaseNode.frontmatter.image,
+//       frontmatter: releaseNode.frontmatter,
 //       name: releaseNode.name,
-//       id:releaseNode.id,
-//       parent:releaseNode.parent,
-//       children:releaseNode.children,
+//       id: releaseNode.id,
+//       parent: releaseNode.parent,
+//       children: releaseNode.children,
 //       internal: releaseNode.internal,
 //     })
-
 
 //     // id:releaseNode.id,
 //     // parent:releaseNode.parent,
@@ -100,7 +93,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     console.log(node)
 
-    if(node.fields.slug.includes("weiss")){
+    if (node.fields.slug.includes('weiss')) {
       createPage({
         path: node.fields.slug,
         component: path.resolve(`./src/templates/ProductPage.js`),

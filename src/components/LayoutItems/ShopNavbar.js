@@ -228,7 +228,9 @@ const cartSizeStyles = css`
   right: -5px;
   top: -2px;
 
-
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -241,9 +243,6 @@ const navbarCart = css`
   top: 5px;
   &:hover span{
     cursor: pointer;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
     transform: scale(1.10);
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
   }

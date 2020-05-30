@@ -8,13 +8,14 @@ const WeissProductCard = ({
   imgData,
   cardClassName,
   series,
-  productName,
+  displayName,
   productType,
   preorderDate,
   releaseDate,
   price,
+  lowPrice,
   color,
-  merchandise
+  url,
 }) => {
   const cardBottom = css`
     color: #0f346c;
@@ -45,7 +46,7 @@ const WeissProductCard = ({
     opacity: 0.95;
   `
 
-  const seriesText = css`
+  const displayNameText = css`
     padding-top: 5px;
 
     color: ${color};
@@ -57,7 +58,7 @@ const WeissProductCard = ({
     text-align: left;
     line-height: 20px;
     overflow: hidden;
-    max-height:65px;
+    max-height: 65px;
 
     @media only screen and (max-width: 450px) {
       font-size: 17px;
@@ -93,7 +94,6 @@ const WeissProductCard = ({
   `
 
   const priceText = css`
-    // text-decoration: line-through;
     color: ${color};
     padding-top: 5px;
     position: relative;
@@ -102,39 +102,48 @@ const WeissProductCard = ({
     font-size: 23px;
     max-width: calc(25% + 31px);
     text-align: right;
-    line-height: 20px;
+    line-height: 16px;
     @media only screen and (max-width: 450px) {
       font-size: 20px;
     }
   `
 
+  const lowPriceText = css`
+    clear: right;
+    float:right;
+    color: #b4b9c4;
+    font-size: 12px;
+    font-weight: 400;
+  `
+
   return (
     <div css={cardPadding} className={cardClassName}>
       <div css={cardStatus}>PREORDER</div>
-      <Link to={"/products/"+merchandise+"/"+productName} className="link-no-style">
-      <div css={cardContainer}>
-        <div css={imgContainer}>
-          <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
-        </div>
-        <div className="cardBottom" css={cardBottom}>
-          <div css={seriesText}>{series}</div>
-          <div css={priceText}>{price}</div>
-          <div css={productTypeText}>{productType}</div>
-          <div css={dateContainer}>
-            <div css={preorderContainer}>
-              <div css={preorderText}>PREORDER</div>
-              <div css={preorderDateText}>{preorderDate}</div>
+      <Link to={url} className="link-no-style">
+        <div css={cardContainer}>
+          <div css={imgContainer}>
+            <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
+          </div>
+          <div className="cardBottom" css={cardBottom}>
+            <div css={displayNameText}>{displayName}</div>
+            <div css={priceText}>{"US$ "+price}</div>
+            {lowPrice && lowPrice.toFixed(0) != price && <div css={lowPriceText}>{"as low as $"+lowPrice.toFixed(0)}</div> }
+            <div css={productTypeText}>{productType}</div>
+            <div css={dateContainer}>
+              <div css={preorderContainer}>
+                <div css={preorderText}>PREORDER</div>
+                <div css={preorderDateText}>{preorderDate}</div>
+              </div>
+              <div css={releaseContainer}>
+                <div css={releaseText}>RELEASE</div>
+                <div css={releaseDateText}>{releaseDate}</div>
+              </div>
             </div>
-            <div css={releaseContainer}>
-              <div css={releaseText}>RELEASE</div>
-              <div css={releaseDateText}>{releaseDate}</div>
+            <div className="addToCartButton" css={addToCartButton}>
+              ADD TO CART
             </div>
           </div>
-          <div className="addToCartButton" css={addToCartButton}>
-            ADD TO CART
-          </div>
         </div>
-      </div>
       </Link>
     </div>
   )
@@ -209,17 +218,17 @@ const imgStyles = css`
 `
 
 const productTypeText = css`
-  line-height:20px;
+  line-height: 20px;
   font-size: 14px;
 
   max-width: 60%;
   text-align: left;
   position: relative;
   float: left;
-  clear:left;
+  clear: left;
   font-weight: 400;
-  border-radius:5px;
-  color: #B4B9C4;
+  border-radius: 5px;
+  color: #b4b9c4;
 `
 
 const dateContainer = css`
@@ -277,5 +286,15 @@ const releaseDateText = css`
   font-weight: 700;
   color: #303235;
 `
+
+// holographic effect
+// background-image: linear-gradient(
+//   to right,
+//   rgb(194, 255, 182),
+//   rgb(255, 163, 182),
+//   rgb(221, 169, 255),
+//   rgb(162, 209, 255)
+// );
+// background-size: 200%;
 
 export default WeissProductCard

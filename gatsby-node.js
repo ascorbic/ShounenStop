@@ -100,7 +100,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     console.log(node)
 
-    if(node.fields.slug.contains("weiss")){
+    if(node.fields.slug.includes("weiss")){
       createPage({
         path: node.fields.slug,
         component: path.resolve(`./src/templates/ProductPage.js`),

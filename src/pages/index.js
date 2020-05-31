@@ -1,13 +1,11 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import Layout from '../components/LayoutItems/Layout'
+// import Layout from '../components/LayoutItems/Layout'
 import LandingImage from '../components/Index/landingImage'
 import ComiketBanner from '../components/Index/ComiketBanner'
 import NewReleases from '../components/Index/newReleases'
 import SEO from '../components/Common/seo'
-
-import Checkout from '../components/checkout'
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
@@ -31,11 +29,10 @@ const IndexPage = () => {
       x => x.node.frontmatter.asin === release3
     ).node,
   }
-
+  
   return (
-    <Layout pageInfo={{ pageName: 'index' }}>
+    <>
       <SEO title="Home" keywords={[`Shounen`, `Stop`, `Weiss`]} />
-      {/* <Checkout /> */}
       <LandingImage
         landingImageData={landingImage}
         landingText={landingText}
@@ -43,11 +40,10 @@ const IndexPage = () => {
       />
       <NewReleases releaseList={newReleaseData} />
       <ComiketBanner />
-    </Layout>
+    </>
   )
 }
 export default IndexPage
-
 
 //get slug
 export const query = graphql`
@@ -82,7 +78,7 @@ export const query = graphql`
             series
             color
             image {
-              childImageSharp{
+              childImageSharp {
                 fluid(maxWidth: 500, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
@@ -97,7 +93,7 @@ export const query = graphql`
             release(formatString: "MMM DD")
             merchandise
           }
-          fields{
+          fields {
             slug
           }
         }

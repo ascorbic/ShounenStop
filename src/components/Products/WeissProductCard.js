@@ -1,22 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
+import ContextConsumer from '../LayoutItems/CartContext'
 
 // price, primary color
 const WeissProductCard = ({
   imgData,
   cardClassName,
+  asin,
   series,
   displayName,
   productType,
   preorderDate,
   releaseDate,
+  pricings,
   price,
   lowPrice,
   color,
   url,
 }) => {
+  const [quantity, setQuantity] = useState(
+    1
+  );
+
+
   const cardBottom = css`
     color: #0f346c;
     font-family: varela round;
@@ -31,7 +39,7 @@ const WeissProductCard = ({
 
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 
-    height: calc(10% + 155px);
+    min-height: calc(10% + 180px);
     width: calc(100% - 20px);
 
     background-color: #fff;
@@ -75,9 +83,9 @@ const WeissProductCard = ({
     color: #fff;
     font-family: varela round;
     font-weight: 400;
-    line-height: 35px;
-    font-size: 18px;
-    height: 35px;
+    line-height: 45px;
+    font-size: 16px;
+    height: 45px;
     width: 95%;
     left: 2.5%;
     bottom: 10px;
@@ -110,42 +118,102 @@ const WeissProductCard = ({
 
   const lowPriceText = css`
     clear: right;
-    float:right;
+    float: right;
     color: #b4b9c4;
     font-size: 12px;
     font-weight: 400;
   `
 
+  const pricingContainer = css`
+    margin-top:5px;
+    margin-bottom:65px;
+    height:50px;
+    width:100%;
+    display: flex; /* [1] */
+    flex-wrap: nowrap; /* [1] */
+    overflow-x: auto; /* [2] */
+    -webkit-overflow-scrolling: touch; /* [3] */
+    -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ }
+    overflow:auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }      
+    `
+
+  const productPricing = css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    flex: 0 0 auto;
+    margin-right: 5%;
+    color: #151515;
+    width: 17%;
+    height: 100%;
+    background-color: #f6f6f6;
+  `
+
+  const changeQuantity = i => {
+    setQuantity(i)
+  }
+
   return (
-    <div css={cardPadding} className={cardClassName}>
-      <div css={cardStatus}>PREORDER</div>
-      <Link to={url} className="link-no-style">
-        <div css={cardContainer}>
-          <div css={imgContainer}>
-            <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
-          </div>
-          <div className="cardBottom" css={cardBottom}>
-            <div css={displayNameText}>{displayName}</div>
-            <div css={priceText}>{"US$ "+price}</div>
-            {lowPrice && lowPrice.toFixed(0) != price && <div css={lowPriceText}>{"as low as $"+lowPrice.toFixed(0)}</div> }
-            <div css={productTypeText}>{productType}</div>
-            <div css={dateContainer}>
-              <div css={preorderContainer}>
-                <div css={preorderText}>PREORDER</div>
-                <div css={preorderDateText}>{preorderDate}</div>
+    <ContextConsumer>
+      {({ addQuantityToCart }) => (
+        <div css={cardPadding} className={cardClassName}>
+          <div css={cardStatus}>PREORDER</div>
+          <div css={cardContainer}>
+            <Link to={url} className="link-no-style">
+              <div css={imgContainer}>
+                <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
               </div>
-              <div css={releaseContainer}>
-                <div css={releaseText}>RELEASE</div>
-                <div css={releaseDateText}>{releaseDate}</div>
+            </Link>
+            <div className="cardBottom" css={cardBottom}>
+              <div css={displayNameText}>{displayName}</div>
+              <div css={priceText}>{'US$ ' + price}</div>
+              {lowPrice && lowPrice.toFixed(0) !== price && (
+                <div css={lowPriceText}>{'low as $' + lowPrice.toFixed(2)}</div>
+              )}
+              <div css={productTypeText}>{productType}</div>
+              <div css={dateContainer}>
+                <div css={preorderContainer}>
+                  <div css={preorderText}>PREORDER</div>
+                  <div css={preorderDateText}>{preorderDate}</div>
+                </div>
+                <div css={releaseContainer}>
+                  <div css={releaseText}>RELEASE</div>
+                  <div css={releaseDateText}>{releaseDate}</div>
+                </div>
               </div>
-            </div>
-            <div className="addToCartButton" css={addToCartButton}>
-              ADD TO CART
+              <div css={pricingContainer}>
+                {pricings.map(item => {
+                  return (
+                    <div
+                      onClick={() => changeQuantity(item.quantity)}
+                      className={
+                        item.quantity === quantity ? 'quantitySelected' : ''
+                      }
+                      css={productPricing}
+                      key={item.quantity}
+                    >
+                      {item.quantity}
+                    </div>
+                  )
+                })}
+              </div>
+              <div
+                onClick={() => addQuantityToCart(asin, quantity, 1)}
+                className="addToCartButton"
+                css={addToCartButton}
+              >
+                ADD TO CART
+              </div>
             </div>
           </div>
         </div>
-      </Link>
-    </div>
+      )}
+    </ContextConsumer>
   )
 }
 
@@ -183,7 +251,7 @@ const imgContainer = css`
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 160px;
+  padding-bottom: 210px;
   &:hover {
     transform: scale(1.05);
     // padding-bottom: 150px;
@@ -234,7 +302,7 @@ const productTypeText = css`
 const dateContainer = css`
   // border-top: solid 1px #e6e6ea;
   // padding-bottom:15px;
-  margin-top: 15px;
+  margin-top: 10px;
   position: relative;
   width: 100%;
   display: inline-block;

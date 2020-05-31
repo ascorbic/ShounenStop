@@ -50,7 +50,6 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -89,7 +88,12 @@ module.exports = {
         ],
       },
     },
-
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/LayoutItems/Layout.js`),
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -113,7 +117,7 @@ module.exports = {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        purgeOnly: ['./Layout.css'],
+        purgeOnly: ['./Global.css'],
       },
     },
     // must be after other CSS plugins

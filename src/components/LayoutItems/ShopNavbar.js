@@ -2,10 +2,11 @@ import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Img from 'gatsby-image'
+import ContextConsumer from './CartContext'
 
 import { Navbar, Nav } from 'react-bootstrap'
 
-const ShopNavbar = ({ pageInfo, CartSize, title }) => {
+const ShopNavbar = ({ pageInfo, title }) => {
   const {
     cartImage,
     cardImage,
@@ -53,87 +54,94 @@ const ShopNavbar = ({ pageInfo, CartSize, title }) => {
   `)
 
   return (
-    <Navbar
-      fixed="top"
-      className="py-0"
-      css={[navbar, navbarBurger]}
-      expand="lg"
-      id="site-navbar"
-    >
-      <Navbar.Toggle
-        className="navbar-toggle mr-auto"
-        aria-controls="basic-navbar-nav"
-      >
-        <span className="sr-only">Toggle navigation</span>
-        <span className="icon-bar top-bar"></span>
-        <span className="icon-bar middle-bar"></span>
-        <span className="icon-bar bottom-bar"></span>
-      </Navbar.Toggle>
-      <Link to="/" className="link-no-style">
-        <Navbar.Brand as="span" css={navbarBrand}>
-          SHOUNEN STOP
-        </Navbar.Brand>
-      </Link>
-      <Link to="/cart" className="order-lg-last ml-auto">
-        <Nav css={navbarCart}>
-          <Img fixed={cartImage.childImageSharp.fixed} />
-          <span css={cartSizeStyles}>{CartSize}</span>
-        </Nav>
-      </Link>
-      <Navbar.Collapse id="basic-navbar-nav" className="">
-        <Nav
-          className=""
-          css={navbarCollapse}
-          activeKey={pageInfo && pageInfo.pageName}
+    <ContextConsumer>
+      {context => (
+        <Navbar
+          fixed="top"
+          className="py-0"
+          css={[navbar, navbarBurger]}
+          expand="lg"
+          id="site-navbar"
         >
-          <Link to="/products" className="link-no-style">
-            <div
-              className="navWrapper"
-              style={{
-                marginLeft: '-2px',
-              }}
+          <Navbar.Toggle
+            className="navbar-toggle mr-auto"
+            aria-controls="basic-navbar-nav"
+          >
+            <span className="sr-only">Toggle navigation</span>
+            <span className="icon-bar top-bar"></span>
+            <span className="icon-bar middle-bar"></span>
+            <span className="icon-bar bottom-bar"></span>
+          </Navbar.Toggle>
+          <Link to="/" className="link-no-style">
+            <Navbar.Brand as="span" css={navbarBrand}>
+              SHOUNEN STOP
+            </Navbar.Brand>
+          </Link>
+          <Link to="/cart" className="order-lg-last ml-auto">
+            <Nav css={navbarCart}>
+              <Img fixed={cartImage.childImageSharp.fixed} />
+              {Object.keys(context).length - 2 !== 0 && (
+                <span css={cartSizeStyles}>
+                  {Object.keys(context).length - 2}
+                </span>
+              )}
+            </Nav>
+          </Link>
+          <Navbar.Collapse id="basic-navbar-nav" className="">
+            <Nav
+              className=""
+              css={navbarCollapse}
+              activeKey={pageInfo && pageInfo.pageName}
             >
-              <Img fixed={merchandiseImage.childImageSharp.fixed} />
-              <Nav.Link as="span" eventKey="PRODUCTS">
-                PRODUCTS
-              </Nav.Link>
-            </div>
-          </Link>
-          <Link to="/products/weiss" className="link-no-style">
-            <div className="navWrapper">
-              <Img fixed={cardImage.childImageSharp.fixed} />
-              <Nav.Link as="span" eventKey="WEISS">
-                WEISS
-              </Nav.Link>
-            </div>
-          </Link>
-          <Link to="/products/comiket" className="link-no-style">
-            <div
-              className="navWrapper"
-              style={{
-                marginLeft: '2px',
-              }}
-            >
-              <Img fixed={playmatImage.childImageSharp.fixed} />
-              <Nav.Link as="span" eventKey="COMIKET">
-                COMIKET
-              </Nav.Link>
-            </div>
-          </Link>
-          <Link to="/contact" className="link-no-style">
-            <div className="navWrapper">
-              <Img fixed={contactImage.childImageSharp.fixed} />
-              <Nav.Link as="span" eventKey="CONTACT">
-                CONTACT
-              </Nav.Link>
-            </div>
-          </Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+              <Link to="/products" className="link-no-style">
+                <div
+                  className="navWrapper"
+                  style={{
+                    marginLeft: '-2px',
+                  }}
+                >
+                  <Img fixed={merchandiseImage.childImageSharp.fixed} />
+                  <Nav.Link as="span" eventKey="PRODUCTS">
+                    PRODUCTS
+                  </Nav.Link>
+                </div>
+              </Link>
+              <Link to="/products/weiss" className="link-no-style">
+                <div className="navWrapper">
+                  <Img fixed={cardImage.childImageSharp.fixed} />
+                  <Nav.Link as="span" eventKey="WEISS">
+                    WEISS
+                  </Nav.Link>
+                </div>
+              </Link>
+              <Link to="/products/comiket" className="link-no-style">
+                <div
+                  className="navWrapper"
+                  style={{
+                    marginLeft: '2px',
+                  }}
+                >
+                  <Img fixed={playmatImage.childImageSharp.fixed} />
+                  <Nav.Link as="span" eventKey="COMIKET">
+                    COMIKET
+                  </Nav.Link>
+                </div>
+              </Link>
+              <Link to="/contact" className="link-no-style">
+                <div className="navWrapper">
+                  <Img fixed={contactImage.childImageSharp.fixed} />
+                  <Nav.Link as="span" eventKey="CONTACT">
+                    CONTACT
+                  </Nav.Link>
+                </div>
+              </Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      )}
+    </ContextConsumer>
   )
 }
-
 
 const navbar = css`
   background-color: #fff;
@@ -241,9 +249,9 @@ const navbarCart = css`
   position: absolute;
   right: 16px;
   top: 5px;
-  &:hover span{
+  &:hover span {
     cursor: pointer;
-    transform: scale(1.10);
+    transform: scale(1.1);
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
   }
 `

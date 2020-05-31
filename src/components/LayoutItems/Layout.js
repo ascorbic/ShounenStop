@@ -2,53 +2,13 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 
 import ShopNavbar from './ShopNavbar'
-import Checkout from '../checkout'
 import LayoutFooter from './LayoutFooter'
-
-import './Layout.css'
-
-// console.log(localStorage.getItem("omg"));
-// Have a cart icon and set price
+import { CartContext } from "./CartContext"
 
 class Layout extends React.Component {
-  state = {
-    CartSize: 0,
-  }
-
   constructor(props) {
     super(props)
-  }
-
-  componentDidMount() {
-    this.updateCart = this.updateCart.bind(this)
-    localStorage.setItem('CartSize', JSON.stringify([1, 2, 3]))
-    console.log(JSON.parse(localStorage.getItem('CartSize')).length)
-    this.setState({
-      CartSize: JSON.parse(localStorage.getItem('CartSize')).length,
-    })
-  }
-
-  updateCart() {
-    var items = JSON.parse(localStorage.getItem('CartSize')) || []
-    items.push(4)
-    localStorage.setItem('CartSize', JSON.stringify(items))
-    this.setState({
-      CartSize: items.length,
-    })
-    console.log(this.state.CartSize)
-  }
-
-  renderChildren() {
-    return React.Children.map(this.props.children, child => {
-      // console.log(child.type);
-      if (child.type === Checkout) {
-        return React.cloneElement(child, {
-          updateCart: this.updateCart,
-        })
-      } else {
-        return child
-      }
-    })
+    this.state = {}
   }
 
   render() {
@@ -65,10 +25,10 @@ class Layout extends React.Component {
           }
         `}
         render={data => (
-          <>
+          <CartContext>
             <ShopNavbar
               pageInfo={this.props.pageInfo}
-              CartSize={this.state.CartSize}
+              CartSize={Object.keys(this.state).length}
               title={data.site.siteMetadata.title}
             />
             <div
@@ -81,10 +41,10 @@ class Layout extends React.Component {
                 fontWeight: 300,
               }}
             >
-              {this.renderChildren()}
+              {this.props.children}
             </div>
             <LayoutFooter />
-          </>
+          </CartContext>
         )}
       />
     )

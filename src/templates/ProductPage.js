@@ -32,6 +32,7 @@ const ProductPage = ({ data }) => {
         productType={producttype}
         preorderDate={preorder}
         releaseDate={release}
+        pricings={pricings}
         price={"$"+pricings.find(x => x.quantity === 1).price}
         color={color}
         imgData={image.childImageSharp.fluid}

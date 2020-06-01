@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import ShopNavbar from './ShopNavbar'
 import LayoutFooter from './LayoutFooter'
-import { CartContext } from "./CartContext"
+import { CartContext } from './CartContext'
 
 class Layout extends React.Component {
   constructor(props) {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
@@ -20,10 +20,7 @@ const WeissProductCard = ({
   color,
   url,
 }) => {
-  const [quantity, setQuantity] = useState(
-    1
-  );
-
+  const [quantity, setQuantity] = useState(1)
 
   const cardBottom = css`
     color: #0f346c;
@@ -62,7 +59,6 @@ const WeissProductCard = ({
     float: left;
     font-weight: 700;
     font-size: 19px;
-    max-width: calc(75% - 31px);
     text-align: left;
     line-height: 20px;
     overflow: hidden;
@@ -91,13 +87,17 @@ const WeissProductCard = ({
     bottom: 10px;
     border-radius: 3px;
     border-top: solid 1px #e6e6ea;
-
+    user-select: none;
     text-align: center;
     letter-spacing: 1.5px;
     &:hover {
       border: solid 1px ${color};
       background-color: #fff;
       color: ${color};
+    }
+
+    &:active {
+      background-color: #cfcfcf;
     }
   `
 
@@ -108,7 +108,6 @@ const WeissProductCard = ({
     float: right;
     font-weight: 700;
     font-size: 23px;
-    max-width: calc(25% + 31px);
     text-align: right;
     line-height: 16px;
     @media only screen and (max-width: 450px) {
@@ -120,26 +119,29 @@ const WeissProductCard = ({
     clear: right;
     float: right;
     color: #b4b9c4;
+    text-align: right;
     font-size: 12px;
     font-weight: 400;
   `
 
   const pricingContainer = css`
-    margin-top:5px;
-    margin-bottom:65px;
-    height:50px;
-    width:100%;
-    display: flex; /* [1] */
-    flex-wrap: nowrap; /* [1] */
-    overflow-x: auto; /* [2] */
-    -webkit-overflow-scrolling: touch; /* [3] */
-    -ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ }
-    overflow:auto;
+    margin-top: 5px;
+    padding-left: 5px;
+    margin-bottom: 65px;
+    height: 50px;
+    width: calc(100% - 5px);
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow: auto;
+    position: relative;
 
     &::-webkit-scrollbar {
       display: none;
-    }      
-    `
+    }
+  `
 
   const productPricing = css`
     display: flex;
@@ -152,6 +154,19 @@ const WeissProductCard = ({
     width: 17%;
     height: 100%;
     background-color: #f6f6f6;
+    transition: all 0.2s ease-in-out;
+    user-select: none;
+    cursor: pointer;
+
+    // .quantitySelected{
+    //   background-color: ${color} !important;
+    //   color:#fff !important;
+    // }
+
+    &:hover {
+      transition: none;
+      border: solid 1px #d6d6d6;
+    }
   `
 
   const changeQuantity = i => {
@@ -170,12 +185,21 @@ const WeissProductCard = ({
               </div>
             </Link>
             <div className="cardBottom" css={cardBottom}>
-              <div css={displayNameText}>{displayName}</div>
-              <div css={priceText}>{'US$ ' + price}</div>
-              {lowPrice && lowPrice.toFixed(0) !== price && (
-                <div css={lowPriceText}>{'low as $' + lowPrice.toFixed(2)}</div>
-              )}
-              <div css={productTypeText}>{productType}</div>
+              <div css={productColumn}>
+                <div css={displayNameText}>{displayName}</div>
+                <div css={productTypeText}>{productType}</div>
+              </div>
+              <div css={pricingColumn}>
+                <div css={priceText}>
+                  {'$' + pricings.find(x => x.quantity === quantity).price}
+                </div>
+                <div css={lowPriceText}>{'US$ total'}</div>
+                {lowPrice && lowPrice.toFixed(0) !== price && (
+                  <div css={lowPriceText}>
+                    {'low as $' + lowPrice.toFixed(2) + ' per'}
+                  </div>
+                )}
+              </div>
               <div css={dateContainer}>
                 <div css={preorderContainer}>
                   <div css={preorderText}>PREORDER</div>
@@ -186,21 +210,36 @@ const WeissProductCard = ({
                   <div css={releaseDateText}>{releaseDate}</div>
                 </div>
               </div>
-              <div css={pricingContainer}>
-                {pricings.map(item => {
-                  return (
-                    <div
-                      onClick={() => changeQuantity(item.quantity)}
-                      className={
-                        item.quantity === quantity ? 'quantitySelected' : ''
-                      }
-                      css={productPricing}
-                      key={item.quantity}
-                    >
-                      {item.quantity}
-                    </div>
-                  )
-                })}
+              <div css={pricingQuantityContainer}>
+                <div css={pricingQuantityText}>Quantity</div>
+                <div css={pricingQuantityPrice}>
+                  {'$' +
+                    (
+                      pricings.find(x => x.quantity === quantity).price /
+                      quantity
+                    ).toFixed(2) +
+                    ' per item'}
+                </div>
+              </div>
+              <div css={fadeContainer}>
+                <div css={linearFadeLeft}></div>
+                <div css={linearFadeRight}></div>
+                <div css={pricingContainer}>
+                  {pricings.map(item => {
+                    return (
+                      <div
+                        onClick={() => changeQuantity(item.quantity)}
+                        className={
+                          item.quantity === quantity ? 'quantitySelected' : ''
+                        }
+                        css={productPricing}
+                        key={item.quantity}
+                      >
+                        {item.quantity}
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
               <div
                 onClick={() => addQuantityToCart(asin, quantity, 1)}
@@ -217,14 +256,76 @@ const WeissProductCard = ({
   )
 }
 
+const productColumn = css`
+  max-width: 60%;
+  float: left;
+`
+
+const pricingColumn = css`
+  max-width: 40%;
+  float: right;
+`
+
+const pricingQuantityContainer = css`
+  position: relative;
+  line-height: 16px;
+  padding-left: 6px;
+  padding-bottom: 20px;
+`
+const pricingQuantityText = css`
+  float: left;
+  font-size: 16px;
+  color: #303235;
+  text-align: left;
+  letter-spacing: 0px;
+`
+const pricingQuantityPrice = css`
+  float: right;
+  font-size: 14px;
+  color: #b4bac5;
+`
+
+const fadeContainer = css`
+  position: relative;
+`
+
+const linearFadeRight = css`
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  right: 0;
+  height: 50px;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1)
+  );
+  pointer-events: none;
+`
+const linearFadeLeft = css`
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  left: 0;
+  height: 50px;
+  bottom: 0;
+  width: 12px;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.65)
+  );
+  pointer-events: none;
+`
+
 const cardPadding = css`
-  // flex: 0 0 auto;
   margin-top: 20px;
   position: relative;
 `
 
 const cardContainer = css`
-  cursor: pointer;
   background-color: #fff;
   box-shadow: 0px 2px 8px 0px rgba(31, 32, 68, 0.16);
 
@@ -235,9 +336,7 @@ const cardContainer = css`
   border-radius: 12px;
   position: relative;
   &:hover {
-    // transform: scale(1.02);
     box-shadow: 0px 8px 32px 0px rgba(31, 32, 68, 0.16);
-    // opacity: 0.85;
   }
 
   &:hover .cardBottom {
@@ -245,16 +344,16 @@ const cardContainer = css`
 `
 
 const imgContainer = css`
+  cursor: pointer;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 210px;
+  padding-bottom: 225px;
   &:hover {
     transform: scale(1.05);
-    // padding-bottom: 150px;
   }
 `
 
@@ -279,20 +378,13 @@ const imgStyles = css`
     cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-duration: 300ms, 300ms, 300ms, 300ms;
-
-  &:hover {
-    // transform:scale(1.1);
-  }
 `
 
 const productTypeText = css`
   line-height: 20px;
   font-size: 14px;
-
-  max-width: 60%;
-  text-align: left;
+  // padding-top:5px;
   position: relative;
-  float: left;
   clear: left;
   font-weight: 400;
   border-radius: 5px;
@@ -300,8 +392,6 @@ const productTypeText = css`
 `
 
 const dateContainer = css`
-  // border-top: solid 1px #e6e6ea;
-  // padding-bottom:15px;
   margin-top: 10px;
   position: relative;
   width: 100%;

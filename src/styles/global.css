@@ -577,8 +577,8 @@ pre tt:after {
 }
 
 .quantitySelected{
-  background-color:#000 !important;
-  color:#EAEAEA !important;
+  background-color:#151515 !important;
+  color:#fff !important;
 }
 
 @media only screen and (max-width: 480px) {

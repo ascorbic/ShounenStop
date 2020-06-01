@@ -72,7 +72,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
             <span className="icon-bar middle-bar"></span>
             <span className="icon-bar bottom-bar"></span>
           </Navbar.Toggle>
-          <Link to="/" className="link-no-style">
+          <Link to="/" activeClassName="active">
             <Navbar.Brand as="span" css={navbarBrand}>
               SHOUNEN STOP
             </Navbar.Brand>
@@ -91,9 +91,9 @@ const ShopNavbar = ({ pageInfo, title }) => {
             <Nav
               className=""
               css={navbarCollapse}
-              activeKey={pageInfo && pageInfo.pageName}
+              // activeKey={pageInfo && pageInfo.pageName}
             >
-              <Link to="/products" className="link-no-style">
+              <Link to="/products" activeClassName="active">
                 <div
                   className="navWrapper"
                   style={{
@@ -101,20 +101,20 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   }}
                 >
                   <Img fixed={merchandiseImage.childImageSharp.fixed} />
-                  <Nav.Link as="span" eventKey="PRODUCTS">
+                  <Nav.Link as="span">
                     PRODUCTS
                   </Nav.Link>
                 </div>
               </Link>
-              <Link to="/products/weiss" className="link-no-style">
+              <Link to="/products/weiss" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={cardImage.childImageSharp.fixed} />
-                  <Nav.Link as="span" eventKey="WEISS">
+                  <Nav.Link as="span">
                     WEISS
                   </Nav.Link>
                 </div>
               </Link>
-              <Link to="/products/comiket" className="link-no-style">
+              <Link to="/products/comiket" activeClassName="active">
                 <div
                   className="navWrapper"
                   style={{
@@ -122,15 +122,15 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   }}
                 >
                   <Img fixed={playmatImage.childImageSharp.fixed} />
-                  <Nav.Link as="span" eventKey="COMIKET">
+                  <Nav.Link as="span">
                     COMIKET
                   </Nav.Link>
                 </div>
               </Link>
-              <Link to="/contact" className="link-no-style">
+              <Link to="/contact" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={contactImage.childImageSharp.fixed} />
-                  <Nav.Link as="span" eventKey="CONTACT">
+                  <Nav.Link as="span">
                     CONTACT
                   </Nav.Link>
                 </div>

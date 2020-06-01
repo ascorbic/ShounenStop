@@ -17,7 +17,7 @@ class CartContext extends React.Component {
   constructor() {
     super()
 
-    this.updateCart = this.updateCartQuantity.bind(this)
+    this.updateCartQuantity = this.updateCartQuantity.bind(this)
     this.addQuantityToCart = this.addQuantityToCart.bind(this)
 
     this.state = {

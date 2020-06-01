@@ -1,7 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import NewReleasesList from './NewReleasesList'
-import { useStaticQuery, graphql } from 'gatsby'
 
 const NewReleases = ({ releaseList }) => {
 

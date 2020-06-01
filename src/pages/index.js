@@ -1,7 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-// import Layout from '../components/LayoutItems/Layout'
 import LandingImage from '../components/Index/landingImage'
 import ComiketBanner from '../components/Index/ComiketBanner'
 import NewReleases from '../components/Index/newReleases'
@@ -9,7 +8,6 @@ import SEO from '../components/Common/seo'
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
-
   const {
     landingText,
     landingSubtitle,
@@ -29,7 +27,7 @@ const IndexPage = () => {
       x => x.node.frontmatter.asin === release3
     ).node,
   }
-  
+
   return (
     <>
       <SEO title="Home" keywords={[`Shounen`, `Stop`, `Weiss`]} />
@@ -45,7 +43,6 @@ const IndexPage = () => {
 }
 export default IndexPage
 
-//get slug
 export const query = graphql`
   query IndexPageQuery {
     landingPageInfo: markdownRemark(fields: { slug: { eq: "/landingPage/" } }) {
@@ -79,7 +76,7 @@ export const query = graphql`
             color
             image {
               childImageSharp {
-                fluid(maxWidth: 500, quality: 100) {
+                fluid(maxWidth:500, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }

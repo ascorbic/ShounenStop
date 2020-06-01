@@ -7,7 +7,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   fmImagesToRelative(node)
   if (node.internal.type === 'MarkdownRemark') {
-    console.log(node)
     const fileNode = getNode(node.parent)
     const slug = createFilePath({ node, getNode, basePath: `pages` })
     createNodeField({
@@ -91,7 +90,6 @@ exports.createPages = async ({ graphql, actions }) => {
   console.log(JSON.stringify(result, null, 4))
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    console.log(node)
 
     if (node.fields.slug.includes('weiss')) {
       createPage({

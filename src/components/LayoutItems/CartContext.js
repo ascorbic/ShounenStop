@@ -114,8 +114,8 @@ class CartContext extends React.Component {
           <div css={nameText}>{productName}</div>
           <div css={productTypeText}>
             {pricingQuantity > 1
-              ? pricingQuantity.toString() + ' Pack of ' + productType +"(s)"
-              : pricingQuantity.toString() + ' Pack of ' + productType}
+              ? 'Set of '+pricingQuantity.toString() + ' ' + productType +"(s)"
+              : 'Single ' + productType}
           </div>
         </div>
       </div>,

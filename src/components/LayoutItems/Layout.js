@@ -32,7 +32,7 @@ class Layout extends React.Component {
             <ToastContainer
               closeButton={false}
               closeOnClick
-              onClick={() => {window.location.pathname !== "/cart" && navigate('/cart',{ replace: true })}}
+              onClick={() => {window.location.pathname !== "/cart" && navigate('/cart')}}
               transition={Slide}
               limit={3}
               css={toastStyles}

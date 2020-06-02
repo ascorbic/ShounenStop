@@ -1,10 +1,11 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import { css } from '@emotion/core'
-
-import { Container } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import ContextConsumer from '../LayoutItems/CartContext'
+
+import TotalPrice from './TotalPrice'
+import CartProductList from './CartProductList'
 
 // asin,
 //     name,
@@ -46,18 +47,37 @@ const CartContainer = ({}) => {
               }
             }
             productData[asin].cartQuantities[pricingQuantity] = cartQuantity
-
-            // console.log(asin, pricingQuantity, cartQuantity)
           }
         })
         console.log(productData)
-        return <Container></Container>
+        return (
+          <Container css={containerStyles}>
+            <Row>
+              <CartProductList />
+              <TotalPrice />
+              <Link
+                to="/checkout"
+                state={{
+                  productData: productData,
+                  shippingData: { totalPrice: 5 },
+                }}
+              >
+                OMG
+              </Link>
+            </Row>
+          </Container>
+        )
       }}
     </ContextConsumer>
   )
 }
 
 export default CartContainer
+
+const containerStyles = css`
+  padding-top: 20px;
+  max-width: 100%;
+`
 
 export const query = graphql`
   query CartPageQuery {

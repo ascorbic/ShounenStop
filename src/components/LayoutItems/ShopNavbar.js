@@ -227,14 +227,14 @@ const cartSizeStyles = css`
   position: absolute;
   background-color: #0f346c;
   color: #fff;
-  height: 18px;
-  width: 18px;
-  font-size: 12px;
+  height: 21px;
+  width: 21px;
+  font-size: 11px;
   line-height: 18px;
   border-radius: 50%;
-  padding: 0 3px 0 4px;
-  right: -5px;
-  top: -2px;
+  padding: 3px 3px 0 3px;
+  right: -6px;
+  top: -5px;
 
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -248,7 +248,7 @@ const navbarCart = css`
   color: #5e727d;
   position: absolute;
   right: 16px;
-  top: 5px;
+  top: 7px;
   &:hover span {
     cursor: pointer;
     transform: scale(1.1);

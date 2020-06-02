@@ -70,8 +70,4 @@ const releasesHeader = css`
   color: #303235;
 `
 
-const lineBreak = css`
-  // flex-grow: 1;
-`
-
 export default NewReleases

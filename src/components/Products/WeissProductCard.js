@@ -141,6 +141,10 @@ const WeissProductCard = ({
     &::-webkit-scrollbar {
       display: none;
     }
+
+    @media only screen and (max-width: 400px) {
+      height: 30px;
+    }
   `
 
   const productPricing = css`
@@ -242,7 +246,16 @@ const WeissProductCard = ({
                 </div>
               </div>
               <div
-                onClick={() => addQuantityToCart(asin, quantity, 1)}
+                onClick={() => {
+                  addQuantityToCart(
+                    asin,
+                    displayName,
+                    productType,
+                    imgData,
+                    quantity,
+                    1
+                  )
+                }}
                 className="addToCartButton"
                 css={addToCartButton}
               >
@@ -294,7 +307,7 @@ const linearFadeRight = css`
   z-index: 2;
   top: 0px;
   right: 0;
-  height: 50px;
+  height: 100%;
   bottom: 0;
   width: 20px;
   background: linear-gradient(
@@ -309,7 +322,7 @@ const linearFadeLeft = css`
   z-index: 2;
   top: 0px;
   left: 0;
-  height: 50px;
+  height: 100%;
   bottom: 0;
   width: 12px;
   background: linear-gradient(
@@ -344,6 +357,8 @@ const cardContainer = css`
 `
 
 const imgContainer = css`
+  position: relative;
+  width: 100%;
   cursor: pointer;
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
@@ -433,7 +448,6 @@ const releaseText = css`
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-
   color: #b4bac5;
 `
 

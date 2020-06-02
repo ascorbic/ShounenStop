@@ -1,9 +1,12 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql, navigate } from 'gatsby'
+import { ToastContainer, Slide } from 'react-toastify'
+import { CartContext } from './CartContext'
+import { css } from '@emotion/core'
 
 import ShopNavbar from './ShopNavbar'
 import LayoutFooter from './LayoutFooter'
-import { CartContext } from './CartContext'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 class Layout extends React.Component {
   constructor(props) {
@@ -26,6 +29,15 @@ class Layout extends React.Component {
         `}
         render={data => (
           <CartContext>
+            <ToastContainer
+              closeButton={false}
+              closeOnClick
+              onClick={() => {window.location.pathname !== "/cart" && navigate('/cart',{ replace: true })}}
+              transition={Slide}
+              limit={3}
+              css={toastStyles}
+              rtl
+            />
             <ShopNavbar
               pageInfo={this.props.pageInfo}
               CartSize={Object.keys(this.state).length}
@@ -50,5 +62,24 @@ class Layout extends React.Component {
     )
   }
 }
+
+const toastStyles = css`
+  .Toastify__progress-bar{
+    border-bottom-right-radius:4px;
+  }
+
+  .Toastify__toast--rtl {
+    font-family: varela round;
+    border-radius:4px;
+    // background-color:#0f346c;
+    color:#0f346c;
+
+    margin-bottom: 20px;
+
+    @media only screen and (max-width: 480px) {
+      // right:0;
+    }
+  }
+`
 
 export default Layout

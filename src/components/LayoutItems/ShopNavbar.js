@@ -80,6 +80,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
           <Link to="/cart" className="order-lg-last ml-auto">
             <Nav css={navbarCart}>
               <Img fixed={cartImage.childImageSharp.fixed} />
+              {console.log(Object.keys(context).length - 2)}
               {Object.keys(context).length - 2 !== 0 && (
                 <span css={cartSizeStyles}>
                   {Object.keys(context).length - 2}
@@ -91,7 +92,6 @@ const ShopNavbar = ({ pageInfo, title }) => {
             <Nav
               className=""
               css={navbarCollapse}
-              // activeKey={pageInfo && pageInfo.pageName}
             >
               <Link to="/products" activeClassName="active">
                 <div

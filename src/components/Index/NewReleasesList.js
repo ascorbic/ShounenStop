@@ -6,6 +6,8 @@ import { css } from '@emotion/core'
 import WeissProductCard from '../Products/WeissProductCard'
 import { Container } from 'react-bootstrap'
 
+const cardClassName="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
+
 const NewReleasesList = ({ release1, release2, release3 }) => {
   const lowestPrice = pricings => {
     return Math.min.apply(
@@ -19,7 +21,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
   return (
     <Container css={productsContainer}>
       <WeissProductCard
-        cardClassName="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"        asin={release3.frontmatter.asin}
+        cardClassName={cardClassName}
         asin={release1.frontmatter.asin}
         series={release1.frontmatter.series}
         displayName={release1.frontmatter.displayName + ' 🇯🇵'}
@@ -34,7 +36,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         url={release1.fields.slug}
       />
       <WeissProductCard
-        cardClassName="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
+        cardClassName={cardClassName}
         asin={release2.frontmatter.asin}
         series={release2.frontmatter.series}
         displayName={release2.frontmatter.displayName + ' 🇯🇵'}
@@ -49,7 +51,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         url={release2.fields.slug}
       />
       <WeissProductCard
-        cardClassName="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
+        cardClassName={cardClassName}
         asin={release3.frontmatter.asin}
         series={release3.frontmatter.series}
         displayName={release3.frontmatter.displayName + ' 🇯🇵'}

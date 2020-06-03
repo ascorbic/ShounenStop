@@ -49,7 +49,7 @@ class Layout extends React.Component {
                 marginLeft: ` auto`,
                 padding: `0px`,
                 paddingTop: '0px',
-                fontFamily: 'Montserrat',
+                fontFamily: 'montserrat',
                 fontWeight: 300,
               }}
             >

@@ -65,7 +65,7 @@ const headerRight = css`
 const releasesHeader = css`
   flex-grow: fill;
   font-size: 30px;
-  font-family: 'montserrat';
+  font-family: 'lato';
   margin: 0px 20px;
   color: #303235;
 `

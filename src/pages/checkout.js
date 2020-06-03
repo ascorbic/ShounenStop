@@ -1,14 +1,16 @@
 import React from 'react'
 
 import SEO from '../components/Common/seo'
+import CheckoutContainer from '../components/Checkout/CheckoutContainer'
+
+
 
 const Checkout = ({location}) => {
-  const { state = {} } = location
-  const { modal } = state
-  console.log(state)
+  console.log(location.state)
   return (
     <>
       <SEO title="Checkout" />
+      <CheckoutContainer orderContext={location.state}/>
     </>
   )
 }

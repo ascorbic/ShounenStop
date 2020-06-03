@@ -15,6 +15,8 @@ const LayoutFooter = () => {
 
 const footerContainer = css`
   position: relative;
+  width:100%;
+  bottom: 0;
   margin-top: 50px;
   padding-top: 25px;
   text-align:center;

@@ -97,7 +97,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Varela Round\:400`, `Montserrat\:300,400,700`],
+        fonts: [`Varela Round\:400`, `Montserrat\:300,400,700`, `Lato\:400`],
         display: 'swap',
       },
     },

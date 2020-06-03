@@ -200,7 +200,7 @@ const WeissProductCard = ({
                 <div css={lowPriceText}>{'US$ total'}</div>
                 {lowPrice && lowPrice.toFixed(0) !== price && (
                   <div css={lowPriceText}>
-                    {'low as $' + lowPrice.toFixed(2) + ' per'}
+                    {'from $' + lowPrice.toFixed(2) + ' per'}
                   </div>
                 )}
               </div>

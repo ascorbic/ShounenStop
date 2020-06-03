@@ -1,11 +1,12 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql, navigate } from 'gatsby'
 import { css } from '@emotion/core'
 import { Container, Row } from 'react-bootstrap'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-import TotalPrice from './TotalPrice'
+import OrderSummary from './OrderSummary'
 import CartProductList from './CartProductList'
+import CheckoutProgress from '../Checkout/CheckoutProgress'
 
 // asin,
 //     name,
@@ -27,43 +28,77 @@ const getProduct = flatProduct => {
 const CartContainer = ({}) => {
   const edges = useStaticQuery(query).products.edges
 
-  console.log(edges)
   return (
     <ContextConsumer>
       {context => {
         var productData = {}
-
+        var totalPrice = 0
+        var totalItems = 0
         Object.keys(context).map(key => {
           if (key !== 'updateCartQuantity' && key !== 'addQuantityToCart') {
             const cartQuantity = context[key]
             const pricingQuantity = Number(getProduct(key)[1])
 
             const asin = getProduct(key)[0]
+            var productMetadata = {}
+            productMetadata = edges.find(x => x.node.frontmatter.asin === asin)
+              .node.frontmatter
             if (productData[asin] === undefined) {
               productData[asin] = {
-                metadata: edges.find(x => x.node.frontmatter.asin === asin).node
-                  .frontmatter,
+                metadata: productMetadata,
                 cartQuantities: {},
               }
             }
-            productData[asin].cartQuantities[pricingQuantity] = cartQuantity
+            const productPrice = productMetadata['pricings'].find(
+              x => x.quantity === pricingQuantity
+            ).price
+            const subtotal = productPrice * cartQuantity
+            totalPrice += subtotal
+            totalItems += 1
+
+            productData[asin].cartQuantities[pricingQuantity] = {
+              quantity: cartQuantity,
+              price: productPrice,
+              subtotal: subtotal,
+            }
           }
         })
-        console.log(productData)
+
+        //make variable later
+        const shippingData = {
+          standardShipping: {
+            name: 'Standard Shipping',
+            price: 5,
+            speed: '2-4 Weeks',
+          },
+        }
+
+        const orderContext = {
+          productData: { productData },
+          totalItems: totalItems,
+          subTotal: totalPrice,
+          shippingInfo: { shippingData },
+        }
+
         return (
-          <Container css={containerStyles}>
+          <Container fluid css={containerStyles}>
             <Row>
-              <CartProductList />
-              <TotalPrice />
-              <Link
-                to="/checkout"
-                state={{
-                  productData: productData,
-                  shippingData: { totalPrice: 5 },
-                }}
-              >
-                OMG
-              </Link>
+              <CheckoutProgress orderContext={orderContext} phase={1} />
+            </Row>
+            <Row>
+              <CartProductList productData={productData} />
+              {/* {pass subtotal and total price} */}
+              <OrderSummary
+                checkoutNavigate={() =>
+                  navigate('/checkout', {
+                    state: { orderContext },
+                  })
+                }
+                orderContext={orderContext}
+                subTotal={orderContext.subTotal}
+                totalItems={orderContext.totalItems}
+                shippingInfo={shippingData}
+              />
             </Row>
           </Container>
         )
@@ -74,10 +109,7 @@ const CartContainer = ({}) => {
 
 export default CartContainer
 
-const containerStyles = css`
-  padding-top: 20px;
-  max-width: 100%;
-`
+const containerStyles = css``
 
 export const query = graphql`
   query CartPageQuery {

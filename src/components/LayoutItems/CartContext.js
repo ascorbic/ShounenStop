@@ -37,11 +37,12 @@ class CartContext extends React.Component {
   }
 
   setupCart() {
-    if (localStorage.getItem(productsKey) === null) {
+    if (sessionStorage.getItem(productsKey) === null) {
       const memProducts = {} //{ 'ASIN1-1': 1, 'ASIN1-2': 2, 'ASIN1-3': 0 }
       this.setState(memProducts, () => this.saveCart(this.state))
     } else {
-      const memProducts = JSON.parse(localStorage.getItem(productsKey))
+      const memProducts = JSON.parse(sessionStorage.getItem(productsKey))
+      //validate items to make sure over 0
       this.setState(memProducts)
     }
   }
@@ -79,28 +80,37 @@ class CartContext extends React.Component {
     )
   }
 
-  updateCartQuantity(
-    productAsin,
-    productName,
-    imgData,
-    pricingQuantity,
-    cartQuantity
-  ) {
+  updateCartQuantity(productAsin, pricingQuantity, cartQuantity) {
     const flatProduct = getFlatProduct(productAsin, pricingQuantity)
+    console.log(flatProduct, cartQuantity)
     this.setState(
       prevState => {
+        if (Number(cartQuantity) === 0) {
+          return { [flatProduct]: undefined }
+        }
+
         return {
           [flatProduct]: cartQuantity,
         }
       },
       () => {
+        console.log(this.state)
         this.saveCart(this.state)
       }
     )
   }
 
   saveCart(memProducts) {
-    localStorage.setItem(productsKey, JSON.stringify(memProducts))
+    sessionStorage.setItem(productsKey, JSON.stringify(memProducts))
+  }
+
+  unSetState(state, property) {
+    return Object.entries(state)
+      .filter(([key, value]) => key !== property)
+      .reduce((acc, [key, value]) => {
+        acc[key] = value
+        return acc
+      }, {})
   }
 
   notifyCartUpdate = (productName, productType, pricingQuantity, imgData) => {
@@ -114,7 +124,11 @@ class CartContext extends React.Component {
           <div css={nameText}>{productName}</div>
           <div css={productTypeText}>
             {pricingQuantity > 1
-              ? 'Set of '+pricingQuantity.toString() + ' ' + productType +"(s)"
+              ? 'Set of ' +
+                pricingQuantity.toString() +
+                ' ' +
+                productType +
+                '(s)'
               : 'Single ' + productType}
           </div>
         </div>

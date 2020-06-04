@@ -46,7 +46,7 @@ const landingStyles = css`
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2),0 1px 0 0 rgba(0,0,0,0.2);
-
+  margin-bottom:50px;
 `
 
 const landingText = css`

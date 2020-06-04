@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 // price, primary color
 const WeissProductCard = ({
@@ -132,14 +133,16 @@ const WeissProductCard = ({
     width: calc(100% - 5px);
     display: flex;
     flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    overflow: auto;
+    // overflow-x: auto;
+    // scrollbar-width: none;
+    // -webkit-overflow-scrolling: touch;
+    // -ms-overflow-style: -ms-autohiding-scrollbar;
+    // overflow: auto;
     position: relative;
 
+    
     &::-webkit-scrollbar {
-      display: none;
+      // display: none;
     }
 
     @media only screen and (max-width: 400px) {
@@ -228,7 +231,7 @@ const WeissProductCard = ({
               <div css={fadeContainer}>
                 <div css={linearFadeLeft}></div>
                 <div css={linearFadeRight}></div>
-                <div css={pricingContainer}>
+                <ScrollContainer vertical={false} className="scroll-container" css={pricingContainer}>
                   {pricings.map(item => {
                     return (
                       <div
@@ -243,7 +246,7 @@ const WeissProductCard = ({
                       </div>
                     )
                   })}
-                </div>
+                </ScrollContainer>
               </div>
               <div
                 onClick={() => {

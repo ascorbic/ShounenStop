@@ -15,11 +15,11 @@ const LayoutFooter = () => {
 
 const footerContainer = css`
   position: relative;
-  width:100%;
+  width: 100%;
   bottom: 0;
-  margin-top: 50px;
+  height:80px;
   padding-top: 25px;
-  text-align:center;
+  text-align: center;
   border-top: solid 1px #e0e0e0;
   background-color: #0f346c;
   padding-bottom: 25px;

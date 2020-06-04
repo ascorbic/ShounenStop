@@ -40,11 +40,11 @@ class Layout extends React.Component {
             />
             <ShopNavbar
               pageInfo={this.props.pageInfo}
-              CartSize={Object.keys(this.state).length}
               title={data.site.siteMetadata.title}
             />
             <div
               style={{
+                minHeight: `calc(100vh - 120px)`,
                 marginTop: `40px`,
                 marginLeft: ` auto`,
                 padding: `0px`,
@@ -71,7 +71,6 @@ const toastStyles = css`
   .Toastify__toast--rtl {
     font-family: varela round;
     border-radius:4px;
-    // background-color:#0f346c;
     color:#0f346c;
 
     margin-bottom: 20px;

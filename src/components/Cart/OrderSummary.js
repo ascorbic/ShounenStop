@@ -12,7 +12,7 @@ const OrderSummary = ({
   const totalPrice = subTotal + shippingPrice
   return (
     <div
-      className="col-xl-3 col-lg-4 col-md-4 col-sm-5 col-xs-12"
+      className="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-xs-12"
       css={pricingContainer}
     >
       <div css={pricesContainer}>
@@ -25,7 +25,7 @@ const OrderSummary = ({
             <div css={subTotalAmount}>{'$' + subTotal.toFixed(2)}</div>
           </div>
           <div css={shippingTotalContainer}>
-            <div css={shippingTotalText}>Shipping Cost</div>
+            <div css={shippingTotalText}>{shippingInfo['standardShipping'].name}</div>
             <div css={shippingTotalAmount}>
               {'$' + shippingPrice.toFixed(2)}
             </div>
@@ -46,6 +46,7 @@ const OrderSummary = ({
 
 const pricingContainer = css`
   padding-right: 10px;
+  padding-left: 10px;
 `
 
 const pricesContainer = css`
@@ -103,7 +104,7 @@ const shippingTotalContainer = css`
 
 const totalBar = css`
   background-color: #e6e6ea;
-  margin-top: 40px;
+  margin-top: 45px;
   height: 1px;
   clear: both;
   position: relative;

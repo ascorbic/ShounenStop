@@ -80,19 +80,16 @@ const ShopNavbar = ({ pageInfo, title }) => {
           <Link to="/cart" className="order-lg-last ml-auto">
             <Nav css={navbarCart}>
               <Img fixed={cartImage.childImageSharp.fixed} />
-              {console.log(Object.keys(context).length - 2)}
-              {Object.keys(context).length - 2 !== 0 && (
+              {/* {console.log(context.filter(i => i !== undefined))} */}
+              {Object.keys(context).filter(key => context[key] !== undefined).length - 2 !== 0 && (
                 <span css={cartSizeStyles}>
-                  {Object.keys(context).length - 2}
+                  {Object.keys(context).filter(key => context[key] !== undefined).length - 2}
                 </span>
               )}
             </Nav>
           </Link>
           <Navbar.Collapse id="basic-navbar-nav" className="">
-            <Nav
-              className=""
-              css={navbarCollapse}
-            >
+            <Nav className="" css={navbarCollapse}>
               <Link to="/products" activeClassName="active">
                 <div
                   className="navWrapper"
@@ -101,17 +98,13 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   }}
                 >
                   <Img fixed={merchandiseImage.childImageSharp.fixed} />
-                  <Nav.Link as="span">
-                    PRODUCTS
-                  </Nav.Link>
+                  <Nav.Link as="span">PRODUCTS</Nav.Link>
                 </div>
               </Link>
               <Link to="/products/weiss" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={cardImage.childImageSharp.fixed} />
-                  <Nav.Link as="span">
-                    WEISS
-                  </Nav.Link>
+                  <Nav.Link as="span">WEISS</Nav.Link>
                 </div>
               </Link>
               <Link to="/products/comiket" activeClassName="active">
@@ -122,17 +115,13 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   }}
                 >
                   <Img fixed={playmatImage.childImageSharp.fixed} />
-                  <Nav.Link as="span">
-                    COMIKET
-                  </Nav.Link>
+                  <Nav.Link as="span">COMIKET</Nav.Link>
                 </div>
               </Link>
               <Link to="/contact" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={contactImage.childImageSharp.fixed} />
-                  <Nav.Link as="span">
-                    CONTACT
-                  </Nav.Link>
+                  <Nav.Link as="span">CONTACT</Nav.Link>
                 </div>
               </Link>
             </Nav>

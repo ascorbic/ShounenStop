@@ -35,8 +35,8 @@ const CartContainer = ({}) => {
         var totalPrice = 0
         var totalItems = 0
         Object.keys(context).map(key => {
-          if (key !== 'updateCartQuantity' && key !== 'addQuantityToCart') {
-            const cartQuantity = context[key]
+          const cartQuantity = context[key]
+          if (key !== 'updateCartQuantity' && key !== 'addQuantityToCart' && cartQuantity!==undefined) {
             const pricingQuantity = Number(getProduct(key)[1])
 
             const asin = getProduct(key)[0]
@@ -44,25 +44,31 @@ const CartContainer = ({}) => {
             productMetadata = edges.find(x => x.node.frontmatter.asin === asin)
               .node.frontmatter
             if (productData[asin] === undefined) {
-              productData[asin] = {
-                metadata: productMetadata,
-                cartQuantities: {},
-              }
             }
+
             const productPrice = productMetadata['pricings'].find(
               x => x.quantity === pricingQuantity
             ).price
+
+            productData[key] = {
+              metadata: productMetadata,
+              price: productPrice,
+              quantity: cartQuantity,
+            }
+
             const subtotal = productPrice * cartQuantity
             totalPrice += subtotal
             totalItems += 1
 
-            productData[asin].cartQuantities[pricingQuantity] = {
-              quantity: cartQuantity,
-              price: productPrice,
-              subtotal: subtotal,
-            }
+            // productData[asin].cartQuantities[pricingQuantity] = {
+            //   quantity: cartQuantity,
+            //   price: productPrice,
+            //   subtotal: subtotal,
+            // }
           }
         })
+
+        console.log(productData)
 
         //make variable later
         const shippingData = {
@@ -81,26 +87,31 @@ const CartContainer = ({}) => {
         }
 
         return (
-          <Container fluid css={containerStyles}>
-            <Row>
-              <CheckoutProgress orderContext={orderContext} phase={1} />
-            </Row>
-            <Row>
-              <CartProductList productData={productData} />
-              {/* {pass subtotal and total price} */}
-              <OrderSummary
-                checkoutNavigate={() =>
-                  navigate('/checkout', {
-                    state: { orderContext },
-                  })
-                }
-                orderContext={orderContext}
-                subTotal={orderContext.subTotal}
-                totalItems={orderContext.totalItems}
-                shippingInfo={shippingData}
-              />
-            </Row>
-          </Container>
+          <div css={cartStyles}>
+            <Container css={containerStyles} fluid>
+              <Row>
+                <CheckoutProgress orderContext={orderContext} phase={1} />
+              </Row>
+              <Row>
+                <CartProductList
+                  productData={productData}
+                  updateCartQuantity={context.updateCartQuantity}
+                />
+                {/* {pass subtotal and total price} */}
+                <OrderSummary
+                  checkoutNavigate={() =>
+                    navigate('/checkout', {
+                      state: { orderContext },
+                    })
+                  }
+                  orderContext={orderContext}
+                  subTotal={orderContext.subTotal}
+                  totalItems={orderContext.totalItems}
+                  shippingInfo={shippingData}
+                />
+              </Row>
+            </Container>
+          </div>
         )
       }}
     </ContextConsumer>
@@ -109,7 +120,14 @@ const CartContainer = ({}) => {
 
 export default CartContainer
 
-const containerStyles = css``
+const cartStyles = css`
+  min-height: calc(100vh - 120px);
+  // background-color: #fff;
+`
+
+const containerStyles = css`
+  padding-bottom: 30px;
+`
 
 export const query = graphql`
   query CartPageQuery {

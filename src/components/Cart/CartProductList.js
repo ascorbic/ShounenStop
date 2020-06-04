@@ -3,17 +3,28 @@ import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import CartProduct from './CartProduct'
 
-const CartProductList = ({ productData }) => {
-  // console.log(productData)
+const getProduct = flatProduct => {
+  return flatProduct.split('-')
+}
 
-  // const
+const CartProductList = ({ productData, updateCartQuantity }) => {
+  // console.log(productData)
 
   return (
     <>
-      <div css={omg} className="col-xl-9 col-lg-8 col-md-8 col-sm-7 col-xs-12">
-      <div css={cartHeader}>Your Cart</div>
+      <div
+        css={productListContainer}
+        className="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-xs-12"
+      >
+        <div css={cartHeader}>Your Cart</div>
+        <div css={cartDivider}></div>
         {Object.keys(productData).map(key => (
-          <CartProduct key={key} cartProductData={productData[key]} />
+          <CartProduct
+            key={key}
+            pricingQuantity={getProduct(key)[1]}
+            cartProductData={productData[key]}
+            updateCartQuantity={updateCartQuantity}
+          />
         ))}
       </div>
     </>
@@ -21,12 +32,18 @@ const CartProductList = ({ productData }) => {
 }
 
 const cartHeader = css`
+  color: #0f346c;
   font-size: 26px;
-  font-family:varela round;
+  width: 100%;
+  font-family: varela round;
 `
 
-const omg = css`
-  height: 500px;
+const cartDivider = css`
+  height: 1px;
+  width: 100%;
+  background-color: #a1bce6;
 `
+
+const productListContainer = css``
 
 export default CartProductList

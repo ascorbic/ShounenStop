@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import CartProduct from './CartProduct'
 
@@ -8,8 +7,8 @@ const getProduct = flatProduct => {
 }
 
 const CartProductList = ({ productData, updateCartQuantity }) => {
-  // console.log(productData)
 
+  //TODO: add return home to header
   return (
     <>
       <div
@@ -18,6 +17,7 @@ const CartProductList = ({ productData, updateCartQuantity }) => {
       >
         <div css={cartHeader}>Your Cart</div>
         <div css={cartDivider}></div>
+        {/* TODO: make no items in cart thing */}
         {Object.keys(productData).map(key => (
           <CartProduct
             key={key}
@@ -41,9 +41,13 @@ const cartHeader = css`
 const cartDivider = css`
   height: 1px;
   width: 100%;
+  margin-bottom:10px;
   background-color: #a1bce6;
 `
 
-const productListContainer = css``
+const productListContainer = css`
+  padding-left: 10px;
+  padding-right: 10px;
+`
 
 export default CartProductList

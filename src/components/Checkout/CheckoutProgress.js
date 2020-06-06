@@ -94,7 +94,7 @@ const progressContainer = css`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
+  user-select: none;
   justify-content: center;
 `
 

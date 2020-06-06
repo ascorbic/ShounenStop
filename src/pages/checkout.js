@@ -1,16 +1,18 @@
 import React from 'react'
-
+import { navigate } from 'gatsby'
 import SEO from '../components/Common/seo'
 import CheckoutContainer from '../components/Checkout/CheckoutContainer'
 
+const Checkout = ({ location }) => {
 
-
-const Checkout = ({location}) => {
-  console.log(location.state)
   return (
     <>
       <SEO title="Checkout" />
-      <CheckoutContainer orderContext={location.state}/>
+      {location.state === null ? (
+        navigate('/cart')
+      ) : (
+        <CheckoutContainer orderContext={location.state.orderContext} />
+      )}
     </>
   )
 }

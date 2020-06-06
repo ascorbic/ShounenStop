@@ -14,7 +14,7 @@ const PaymentContainer = ({orderContext}) => {
         return (
           <Container fluid>
             <Row>
-              <CheckoutProgress orderContext={orderContext} orderphase={3} />
+              <CheckoutProgress orderContext={orderContext} phase={3} />
             </Row>
           </Container>
         )

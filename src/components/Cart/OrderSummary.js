@@ -7,6 +7,9 @@ const OrderSummary = ({
   totalItems,
   subTotal,
   shippingInfo,
+  navigateMessage,
+  disableButton,
+  children
 }) => {
   const shippingPrice = shippingInfo['standardShipping'].price
   const totalPrice = subTotal + shippingPrice
@@ -25,7 +28,9 @@ const OrderSummary = ({
             <div css={subTotalAmount}>{'$' + subTotal.toFixed(2)}</div>
           </div>
           <div css={shippingTotalContainer}>
-            <div css={shippingTotalText}>{shippingInfo['standardShipping'].name}</div>
+            <div css={shippingTotalText}>
+              {shippingInfo['standardShipping'].name}
+            </div>
             <div css={shippingTotalAmount}>
               {'$' + shippingPrice.toFixed(2)}
             </div>
@@ -36,10 +41,15 @@ const OrderSummary = ({
             <div css={orderTotalAmount}>{'$' + totalPrice.toFixed(2)}</div>
           </div>
         </div>
-        <div onClick={checkoutNavigate} css={checkoutButton}>
-          Checkout
+        <div
+          onClick={!disableButton && checkoutNavigate}
+          className={disableButton ? 'buttonDisabled' : ''}
+          css={checkoutButton}
+        >
+          {navigateMessage}
         </div>
       </div>
+      {children}
     </div>
   )
 }
@@ -157,10 +167,11 @@ const checkoutButton = css`
   font-family: varela round;
   letter-spacing: 1.5px;
   color: #a1bce6;
+
   &:hover {
-    font-size: 16px !important;
-    letter-spacing: 2px !important;
-    color: #fff !important;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #fff;
   }
   background-color: #0f346c;
 

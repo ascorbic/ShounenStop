@@ -1,4 +1,3 @@
-
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -129,16 +128,16 @@ textarea {
   -webkit-appearance: none;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0; 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 
 ::-webkit-input-placeholder {
@@ -603,7 +602,7 @@ pre tt:after {
   font-size: 18px;
 }
 
-.currentProgressBall{
+.currentProgressBall {
   cursor: pointer;
   background-color: #0f346c !important;
 }
@@ -613,8 +612,37 @@ pre tt:after {
   color: #0f346c !important;
 }
 
-.productListItem{
-  font-family: "lato";
+.productListItem {
+  font-family: 'lato';
+}
+
+.buttonDisabled {
+  background-color: #6a6d75 !important;
+  color: #cfcfcf !important;
+}
+
+.buttonDisabled:hover {
+  background-color: #54555b !important;
+  color: #cfcfcf !important;
+  letter-spacing: 1.5px !important;
+  transform: none;
+}
+
+.productItemContained{
+  box-shadow: none !important;
+}
+
+.validatedInfo {
+  letter-spacing: 2px !important;
+  color: #0f346c !important;
+}
+
+.userInfoErrorInput {
+  border-bottom: solid 1px #d20d0d !important;
+}
+
+.userInfoErrorInput:focus {
+  border-bottom: solid 1px #0f346c !important;
 }
 
 /* Screen Lg size*/

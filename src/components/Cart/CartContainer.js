@@ -68,8 +68,6 @@ const CartContainer = ({}) => {
           }
         })
 
-        console.log(productData)
-
         //make variable later
         const shippingData = {
           standardShipping: {
@@ -80,10 +78,10 @@ const CartContainer = ({}) => {
         }
 
         const orderContext = {
-          productData: { productData },
+          productData: productData,
           totalItems: totalItems,
           subTotal: totalPrice,
-          shippingInfo: { shippingData },
+          shippingInfo: shippingData,
         }
 
         return (
@@ -107,7 +105,9 @@ const CartContainer = ({}) => {
                   orderContext={orderContext}
                   subTotal={orderContext.subTotal}
                   totalItems={orderContext.totalItems}
-                  shippingInfo={shippingData}
+                  shippingInfo={orderContext.shippingInfo}
+                  navigateMessage="Checkout"
+                  disableButton={orderContext.totalItems===0}
                 />
               </Row>
             </Container>

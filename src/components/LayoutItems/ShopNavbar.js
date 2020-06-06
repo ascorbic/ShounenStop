@@ -80,7 +80,6 @@ const ShopNavbar = ({ pageInfo, title }) => {
           <Link to="/cart" className="order-lg-last ml-auto">
             <Nav css={navbarCart}>
               <Img fixed={cartImage.childImageSharp.fixed} />
-              {/* {console.log(context.filter(i => i !== undefined))} */}
               {Object.keys(context).filter(key => context[key] !== undefined).length - 2 !== 0 && (
                 <span css={cartSizeStyles}>
                   {Object.keys(context).filter(key => context[key] !== undefined).length - 2}
@@ -139,13 +138,14 @@ const navbar = css`
 
 const navbarBrand = css`
   letter-spacing: 2px;
-  color: #5e727d !important;
+  color: #0f346c !important;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 
   &:hover {
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    color: #0f346c !important;
+    margin-left:-5px;
+    letter-spacing:3px;
   }
 `
 

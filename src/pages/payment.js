@@ -9,7 +9,7 @@ const Payment = ({location}) => {
   return (
     <>
       <SEO title="Checkout" />
-      <PaymentContainer orderContext={location.state}/>
+      <PaymentContainer orderContext={location.state.orderContext}/>
     </>
   )
 }

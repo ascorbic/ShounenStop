@@ -8,11 +8,12 @@ const Checkout = ({ location }) => {
   return (
     <>
       <SEO title="Checkout" />
-      {location.state === null || location.state === undefined ? (
+      {/* {location.state === null || location.state === undefined ? (
         navigate('/cart')
       ) : (
         <CheckoutContainer orderContext={location.state.orderContext} />
-      )}
+      )} */}
+      <CheckoutContainer orderContext={location.state.orderContext} />
     </>
   )
 }

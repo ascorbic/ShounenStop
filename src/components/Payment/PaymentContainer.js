@@ -34,22 +34,6 @@ class PaymentContainer extends React.Component {
     this.startValidatingPayment = this.startValidatingPayment.bind(this)
     this.stopTimeLimit = this.stopTimeLimit.bind(this)
     this.resetTimeLimit = this.resetTimeLimit.bind(this)
-
-    var orderInfo = props.orderContext
-    orderInfo.timestamp = orderTimestamp
-    orderInfo.validated = false
-
-    if (sendOrderData) {
-      axios
-        .post(
-          'https://us-central1-shounenstop.cloudfunctions.net/Checkout',
-          orderInfo
-        )
-        .then(function(response) {
-          // handle success
-          console.log(response)
-        })
-    }
   }
 
   startValidatingPayment() {
@@ -89,6 +73,22 @@ class PaymentContainer extends React.Component {
   confirmPayment() {}
 
   componentDidMount() {
+    var orderInfo = this.props.orderContext
+    orderInfo.timestamp = this.state.orderTimestamp
+    orderInfo.validated = false
+
+    if (sendOrderData) {
+      axios
+        .post(
+          'https://us-central1-shounenstop.cloudfunctions.net/Checkout',
+          orderInfo
+        )
+        .then(function(response) {
+          // handle success
+          console.log(response)
+        })
+    }
+
     this.setState({
       timeLimitStarted: true,
     })

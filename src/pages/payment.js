@@ -7,7 +7,7 @@ const Payment = ({ location }) => {
   return (
     <>
       <SEO title="Checkout" />
-      {location.state === null ? (
+      {location.state === null || location.state === undefined ? (
         navigate('/cart')
       ) : (
         <PaymentContainer orderContext={location.state.orderContext} />

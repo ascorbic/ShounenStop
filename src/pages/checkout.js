@@ -8,7 +8,7 @@ const Checkout = ({ location }) => {
   return (
     <>
       <SEO title="Checkout" />
-      {location.state === null ? (
+      {location.state === null || location.state === undefined ? (
         navigate('/cart')
       ) : (
         <CheckoutContainer orderContext={location.state.orderContext} />

@@ -70,8 +70,6 @@ class PaymentContainer extends React.Component {
     this.setState({ timeLimit: 600, timeLimitStarted: false })
   }
 
-  confirmPayment() {}
-
   componentDidMount() {
     var orderInfo = this.props.orderContext
     orderInfo.timestamp = this.state.orderTimestamp
@@ -84,7 +82,6 @@ class PaymentContainer extends React.Component {
           orderInfo
         )
         .then(function(response) {
-          // handle success
           console.log(response)
         })
     }

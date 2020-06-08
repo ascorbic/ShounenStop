@@ -7,7 +7,7 @@ const Confirmation = ({ location }) => {
   return (
     <>
       <SEO title="Confirmation" />
-      {location.state === null || location.state === undefined ? (
+      {typeof window !== "undefined" && location.state === null ? (
         navigate('/cart')
       ) : (
         <ConfirmationContainer orderContext={location.state.orderContext} />

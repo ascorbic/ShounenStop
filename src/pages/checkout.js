@@ -4,16 +4,14 @@ import SEO from '../components/Common/seo'
 import CheckoutContainer from '../components/Checkout/CheckoutContainer'
 
 const Checkout = ({ location }) => {
-  console.log(location)
   return (
     <>
       <SEO title="Checkout" />
-      {/* {location.state === null || location.state === undefined ? (
+      {typeof window !== "undefined" && location.state === null ? (
         navigate('/cart')
       ) : (
         <CheckoutContainer orderContext={location.state.orderContext} />
-      )} */}
-      <CheckoutContainer orderContext={location.state.orderContext} />
+      )}
     </>
   )
 }

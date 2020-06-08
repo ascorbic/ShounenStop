@@ -1,17 +1,18 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 import { css } from '@emotion/core'
-import { Formik, Field } from 'formik'
+import { Formik } from 'formik'
 import { Container, Row } from 'react-bootstrap'
 import CheckoutProgress from './CheckoutProgress'
+import CheckoutHeader from '../Checkout/CheckoutHeader'
 import * as Yup from 'yup'
 import OrderSummary from '../Cart/OrderSummary'
 import OrderDetails from './OrderDetails'
 
 const CheckoutContainer = ({ orderContext }) => {
   const alpha = /^[a-zA-Z_]+( [a-zA-Z_]+)*$/
+  console.log(orderContext)
   orderContext.userInfo = {}
-  // console.log(orderContext)
   return (
     <Formik
       initialValues={{
@@ -65,20 +66,21 @@ const CheckoutContainer = ({ orderContext }) => {
         dirty,
         isValid,
       }) => {
-        console.log(values)
+        orderContext.userInfo = values
         return (
           <Container fluid>
             <Row>
               <CheckoutProgress orderContext={orderContext} phase={2} />
             </Row>
-
             <Row>
               <div
                 css={deliveryContainer}
                 className="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-xs-12"
               >
-                <div css={header}>Delivery</div>
-                <div css={cartDivider}></div>
+                <CheckoutHeader
+                  header="Delivery"
+                  headerNavigate={() => navigate('/cart')}
+                />
                 <div css={userInfoContainer}>
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div css={userInfoTop}>
@@ -332,7 +334,7 @@ const CheckoutContainer = ({ orderContext }) => {
                 subTotal={orderContext.subTotal}
                 totalItems={orderContext.totalItems}
                 shippingInfo={orderContext.shippingInfo}
-                navigateMessage="Confirm and Pay"
+                navigateMessage="Review and Pay"
                 disableButton={!isValid || !dirty}
               >
                 <OrderDetails productData={orderContext.productData} />

@@ -26,7 +26,7 @@ const CheckoutProgress = ({ phase, orderContext }) => {
       <div
         css={progressContainer}
         onClick={_ => {
-          phase >= 3 &&
+          phase == 3 && 
             navigate('/checkout', {
               state: { orderContext },
             })
@@ -43,15 +43,7 @@ const CheckoutProgress = ({ phase, orderContext }) => {
         </div>
       </div>
       {phase < 3 && <div css={progressBar}></div>}
-      <div
-        css={progressContainer}
-        onClick={_ => {
-          phase >= 4 &&
-            navigate('/payment', {
-              state: { orderContext },
-            })
-        }}
-      >
+      <div css={progressContainer}>
         <div
           className={phase >= 3 ? 'currentProgressBall' : ''}
           css={progressBall}

@@ -84,12 +84,7 @@ const CartProduct = ({
               : 'Single - $' + price}
           </div>
         </div>
-        {updateCartQuantity === undefined && (
-          <div css={orderQuantityContainer}>
-            <div css={orderQuantity}>{cartQuantity}</div>
-          </div>
-        )}
-        {updateCartQuantity !== undefined && (
+        {updateCartQuantity !== undefined ? (
           <div css={quantityChangerContainer}>
             <div
               onClick={e => {
@@ -149,6 +144,10 @@ const CartProduct = ({
                 />
               </svg>
             </div>
+          </div>
+        ) : (
+          <div css={orderQuantityContainer}>
+            <div css={orderQuantity}>{cartQuantity}</div>
           </div>
         )}
         <div css={subtotalContainer}>

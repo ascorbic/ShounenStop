@@ -4,7 +4,7 @@ import SEO from '../components/Common/seo'
 import CheckoutContainer from '../components/Checkout/CheckoutContainer'
 
 const Checkout = ({ location }) => {
-
+  console.log(location)
   return (
     <>
       <SEO title="Checkout" />

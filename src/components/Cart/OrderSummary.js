@@ -9,7 +9,7 @@ const OrderSummary = ({
   shippingInfo,
   navigateMessage,
   disableButton,
-  children
+  children,
 }) => {
   const shippingPrice = shippingInfo['standardShipping'].price
   const totalPrice = subTotal + shippingPrice
@@ -41,22 +41,32 @@ const OrderSummary = ({
             <div css={orderTotalAmount}>{'$' + totalPrice.toFixed(2)}</div>
           </div>
         </div>
-        <div
-          onClick={!disableButton && checkoutNavigate}
-          className={disableButton ? 'buttonDisabled' : ''}
-          css={checkoutButton}
-        >
-          {navigateMessage}
-        </div>
+        {checkoutNavigate ? (
+          <div
+            onClick={!disableButton ? checkoutNavigate : () => {}}
+            className={disableButton ? 'buttonDisabled' : ''}
+            css={checkoutButton}
+          >
+            {navigateMessage}
+          </div>
+        ) : (
+          <div css={totalPadding}></div>
+        )}
       </div>
       {children}
     </div>
   )
 }
 
+const totalPadding = css`
+  position: relative;
+  height: 35px;
+`
+
 const pricingContainer = css`
   padding-right: 10px;
   padding-left: 10px;
+  padding-bottom:20px;
 `
 
 const pricesContainer = css`

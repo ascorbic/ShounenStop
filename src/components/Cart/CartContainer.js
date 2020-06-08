@@ -43,8 +43,6 @@ const CartContainer = ({}) => {
             var productMetadata = {}
             productMetadata = edges.find(x => x.node.frontmatter.asin === asin)
               .node.frontmatter
-            if (productData[asin] === undefined) {
-            }
 
             const productPrice = productMetadata['pricings'].find(
               x => x.quantity === pricingQuantity
@@ -58,7 +56,7 @@ const CartContainer = ({}) => {
 
             const subtotal = productPrice * cartQuantity
             totalPrice += subtotal
-            totalItems += 1
+            totalItems += cartQuantity
 
             // productData[asin].cartQuantities[pricingQuantity] = {
             //   quantity: cartQuantity,
@@ -81,6 +79,7 @@ const CartContainer = ({}) => {
           productData: productData,
           totalItems: totalItems,
           subTotal: totalPrice,
+          totalPrice: (totalPrice+shippingData.standardShipping.price),
           shippingInfo: shippingData,
         }
 

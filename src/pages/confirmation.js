@@ -7,11 +7,12 @@ const Confirmation = ({ location }) => {
   return (
     <>
       <SEO title="Confirmation" />
-      {typeof window !== "undefined" && location.state === null ? (
-        navigate('/cart')
-      ) : (
-        <ConfirmationContainer orderContext={location.state.orderContext} />
-      )}
+      {typeof window !== 'undefined' &&
+        (location.state === null ? (
+          navigate('/cart')
+        ) : (
+          <ConfirmationContainer orderContext={location.state.orderContext} />
+        ))}
     </>
   )
 }

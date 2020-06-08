@@ -7,11 +7,12 @@ const Checkout = ({ location }) => {
   return (
     <>
       <SEO title="Checkout" />
-      {typeof window !== "undefined" && location.state === null ? (
-        navigate('/cart')
-      ) : (
-        <CheckoutContainer orderContext={location.state.orderContext} />
-      )}
+      {typeof window !== 'undefined' &&
+        (location.state === null ? (
+          navigate('/cart')
+        ) : (
+          <CheckoutContainer orderContext={location.state.orderContext} />
+        ))}
     </>
   )
 }

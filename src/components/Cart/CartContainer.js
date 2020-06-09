@@ -70,7 +70,7 @@ const CartContainer = ({}) => {
         const shippingData = {
           standardShipping: {
             name: 'Standard Shipping',
-            price: 5,
+            price: 0,
             speed: '2-4 Weeks',
           },
         }

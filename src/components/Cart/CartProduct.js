@@ -161,7 +161,7 @@ const CartProduct = ({
               x
             </div>
           )}
-          <div css={subtotalStyles}>{'$' + price * cartQuantity}</div>
+          <div css={subtotalStyles}>{'$' + (price * cartQuantity).toFixed(2)}</div>
         </div>
       </div>
     </div>
@@ -223,7 +223,7 @@ const removeItem = css`
   margin-top: -2px;
   align-self: center;
   font-size: 20px;
-
+  user-select: none;
   &:active {
     transition: none;
     background-color: #efefef;
@@ -245,15 +245,19 @@ const subtotalStyles = css`
   color: #151515;
   align-self: center;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   @media only screen and (max-width: 350px) {
     font-size: 14px;
-    margin-right: -5px;
+    margin-left:5px;
+    margin-right: -15px;
   }
 `
 
 const orderQuantity = css`
   font-size: 20px;
+  @media only screen and (max-width: 350px) {
+    font-size: 14px !important;
+  }
 `
 
 const orderQuantityContainer = css`

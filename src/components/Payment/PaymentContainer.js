@@ -7,8 +7,11 @@ import CheckoutHeader from '../Checkout/CheckoutHeader'
 import { Container, Row } from 'react-bootstrap'
 import CheckoutProgress from '../Checkout/CheckoutProgress'
 import OrderSummary from '../Cart/OrderSummary'
+import OrderDetails from '../Checkout/OrderDetails'
+import ShippingDetails from '../Checkout/ShippingDetails'
+import QACardList from './QACardList'
 
-const sendOrderData = true
+const sendOrderData = false
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
@@ -28,7 +31,7 @@ class PaymentContainer extends React.Component {
       timeLimitStarted: false,
       timeLimit: 600,
       orderTimestamp: orderTimestamp,
-      validateTimerId:""
+      validateTimerId: '',
     }
 
     this.startValidatingPayment = this.startValidatingPayment.bind(this)
@@ -43,7 +46,7 @@ class PaymentContainer extends React.Component {
       })
       delay(3000).then(
         (this.state.validateTimerId = setInterval(() => {
-          var self = this;
+          var self = this
           axios
             .get(
               'https://us-central1-shounenstop.cloudfunctions.net/CheckPaymentValidated?email=' +
@@ -52,6 +55,7 @@ class PaymentContainer extends React.Component {
                 this.state.orderTimestamp
             )
             .then(function(response) {
+              console.log(response)
               if (response.data === 'VALID') {
                 clearInterval(self.state.validateTimerId)
                 navigate('/confirmation', {
@@ -117,7 +121,7 @@ class PaymentContainer extends React.Component {
         <Row>
           <div
             css={paymentContainer}
-            className="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-xs-12"
+            className="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-xs-12"
           >
             <CheckoutHeader
               header="Payment"
@@ -133,8 +137,7 @@ class PaymentContainer extends React.Component {
               className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
             >
               <div css={timeLimitContainer}>
-                <div></div>
-                {secondsToMinutes(this.state.timeLimit)}
+                {'Session: ' + secondsToMinutes(this.state.timeLimit)}
               </div>
               <StaticQuery
                 query={graphql`
@@ -165,7 +168,12 @@ class PaymentContainer extends React.Component {
                       <div
                         css={paypalButton}
                         onClick={() => {
-                          this.startValidatingPayment()
+                          if (sendOrderData) {
+                            this.startValidatingPayment()
+                          }
+                          navigate('/confirmation', {
+                            state: { orderContext: this.props.orderContext },
+                          })
                         }}
                       >
                         <a
@@ -189,6 +197,12 @@ class PaymentContainer extends React.Component {
                 }}
               />
             </div>
+            <div
+              css={QACardListContainer}
+              className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+            >
+              <QACardList />
+            </div>
           </div>
           <OrderSummary
             orderContext={this.props.orderContext}
@@ -196,6 +210,12 @@ class PaymentContainer extends React.Component {
             totalItems={this.props.orderContext.totalItems}
             shippingInfo={this.props.orderContext.shippingInfo}
           >
+            <ShippingDetails
+              shippingData={this.props.orderContext.shippingInfo}
+              userInfo={this.props.orderContext.userInfo}
+            />
+            <OrderDetails productData={this.props.orderContext.productData} />
+
             {/* Add shipping summary */}
           </OrderSummary>
         </Row>
@@ -206,12 +226,17 @@ class PaymentContainer extends React.Component {
 
 const timeLimitContainer = css`
   position: absolute;
+  text-align: right;
+  width: 50%;
   right: 10px;
   color: #0f346c;
   font-family: lato;
   font-weight: 700;
   top: 0;
   font-size: 20px;
+  @media only screen and (max-width: 350px) {
+    font-size: 15px !important;
+  }
 `
 
 const paypalButtonLink = css`
@@ -312,5 +337,13 @@ const paymentContainer = css`
   padding-right: 10px;
   padding-bottom: 20px;
 `
+
+
+const QACardListContainer = css`
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom:20px;
+`;
+
 
 export default PaymentContainer

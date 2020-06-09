@@ -12,7 +12,6 @@ const OrderDetails = ({
 }) => {
 
   return (
-
       <div css={orderContainer}>
         <div css={cartHeader}>Order Details</div>
         <div css={orderDetailsContainer}>
@@ -43,6 +42,7 @@ const orderContainer = css`
 const orderDetailsContainer = css`
   position: relative;
   width: 100%;
+  margin-top:10px;
 `
 
 const cartHeader = css`

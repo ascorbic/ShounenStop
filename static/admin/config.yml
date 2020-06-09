@@ -125,3 +125,11 @@ collections:
           widget: 'hidden',
           default: 'weiss',
         }
+  # - name: questions
+  #   label: Questions and Answers
+  #   create: true
+  #   folder: content/weiss
+  #   slug: '{{displayName}}-{{producttype}}'
+  #   fields:
+  #     - { label: Name, name: name, widget: string }
+  #     - { label: Answer, name: description, widget: text }

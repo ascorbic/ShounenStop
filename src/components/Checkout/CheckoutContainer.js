@@ -75,7 +75,7 @@ const CheckoutContainer = ({ orderContext }) => {
             <Row>
               <div
                 css={deliveryContainer}
-                className="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-xs-12"
+                className="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-xs-12"
               >
                 <CheckoutHeader
                   header="Delivery"
@@ -354,6 +354,7 @@ const userInfoInput = css`
   width: 100%;
   border: none;
   border-bottom: solid 1px #dfdfdf;
+  -webkit-appearance: none;
 
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
@@ -401,42 +402,6 @@ const userInfoError = css`
   color: #d20d0d;
 `
 
-const userInfoSelect = css`
-  // height: 25px;
-  // line-height: 0px;
-  // font-size: 18px;
-  // border-bottom: solid 1px #dfdfdf;
-
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-
-  // &:focus {
-  //   border-bottom: solid 1px #0f346c;
-  // }
-
-  align-items: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  background: #fff;
-  // border: 1px solid #767677;
-  border-radius: 0px;
-  // color: #000;
-  cursor: pointer;
-  display: flex;
-  font-size: 16px;
-  height: 25px;
-  justify-content: space-between;
-  line-height: 20px;
-  margin: 0;
-  padding: 0 20px;
-  position: relative;
-  width: 100%;
-`
-
 const deliveryContainer = css`
   padding-left: 10px;
   padding-right: 10px;
@@ -462,16 +427,4 @@ const userInfoContainer = css`
   }
 `
 
-const header = css`
-  color: #0f346c;
-  font-size: 26px;
-  width: 100%;
-  font-family: varela round;
-`
-const cartDivider = css`
-  height: 1px;
-  width: 100%;
-  margin-bottom: 10px;
-  background-color: #a1bce6;
-`
 export default CheckoutContainer

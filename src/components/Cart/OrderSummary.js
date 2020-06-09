@@ -15,7 +15,7 @@ const OrderSummary = ({
   const totalPrice = subTotal + shippingPrice
   return (
     <div
-      className="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-xs-12"
+      className="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-xs-12"
       css={pricingContainer}
     >
       <div css={pricesContainer}>
@@ -97,7 +97,7 @@ const subTotalAmount = css`
 `
 
 const subTotalContainer = css`
-  padding-top: 30px;
+  padding-top: 20px;
   font-family: Lato;
   width: 100%;
 `

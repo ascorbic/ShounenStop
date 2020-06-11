@@ -33,6 +33,11 @@ const backButton = css`
   height: 30px;
   width: 30px;
   float: right;
+  transition: all 0.2s ease-in-out;
+
+  &:hover{
+    transform:scale(1.08)
+  }
 `
 
 const cartHeader = css`

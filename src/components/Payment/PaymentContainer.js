@@ -4,14 +4,14 @@ import { css } from '@emotion/core'
 import Img from 'gatsby-image'
 import axios from 'axios'
 import CheckoutHeader from '../Checkout/CheckoutHeader'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Form } from 'react-bootstrap'
 import CheckoutProgress from '../Checkout/CheckoutProgress'
 import OrderSummary from '../Cart/OrderSummary'
 import OrderDetails from '../Checkout/OrderDetails'
 import ShippingDetails from '../Checkout/ShippingDetails'
 import QACardList from './QACardList'
 
-const sendOrderData = false
+const sendOrderData = true
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
@@ -23,18 +23,21 @@ const secondsToMinutes = sec => {
 
 class PaymentContainer extends React.Component {
   constructor(props) {
-    var today = new Date() //date.now?
-    const orderTimestamp = today.toUTCString()
     super(props)
+    const paypalFeeAmount = (props.orderContext.totalPrice * 0.029 + 0.3).toFixed(2)
     this.state = {
       isValidating: false,
       timeLimitStarted: false,
       timeLimit: 600,
-      orderTimestamp: orderTimestamp,
+      orderTimestamp: new Date().toUTCString(),
       validateTimerId: '',
+      paypalFeesEnabled: false,
+      paypalFees: paypalFeeAmount,
+      currentTotal: props.orderContext.totalPrice
     }
 
     this.startValidatingPayment = this.startValidatingPayment.bind(this)
+    this.sendCheckoutData = this.sendCheckoutData.bind(this)
     this.stopTimeLimit = this.stopTimeLimit.bind(this)
     this.resetTimeLimit = this.resetTimeLimit.bind(this)
   }
@@ -63,7 +66,7 @@ class PaymentContainer extends React.Component {
                 })
               }
             })
-        }, 5000))
+        }, 3000))
       )
     }
   }
@@ -74,10 +77,14 @@ class PaymentContainer extends React.Component {
     this.setState({ timeLimit: 600, timeLimitStarted: false })
   }
 
-  componentDidMount() {
+  sendCheckoutData() {
     var orderInfo = this.props.orderContext
-    orderInfo.timestamp = this.state.orderTimestamp
+    var timestamp = new Date().toUTCString()
+    this.setState({ orderTimestamp: timestamp })
+    orderInfo.timestamp = timestamp
     orderInfo.validated = false
+    orderInfo.paypalFees = this.state.paypalFeesEnabled
+    orderInfo.totalPrice = this.state.currentTotal
 
     if (sendOrderData) {
       axios
@@ -89,7 +96,9 @@ class PaymentContainer extends React.Component {
           console.log(response)
         })
     }
+  }
 
+  componentDidMount() {
     this.setState({
       timeLimitStarted: true,
     })
@@ -132,81 +141,138 @@ class PaymentContainer extends React.Component {
                 })
               }}
             />
-            <div
-              css={paypalContainer}
-              className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            >
-              <div css={timeLimitContainer}>
-                {'Session: ' + secondsToMinutes(this.state.timeLimit)}
-              </div>
-              <StaticQuery
-                query={graphql`
-                  query {
-                    paypalMeImage: file(
-                      relativePath: { eq: "paypalmewhitetoned.png" }
-                    ) {
-                      childImageSharp {
-                        fluid(maxWidth: 500) {
-                          ...GatsbyImageSharpFluid
-                        }
+            <StaticQuery
+              query={graphql`
+                query {
+                  paypalMeImage: file(
+                    relativePath: { eq: "paypalmewhitetoned.png" }
+                  ) {
+                    childImageSharp {
+                      fluid(maxWidth: 500) {
+                        ...GatsbyImageSharpFluid
                       }
                     }
                   }
-                `}
-                render={data => {
-                  return (
-                    <div css={paypalProcess}>
-                      <div css={priceContainer}>
-                        <Row css={priceText}>
-                          <div css={dollarTop}>$</div>
-                          <div css={priceActual}>
-                            {this.props.orderContext.totalPrice.toFixed(2)}
-                          </div>
-                        </Row>
-                        <div css={currency}>USD</div>
+                  lockImage: file(relativePath: { eq: "lock.png" }) {
+                    childImageSharp {
+                      fluid(maxWidth: 500) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              `}
+              render={data => {
+                return (
+                  <>
+                    <div
+                      css={paypalContainer}
+                      className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                    >
+                      <div css={paypalSecure}>
+                        <Img
+                          css={lockImgStyles}
+                          fluid={data.lockImage.childImageSharp.fluid}
+                        />
+                        Secured by Paypal
                       </div>
-                      <div
-                        css={paypalButton}
-                        onClick={() => {
-                          if (sendOrderData) {
-                            this.startValidatingPayment()
-                          }
-                          navigate('/confirmation', {
-                            state: { orderContext: this.props.orderContext },
-                          })
-                        }}
-                      >
-                        <a
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={
-                            'https://paypal.me/jonathanwu70/' +
-                            this.props.orderContext.totalPrice.toFixed(2) +
-                            'USD'
-                          }
-                          css={paypalButtonLink}
+                      <div css={timeLimitContainer}>
+                        {'Session: ' + secondsToMinutes(this.state.timeLimit)}
+                      </div>
+
+                      <div css={paypalProcess}>
+                        <div css={priceContainer}>
+                          <Row css={priceText}>
+                            <div css={dollarTop}>$</div>
+                            <div css={priceActual}>
+                              {this.state.currentTotal.toFixed(2)}
+                            </div>
+                          </Row>
+                          <div css={currency}>USD</div>
+                        </div>
+                        <div
+                          css={paypalButton}
+                          onClick={() => {
+                            if (sendOrderData) {
+                              this.sendCheckoutData()
+                              this.startValidatingPayment()
+                            } else {
+                              navigate('/confirmation', {
+                                state: {
+                                  orderContext: this.props.orderContext,
+                                },
+                              })
+                            }
+                          }}
                         >
-                          <Img
-                            css={imgStyles}
-                            fluid={data.paypalMeImage.childImageSharp.fluid}
-                          />
-                        </a>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href={
+                              'https://paypal.me/jonathanwu70/' +
+                              this.props.orderContext.totalPrice.toFixed(2) +
+                              'USD'
+                            }
+                            css={paypalButtonLink}
+                          >
+                            <Img
+                              css={imgStyles}
+                              fluid={data.paypalMeImage.childImageSharp.fluid}
+                            />
+                          </a>
+                        </div>
                       </div>
+                      <div></div>
+                      <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check
+                          onClick={() => {
+                            this.setState(prevState => {
+                              var total = prevState.currentTotal
+                              if(prevState.paypalFeesEnabled){
+                                total -= this.state.paypalFees
+                              }
+                              else{
+                                total += this.state.paypalFees
+                              }
+                              return {
+                                paypalFeesEnabled: !prevState.paypalFeesEnabled,
+                                currentTotal: total
+                              }
+                            })
+                          }}
+                          css={paypalGoodsCheckbox}
+                          type="checkbox"
+                          label="Enable Paypal Goods and Services for a fee."
+                        />
+                      </Form.Group>
+                      {/* <div css={disclaimerContainer}>
+                        <div css={disclaimerTextGoods}>
+                          Please pay the exact amount <b>WITHOUT</b> goods and
+                          services or the transaction will <b>NOT</b> succeed.
+                        </div>
+                        <div css={disclaimerTextReasons}>
+                          This allows us to offer the best price by not having
+                          to pay a fee. You can verify our credibility as a
+                          seller below.
+                        </div>
+                      </div> */}
                     </div>
-                  )
-                }}
-              />
-            </div>
-            <div
-              css={QACardListContainer}
-              className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-            >
-              <QACardList />
-            </div>
+                    <div
+                      css={QACardListContainer}
+                      className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                    >
+                      <QACardList />
+                    </div>
+                  </>
+                )
+              }}
+            />
           </div>
+
           <OrderSummary
             orderContext={this.props.orderContext}
             subTotal={this.props.orderContext.subTotal}
+            fees={this.state.paypalFeesEnabled ? this.state.paypalFees : 0}
             totalItems={this.props.orderContext.totalItems}
             shippingInfo={this.props.orderContext.shippingInfo}
           >
@@ -223,6 +289,58 @@ class PaymentContainer extends React.Component {
     )
   }
 }
+
+const paypalGoodsCheckbox = css``
+
+const disclaimerTextReasons = css`
+  padding-top: 10px;
+  font-size: 16px;
+`
+
+const disclaimerTextGoods = css`
+  font-size: 18px;
+`
+
+const disclaimerContainer = css`
+  text-align: center;
+  margin-top: -10px;
+  width: 100%;
+  max-width: 520px;
+  padding-bottom: 10px;
+`
+
+const lockImgStyles = css`
+  width: 16px;
+  height: 16px;
+  margin-top: 8px;
+  margin-right: 5px;
+  @media only screen and (max-width: 350px) {
+    margin-top: 6px;
+    width: 13px;
+    height: 13px;
+  }
+`
+
+const paypalSecure = css`
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: -3px;
+  left: -5px;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  line-height: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: 300;
+  background-color: #0f346c;
+  z-index: 1;
+  display: inline-flex;
+  color: #fff;
+  @media only screen and (max-width: 350px) {
+    font-size: 10px !important;
+    line-height: 27px;
+  }
+`
 
 const timeLimitContainer = css`
   position: absolute;
@@ -274,6 +392,7 @@ const dollarTop = css`
 
 const priceContainer = css`
   font-size: 35px;
+  margin-top: 10px;
   text-align: center;
   color: #151515;
   position: relative;
@@ -310,7 +429,6 @@ const paypalButton = css`
 `
 
 const paypalProcess = css`
-  margin-top: 20px;
   height: 200px;
   width: 100%;
 
@@ -335,15 +453,13 @@ const paypalContainer = css`
 const paymentContainer = css`
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
 `
-
 
 const QACardListContainer = css`
   padding-right: 0;
   padding-left: 0;
-  padding-bottom:20px;
-`;
-
+  padding-bottom: 20px;
+`
 
 export default PaymentContainer

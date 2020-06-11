@@ -125,11 +125,13 @@ collections:
           widget: 'hidden',
           default: 'weiss',
         }
-  # - name: questions
-  #   label: Questions and Answers
-  #   create: true
-  #   folder: content/weiss
-  #   slug: '{{displayName}}-{{producttype}}'
-  #   fields:
-  #     - { label: Name, name: name, widget: string }
-  #     - { label: Answer, name: description, widget: text }
+  - name: questions
+    label: Questions and Answers
+    create: true
+    folder: content/qa
+    slug: 'qa-{{order}}-{{id}}'
+    fields:
+      - { label: Question, name: question, widget: string }
+      - { label: Answer, name: answer, widget: text }
+      - { label: Order of qa card, name: order, default: 1, valueType: int, widget: number, min: 1 }
+      - { label: ID, name: id, widget: ncw-id, hidden: true }

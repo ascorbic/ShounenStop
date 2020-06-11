@@ -7,12 +7,15 @@ const OrderSummary = ({
   totalItems,
   subTotal,
   shippingInfo,
+  fees,
   navigateMessage,
   disableButton,
   children,
 }) => {
   const shippingPrice = shippingInfo['standardShipping'].price
-  const totalPrice = subTotal + shippingPrice
+  fees = fees === undefined ? 0 : fees
+  const totalPrice = subTotal + shippingPrice + fees
+
   return (
     <div
       className="col-xl-4 col-lg-5 col-md-12 col-sm-12 col-xs-12"
@@ -34,6 +37,10 @@ const OrderSummary = ({
             <div css={shippingTotalAmount}>
               {'$' + shippingPrice.toFixed(2)}
             </div>
+          </div>
+          <div css={feesTotalContainer}>
+            <div css={feesTotalText}>Goods and Services fees</div>
+            <div css={feesTotalAmount}>{'$' + fees.toFixed(2)}</div>
           </div>
           <div css={totalBar}></div>
           <div css={orderTotalContainer}>
@@ -58,6 +65,24 @@ const OrderSummary = ({
   )
 }
 
+const feesTotalText = css`
+  float: left;
+`
+
+const feesTotalAmount = css`
+  color: #151515;
+  font-weight: 700;
+  float: right;
+`
+
+const feesTotalContainer = css`
+  clear: both;
+  position: relative;
+  padding-top: 20px;
+  font-family: Lato;
+  width: 100%;
+`
+
 const totalPadding = css`
   position: relative;
   height: 35px;
@@ -66,12 +91,11 @@ const totalPadding = css`
 const pricingContainer = css`
   padding-right: 10px;
   padding-left: 10px;
-  padding-bottom:20px;
+  padding-bottom: 20px;
 `
 
 const pricesContainer = css`
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
-  // height: 500px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
@@ -86,7 +110,6 @@ const orderSummary = css`
 `
 
 const subTotalText = css`
-  // color: #b4b9c4;
   float: left;
 `
 
@@ -103,8 +126,6 @@ const subTotalContainer = css`
 `
 
 const shippingTotalText = css`
-  // color: #b4b9c4;
-
   float: left;
 `
 

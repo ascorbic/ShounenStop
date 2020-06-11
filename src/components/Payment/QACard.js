@@ -8,8 +8,10 @@ const QACard = ({ question, answer }) => {
       className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12"
     >
       <div css={cardContainer}>
-        <div css={questionContainer}>Question</div>
-        <div css={answerContainer}>Answer</div>
+        <div css={questionContainer}>{question}</div>
+        <div css={answerContainer}>
+          {answer}
+        </div>
       </div>
     </div>
   )
@@ -22,13 +24,13 @@ const qaCardContainer = css`
 
 const cardContainer = css`
   font-family: lato;
+  white-space: pre-wrap;
 
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
   border-radius: 12px;
   font-size: 15px;
   background-color: #fff;

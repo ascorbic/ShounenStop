@@ -301,7 +301,7 @@ const changeQuantity = css`
   }
 
   @media only screen and (max-width: 350px) {
-    transform: scale(3);
+    transform: scale(1.5);
   }
 `
 

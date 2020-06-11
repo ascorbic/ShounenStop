@@ -1,54 +1,46 @@
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import QACard from './QACard'
 
 const QACardList = ({}) => {
+  const cards = useStaticQuery(query)
+    .qaCards.edges.slice()
+    .sort((a, b) => (a.order > b.order ? -1 : 1))
   return (
     <div css={QACardListContainer}>
-      <QACard question="" answer="" /> <QACard question="" answer="" />
+      {cards.map(edge => (
+        <QACard
+          key={edge.node.frontmatter.order}
+          question={edge.node.frontmatter.question}
+          answer={edge.node.frontmatter.answer}
+        />
+      ))}
     </div>
   )
 }
 
 const QACardListContainer = css`
-  display:flex;
-  flex-wrap:wrap;
+  display: flex;
+  flex-wrap: wrap;
 `
 
 export default QACardList
 
-// export const query = graphql`
-//   query QACardQuery {
-//     products: allMarkdownRemark(
-//       filter: { frontmatter: { merchandise: { ne: null } } }
-//     ) {
-//       edges {
-//         node {
-//           frontmatter {
-//             asin
-//             name
-//             displayName
-//             producttype
-//             series
-//             color
-//             image {
-//               childImageSharp {
-//                 fluid(maxWidth: 1000, quality: 100) {
-//                   ...GatsbyImageSharpFluid
-//                 }
-//               }
-//             }
-//             pricings {
-//               quantity
-//               price
-//             }
-//             weight
-//             preorder(formatString: "MMM DD")
-//             release(formatString: "MMM DD")
-//             merchandise
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
+export const query = graphql`
+  query QACardQuery {
+    qaCards: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/qa/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            question
+            answer
+            order
+          }
+        }
+      }
+    }
+  }
+`

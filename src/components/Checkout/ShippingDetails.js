@@ -7,7 +7,6 @@ const getProduct = flatProduct => {
 }
 
 const ShippingDetails = ({ shippingData, userInfo }) => {
-  console.log(shippingData, userInfo)
   return (
     <div css={shippingContainer}>
       <div css={header}>Shipping Details</div>
@@ -24,8 +23,6 @@ const ShippingDetails = ({ shippingData, userInfo }) => {
             </span>
           </div>
         </div>
-
-        {/* Shipping Method: */}
         <div css={shippingAddressContainer}>
           <div css={shippingAddressHeader}>Shipping Address</div>
           <div css={shippingAddressText}>
@@ -53,6 +50,7 @@ const ShippingDetails = ({ shippingData, userInfo }) => {
 
 const shippingMethodHeader = css`
   font-weight: 700;
+  color:#151515;
 `
 
 const shippingMethodContainer = css`
@@ -78,6 +76,7 @@ const addressLine = css`
 
 const shippingAddressHeader = css`
   font-weight: 700;
+  color:#151515;
 `
 
 const shippingAddressContainer = css`
@@ -93,7 +92,6 @@ const shippingAddressText = css`
 
 const shippingContainer = css`
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
-  // height: 500px;
   padding-left: 12px;
   padding-right: 10px;
   padding-bottom: 20px;

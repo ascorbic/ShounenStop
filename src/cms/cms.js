@@ -1,6 +1,9 @@
 import CMS from 'netlify-cms-app';
 import axios from 'axios';
+import { Widget as IdWidget } from '@ncwidgets/id'
 
+CMS.registerWidget(IdWidget)
+CMS.init()
 CMS.registerEventListener({
   name: 'postPublish',
   handler: ({ author, entry }) => {

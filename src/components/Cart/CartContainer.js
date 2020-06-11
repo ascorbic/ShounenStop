@@ -101,6 +101,7 @@ const CartContainer = ({}) => {
                       state: { orderContext },
                     })
                   }
+                  fees={0}
                   orderContext={orderContext}
                   subTotal={orderContext.subTotal}
                   totalItems={orderContext.totalItems}

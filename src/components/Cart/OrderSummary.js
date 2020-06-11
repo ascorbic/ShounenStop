@@ -13,7 +13,6 @@ const OrderSummary = ({
   children,
 }) => {
   const shippingPrice = shippingInfo['standardShipping'].price
-  fees = fees === undefined ? 0 : fees
   const totalPrice = subTotal + shippingPrice + fees
 
   return (

@@ -24,7 +24,7 @@ const secondsToMinutes = sec => {
 class PaymentContainer extends React.Component {
   constructor(props) {
     super(props)
-    const paypalFeeAmount = (props.orderContext.totalPrice * 0.029 + 0.3).toFixed(2)
+    const paypalFeeAmount = Number((props.orderContext.totalPrice * 0.029 + 0.3).toFixed(2))
     this.state = {
       isValidating: false,
       timeLimitStarted: false,
@@ -228,6 +228,8 @@ class PaymentContainer extends React.Component {
                           onClick={() => {
                             this.setState(prevState => {
                               var total = prevState.currentTotal
+                              console.log(total)
+                              console.log(this.state.paypalFees)
                               if(prevState.paypalFeesEnabled){
                                 total -= this.state.paypalFees
                               }

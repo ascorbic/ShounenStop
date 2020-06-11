@@ -83,7 +83,7 @@ class PaymentContainer extends React.Component {
     this.setState({ orderTimestamp: timestamp })
     orderInfo.timestamp = timestamp
     orderInfo.validated = false
-    orderInfo.paypalFees = this.state.paypalFeesEnabled
+    orderInfo.paypalFeesEnabled = this.state.paypalFeesEnabled
     orderInfo.totalPrice = this.state.currentTotal
 
     if (sendOrderData) {

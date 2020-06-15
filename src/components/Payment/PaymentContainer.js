@@ -11,7 +11,7 @@ import OrderDetails from '../Checkout/OrderDetails'
 import ShippingDetails from '../Checkout/ShippingDetails'
 import QACardList from './QACardList'
 
-const sendOrderData = true
+const sendOrderData = false
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
@@ -24,7 +24,9 @@ const secondsToMinutes = sec => {
 class PaymentContainer extends React.Component {
   constructor(props) {
     super(props)
-    const paypalFeeAmount = Number((props.orderContext.totalPrice * 0.029 + 0.3).toFixed(2))
+    const paypalFeeAmount = Number(
+      (props.orderContext.totalPrice * 0.029 + 0.3).toFixed(2)
+    )
     this.state = {
       isValidating: false,
       timeLimitStarted: false,
@@ -33,7 +35,7 @@ class PaymentContainer extends React.Component {
       validateTimerId: '',
       paypalFeesEnabled: false,
       paypalFees: paypalFeeAmount,
-      currentTotal: props.orderContext.totalPrice
+      currentTotal: props.orderContext.totalPrice,
     }
 
     this.startValidatingPayment = this.startValidatingPayment.bind(this)
@@ -47,7 +49,7 @@ class PaymentContainer extends React.Component {
       this.setState({
         isValidating: true,
       })
-      delay(3000).then(
+      delay(10000).then(
         (this.state.validateTimerId = setInterval(() => {
           var self = this
           axios
@@ -196,6 +198,11 @@ class PaymentContainer extends React.Component {
                             if (sendOrderData) {
                               this.sendCheckoutData()
                               this.startValidatingPayment()
+                              const paypalLink =
+                                'https://paypal.me/jonathanwu70/' +
+                                this.props.orderContext.totalPrice.toFixed(2) +
+                                'USD'
+                              window.open(paypalLink, '_blank')
                             } else {
                               navigate('/confirmation', {
                                 state: {
@@ -205,24 +212,12 @@ class PaymentContainer extends React.Component {
                             }
                           }}
                         >
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            href={
-                              'https://paypal.me/jonathanwu70/' +
-                              this.props.orderContext.totalPrice.toFixed(2) +
-                              'USD'
-                            }
-                            css={paypalButtonLink}
-                          >
-                            <Img
-                              css={imgStyles}
-                              fluid={data.paypalMeImage.childImageSharp.fluid}
-                            />
-                          </a>
+                          <Img
+                            css={imgStyles}
+                            fluid={data.paypalMeImage.childImageSharp.fluid}
+                          />
                         </div>
                       </div>
-                      <div></div>
                       <Form.Group controlId="formBasicCheckbox">
                         <Form.Check
                           onClick={() => {
@@ -230,15 +225,14 @@ class PaymentContainer extends React.Component {
                               var total = prevState.currentTotal
                               console.log(total)
                               console.log(this.state.paypalFees)
-                              if(prevState.paypalFeesEnabled){
+                              if (prevState.paypalFeesEnabled) {
                                 total -= this.state.paypalFees
-                              }
-                              else{
+                              } else {
                                 total += this.state.paypalFees
                               }
                               return {
                                 paypalFeesEnabled: !prevState.paypalFeesEnabled,
-                                currentTotal: total
+                                currentTotal: total,
                               }
                             })
                           }}
@@ -247,23 +241,43 @@ class PaymentContainer extends React.Component {
                           label="Enable Paypal Goods and Services for a fee."
                         />
                       </Form.Group>
-                      {/* <div css={disclaimerContainer}>
+                      <div css={disclaimerContainer}>
+                        <div css={feeHeader}>Fee Information</div>
                         <div css={disclaimerTextGoods}>
-                          Please pay the exact amount <b>WITHOUT</b> goods and
-                          services or the transaction will <b>NOT</b> succeed.
+                          - Please pay the exact amount or the transaction will{' '}
+                          <b>NOT</b> succeed. <br />- For Paypal Goods and
+                          Services Protection, you must enable it here for a
+                          fee.
                         </div>
                         <div css={disclaimerTextReasons}>
-                          This allows us to offer the best price by not having
+                          - This allows us to offer the best price by not having
                           to pay a fee. You can verify our credibility as a
                           seller below.
                         </div>
-                      </div> */}
+                      </div>
+                      <div css={credibilityInformation}>
+                        <div css={credibilityHeader}>Credibility</div>
+                        <div className="row">
+                          <div
+                            css={credibilityItem}
+                            className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
+                          >
+                            Facebook
+                          </div>
+                          <div
+                            css={credibilityItem}
+                            className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
+                          >
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div
                       css={QACardListContainer}
                       className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
                     >
-                      <QACardList />
+                      {/* <QACardList /> */}
                     </div>
                   </>
                 )
@@ -287,27 +301,135 @@ class PaymentContainer extends React.Component {
             {/* Add shipping summary */}
           </OrderSummary>
         </Row>
+        {this.state.isValidating && (
+          <div css={loadingScreenContainer}>
+            <div
+              css={closeLoadingButton}
+              onClick={() => {
+                this.setState({ isValidating: false })
+              }}
+            >
+              x
+            </div>
+            <div css={loadingSpinnerWrapper}>
+              <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+              </div>
+            </div>
+
+            <div css={loadingConfirmationText}>
+              Please wait for Paypal to Confirm
+              <br />
+              If you refresh you, will lose your progress
+              <br />
+              Confirmation can take up to a minute but usually only takes 15
+              seconds
+            </div>
+          </div>
+        )}
       </Container>
     )
   }
 }
 
-const paypalGoodsCheckbox = css``
+const credibilityItem = css`
+  display: flex;
+  align-items: center;
+`
+
+const credibilityInformation = css`
+  text-align: left;
+  width: 100%;
+  padding-bottom: 10px;
+
+  flex-wrap: wrap;
+`
+
+const credibilityHeader = css`
+  width: 100%;
+  font-family: varela round;
+  font-weight: 700;
+  color: #0f346c;
+  padding-top: 5px;
+  font-size: 24px;
+`
+
+const paypalGoodsCheckbox = css`
+  font-family: lato;
+  width: 100%;
+  padding-left: 0;
+  @media only screen and (max-width: 350px) {
+    & label {
+      font-size: 12px !important;
+    }
+  }
+`
+
+const loadingSpinnerWrapper = css`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const closeLoadingButton = css`
+  font-size: 60px;
+  font-family: varela round;
+  top: 30px;
+  right: 16px;
+  position: fixed;
+  color: #ddd;
+  cursor: pointer;
+`
+
+const loadingConfirmationText = css`
+  text-align: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  color: #ddd;
+`
+
+const loadingScreenContainer = css`
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  // opacity: 0.6;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  flex-wrap: wrap;
+`
+
+const feeHeader = css`
+  font-family: varela round;
+  font-weight: 700;
+  color: #0f346c;
+  padding-top: 5px;
+  font-size: 24px;
+`
 
 const disclaimerTextReasons = css`
-  padding-top: 10px;
-  font-size: 16px;
+  // padding-top: 10px;
+  font-size: 15px;
+  font-family: lato;
 `
 
 const disclaimerTextGoods = css`
-  font-size: 18px;
+  font-family: lato;
+  font-size: 15px;
 `
 
 const disclaimerContainer = css`
-  text-align: center;
+  text-align: left;
   margin-top: -10px;
   width: 100%;
-  max-width: 520px;
   padding-bottom: 10px;
 `
 
@@ -359,13 +481,7 @@ const timeLimitContainer = css`
   }
 `
 
-const paypalButtonLink = css`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
+const paypalButtonLink = css``
 
 const currency = css`
   font-size: 15px;
@@ -408,6 +524,7 @@ const imgStyles = css`
 `
 
 const paypalButton = css`
+  cursor: pointer;
   position: relative;
   border-radius: 6px;
   height: 60px;
@@ -415,7 +532,9 @@ const paypalButton = css`
   max-width: 300px;
   background-color: #0070ba;
   margin-top: -30px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1);

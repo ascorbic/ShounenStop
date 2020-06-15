@@ -8,9 +8,9 @@ const NewReleases = ({ releaseList }) => {
     <div css={releasesContainer}>
       <div css={releasesContent}>
         <div css={header}>
-          <div css={headerLeft}></div>
+          <div css={headerBar}></div>
           <div css={releasesHeader}>New Releases</div>
-          <div css={headerRight}></div>
+          <div css={headerBar}></div>
         </div>
         <NewReleasesList
           release1={releaseList.release1}
@@ -38,11 +38,6 @@ const releasesContent = css`
   padding-right: 8%;
 `
 
-const cardStyles = css`
-  // flex: 0 1 calc(25% - 1em);
-  // max-width:200px !important;
-`
-
 const header = css`
   display: flex;
   flex-wrap: nowrap;
@@ -50,16 +45,10 @@ const header = css`
   align-items: center;
 `
 
-const headerLeft = css`
+const headerBar = css`
   height: 1.5px;
   flex-grow: 1;
-  background-color: #303235;
-`
-
-const headerRight = css`
-  height: 1.5px;
-  flex-grow: 1;
-  background-color: #303235;
+  background-color: #0f346c;
 `
 
 const releasesHeader = css`
@@ -67,7 +56,7 @@ const releasesHeader = css`
   font-size: 30px;
   font-family: 'lato';
   margin: 0px 20px;
-  color: #303235;
+  color: #0f346c;
 `
 
 export default NewReleases

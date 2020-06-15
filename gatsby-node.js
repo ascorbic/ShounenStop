@@ -4,16 +4,34 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 const path = require(`path`)
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
+  if (node.frontmatter != undefined) {
+    console.log(node.frontmatter.image)
+  }
 
   fmImagesToRelative(node)
   if (node.internal.type === 'MarkdownRemark') {
-    const fileNode = getNode(node.parent)
     const slug = createFilePath({ node, getNode, basePath: `pages` })
     createNodeField({
       node,
       name: `slug`,
       value: slug,
     })
+
+    if (node.frontmatter.productCategory !== undefined) {
+      console.log(node.frontmatter.image)
+
+      createNodeField({
+        node,
+        name: `productCategory`,
+        value: node.frontmatter.productCategory,
+      })
+      createNodeField({
+        node,
+        name: `imagePath`,
+        value: node.frontmatter.image,
+      })
+    }
+    // console.log(node)
   }
 }
 
@@ -80,6 +98,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             fields {
               slug
+              productCategory
             }
           }
         }
@@ -87,13 +106,21 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  console.log(JSON.stringify(result, null, 4))
-
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-
-    if (node.fields.slug.includes('weiss')) {
+    // console.log(node.fields.productCategory)
+    if (node.fields.productCategory !== null) {
       createPage({
-        path: node.fields.slug,
+        path: '/products/' + node.fields.productCategory.toLowerCase(),
+        component: path.resolve(`./src/templates/ProductCategoryPage.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.fields.slug,
+        },
+      })
+    } else if (node.fields.slug.startsWith('/weiss')) {
+      createPage({
+        path: '/products' + node.fields.slug,
         component: path.resolve(`./src/templates/ProductPage.js`),
         context: {
           // Data passed to context is available
@@ -102,5 +129,6 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }
+    // console.log(node.fields)
   })
 }

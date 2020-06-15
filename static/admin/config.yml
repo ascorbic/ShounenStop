@@ -4,19 +4,17 @@ backend:
 # when using the default proxy server port
 local_backend: true
 
-media_folder: static/images
-public_folder: /images
+media_folder: 'static/images'
 publish_mode: editorial_workflow
 
 collections:
-  - label: 'Landing Page'
-    name: 'landingPage'
+  - label: 'Page Info'
+    name: 'pages'
     files:
-      - label: Landing Page
+      - label: 'Landing Page'
         name: landing
         file: content/landingPage.md
         media_folder: 'images'
-        public_folder: '/images'
         fields:
           - { label: Landing Text, name: landingText, widget: string }
           - { label: Landing Subtitle, name: landingSubtitle, widget: string }
@@ -48,12 +46,28 @@ collections:
               valueField: 'asin',
               displayFields: ['series', 'producttype', 'name', 'asin'],
             }
+  - name: productCategories
+    label: 'Product Categories'
+    create: true
+    folder: content/productCategories
+    media_folder: 'images'
+    slug: '{{productCategory}}'
+    fields:
+      - { label: 'Product Category', name: productCategory, widget: string }
+      - { label: Image, name: image, widget: image }
+      - {
+          label: Order of Product Category,
+          name: order,
+          default: 1,
+          valueType: int,
+          widget: number,
+          min: 1,
+        }
   - name: weiss
     label: Weiss
     create: true
     folder: content/weiss
     media_folder: 'images'
-    public_folder: '/images'
     slug: '{{displayName}}-{{producttype}}'
     fields:
       - { label: Name, name: name, widget: string }
@@ -133,5 +147,12 @@ collections:
     fields:
       - { label: Question, name: question, widget: string }
       - { label: Answer, name: answer, widget: text }
-      - { label: Order of qa card, name: order, default: 1, valueType: int, widget: number, min: 1 }
+      - {
+          label: Order of qa card,
+          name: order,
+          default: 1,
+          valueType: int,
+          widget: number,
+          min: 1,
+        }
       - { label: ID, name: id, widget: ncw-id, hidden: true }

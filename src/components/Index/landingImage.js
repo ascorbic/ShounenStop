@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 import { css } from '@emotion/core'
 import BackgroundImage from 'gatsby-background-image'
 
@@ -69,7 +69,7 @@ const shopNow = css`
     cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-duration: 300ms, 300ms, 300ms, 300ms;
 
-  &:hover {
+  &:hover, &:active{
     font-size: 24px;
     background-color: #fff;
     color: #000;

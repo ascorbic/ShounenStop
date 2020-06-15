@@ -9,6 +9,7 @@
     "@emotion/styled": "^10.0.27",
     "@ncwidgets/id": "^0.8.1",
     "@popperjs/core": "^2.4.0",
+    "@sendgrid/mail": "^7.2.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "codemirror": "^5.54.0",
@@ -53,7 +54,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build && netlify-lambda build src/functions",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true GATSBY_ENV=local gatsby build && netlify-lambda build src/functions",
     "build:lambda": "netlify-lambda build src/functions",
     "build:app": "gatsby build",
     "develop": "gatsby develop",

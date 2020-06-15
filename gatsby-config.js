@@ -23,18 +23,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#0f346c`,
-        theme_color: `#0f346c`,
-        display: `minimal-ui`,
-      }
-    },
-
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `site-images`,
@@ -47,6 +35,17 @@ module.exports = {
         name: `content`,
         path: `${__dirname}/content`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#0f346c`,
+        theme_color: `#0f346c`,
+        display: `minimal-ui`,
+      }
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

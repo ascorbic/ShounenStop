@@ -1,6 +1,4 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-
 import { css } from '@emotion/core'
 
 import WeissProductCard from '../Products/WeissProductCard'
@@ -33,7 +31,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         lowPrice={lowestPrice(release1.frontmatter.pricings)}
         color={release1.frontmatter.color}
         imgData={release1.frontmatter.image.childImageSharp.fluid}
-        url={release1.fields.slug}
+        url={'/products'+release1.fields.slug}
       />
       <WeissProductCard
         cardClassName={cardClassName}
@@ -48,7 +46,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         lowPrice={lowestPrice(release2.frontmatter.pricings)}
         color={release2.frontmatter.color}
         imgData={release2.frontmatter.image.childImageSharp.fluid}
-        url={release2.fields.slug}
+        url={'/products'+release2.fields.slug}
       />
       <WeissProductCard
         cardClassName={cardClassName}
@@ -63,7 +61,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         lowPrice={lowestPrice(release3.frontmatter.pricings)}
         color={release3.frontmatter.color}
         imgData={release3.frontmatter.image.childImageSharp.fluid}
-        url={release3.fields.slug}
+        url={'/products'+release3.fields.slug}
       />
     </Container>
   )

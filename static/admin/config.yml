@@ -5,6 +5,7 @@ backend:
 local_backend: true
 
 media_folder: 'static/images'
+public_folder: '/images/'
 publish_mode: editorial_workflow
 
 collections:
@@ -138,6 +139,58 @@ collections:
           name: 'merchandise',
           widget: 'hidden',
           default: 'weiss',
+        }
+  - name: comiket
+    label: Comiket
+    create: true
+    folder: content/comiket
+    media_folder: 'images'
+    slug: 'comiket-{{asin}}'
+    identifier_field: 'eventName'
+    fields:
+      - {
+          label: Product Type,
+          name: producttype,
+          widget: select,
+          options:
+            [
+              'Playmat',
+              'Sleeve',
+            ],
+          default: ['Playmat'],
+        }
+      - { label: Event Name, name: eventName, widget: string }
+      - {
+          label: Shipping Weight,
+          name: weight,
+          widget: number,
+          valueType: float,
+          required: false,
+          min: 0,
+        }
+      - { label: Image, name: image, widget: image }
+      - label: Pricings
+        name: pricings
+        widget: list
+        minimize_collapsed: true
+        summary: '{{fields.quantity}} cost(s) ${{fields.price}}'
+        fields:
+          - label: Quantity
+            name: quantity
+            widget: number
+            min: 1
+            valueType: int
+          - label: Price
+            name: price
+            min: 0
+            widget: number
+            valueType: float
+      - { label: ASIN, name: asin, widget: ncw-id, hidden: true }
+      - {
+          label: 'Merchandise',
+          name: 'merchandise',
+          widget: 'hidden',
+          default: 'comiket',
         }
   - name: questions
     label: Questions and Answers

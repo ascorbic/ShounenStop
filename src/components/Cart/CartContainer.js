@@ -55,14 +55,8 @@ const CartContainer = ({}) => {
             }
 
             const subtotal = productPrice * cartQuantity
-            totalPrice += subtotal
-            totalItems += cartQuantity
-
-            // productData[asin].cartQuantities[pricingQuantity] = {
-            //   quantity: cartQuantity,
-            //   price: productPrice,
-            //   subtotal: subtotal,
-            // }
+            totalPrice += Number(subtotal)
+            totalItems += Number(cartQuantity)
           }
         })
 

@@ -127,7 +127,8 @@ const productTypeText = css`
   color: #151515;
   float: left;
   @media only screen and (max-width: 450px) {
-    font-size: 12px;
+    padding-top: 2px;
+    font-size: 13px;
   }
 `
 
@@ -140,7 +141,8 @@ const priceText = css`
   float: right;
   font-size: 18px;
   @media only screen and (max-width: 450px) {
-    font-size: 12px;
+    padding-top: 2px;
+    font-size: 13px;
   }
 `
 
@@ -170,8 +172,11 @@ const addToCartButton = css`
   text-align: center;
   letter-spacing: 1.5px;
   @media only screen and (max-width: 450px) {
-    height: 35px;
-    width: 35px;
+    height: 22px;
+    width: 22px;
+    margin-top: -1px;
+    border-radius: 6px;
+    margin-right:-5px;
   }
 
   &:hover {

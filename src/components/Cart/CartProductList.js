@@ -20,14 +20,34 @@ const CartProductList = ({ productData, updateCartQuantity }) => {
           headerNavigate={() => navigate('/')}
         />
         {/* TODO: make no items in cart thing */}
-        {Object.keys(productData).map(key => (
-          <CartProduct
-            key={key}
-            pricingQuantity={getProduct(key)[1]}
-            cartProductData={productData[key]}
-            updateCartQuantity={updateCartQuantity}
-          />
-        ))}
+        {Object.keys(productData).map(key => {
+          const cartProductData = productData[key]
+          const imgData = cartProductData.metadata.image.childImageSharp.fluid
+          const asin = cartProductData.metadata.asin
+          const productName = cartProductData.metadata.displayName
+          const productType = cartProductData.metadata.producttype
+          const primaryColor = cartProductData.metadata.color
+          const price = cartProductData.price
+          const url = '/' + cartProductData.metadata.merchandise + '/' + asin
+          const releaseDate = cartProductData.metadata.release
+          const initialCartQuantity = cartProductData.quantity
+          return (
+            <CartProduct
+              key={key}
+              pricingQuantity={getProduct(key)[1]}
+              imgData={imgData}
+              asin={asin}
+              productName={productName}
+              productType={productType}
+              primaryColor={primaryColor}
+              price={price}
+              url={url}
+              releaseDate={releaseDate}
+              initialCartQuantity={initialCartQuantity}
+              updateCartQuantity={updateCartQuantity}
+            />
+          )
+        })}
       </div>
     </>
   )

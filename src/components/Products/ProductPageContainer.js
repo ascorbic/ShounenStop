@@ -64,6 +64,7 @@ const containerNoPadding = css`
 
 const productPageContainer = css`
   margin-top: 20px;
+  margin-bottom:20px;
   padding-right: 0;
   padding-left: 0;
   display: flex;
@@ -75,8 +76,8 @@ const productContentWrapper = css`
   margin-top:20px;
   margin-left:0;
   margin-right:0;
-  padding-left:10px;
-  padding-right:10px;
+  padding-left:0;
+  padding-right:0;
 `
 
 const productContentContainer = css`

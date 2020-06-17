@@ -7,23 +7,41 @@ const getProduct = flatProduct => {
   return flatProduct.split('_')
 }
 
-const OrderDetails = ({
-  productData
-}) => {
-
+const OrderDetails = ({ productData }) => {
   return (
-      <div css={orderContainer}>
-        <div css={cartHeader}>Order Details</div>
-        <div css={orderDetailsContainer}>
-        {Object.keys(productData).map(key => (
-          <CartProduct
-            key={key}
-            pricingQuantity={getProduct(key)[1]}
-            cartProductData={productData[key]}
-          />
-        ))}
-        </div>
+    <div css={orderContainer}>
+      <div css={cartHeader}>Order Details</div>
+      <div css={orderDetailsContainer}>
+        {Object.keys(productData).map(key => {
+          const cartProductData = productData[key]
+          const imgData = cartProductData.metadata.image.childImageSharp.fluid
+          const asin = cartProductData.metadata.asin
+          const productName = cartProductData.metadata.displayName
+          const productType = cartProductData.metadata.producttype
+          const primaryColor = cartProductData.metadata.color
+          const price = cartProductData.price
+          const url = '/' + cartProductData.metadata.merchandise + '/' + asin
+          const releaseDate = cartProductData.metadata.release
+          const initialCartQuantity = cartProductData.quantity
+          
+          return (
+            <CartProduct
+              key={key}
+              pricingQuantity={getProduct(key)[1]}
+              imgData={imgData}
+              asin={asin}
+              productName={productName}
+              productType={productType}
+              primaryColor={primaryColor}
+              price={price}
+              url={url}
+              releaseDate={releaseDate}
+              initialCartQuantity={initialCartQuantity}
+            />
+          )
+        })}
       </div>
+    </div>
   )
 }
 
@@ -33,8 +51,8 @@ const orderContainer = css`
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
-  margin-top:20px;
-  margin-bottom:20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 12px;
   font-size: 15px;
   background-color: #fff;
@@ -42,7 +60,7 @@ const orderContainer = css`
 const orderDetailsContainer = css`
   position: relative;
   width: 100%;
-  margin-top:10px;
+  margin-top: 10px;
 `
 
 const cartHeader = css`

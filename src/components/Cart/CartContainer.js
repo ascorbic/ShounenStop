@@ -76,7 +76,6 @@ const CartContainer = ({}) => {
           totalPrice: (totalPrice+shippingData.standardShipping.price),
           shippingInfo: shippingData,
         }
-
         return (
           <div css={cartStyles}>
             <Container css={containerStyles} fluid>

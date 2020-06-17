@@ -5,19 +5,19 @@ import { css } from '@emotion/core'
 
 const CartProduct = ({
   pricingQuantity,
-  cartProductData,
+  imgData,
+  asin,
+  productName,
+  productType,
+  primaryColor,
+  price,
+  url,
+  releaseDate,
+  initialCartQuantity,
   updateCartQuantity,
 }) => {
-  const imgData = cartProductData.metadata.image.childImageSharp.fluid
-  const asin = cartProductData.metadata.asin
-  const productName = cartProductData.metadata.displayName + ' 🇯🇵'
-  const productType = cartProductData.metadata.producttype
-  const primaryColor = cartProductData.metadata.color
-  const price = cartProductData.price
-  const url = '/' + cartProductData.metadata.merchandise + '/' + asin
-  const releaseDate = cartProductData.metadata.release
-
-  const [cartQuantity, setCartQuantity] = useState(cartProductData.quantity)
+  console.log(url)
+  const [cartQuantity, setCartQuantity] = useState(initialCartQuantity)
 
   const productItemStyle = css`
     padding: 10px;

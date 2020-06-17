@@ -116,9 +116,6 @@ class CartContext extends React.Component {
   notifyCartUpdate = (productName, productType, pricingQuantity, imgData) => {
     toast(
       <div css={toastStyles}>
-        <div css={imgContainer}>
-          <Img css={imgStyles} fluid={imgData} />
-        </div>
         <div css={toastText}>
           <div>Added to Cart</div>
           <div css={nameText}>{productName}</div>
@@ -131,6 +128,9 @@ class CartContext extends React.Component {
                 '(s)'
               : 'Single ' + productType}
           </div>
+        </div>
+        <div css={imgContainer}>
+          <Img css={imgStyles} fluid={imgData} />
         </div>
       </div>,
       {
@@ -145,11 +145,12 @@ class CartContext extends React.Component {
 }
 
 const toastStyles = css`
-  padding-left: 15px;
+  padding-left: 0px;;
   padding-right: 0px;
   position: relative;
-  // width:100%;
-`
+  display:flex;
+  align-items:center;
+  `
 const imgContainer = css`
   float: left;
   width: 100%;

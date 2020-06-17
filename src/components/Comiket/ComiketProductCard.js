@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
@@ -8,16 +8,11 @@ const ComiketProductCard = ({
   imgData,
   cardClassName,
   asin,
-  series,
   eventName,
   productType,
-  preorderDate,
-  releaseDate,
-  pricings,
   price,
-  lowPrice,
-  color,
   url,
+  addToCartImageData,
 }) => {
   return (
     <ContextConsumer>
@@ -45,6 +40,7 @@ const ComiketProductCard = ({
                 css={addToCartButton}
               >
                 +
+                {/* <Img css={addToCartImgWrapper} fluid={addToCartImageData} /> */}
               </div>
               <div css={priceText}>{'$' + price}</div>
             </div>
@@ -65,14 +61,14 @@ const cardBottom = css`
   border-bottom-right-radius: 12px;
   border: none;
   width: 100%;
-  height: 60px;
+  height: 40px;
   background-color: #fff;
 
   padding-top: 5px;
   padding-left: 10px;
   padding-right: 10px;
   @media only screen and (max-width: 450px) {
-    height: 50px;
+    height: 30px;
   }
 `
 
@@ -80,8 +76,8 @@ const cardPadding = css`
   margin-top: 25px;
   margin-bottom: 5px;
   position: relative;
-  padding-left:10px;
-  padding-right:10px;
+  padding-left: 10px;
+  padding-right: 10px;
   border: none;
   margin-bottom: 2px;
   border-radius: 12px;
@@ -105,6 +101,10 @@ const cardContainer = css`
   }
 `
 
+const addToCartImgWrapper = css`
+  width: 30px;
+`
+
 const imgContainer = css`
   position: relative;
   width: 100%;
@@ -121,26 +121,26 @@ const imgStyles = css`
 `
 
 const productTypeText = css`
-  font-size: 20px;
-  font-weight: 400;
+  padding-top: 3px;
+  font-size: 18px;
+  font-weight: 700;
   color: #151515;
   float: left;
   @media only screen and (max-width: 450px) {
-    font-size: 16px;
+    font-size: 12px;
   }
 `
 
 const priceText = css`
+  padding-top: 3px;
   position: relative;
-  font-weight: 300;
-  width: auto;
-  color: #99999a;
-  line-height: 22px;
-  clear: left;
-  float: left;
-  font-size: 19px;
+  padding-right: 6px;
+  font-weight: 400;
+  color: #555;
+  float: right;
+  font-size: 18px;
   @media only screen and (max-width: 450px) {
-    font-size: 15px;
+    font-size: 12px;
   }
 `
 
@@ -148,19 +148,19 @@ const addToCartButton = css`
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-  margin-top: 2px;
+  margin-top: 0px;
   margin-right: -1px;
-  // padding-left: 3px;
+  padding-left: 2px;
   cursor: pointer;
   background-color: #0f346c;
   color: #fff;
   font-family: montserrat;
   font-weight: 300;
-  line-height: 45px;
-  border-radius: 12px;
-  height: 45px;
-  width: 45px;
-  font-size: 25px;
+  line-height: 35px;
+  border-radius: 8px;
+  height: 30px;
+  width: 30px;
+  font-size: 22px;
   position: relative;
   float: right;
   display: flex;

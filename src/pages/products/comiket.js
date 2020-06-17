@@ -11,8 +11,8 @@ const cardClassName = 'row-card'
 
 const Comiket = ({ data, location }) => {
   const comiketProductData = data.comiketProducts.edges
-  console.log(comiketProductData)
-  console.log(location)
+  const addToCartImageData = data.addToCartImage.childImageSharp.fluid 
+
   return (
     <Container css={productPageContainer} fluid>
       <ProductPageContainer
@@ -28,6 +28,7 @@ const Comiket = ({ data, location }) => {
             price={edge.node.frontmatter.pricings[0].price}
             productType={edge.node.frontmatter.producttype}
             eventName={edge.node.frontmatter.eventName}
+            addToCartImageData={addToCartImageData}
           />
         ))}
       </ProductPageContainer>
@@ -66,6 +67,13 @@ export const ComiketProductCategoryQuery = graphql`
             weight
             merchandise
           }
+        }
+      }
+    }
+    addToCartImage: file(relativePath: { eq: "addToCartWhite.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 3000) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

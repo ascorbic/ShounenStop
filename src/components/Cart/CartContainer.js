@@ -22,7 +22,7 @@ import CheckoutProgress from '../Checkout/CheckoutProgress'
 //     merchandise,
 
 const getProduct = flatProduct => {
-  return flatProduct.split('-')
+  return flatProduct.split('_')
 }
 
 const CartContainer = ({}) => {

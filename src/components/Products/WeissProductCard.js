@@ -92,9 +92,9 @@ const WeissProductCard = ({
     text-align: center;
     letter-spacing: 1.5px;
     &:hover {
-      border: solid 1px ${color};
-      background-color: #fff;
-      color: ${color};
+      letter-spacing:2px;
+      opacity:.75;
+      
     }
 
     &:active {
@@ -133,11 +133,6 @@ const WeissProductCard = ({
     width: calc(100% - 5px);
     display: flex;
     flex-wrap: nowrap;
-    // overflow-x: auto;
-    // scrollbar-width: none;
-    // -webkit-overflow-scrolling: touch;
-    // -ms-overflow-style: -ms-autohiding-scrollbar;
-    // overflow: auto;
     position: relative;
 
     

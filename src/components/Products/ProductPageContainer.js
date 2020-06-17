@@ -2,11 +2,11 @@ import React from 'react'
 import { useStaticQuery, graphql, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
-import { Container, Row, Accordion, Card } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import ProductCategoryHeader from '../Products/ProductCategoryHeader'
 import FilterAllProducts from '../Products/FilterAllProducts'
 
-const ProductPageContainer = ({ selectedProductCategory, children }) => {
+const ProductPageContainer = ({ selectedProductCategory, productHeaderSubtitle, children }) => {
   return (
     <Container css={containerNoPadding} fluid>
       <ProductCategoryHeader
@@ -25,9 +25,9 @@ const ProductPageContainer = ({ selectedProductCategory, children }) => {
         >
           <div css={productCategoryHeaderContainer}>
             <div css={productCategoryHeader}>{selectedProductCategory}</div>
-            <div css={productCategoryDivider}></div>
+            <div css={productHeaderSubtitleText}>{productHeaderSubtitle}</div>
           </div>
-          <div className="card-columns" css={productContentWrapper}>{children}</div>
+          <div className="row" css={productContentWrapper}>{children}</div>
         </div>
       </Row>
     </Container>
@@ -39,22 +39,22 @@ export default ProductPageContainer
 const productCategoryHeader = css`
   float: left;
   color: #0f346c;
-  font-size: 26px;
+  font-size: 30px;
   font-family: varela round;
 `
-const productCategoryDivider = css`
-  height: 1px;
-  width: 100%;
-  margin-bottom: 10px;
-  background-color: #a1bce6;
-  clear: both;
+
+const productHeaderSubtitleText = css`
+  clear: left;
+  color: #0f346c;
+  font-size: 15px;
+  font-family: varela round;
 `
 
 const productCategoryHeaderContainer = css`
   position: relative;
   width: 100%;
-  padding-left: 15px;
-  padding-right:15px;
+  padding-left: 10px;
+  padding-right:10px;
 `
 
 const containerNoPadding = css`
@@ -66,14 +66,17 @@ const productPageContainer = css`
   margin-top: 20px;
   padding-right: 0;
   padding-left: 0;
-  // display: flex;
-  // flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
 `
 
 const productContentWrapper = css`
-  width: 100%;
-  padding-left:15px;
-  padding-right:15px;
+  margin-top:20px;
+  margin-left:0;
+  margin-right:0;
+  padding-left:10px;
+  padding-right:10px;
 `
 
 const productContentContainer = css`

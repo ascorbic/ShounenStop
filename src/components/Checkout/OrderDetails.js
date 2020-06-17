@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import CartProduct from '../Cart/CartProduct'
 
 const getProduct = flatProduct => {
-  return flatProduct.split('-')
+  return flatProduct.split('_')
 }
 
 const OrderDetails = ({

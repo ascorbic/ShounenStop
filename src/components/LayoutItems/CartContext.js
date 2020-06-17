@@ -11,7 +11,7 @@ const defaultContextValue = {
 }
 
 const getFlatProduct = (product, pricingQuantity) => {
-  return product + '-' + pricingQuantity
+  return product + '_' + pricingQuantity
 }
 
 const { Provider, Consumer } = React.createContext(defaultContextValue)

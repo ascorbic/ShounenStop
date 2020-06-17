@@ -3,7 +3,7 @@ import { Link, navigate } from 'gatsby'
 import { css } from '@emotion/core'
 
 const getProduct = flatProduct => {
-  return flatProduct.split('-')
+  return flatProduct.split('_')
 }
 
 const ShippingDetails = ({ shippingData, userInfo }) => {

@@ -148,6 +148,7 @@ collections:
     slug: 'comiket-{{asin}}'
     identifier_field: 'eventName'
     fields:
+      - { label: Image, name: image, widget: image }
       - {
           label: Product Type,
           name: producttype,
@@ -168,17 +169,19 @@ collections:
           required: false,
           min: 0,
         }
-      - { label: Image, name: image, widget: image }
       - label: Pricings
         name: pricings
         widget: list
-        minimize_collapsed: true
+        hint: 'Please specify the one price'
+        minimize_collapsed: false
+        collapsed: false
         summary: '{{fields.quantity}} cost(s) ${{fields.price}}'
         fields:
           - label: Quantity
             name: quantity
             widget: number
             min: 1
+            default: 1
             valueType: int
           - label: Price
             name: price

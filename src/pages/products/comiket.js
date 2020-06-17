@@ -7,23 +7,28 @@ import ProductPageContainer from '../../components/Products/ProductPageContainer
 import ComiketProductCard from '../../components/Comiket/ComiketProductCard'
 
 // const cardClassName = 'col-xl-3 col-lg-4 col-md-4 col-sm-4 col-6'
-const cardClassName = 'card'
+const cardClassName = 'row-card'
 
 const Comiket = ({ data, location }) => {
-  
   const comiketProductData = data.comiketProducts.edges
   console.log(comiketProductData)
   console.log(location)
   return (
     <Container css={productPageContainer} fluid>
-      <ProductPageContainer selectedProductCategory="Comiket">
+      <ProductPageContainer
+        selectedProductCategory="Comiket"
+        productHeaderSubtitle="Shipping is free!"
+      >
         {comiketProductData.map(edge => (
           <ComiketProductCard
             key={edge.node.frontmatter.asin}
             cardClassName={cardClassName}
+            asin={edge.node.frontmatter.asin}
             imgData={edge.node.frontmatter.image.childImageSharp.fluid}
-
-            />
+            price={edge.node.frontmatter.pricings[0].price}
+            productType={edge.node.frontmatter.producttype}
+            eventName={edge.node.frontmatter.eventName}
+          />
         ))}
       </ProductPageContainer>
     </Container>

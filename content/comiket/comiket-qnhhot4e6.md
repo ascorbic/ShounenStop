@@ -1,10 +1,10 @@
 ---
 producttype: Sleeve
 eventName: Comiket 99
-image: images/94129622_590585298216977_122824360879718400_o.jpg
+image: images/94159608_589372321671608_8202024308445282304_o.jpg
 pricings:
   - quantity: 1
-    price: 15
-asin: 3Vw5rzfj2
+    price: 25
+asin: QNhHoT4e6
 merchandise: comiket
 ---

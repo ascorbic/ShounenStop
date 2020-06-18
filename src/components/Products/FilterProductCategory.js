@@ -23,7 +23,7 @@ class FilterProductCategory extends React.Component {
   }
 
   resize() {
-    if (window.innerWidth <= 592) {
+    if (window.innerWidth <= 992) {
       this.setState({
         open: false,
       })
@@ -67,9 +67,7 @@ class FilterProductCategory extends React.Component {
         </div>
         <Collapse css={filterOptionContainer} in={this.state.open}>
           <div css={filterListContainer}>
-            {this.props.filterList.map(filterItem => (
-              <div>{filterItem}</div>
-            ))}
+            {this.props.children}
             <div css={paddingBottomList}></div>
           </div>
         </Collapse>

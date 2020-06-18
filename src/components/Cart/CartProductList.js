@@ -24,7 +24,12 @@ const CartProductList = ({ productData, updateCartQuantity }) => {
           const cartProductData = productData[key]
           const imgData = cartProductData.metadata.image.childImageSharp.fluid
           const asin = cartProductData.metadata.asin
-          const productName = cartProductData.metadata.displayName
+          const productName =
+            cartProductData.metadata.displayName !== null
+              ? cartProductData.metadata.displayName
+              : cartProductData.metadata.eventName +
+                ' ' +
+                cartProductData.metadata.producttype
           const productType = cartProductData.metadata.producttype
           const primaryColor = cartProductData.metadata.color
           const price = cartProductData.price

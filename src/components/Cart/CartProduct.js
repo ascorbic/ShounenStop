@@ -242,6 +242,7 @@ const removeItem = css`
 `
 
 const subtotalStyles = css`
+  margin-top:-1px;
   color: #151515;
   align-self: center;
   font-weight: 700;

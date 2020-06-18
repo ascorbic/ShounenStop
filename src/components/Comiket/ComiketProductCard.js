@@ -151,11 +151,11 @@ const addToCartButton = css`
   -o-transition: all 0.2s;
   transition: all 0.2s;
   margin-top: 0px;
-  margin-right: -1px;
+  margin-right: -4px;
   padding-left: 2px;
   cursor: pointer;
   background-color: #0f346c;
-  color: #fff;
+  color: #a1bce6;
   font-family: montserrat;
   font-weight: 300;
   line-height: 35px;
@@ -180,7 +180,9 @@ const addToCartButton = css`
   }
 
   &:hover {
-    // color: #a1bce6;
+    color: #fff;
+    transform:scale(1.08)
+    // font-size:25px;
     // border: solid 1px #0f346c;
     // background-color: #a1bce6;
   }

@@ -50,6 +50,8 @@ const productCategoryContainer = css`
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 rgba(0, 0, 0, 0.2);
   padding: 0;
   border-radius: 30px;
+  z-index:100;
+
 `
 
 const productCategoryHeaderContainer = css`

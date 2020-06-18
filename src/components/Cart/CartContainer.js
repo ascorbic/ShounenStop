@@ -133,6 +133,7 @@ export const query = graphql`
             asin
             name
             displayName
+            eventName
             producttype
             series
             color

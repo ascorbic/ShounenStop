@@ -836,6 +836,14 @@ pre tt:after {
   box-shadow: none !important;
 }
 
+.expandedProductCategoryFilterLeft {
+  transform: rotate(45deg) !important;
+}
+
+.expandedProductCategoryFilterRight{
+  transform: rotate(45deg) !important;
+}
+
 .selectedProductCategory {
   color: #fff !important;
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.3), 0 1px 0 0 rgba(0, 0, 0, 0.3);
@@ -843,7 +851,7 @@ pre tt:after {
 }
 
 .selectedProductCategoryCard {
-  transform: scale(1.01) ;
+  transform: scale(1.01);
   font-weight: 400;
   z-index: 2;
 }
@@ -914,7 +922,6 @@ pre tt:after {
   .selectedProductCategoryCard {
     transform: none;
   }
-  
 
   .checkoutProgress {
     height: 60px !important;

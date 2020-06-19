@@ -102,7 +102,18 @@ exports.createPages = async ({ graphql, actions }) => {
     if (node.fields.slug.startsWith('/weiss')) {
       createPage({
         path: '/products' + node.fields.slug,
-        component: path.resolve(`./src/templates/ProductPage.js`),
+        component: path.resolve(`./src/templates/WeissProductPage.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.fields.slug,
+        },
+      })
+    }
+    else if (node.fields.slug.startsWith('/comiket')) {
+      createPage({
+        path: '/products' + node.fields.slug,
+        component: path.resolve(`./src/templates/ComiketProductPage.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.

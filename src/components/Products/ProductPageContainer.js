@@ -29,6 +29,7 @@ const containerNoPadding = css`
 
 const productContentContainer = css`
   margin-top: 0px;
+  margin-bottom:20px;
   margin-right: 0;
   margin-left: 0;
 `

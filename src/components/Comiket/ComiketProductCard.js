@@ -12,18 +12,17 @@ const ComiketProductCard = ({
   productType,
   price,
   url,
-  addToCartImageData,
 }) => {
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
         <div css={cardPadding} className={cardClassName}>
           <div css={cardContainer}>
-            {/* <Link to={url} className="link-no-style"> */}
+            <Link to={url} className="link-no-style">
             <div css={imgContainer}>
               <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
             </div>
-            {/* </Link> */}
+            </Link>
             <div css={cardBottom}>
               <div css={productTypeText}>{productType}</div>
               <div

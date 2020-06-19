@@ -48,7 +48,7 @@ class FilterProductCategory extends React.Component {
           aria-expanded={this.state.open}
         >
           <div css={filterHeader}>
-            <span>Product Type</span>
+            <span>{this.props.filterName}</span>
             <div css={openSymbolContainer}>
               <div
                 className={
@@ -122,14 +122,17 @@ const productContentContainer = css`
 
 const filterHeader = css`
   display: flex;
+  padding-left: 5px;
+  padding-right: 0px;
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  font-size: 22px;
+  font-size: 20px;
   font-family: varela round;
   color: #0f346c;
   cursor: pointer;
   // border-bottom:solid 1px #0f346c;
+
   &:active {
     // color: #151515;
   }
@@ -137,19 +140,9 @@ const filterHeader = css`
 
 const filterOptionContainer = css``
 
-const filterToggle = css`
-  // background-color: #f4f7f9;
-  width: 100%;
-  border: none;
-
-  &:active {
-    color: #151515 !important;
-  }
-`
-
 const filterContainer = css`
   padding-left: 15px;
-  padding-right: 5px;
+  padding-right: 15px;
   margin-left: 18px;
   margin-right: 18px;
   background-color: #fff;

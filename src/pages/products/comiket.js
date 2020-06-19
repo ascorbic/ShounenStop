@@ -14,7 +14,7 @@ const Comiket = ({ data, location }) => {
   const addToCartImageData = data.addToCartImage.childImageSharp.fluid
   const productTypeFilterList = ['All', 'Playmat', 'Sleeve']
   const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
-
+  console.log(data)
   return (
     <Container css={productPageContainer} fluid>
       <ProductPageContainer selectedProductCategory="Comiket">
@@ -22,9 +22,15 @@ const Comiket = ({ data, location }) => {
           css={containerNoPadding}
           className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12"
         >
-          <FilterProductCategory filterName="producttype">
+          <FilterProductCategory filterName="Product Type">
             {productTypeFilterList.map(filterItem => (
               <div
+              key={filterItem}
+                className={
+                  filterItem === productTypeFilterItem
+                    ? 'productCategoryFilterSelected'
+                    : ''
+                }
                 css={filterListItem}
                 onClick={() => {
                   setProductTypeFilterItem(filterItem)
@@ -60,6 +66,7 @@ const Comiket = ({ data, location }) => {
                   productType={edge.node.frontmatter.producttype}
                   eventName={edge.node.frontmatter.eventName}
                   addToCartImageData={addToCartImageData}
+                  url={'/products' + edge.node.fields.slug}
                 />
               ))}
           </div>
@@ -72,7 +79,19 @@ const Comiket = ({ data, location }) => {
 export default Comiket
 
 const filterListItem = css`
+  border-radius: 6px;
+  font-family: lato;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+  color: #444;
   cursor: pointer;
+  border-left: solid 2px #fff;
+  transition: all 0.2s ease-in-out;
+  &:hover,
+  active {
+    background-color: #f0f7ff;
+  }
 `
 
 const containerNoPadding = css`
@@ -149,6 +168,9 @@ export const ComiketProductCategoryQuery = graphql`
             }
             weight
             merchandise
+          }
+          fields {
+            slug
           }
         }
       }

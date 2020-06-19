@@ -8,7 +8,7 @@ import { css } from '@emotion/core'
 import WeissProductCard from '../components/Products/WeissProductCard'
 import { Container } from 'react-bootstrap'
 
-const ProductPage = ({ data }) => {
+const WeissProductPage = ({ data }) => {
   
   const {
     name,
@@ -41,10 +41,10 @@ const ProductPage = ({ data }) => {
   )
 }
 
-export default ProductPage;
+export default WeissProductPage;
 
-export const ProductTemplateQuery = graphql`
-query ProductPageQuery($slug: String!) {
+export const WeissProductTemplateQuery = graphql`
+query WeissProductPageQuery($slug: String!) {
   markdownRemark(fields: { slug: { eq: $slug } }) {
     frontmatter {
       name,

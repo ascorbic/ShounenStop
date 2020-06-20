@@ -1,3 +1,0 @@
----
-eventName: Comiket 99
----

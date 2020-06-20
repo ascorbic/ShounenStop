@@ -70,31 +70,32 @@ collections:
     folder: content/comiket-events
     media_folder: 'images'
     identifier_field: eventName
-    slug: '{{slug}}'
+    slug: '{{id}}'
     fields:
       - { label: Event Name, name: eventName, widget: string }
-      # - {
-      #     label: 'Current Event?',
-      #     name: currentEvent,
-      #     widget: boolean,
-      #     default: false,
-      #   }
-      # - {
-      #     label: Preorder date,
-      #     name: preorder,
-      #     widget: datetime,
-      #     required: false,
-      #     dateFormat: 'MM.DD.YYYY',
-      #     timeFormat: false,
-      #   }
-      # - {
-      #     label: Estimated Receive date,
-      #     name: receive,
-      #     widget: datetime,
-      #     required: false,
-      #     dateFormat: 'MM.DD.YYYY',
-      #     timeFormat: false,
-      #   }
+      - {
+          label: 'Current Event?',
+          name: currentEvent,
+          widget: boolean,
+          default: false,
+        }
+      - {
+          label: Preorder date,
+          name: preorder,
+          widget: datetime,
+          required: false,
+          dateFormat: 'MM.DD.YYYY',
+          timeFormat: false,
+        }
+      - {
+          label: Estimated Receive date,
+          name: receive,
+          widget: datetime,
+          required: false,
+          dateFormat: 'MM.DD.YYYY',
+          timeFormat: false,
+        }
+      - { label: ID, name: id, widget: ncw-id, hidden: true }
   - name: weiss
     label: Weiss
     create: true

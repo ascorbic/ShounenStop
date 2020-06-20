@@ -4,7 +4,6 @@ import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import { Container, Row } from 'react-bootstrap'
 import ProductCategoryHeader from '../Products/ProductCategoryHeader'
-import FilterAllProducts from '../Products/FilterAllProducts'
 
 const ProductPageContainer = ({ selectedProductCategory, productHeaderSubtitle, children }) => {
   return (

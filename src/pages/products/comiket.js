@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
+import { Waypoint } from 'react-waypoint'
 
 import { css } from '@emotion/core'
 import { Container } from 'react-bootstrap'
@@ -11,42 +12,77 @@ const cardClassName = 'row-card'
 
 const Comiket = ({ data, location }) => {
   const comiketProductData = data.comiketProducts.edges
-  const addToCartImageData = data.addToCartImage.childImageSharp.fluid
-  const productTypeFilterList = ['All', 'Playmat', 'Sleeve']
+  const comiketEventInfo = data.comiketEventInfo.edges
+    .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
+    .slice()
+
+  var currentEventKey = ''
+  var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
+    const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
+    if (comiketEventInfoEdge.currentEvent) {
+      currentEventKey = comiketEventInfoEdge.eventName
+    }
+    return comiketEventInfoEdge.eventName
+  })
+
+  const productTypeFilterList = ['All', 'Playmat', 'Sleeves']
   const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
-  console.log(data)
+  const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
+    currentEventKey
+  )
+
   return (
     <Container css={productPageContainer} fluid>
       <ProductPageContainer selectedProductCategory="Comiket">
         <div
           css={containerNoPadding}
-          className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12"
+          className={'col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12'}
         >
-          <FilterProductCategory filterName="Product Type">
-            {productTypeFilterList.map(filterItem => (
-              <div
-              key={filterItem}
-                className={
-                  filterItem === productTypeFilterItem
-                    ? 'productCategoryFilterSelected'
-                    : ''
-                }
-                css={filterListItem}
-                onClick={() => {
-                  setProductTypeFilterItem(filterItem)
-                }}
-              >
-                {filterItem}
-              </div>
-            ))}
-          </FilterProductCategory>
+          <div css={filterContainer} className='stickyFilter'>
+            <FilterProductCategory filterName="Product Type">
+              {productTypeFilterList.map(filterItem => (
+                <div
+                  key={filterItem}
+                  className={
+                    filterItem === productTypeFilterItem
+                      ? 'productCategoryFilterSelected'
+                      : ''
+                  }
+                  css={filterListItem}
+                  onClick={() => {
+                    setProductTypeFilterItem(filterItem)
+                  }}
+                >
+                  {filterItem}
+                </div>
+              ))}
+            </FilterProductCategory>
+            <FilterProductCategory filterName="Event">
+              {eventFilterList.map(filterItem => (
+                <div
+                  key={filterItem}
+                  className={
+                    filterItem === currentEventFilterListItem
+                      ? 'productCategoryFilterSelected'
+                      : ''
+                  }
+                  css={filterListItem}
+                  onClick={() => {
+                    setCurrentEventFilterListItem(filterItem)
+                  }}
+                >
+                  {filterItem}
+                </div>
+              ))}
+            </FilterProductCategory>
+          </div>
         </div>
         <div
           css={productContainer}
           className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-xs-12"
         >
           <div css={productCategoryHeaderContainer}>
-            <div css={productCategoryHeader}>Comiket</div>
+            <div css={productCategoryHeader}>{currentEventFilterListItem}</div>
             <div css={productHeaderSubtitleText}>Preorder Date</div>
           </div>
           <div className="row" css={productContentWrapper}>
@@ -54,6 +90,12 @@ const Comiket = ({ data, location }) => {
               .filter(edge => {
                 return productTypeFilterItem !== 'All'
                   ? edge.node.frontmatter.producttype === productTypeFilterItem
+                  : true
+              })
+              .filter(edge => {
+                return currentEventFilterListItem !== ''
+                  ? edge.node.frontmatter.eventName ===
+                      currentEventFilterListItem
                   : true
               })
               .map(edge => (
@@ -65,7 +107,6 @@ const Comiket = ({ data, location }) => {
                   price={edge.node.frontmatter.pricings[0].price}
                   productType={edge.node.frontmatter.producttype}
                   eventName={edge.node.frontmatter.eventName}
-                  addToCartImageData={addToCartImageData}
                   url={'/products' + edge.node.fields.slug}
                 />
               ))}
@@ -77,6 +118,8 @@ const Comiket = ({ data, location }) => {
 }
 
 export default Comiket
+
+const filterContainer = css``
 
 const filterListItem = css`
   border-radius: 6px;
@@ -97,7 +140,7 @@ const filterListItem = css`
 const containerNoPadding = css`
   padding-right: 0;
   padding-left: 0;
-  padding-top: 20px;
+  padding-top: 5px;
 `
 
 const productCategoryHeader = css`
@@ -179,6 +222,21 @@ export const ComiketProductCategoryQuery = graphql`
       childImageSharp {
         fluid(maxWidth: 3000) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    comiketEventInfo: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/comiketEvents/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            eventName
+            eventDesc
+            currentEvent
+            preorder
+            receive
+          }
         }
       }
     }

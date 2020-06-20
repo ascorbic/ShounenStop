@@ -76,6 +76,7 @@ const WeissProductCard = ({
     transition: all 0.2s;
     cursor: pointer;
     position: absolute;
+    border: solid 1px ${color};
     background-color: ${color};
     color: #fff;
     font-family: varela round;
@@ -92,9 +93,9 @@ const WeissProductCard = ({
     text-align: center;
     letter-spacing: 1.5px;
     &:hover {
-      letter-spacing:2px;
-      opacity:.75;
-      
+      background-color: #fff;
+      border: solid 1px ${color};
+      color: ${color};
     }
 
     &:active {
@@ -135,7 +136,6 @@ const WeissProductCard = ({
     flex-wrap: nowrap;
     position: relative;
 
-    
     &::-webkit-scrollbar {
       // display: none;
     }
@@ -226,7 +226,11 @@ const WeissProductCard = ({
               <div css={fadeContainer}>
                 <div css={linearFadeLeft}></div>
                 <div css={linearFadeRight}></div>
-                <ScrollContainer vertical={false} className="scroll-container" css={pricingContainer}>
+                <ScrollContainer
+                  vertical={false}
+                  className="scroll-container"
+                  css={pricingContainer}
+                >
                   {pricings.map(item => {
                     return (
                       <div

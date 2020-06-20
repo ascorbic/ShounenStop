@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import CartProduct from '../Cart/CartProduct'
 
 const getProduct = flatProduct => {
-  return flatProduct.split('_')
+  return flatProduct.split('|')
 }
 
 const OrderDetails = ({ productData }) => {
@@ -14,6 +14,7 @@ const OrderDetails = ({ productData }) => {
       <div css={orderDetailsContainer}>
         {Object.keys(productData).map(key => {
           const cartProductData = productData[key]
+          console.log(cartProductData)
           const imgData = cartProductData.metadata.image.childImageSharp.fluid
           const asin = cartProductData.metadata.asin
           const productName =
@@ -25,10 +26,14 @@ const OrderDetails = ({ productData }) => {
           const productType = cartProductData.metadata.producttype
           const primaryColor = cartProductData.metadata.color
           const price = cartProductData.price
-          const url = '/' + cartProductData.metadata.merchandise + '/' + asin
+          const url =
+            '/products/' +
+            cartProductData.metadata.merchandise +
+            '/' +
+            asin.toLowerCase() +
+            '/'
           const releaseDate = cartProductData.metadata.release
           const initialCartQuantity = cartProductData.quantity
-          
           return (
             <CartProduct
               key={key}

@@ -64,12 +64,45 @@ collections:
           widget: number,
           min: 1,
         }
+  - name: comiketEventInfo
+    label: 'Comiket Event Information'
+    create: true
+    folder: content/comiketEvents
+    media_folder: 'images'
+    slug: '{{eventName}}'
+    fields:
+      - { label: Event Name, name: eventName, widget: string }
+      - {
+          label: 'Current Event?',
+          name: currentEvent,
+          widget: boolean,
+          default: false,
+        }
+      - { label: Event Description, name: eventDesc, widget: string, required: false }
+      - {
+          label: Preorder date,
+          name: preorder,
+          widget: datetime,
+          required: false,
+          dateFormat: 'MM.DD.YYYY',
+          timeFormat: false,
+        }
+      - {
+          label: Estimated Receive date,
+          name: receive,
+          widget: datetime,
+          required: false,
+          dateFormat: 'MM.DD.YYYY',
+          timeFormat: false,
+        }
+
   - name: weiss
     label: Weiss
     create: true
     folder: content/weiss
     media_folder: 'images'
-    slug: '{{displayName}}-{{producttype}}'
+    identifier_field: asin
+    slug: '{{slug}}'
     fields:
       - { label: Name, name: name, widget: string }
       - { label: ASIN, name: asin, widget: string }
@@ -145,22 +178,26 @@ collections:
     create: true
     folder: content/comiket
     media_folder: 'images'
-    slug: 'comiket-{{asin}}'
-    identifier_field: 'eventName'
+    slug: '{{slug}}'
+    identifier_field: 'asin'
     fields:
       - { label: Image, name: image, widget: image }
       - {
           label: Product Type,
           name: producttype,
           widget: select,
-          options:
-            [
-              'Playmat',
-              'Sleeve',
-            ],
+          options: ['Playmat', 'Sleeves'],
           default: ['Playmat'],
         }
-      - { label: Event Name, name: eventName, widget: string }
+      - {
+          label: Event Name,
+          name: eventName,
+          widget: relation,
+          collection: comiketEventInfo,
+          searchFields: ['eventName'],
+          valueField: 'eventName',
+          displayFields: ['eventName'],
+        }
       - {
           label: Shipping Weight,
           name: weight,

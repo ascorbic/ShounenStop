@@ -5,7 +5,7 @@ import CartProduct from './CartProduct'
 import CheckoutHeader from '../Checkout/CheckoutHeader'
 
 const getProduct = flatProduct => {
-  return flatProduct.split('_')
+  return flatProduct.split('|')
 }
 
 const CartProductList = ({ productData, updateCartQuantity }) => {

@@ -11,7 +11,7 @@ const defaultContextValue = {
 }
 
 const getFlatProduct = (product, pricingQuantity) => {
-  return product + '_' + pricingQuantity
+  return product + '|' + pricingQuantity
 }
 
 const { Provider, Consumer } = React.createContext(defaultContextValue)
@@ -23,6 +23,7 @@ class CartContext extends React.Component {
     this.updateCartQuantity = this.updateCartQuantity.bind(this)
     this.addQuantityToCart = this.addQuantityToCart.bind(this)
     this.notifyCartUpdate = this.notifyCartUpdate.bind(this)
+    this.notifyFailedToUpdate = this.notifyFailedToUpdate.bind(this)
 
     this.state = {
       ...defaultContextValue,
@@ -33,16 +34,14 @@ class CartContext extends React.Component {
 
   componentDidMount() {
     this.setupCart()
-    // this.updateCartQuantity('ASIN1', Math.floor(Math.random() * 10) + 1, 2)
   }
 
   setupCart() {
     if (sessionStorage.getItem(productsKey) === null) {
-      const memProducts = {} //{ 'ASIN1-1': 1, 'ASIN1-2': 2, 'ASIN1-3': 0 }
+      const memProducts = {}
       this.setState(memProducts, () => this.saveCart(this.state))
     } else {
       const memProducts = JSON.parse(sessionStorage.getItem(productsKey))
-      //validate items to make sure over 0
       this.setState(memProducts)
     }
   }
@@ -59,6 +58,16 @@ class CartContext extends React.Component {
 
     this.setState(
       prevState => {
+        if (prevState[flatProduct] >= 9) {
+          this.notifyFailedToUpdate(
+            productName,
+            productType,
+            pricingQuantity,
+            imgData
+          )
+          return { [flatProduct]: prevState[flatProduct] }
+        }
+
         this.notifyCartUpdate(
           productName,
           productType,
@@ -104,15 +113,6 @@ class CartContext extends React.Component {
     sessionStorage.setItem(productsKey, JSON.stringify(memProducts))
   }
 
-  unSetState(state, property) {
-    return Object.entries(state)
-      .filter(([key, value]) => key !== property)
-      .reduce((acc, [key, value]) => {
-        acc[key] = value
-        return acc
-      }, {})
-  }
-
   notifyCartUpdate = (productName, productType, pricingQuantity, imgData) => {
     toast(
       <div css={toastStyles}>
@@ -139,18 +139,48 @@ class CartContext extends React.Component {
     )
   }
 
+  notifyFailedToUpdate = (
+    productName,
+    productType,
+    pricingQuantity,
+    imgData
+  ) => {
+    toast(
+      <div css={toastStyles}>
+        <div css={toastText}>
+          <div>FAILED: Limit of 9</div>
+          <div css={nameText}>{productName}</div>
+          <div css={productTypeText}>
+            {pricingQuantity > 1
+              ? 'Set of ' +
+                pricingQuantity.toString() +
+                ' ' +
+                productType +
+                '(s)'
+              : 'Single ' + productType}
+          </div>
+        </div>
+      </div>,
+      {
+        type: toast.TYPE.ERROR,
+        position: toast.POSITION.BOTTOM_RIGHT,
+      }
+    )
+  }
+
   render() {
     return <Provider value={this.state}>{this.props.children}</Provider>
   }
 }
 
 const toastStyles = css`
-  padding-left: 0px;;
+  padding-left: 0px;
   padding-right: 0px;
   position: relative;
-  display:flex;
-  align-items:center;
-  `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 const imgContainer = css`
   float: left;
   width: 100%;

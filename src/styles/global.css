@@ -876,6 +876,11 @@ pre tt:after {
   border-bottom: solid 1px #0f346c !important;
 }
 
+.stickyFilter{
+  position: sticky;
+  top:70px;
+}
+
 @media (min-width: 300px) {
   .row-card {
     flex: 0 0 50%;

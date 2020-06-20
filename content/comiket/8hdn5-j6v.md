@@ -1,5 +1,5 @@
 ---
-producttype: Sleeve
+producttype: Sleeves
 eventName: Comiket 99
 image: images/94657893_592749041333936_1078245831649263616_o.jpg
 pricings:

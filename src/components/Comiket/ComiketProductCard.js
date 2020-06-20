@@ -39,7 +39,6 @@ const ComiketProductCard = ({
                 css={addToCartButton}
               >
                 +
-                {/* <Img css={addToCartImgWrapper} fluid={addToCartImageData} /> */}
               </div>
               <div css={priceText}>{'$' + price}</div>
             </div>
@@ -165,6 +164,7 @@ const addToCartButton = css`
   position: relative;
   float: right;
   display: flex;
+  border: solid 1px #0f346c;
   justify-content: center;
   align-items: center;
   user-select: none;
@@ -179,11 +179,11 @@ const addToCartButton = css`
   }
 
   &:hover {
-    color: #fff;
+    color: #0f346c;
     transform:scale(1.08)
-    // font-size:25px;
-    // border: solid 1px #0f346c;
-    // background-color: #a1bce6;
+
+    border: solid 1px #0f346c;
+    background-color: #fff;
   }
 
   // &:active {

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
-import { Waypoint } from 'react-waypoint'
 
 import { css } from '@emotion/core'
 import { Container } from 'react-bootstrap'

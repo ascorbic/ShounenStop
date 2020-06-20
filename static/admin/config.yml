@@ -80,12 +80,6 @@ collections:
           default: false,
         }
       - {
-          label: Event Description,
-          name: eventDesc,
-          widget: string,
-          required: false,
-        }
-      - {
           label: Preorder date,
           name: preorder,
           widget: datetime,
@@ -195,15 +189,15 @@ collections:
           options: ['Playmat', 'Sleeves'],
           default: ['Playmat'],
         }
-      - {
-          label: Event Name,
-          name: eventName,
-          widget: relation,
-          collection: comiketEventInfo,
-          searchFields: ['eventName'],
-          valueField: 'eventName',
-          displayFields: ['eventName'],
-        }
+      # - {
+      #     label: Event Name,
+      #     name: eventName,
+      #     widget: relation,
+      #     collection: comiketEventInfo,
+      #     searchFields: ['eventName'],
+      #     valueField: 'eventName',
+      #     displayFields: ['eventName'],
+      #   }
       - {
           label: Shipping Weight,
           name: weight,

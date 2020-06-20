@@ -15,6 +15,7 @@ const ComiketProductPage = ({ data }) => {
     producttype,
     pricings,
   } = data.comiketProduct.frontmatter
+  console.log(data)
   // const {
 
   // }
@@ -57,21 +58,20 @@ export const ComiketProductTemplateQuery = graphql`
         weight
       }
     }
-    
+    comiketEventInfo: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/comiket-events/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            eventName
+            eventDesc
+            currentEvent
+            preorder
+            receive
+          }
+        }
+      }
+    }
   }
 `
-// comiketEventInfo: allMarkdownRemark(
-//   filter: { fileAbsolutePath: { regex: "/comiket-events/" } }
-// ) {
-//   edges {
-//     node {
-//       frontmatter {
-//         eventName
-//         eventDesc
-//         currentEvent
-//         preorder
-//         receive
-//       }
-//     }
-//   }
-// }

@@ -11,23 +11,28 @@ const cardClassName = 'row-card'
 
 const Comiket = ({ data, location }) => {
   const comiketProductData = data.comiketProducts.edges
-  const comiketEventInfo = data.comiketEventInfo.edges
-    .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
-    .slice()
+  // const comiketEventInfo = data.comiketEventInfo.edges
+  //   .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
+  //   .slice()
 
-  var currentEventKey = ''
-  var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
-    const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
-    if (comiketEventInfoEdge.currentEvent) {
-      currentEventKey = comiketEventInfoEdge.eventName
-    }
-    return comiketEventInfoEdge.eventName
-  })
+  // var currentEventKey = ''
+  // var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
+  //   const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
+  //   if (comiketEventInfoEdge.currentEvent) {
+  //     currentEventKey = comiketEventInfoEdge.eventName
+  //   }
+  //   return comiketEventInfoEdge.eventName
+  // })
+
+  const eventFilterList = ['Comiket 99', 'Comiket 98']
 
   const productTypeFilterList = ['All', 'Playmat', 'Sleeves']
   const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
+  // const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
+  //   currentEventKey
+  // )
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
-    currentEventKey
+    'Comiket 99'
   )
 
   return (
@@ -217,20 +222,21 @@ export const ComiketProductCategoryQuery = graphql`
         }
       }
     }
-    comiketEventInfo: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/comiket-events/" } }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            eventName
-            eventDesc
-            currentEvent
-            preorder
-            receive
-          }
-        }
-      }
-    }
   }
 `
+
+// comiketEventInfo: allMarkdownRemark(
+//   filter: { fileAbsolutePath: { regex: "/comiket-events/" } }
+// ) {
+//   edges {
+//     node {
+//       frontmatter {
+//         eventName
+//         eventDesc
+//         currentEvent
+//         preorder
+//         receive
+//       }
+//     }
+//   }
+// }

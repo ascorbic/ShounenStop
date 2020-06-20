@@ -73,12 +73,12 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: Event Name, name: eventName, widget: string }
-      - {
-          label: 'Current Event?',
-          name: currentEvent,
-          widget: boolean,
-          default: false,
-        }
+      # - {
+      #     label: 'Current Event?',
+      #     name: currentEvent,
+      #     widget: boolean,
+      #     default: false,
+      #   }
       - {
           label: Preorder date,
           name: preorder,

@@ -67,7 +67,7 @@ collections:
   - name: comiketEventInfo
     label: 'Comiket Event Information'
     create: true
-    folder: content/comiketEvents
+    folder: content/comiket-events
     media_folder: 'images'
     identifier_field: eventName
     slug: '{{eventName}}'
@@ -79,7 +79,12 @@ collections:
           widget: boolean,
           default: false,
         }
-      - { label: Event Description, name: eventDesc, widget: string, required: false }
+      - {
+          label: Event Description,
+          name: eventDesc,
+          widget: string,
+          required: false,
+        }
       - {
           label: Preorder date,
           name: preorder,

@@ -218,7 +218,7 @@ export const ComiketProductCategoryQuery = graphql`
       }
     }
     comiketEventInfo: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/comiketEvents/" } }
+      filter: { fileAbsolutePath: { regex: "/comiket-events/" } }
     ) {
       edges {
         node {

@@ -222,21 +222,21 @@ export const ComiketProductCategoryQuery = graphql`
         }
       }
     }
+    comiketEventInfo: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/comiketEvents/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            eventName
+            eventDesc
+            currentEvent
+            preorder
+            receive
+          }
+        }
+      }
+    }
   }
 `
 
-// comiketEventInfo: allMarkdownRemark(
-//   filter: { fileAbsolutePath: { regex: "/comiket-events/" } }
-// ) {
-//   edges {
-//     node {
-//       frontmatter {
-//         eventName
-//         eventDesc
-//         currentEvent
-//         preorder
-//         receive
-//       }
-//     }
-//   }
-// }

@@ -96,7 +96,7 @@ exports.createPages = async ({ graphql, actions }) => {
     //     },
     //   })
     // } 
-    if (node.fields.slug.startsWith('/weiss')) {
+    if (node.fields.slug.startsWith('/weiss/')) {
       createPage({
         path: '/products' + node.fields.slug,
         component: path.resolve(`./src/templates/WeissProductPage.js`),
@@ -107,7 +107,8 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }
-    else if (node.fields.slug.startsWith('/comiket')) {
+    else if (node.fields.slug.startsWith('/comiket/')) {
+      console.log(node.fields.slug)
       createPage({
         path: '/products' + node.fields.slug,
         component: path.resolve(`./src/templates/ComiketProductPage.js`),

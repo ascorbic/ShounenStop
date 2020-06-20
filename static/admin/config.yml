@@ -67,7 +67,7 @@ collections:
   - name: comiketEventInfo
     label: 'Comiket Event Information'
     create: true
-    folder: content/comiket-events
+    folder: content/comiketEvents
     media_folder: 'images'
     identifier_field: eventName
     slug: '{{id}}'
@@ -79,6 +79,7 @@ collections:
           widget: boolean,
           default: false,
         }
+      - { label: Event Description, name: eventDesc, widget: string, required: false }
       - {
           label: Preorder date,
           name: preorder,
@@ -189,15 +190,15 @@ collections:
           options: ['Playmat', 'Sleeves'],
           default: ['Playmat'],
         }
-      # - {
-      #     label: Event Name,
-      #     name: eventName,
-      #     widget: relation,
-      #     collection: comiketEventInfo,
-      #     searchFields: ['eventName'],
-      #     valueField: 'eventName',
-      #     displayFields: ['eventName'],
-      #   }
+      - {
+          label: Event Name,
+          name: eventName,
+          widget: relation,
+          collection: comiketEventInfo,
+          searchFields: ['eventName'],
+          valueField: 'eventName',
+          displayFields: ['eventName'],
+        }
       - {
           label: Shipping Weight,
           name: weight,

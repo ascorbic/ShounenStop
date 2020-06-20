@@ -69,6 +69,7 @@ collections:
     create: true
     folder: content/comiketEvents
     media_folder: 'images'
+    identifier_field: eventName
     slug: '{{eventName}}'
     fields:
       - { label: Event Name, name: eventName, widget: string }

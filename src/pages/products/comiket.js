@@ -218,13 +218,6 @@ export const ComiketProductCategoryQuery = graphql`
         }
       }
     }
-    addToCartImage: file(relativePath: { eq: "addToCartWhite.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 3000) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
     comiketEventInfo: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/comiketEvents/" } }
     ) {

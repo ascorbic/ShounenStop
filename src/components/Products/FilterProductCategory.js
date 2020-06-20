@@ -1,15 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useStaticQuery, graphql, navigate } from 'gatsby'
-import Img from 'gatsby-image'
 import { css } from '@emotion/core'
-import { Nav, Collapse } from 'react-bootstrap'
-import ProductCategoryHeader from '../Products/ProductCategoryHeader'
+import { Collapse } from 'react-bootstrap'
 
 class FilterProductCategory extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      stickyNav: false,
       open: false,
     }
   }
@@ -37,10 +34,7 @@ class FilterProductCategory extends React.Component {
 
   render() {
     return (
-      <div
-        className={this.state.open && this.state.stickyNav ? 'stickyFilter' : ''}
-        css={filterContainer}
-      >
+      <div css={filterContainer}>
         <div
           onClick={() =>
             this.setState(prevState => {

@@ -14,7 +14,11 @@ const ComiketProductPage = ({ data }) => {
     eventName,
     producttype,
     pricings,
-  } = data.markdownRemark.frontmatter
+  } = data.comiketProduct.frontmatter
+  // const {
+
+  // }
+
   const price = pricings[0].price
 
   return (
@@ -34,7 +38,7 @@ export default ComiketProductPage
 
 export const ComiketProductTemplateQuery = graphql`
   query ComiketProductPageQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    comiketProduct:markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         asin
         producttype
@@ -51,6 +55,21 @@ export const ComiketProductTemplateQuery = graphql`
           price
         }
         weight
+      }
+    }
+    comiketEventInfo: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/comiketEvents/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            eventName
+            eventDesc
+            currentEvent
+            preorder
+            receive
+          }
+        }
       }
     }
   }

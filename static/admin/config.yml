@@ -73,28 +73,28 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: Event Name, name: eventName, widget: string }
-      - {
-          label: 'Current Event?',
-          name: currentEvent,
-          widget: boolean,
-          default: false,
-        }
-      - {
-          label: Preorder date,
-          name: preorder,
-          widget: datetime,
-          required: false,
-          dateFormat: 'MM.DD.YYYY',
-          timeFormat: false,
-        }
-      - {
-          label: Estimated Receive date,
-          name: receive,
-          widget: datetime,
-          required: false,
-          dateFormat: 'MM.DD.YYYY',
-          timeFormat: false,
-        }
+      # - {
+      #     label: 'Current Event?',
+      #     name: currentEvent,
+      #     widget: boolean,
+      #     default: false,
+      #   }
+      # - {
+      #     label: Preorder date,
+      #     name: preorder,
+      #     widget: datetime,
+      #     required: false,
+      #     dateFormat: 'MM.DD.YYYY',
+      #     timeFormat: false,
+      #   }
+      # - {
+      #     label: Estimated Receive date,
+      #     name: receive,
+      #     widget: datetime,
+      #     required: false,
+      #     dateFormat: 'MM.DD.YYYY',
+      #     timeFormat: false,
+      #   }
   - name: weiss
     label: Weiss
     create: true

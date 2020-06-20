@@ -79,22 +79,22 @@ collections:
       #     widget: boolean,
       #     default: false,
       #   }
-      - {
-          label: Preorder date,
-          name: preorder,
-          widget: datetime,
-          required: false,
-          dateFormat: 'MM.DD.YYYY',
-          timeFormat: false,
-        }
-      - {
-          label: Estimated Receive date,
-          name: receive,
-          widget: datetime,
-          required: false,
-          dateFormat: 'MM.DD.YYYY',
-          timeFormat: false,
-        }
+      # - {
+      #     label: Preorder date,
+      #     name: preorder,
+      #     widget: datetime,
+      #     required: false,
+      #     dateFormat: 'MM.DD.YYYY',
+      #     timeFormat: false,
+      #   }
+      # - {
+      #     label: Estimated Receive date,
+      #     name: receive,
+      #     widget: datetime,
+      #     required: false,
+      #     dateFormat: 'MM.DD.YYYY',
+      #     timeFormat: false,
+      #   }
   - name: weiss
     label: Weiss
     create: true

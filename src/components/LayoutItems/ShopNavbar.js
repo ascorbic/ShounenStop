@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Img from 'gatsby-image'
 import ContextConsumer from './CartContext'
 
-import { Navbar, Nav } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, NavDropdown } from 'react-bootstrap'
 
 const ShopNavbar = ({ pageInfo, title }) => {
   const {
@@ -52,7 +52,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
       }
     }
   `)
-
+  // const [isOpen, updateIsOpen] = useState(true)
   return (
     <ContextConsumer>
       {context => (
@@ -61,6 +61,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
           className="py-0"
           css={[navbar, navbarBurger]}
           expand="lg"
+          collapseOnSelect
           id="site-navbar"
         >
           <Navbar.Toggle
@@ -80,27 +81,63 @@ const ShopNavbar = ({ pageInfo, title }) => {
           <Link to="/cart" className="order-lg-last ml-auto">
             <Nav css={navbarCart}>
               <Img fixed={cartImage.childImageSharp.fixed} />
-              {Object.keys(context).filter(key => context[key] !== undefined).length - 2 !== 0 && (
+              {Object.keys(context).filter(key => context[key] !== undefined)
+                .length -
+                2 !==
+                0 && (
                 <span css={cartSizeStyles}>
-                  {Object.keys(context).filter(key => context[key] !== undefined).length - 2}
+                  {Object.keys(context).filter(
+                    key => context[key] !== undefined
+                  ).length - 2}
                 </span>
               )}
             </Nav>
           </Link>
           <Navbar.Collapse id="basic-navbar-nav" className="">
             <Nav className="" css={navbarCollapse}>
-              <Link to="/products" activeClassName="active">
-                <div
-                  className="navWrapper"
-                  style={{
-                    marginLeft: '-2px',
+              <div
+                className="dropdownNavWrapper"
+                style={{
+                  marginLeft: '-2px',
+                }}
+                css={dropdownHover}
+              >
+                <Img fixed={merchandiseImage.childImageSharp.fixed} />
+                <NavDropdown
+                disabled
+                  rootCloseEvent="onClick"
+                  onClick={() => {
+                    console.log('omg')
                   }}
+                  renderMenuOnMount
+                  title="PRODUCTS"
                 >
-                  <Img fixed={merchandiseImage.childImageSharp.fixed} />
-                  <Nav.Link as="span">PRODUCTS</Nav.Link>
-                </div>
-              </Link>
-              <Link to="/products/weiss" activeClassName="active">
+                  <div
+                    className="navWrapper"
+                    style={{
+                      marginLeft: '-2px',
+                    }}
+                  >
+                    <Img fixed={cardImage.childImageSharp.fixed} />
+                    <Link to="/products/weiss" activeClassName="active">
+                      <Nav.Link as="span">WEISS</Nav.Link>
+                    </Link>
+                  </div>
+                  <div
+                    className="navWrapper"
+                    style={{
+                      marginLeft: '-2px',
+                    }}
+                  >
+                    <Img fixed={playmatImage.childImageSharp.fixed} />
+                    <Link to="/products/comiket" activeClassName="active">
+                      <Nav.Link as="span">COMIKET</Nav.Link>
+                    </Link>
+                  </div>
+                </NavDropdown>
+              </div>
+
+              {/* <Link to="/products/weiss" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={cardImage.childImageSharp.fixed} />
                   <Nav.Link as="span">WEISS</Nav.Link>
@@ -116,7 +153,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   <Img fixed={playmatImage.childImageSharp.fixed} />
                   <Nav.Link as="span">COMIKET</Nav.Link>
                 </div>
-              </Link>
+              </Link> */}
               <Link to="/contact" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={contactImage.childImageSharp.fixed} />
@@ -131,6 +168,16 @@ const ShopNavbar = ({ pageInfo, title }) => {
   )
 }
 
+const dropdownHover = css`
+cursor:pointer;
+&:hover div a{
+  color: #0f346c !important;
+}
+`
+
+const imagePadding=css`
+align-items:center;`
+
 const navbar = css`
   background-color: #fff;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.14);
@@ -144,8 +191,8 @@ const navbarBrand = css`
   transition: all 0.3s;
 
   &:hover {
-    margin-left:-5px;
-    letter-spacing:3px;
+    margin-left: -5px;
+    letter-spacing: 3px;
   }
 `
 

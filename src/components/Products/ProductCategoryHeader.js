@@ -57,7 +57,8 @@ const productCategoryContainer = css`
 const productCategoryHeaderContainer = css`
   display: flex;
   flex-wrap: wrap;
-`
+  width;100%;
+  `
 
 const imgStyles = css`
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),

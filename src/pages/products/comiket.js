@@ -7,34 +7,30 @@ import ProductPageContainer from '../../components/Products/ProductPageContainer
 import ComiketProductCard from '../../components/Comiket/ComiketProductCard'
 import FilterProductCategory from '../../components/Products/FilterProductCategory'
 
-const cardClassName = 'row-card'
-
 const Comiket = ({ data, location }) => {
   const comiketProductData = data.comiketProducts.edges
-  // const comiketEventInfo = data.comiketEventInfo.edges
-  //   .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
-  //   .slice()
+  const comiketEventInfo = data.comiketEventInfo.edges
+    .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
+    .slice()
 
-  // var currentEventKey = ''
-  // var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
-  //   const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
-  //   if (comiketEventInfoEdge.currentEvent) {
-  //     currentEventKey = comiketEventInfoEdge.eventName
-  //   }
-  //   return comiketEventInfoEdge.eventName
-  // })
-
-  const eventFilterList = ['Comiket 99', 'Comiket 98']
+  var currentEventKey = ''
+  var currentPreorder = ''
+  var currentReceive = ''
+  var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
+    const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
+    if (comiketEventInfoEdge.currentEvent) {
+      currentEventKey = comiketEventInfoEdge.eventName
+      currentPreorder = comiketEventInfoEdge.preorder
+      currentReceive = comiketEventInfoEdge.receive
+    }
+    return comiketEventInfoEdge.eventName
+  })
 
   const productTypeFilterList = ['All', 'Playmat', 'Sleeves']
   const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
-  // const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
-  //   currentEventKey
-  // )
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
-    'Comiket 99'
+    currentEventKey
   )
-
   return (
     <Container css={productPageContainer} fluid>
       <ProductPageContainer selectedProductCategory="Comiket">
@@ -42,8 +38,8 @@ const Comiket = ({ data, location }) => {
           css={containerNoPadding}
           className={'col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12'}
         >
-          <div css={filterContainer} className='stickyFilter'>
-            <FilterProductCategory filterName="Product Type">
+          <div css={filterContainer} className="stickyFilter">
+            <FilterProductCategory filterName="Product Type" currentFilter={productTypeFilterItem}>
               {productTypeFilterList.map(filterItem => (
                 <div
                   key={filterItem}
@@ -61,7 +57,7 @@ const Comiket = ({ data, location }) => {
                 </div>
               ))}
             </FilterProductCategory>
-            <FilterProductCategory filterName="Event">
+            <FilterProductCategory filterName="Event" currentFilter={currentEventFilterListItem}>
               {eventFilterList.map(filterItem => (
                 <div
                   key={filterItem}
@@ -87,7 +83,23 @@ const Comiket = ({ data, location }) => {
         >
           <div css={productCategoryHeaderContainer}>
             <div css={productCategoryHeader}>{currentEventFilterListItem}</div>
-            <div css={productHeaderSubtitleText}>Preorder Date</div>
+            {currentEventKey === currentEventFilterListItem ? (
+              <div css={eventDateText}>
+                <div css={dateTextContainer}>
+                  <div css={dateField}>Preorder By</div>
+                  <div css={dateValue}>{currentPreorder}</div>
+                </div>
+                <div css={dateTextContainer}>
+                  <div css={dateField}>Estimated Arrival</div>
+                  <div css={dateValue}>{currentReceive}</div>
+                </div>
+              </div>
+            ) : null}
+            <div css={productHeaderSubtitleText}>
+              {currentEventKey === currentEventFilterListItem
+                ? "If we can't purchase the item at the event, we will refund you after the event is over"
+                : ''}
+            </div>
           </div>
           <div className="row" css={productContentWrapper}>
             {comiketProductData
@@ -105,7 +117,6 @@ const Comiket = ({ data, location }) => {
               .map(edge => (
                 <ComiketProductCard
                   key={edge.node.frontmatter.asin}
-                  cardClassName={cardClassName}
                   asin={edge.node.frontmatter.asin}
                   imgData={edge.node.frontmatter.image.childImageSharp.fluid}
                   price={edge.node.frontmatter.pricings[0].price}
@@ -122,6 +133,27 @@ const Comiket = ({ data, location }) => {
 }
 
 export default Comiket
+
+const eventDateText = css`
+  width: 50%;
+  float: right;
+  padding-top: 10px;
+`
+
+const dateValue = css`
+  color: #444;
+`
+
+const dateField = css`
+  color: #0f346c;
+  font-size: 18px;
+  font-weight: 700;
+`
+const dateTextContainer = css`
+  font-family: varela round;
+  font-size: 15px;
+  text-align: right;
+`
 
 const filterContainer = css``
 
@@ -149,14 +181,16 @@ const containerNoPadding = css`
 
 const productCategoryHeader = css`
   float: left;
+  width: 50%;
   color: #0f346c;
   font-size: 30px;
   font-family: varela round;
 `
 
 const productHeaderSubtitleText = css`
+  width: 50%;
   clear: left;
-  color: #0f346c;
+  color: #444;
   font-size: 15px;
   font-family: varela round;
 `
@@ -184,6 +218,7 @@ const productContentWrapper = css`
   margin-right: 0;
   padding-left: 0;
   padding-right: 0;
+  width: 100%;
 `
 
 const productContainer = css`
@@ -191,6 +226,7 @@ const productContainer = css`
   padding-right: 10px;
   padding-top: 20px;
 `
+
 export const ComiketProductCategoryQuery = graphql`
   query ComiketProductCategoryQuery {
     comiketProducts: allMarkdownRemark(
@@ -231,12 +267,11 @@ export const ComiketProductCategoryQuery = graphql`
             eventName
             eventDesc
             currentEvent
-            preorder
-            receive
+            preorder(formatString: "MMM DD")
+            receive(formatString: "MMM DD")
           }
         }
       }
     }
   }
 `
-

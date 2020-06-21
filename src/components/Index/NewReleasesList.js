@@ -1,7 +1,7 @@
 import React from 'react'
 import { css } from '@emotion/core'
 
-import WeissProductCard from '../Products/WeissProductCard'
+import WeissLandingProductCard from '../Weiss/WeissLandingProductCard'
 import { Container } from 'react-bootstrap'
 
 const cardClassName="col-xl-4 col-lg-6 col-md-6 col-sm-11 col-12"
@@ -18,7 +18,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
 
   return (
     <Container css={productsContainer}>
-      <WeissProductCard
+      <WeissLandingProductCard
         cardClassName={cardClassName}
         asin={release1.frontmatter.asin}
         series={release1.frontmatter.series}
@@ -33,7 +33,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         imgData={release1.frontmatter.image.childImageSharp.fluid}
         url={'/products'+release1.fields.slug}
       />
-      <WeissProductCard
+      <WeissLandingProductCard
         cardClassName={cardClassName}
         asin={release2.frontmatter.asin}
         series={release2.frontmatter.series}
@@ -48,7 +48,7 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         imgData={release2.frontmatter.image.childImageSharp.fluid}
         url={'/products'+release2.fields.slug}
       />
-      <WeissProductCard
+      <WeissLandingProductCard
         cardClassName={cardClassName}
         asin={release3.frontmatter.asin}
         series={release3.frontmatter.series}

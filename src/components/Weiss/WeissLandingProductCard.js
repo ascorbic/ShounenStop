@@ -5,8 +5,7 @@ import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
-// price, primary color
-const WeissProductCard = ({
+const WeissLandingProductCard = ({
   imgData,
   cardClassName,
   asin,
@@ -88,7 +87,6 @@ const WeissProductCard = ({
     left: 2.5%;
     bottom: 10px;
     border-radius: 3px;
-    border-top: solid 1px #e6e6ea;
     user-select: none;
     text-align: center;
     letter-spacing: 1.5px;
@@ -171,10 +169,6 @@ const WeissProductCard = ({
     }
   `
 
-  const changeQuantity = i => {
-    setQuantity(i)
-  }
-
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
@@ -234,7 +228,7 @@ const WeissProductCard = ({
                   {pricings.map(item => {
                     return (
                       <div
-                        onClick={() => changeQuantity(item.quantity)}
+                        onClick={() => setQuantity(item.quantity)}
                         className={
                           item.quantity === quantity ? 'quantitySelected' : ''
                         }
@@ -471,4 +465,4 @@ const releaseDateText = css`
 // );
 // background-size: 200%;
 
-export default WeissProductCard
+export default WeissLandingProductCard

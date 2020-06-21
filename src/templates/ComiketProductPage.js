@@ -4,7 +4,6 @@ import Layout from '../components/LayoutItems/Layout'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import { css } from '@emotion/core'
-import { Container } from 'react-bootstrap'
 import ComiketProductPageContainer from '../components/Comiket/ComiketProductPageContainer'
 
 const ComiketProductPage = ({ data }) => {
@@ -15,10 +14,9 @@ const ComiketProductPage = ({ data }) => {
     producttype,
     pricings,
   } = data.comiketProduct.frontmatter
-  console.log(data)
-  // const {
-
-  // }
+  const eventInfo = data.comiketEventInfo.edges.find(
+    x => x.node.frontmatter.eventName === eventName
+  ).node.frontmatter
 
   const price = pricings[0].price
 
@@ -27,6 +25,7 @@ const ComiketProductPage = ({ data }) => {
       <ComiketProductPageContainer
         imgData={image.childImageSharp.fluid}
         asin={asin}
+        eventInfo={eventInfo}
         eventName={eventName}
         productType={producttype}
         price={price}
@@ -39,7 +38,7 @@ export default ComiketProductPage
 
 export const ComiketProductTemplateQuery = graphql`
   query ComiketProductPageQuery($slug: String!) {
-    comiketProduct:markdownRemark(fields: { slug: { eq: $slug } }) {
+    comiketProduct: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         asin
         producttype
@@ -67,12 +66,11 @@ export const ComiketProductTemplateQuery = graphql`
             eventName
             eventDesc
             currentEvent
-            preorder
-            receive
+            preorder(formatString: "MMM DD")
+            receive(formatString: "MMM DD")
           }
         }
       }
     }
   }
 `
-

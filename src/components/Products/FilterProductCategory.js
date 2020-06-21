@@ -38,7 +38,6 @@ class FilterProductCategory extends React.Component {
         <div
           onClick={() =>
             this.setState(prevState => {
-              console.log(prevState.open)
               return { open: !prevState.open }
             })
           }
@@ -63,6 +62,7 @@ class FilterProductCategory extends React.Component {
             </div>
           </div>
         </div>
+        {!this.state.open ? <div>{this.props.currentFilter}</div> : null}
         <Collapse css={filterOptionContainer} in={this.state.open}>
           <div css={filterListContainer}>
             {this.props.children}
@@ -147,9 +147,4 @@ const filterContainer = css`
   background-color: #fff;
   box-shadow: 0px 2px 8px 0px rgba(31, 32, 68, 0.16);
   border-radius: 12px;
-`
-
-const productPageContainer = css`
-  padding-left: 0;
-  padding-right: 0;
 `

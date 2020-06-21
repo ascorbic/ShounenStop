@@ -4,10 +4,10 @@ import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-const ComiketProductCard = ({
+const WeissProductCard = ({
   imgData,
+  displayName,
   asin,
-  eventName,
   productType,
   price,
   url,
@@ -15,31 +15,16 @@ const ComiketProductCard = ({
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
-        <div css={cardPadding} className='row-card'>
+        <div css={cardPadding} className="row-card">
           <div css={cardContainer}>
             <Link to={url} className="link-no-style">
-            <div css={imgContainer}>
-              <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
-            </div>
+              <div css={imgContainer}>
+                <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
+              </div>
             </Link>
             <div css={cardBottom}>
               <div css={productTypeText}>{productType}</div>
-              <div
-                onClick={() => {
-                  addQuantityToCart(
-                    asin,
-                    eventName + ' ' + productType,
-                    productType,
-                    imgData,
-                    1,
-                    1
-                  )
-                }}
-                css={addToCartButton}
-              >
-                +
-              </div>
-              <div css={priceText}>{'$' + price}</div>
+              <div css={priceText}>{'From $' + price}</div>
             </div>
           </div>
         </div>
@@ -58,7 +43,7 @@ const cardBottom = css`
   border-bottom-right-radius: 12px;
   border: none;
   width: 100%;
-  height: 40px;
+  height: 80px;
   background-color: #fff;
 
   padding-top: 5px;
@@ -115,8 +100,8 @@ const imgStyles = css`
   transition-duration: 300ms, 300ms, 300ms, 300ms;
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
-  &:hover{
-    transform:scale(1.03)
+  &:hover {
+    transform: scale(1.03);
   }
 `
 
@@ -193,4 +178,4 @@ const addToCartButton = css`
   // }
 `
 
-export default ComiketProductCard
+export default WeissProductCard

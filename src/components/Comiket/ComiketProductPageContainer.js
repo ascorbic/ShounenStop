@@ -7,14 +7,14 @@ import ContextConsumer from '../LayoutItems/CartContext'
 
 const ComiketProductPageContainer = ({
   imgData,
-  preorder,
-  receieve,
   asin,
   eventName,
   productType,
   price,
-  url,
+  eventInfo,
 }) => {
+  console.log(eventInfo)
+  const {preorder, receive} = eventInfo
   return (
     <ContextConsumer>
       {context => {
@@ -41,6 +41,14 @@ const ComiketProductPageContainer = ({
                       </div>
                       <div css={productTypeText}>{'Single ' + productType}</div>
                       <div css={priceText}>{'$' + price}</div>
+                      <div css={dateTextContainer}>
+                        <div css={dateField}>Preorder By</div>
+                        <div css={dateValue}>{preorder}</div>
+                      </div>
+                      <div css={dateTextContainer}>
+                        <div css={dateField}>Estimated Arrival</div>
+                        <div css={dateValue}>{receive}</div>
+                      </div>
                       <div
                         onClick={() => {
                           context.addQuantityToCart(
@@ -93,6 +101,18 @@ const productTypeContainer = css`
 
 const productInformationContainer = css``
 
+const dateValue = css`
+
+`
+
+const dateField = css`
+  font-weight: 700;
+`
+const dateTextContainer = css`
+  font-family: varela round;
+  font-size: 20px;
+`
+
 const priceText = css`
   font-family: varela round;
   font-size: 30px;
@@ -104,17 +124,22 @@ const priceText = css`
 
 const productInformationWrapper = css`
   margin-top: 40px;
-
 `
 
 const productImageContainer = css`
   display: flex;
+  align-self: flex-start;
   justify-content: center;
   margin-top: 40px;
+  position: sticky;
+  top: 80px;
+  @media (max-width: 768px) {
+    position: relative;
+    top: 0;
+  }
 `
 
 const imgContainer = css`
-  position: relative;
   width: 100%;
   cursor: pointer;
   max-width: 500px;
@@ -126,8 +151,10 @@ const imgStyles = css`
     cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-duration: 300ms, 300ms, 300ms, 300ms;
   border-radius: 8px;
-
-  box-shadow: 0px 20px 30px 10px rgba(31, 32, 68, 0.30);
+  box-shadow: 0px 20px 30px 10px rgba(31, 32, 68, 0.3);
+  &:hover {
+    transform: scale(1.03);
+  }
 `
 
 const productContentContainer = css`
@@ -155,7 +182,8 @@ const addToCartButton = css`
   -o-transition: all 0.2s;
   transition: all 0.2s;
   cursor: pointer;
-  border:solid 1px #0f346c;
+  margin-top:20px;
+  border: solid 1px #0f346c;
   background-color: #0f346c;
   color: #a1bce6;
   font-family: varela round;
@@ -165,14 +193,13 @@ const addToCartButton = css`
   height: 45px;
   width: 100%;
   border-radius: 3px;
-  border-top: solid 1px #e6e6ea;
   user-select: none;
   text-align: center;
   letter-spacing: 1.5px;
   &:hover {
-    color:#0f346c;
+    color: #0f346c;
     background-color: #fff;
-    border:solid 1px #0f346c;
+    border: solid 1px #0f346c;
   }
 
   &:active {

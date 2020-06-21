@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql, navigate } from 'gatsby'
 import { ToastContainer, Slide } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { CartContext } from './CartContext'
 import { css } from '@emotion/core'
 

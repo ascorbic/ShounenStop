@@ -62,10 +62,15 @@ class FilterProductCategory extends React.Component {
             </div>
           </div>
         </div>
-        {!this.state.open ? <div>{this.props.currentFilter}</div> : null}
         <Collapse css={filterOptionContainer} in={this.state.open}>
           <div css={filterListContainer}>
             {this.props.children}
+            <div css={paddingBottomList}></div>
+          </div>
+        </Collapse>
+        <Collapse css={filterOptionContainer} in={!this.state.open}>
+          <div css={filterListContainer}>
+            <div css={selectedFilterList}>{this.props.currentFilter}</div>
             <div css={paddingBottomList}></div>
           </div>
         </Collapse>
@@ -75,6 +80,24 @@ class FilterProductCategory extends React.Component {
 }
 
 export default FilterProductCategory
+
+const selectedFilterList = css`
+  border-radius: 6px;
+  font-family: lato;
+  height: 40px;
+  margin-bottom:10px;
+  line-height: 40px;
+  padding-left: 15px;
+  color: #444;
+  background-color:#dcecff;
+  cursor: pointer;
+  color: #0f346c;
+  transition: all 0.2s ease-in-out;
+  // &:hover,
+  // active {
+  //   background-color: #f0f7ff;
+  // }
+`
 
 const paddingBottomList = css`
   height: 10px;

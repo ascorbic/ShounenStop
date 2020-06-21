@@ -49,7 +49,8 @@ const Weiss = ({ data, location }) => {
           className={'col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12'}
         >
           <div css={filterContainer} className="stickyFilter">
-            <FilterProductCategory filterName="Product Type">
+            <FilterProductCategory filterName="Product Type"
+            currentFilter={productTypeFilterItem}>
               {productTypeFilterList.map(filterItem => (
                 <div
                   key={filterItem}
@@ -67,7 +68,9 @@ const Weiss = ({ data, location }) => {
                 </div>
               ))}
             </FilterProductCategory>
-            <FilterProductCategory filterName="Series">
+            <FilterProductCategory filterName="Series"
+            currentFilter={seriesFilterItem}
+            >
               {seriesFilterList.map(filterItem => (
                 <div
                   key={filterItem}

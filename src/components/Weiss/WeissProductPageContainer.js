@@ -29,18 +29,26 @@ const WeissProductPageContainer = ({
     max-width: 500px;
     padding: 5px;
     background-color: #fff;
-    border: solid 2px ${color};
-    box-shadow: 0px 20px 30px 10px rgba(31, 32, 68, 0.3);
+    // border: solid 2px ${color};
+    // box-shadow: 0px 20px 30px 10px rgba(31, 32, 68, 0.3);
     border-radius: 8px;
     &:hover {
       transform: scale(1.03);
     }
   `
+
+  const productTypeText = css`
+    font-family: varela round;
+    font-size: 20px;
+    color: ${color};
+    padding-top: 10px;
+  `
+
   const productTypeContainer = css`
     font-family: varela round;
     font-size: 30px;
-    color: ${color};
-    font-weight: 700;
+    color: #151515;
+    // font-weight: 700;
   `
 
   const addToCartButton = css`
@@ -71,6 +79,16 @@ const WeissProductPageContainer = ({
     &:active {
       background-color: #cfcfcf;
     }
+  `
+
+  const priceText = css`
+    font-family: varela round;
+    font-size: 30px;
+    color: ${color};
+    height: 70px;
+    margin-bottom:20px;
+    display: flex;
+    align-items: center;
   `
 
   const productInfoHeader = css`
@@ -105,7 +123,6 @@ const WeissProductPageContainer = ({
                     className="col-xl-6 col-lg-3 col-md-4 col-sm-12 col-12"
                   >
                     <div css={productInformationContainer}>
-                      <div css={productTypeContainer}>{name}</div>
                       <div css={productTypeText}>
                         {quantity > 1
                           ? 'Set of ' +
@@ -115,6 +132,7 @@ const WeissProductPageContainer = ({
                             '(s)'
                           : 'Single ' + productType}
                       </div>
+                      <div css={productTypeContainer}>{name}</div>
                       <div css={priceText}>
                         {'$' +
                           pricings.find(x => x.quantity === quantity).price +
@@ -196,8 +214,8 @@ const infoRow = css`
 
 const infoLeft = css`
   float: left;
-  font-weight:700;
-  color:#444;
+  font-weight: 700;
+  color: #444;
 `
 
 const infoRight = css`
@@ -205,7 +223,7 @@ const infoRight = css`
 `
 
 const productInfoContainer = css`
-font-family: varela round;
+  font-family: varela round;
 
   width: 100%;
 `
@@ -214,13 +232,6 @@ const productPageWrapper = css`
   width: 100%;
   display: flex;
   justify-content: center;
-`
-
-const productTypeText = css`
-  font-family: varela round;
-  font-size: 25px;
-  color: #666;
-  padding-top: 10px;
 `
 
 const pricingQuantityContainer = css`
@@ -303,15 +314,6 @@ const dateTextContainer = css`
   font-size: 20px;
 `
 
-const priceText = css`
-  font-family: varela round;
-  font-size: 30px;
-  color: #151515;
-  height: 100px;
-  display: flex;
-  align-items: center;
-`
-
 const productInformationWrapper = css`
   margin-top: 40px;
   max-width: 400px;
@@ -339,13 +341,18 @@ const imgStyles = css`
 
 const productContentContainer = css`
   width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  margin-top: 35px;
+  padding-bottom: 50px;
+  margin-left: 25px;
+  margin-right: 25px;
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
   justify-content: center;
   max-width: 1140px;
+  box-shadow: 0px 2px 8px 0px rgba(31, 32, 68, 0.16);
+  background-color: #fff;
+  border-radius: 12px;
 `
 const productPageContainer = css`
   margin-top: 20px;

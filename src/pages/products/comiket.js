@@ -165,7 +165,6 @@ const filterListItem = css`
   padding-left: 15px;
   color: #444;
   cursor: pointer;
-  border-left: solid 2px #fff;
   transition: all 0.2s ease-in-out;
   &:hover,
   active {

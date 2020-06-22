@@ -8,19 +8,6 @@ import OrderSummary from './OrderSummary'
 import CartProductList from './CartProductList'
 import CheckoutProgress from '../Checkout/CheckoutProgress'
 
-// asin,
-//     name,
-//     displayName,
-//     producttype,
-//     series,
-//     color,
-//     image,
-//     pricings,
-//     weight,
-//     preorder,
-//     release,
-//     merchandise,
-
 const getProduct = flatProduct => {
   return flatProduct.split('|')
 }

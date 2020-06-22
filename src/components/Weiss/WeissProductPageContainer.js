@@ -86,7 +86,7 @@ const WeissProductPageContainer = ({
     font-size: 30px;
     color: ${color};
     height: 70px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
   `
@@ -101,7 +101,6 @@ const WeissProductPageContainer = ({
   `
 
   const [quantity, setQuantity] = useState(1)
-
   return (
     <ContextConsumer>
       {context => {
@@ -114,7 +113,7 @@ const WeissProductPageContainer = ({
                     css={productImageContainer}
                     className="col-xl-6 col-lg-5 col-md-6 col-sm-12 col-12"
                   >
-                    <div css={imgContainer}>
+                    <div className="img-zoom" css={imgContainer}>
                       <Img css={imgStyles} fluid={imgData} />
                     </div>
                   </div>
@@ -324,6 +323,8 @@ const productImageContainer = css`
   align-self: flex-start;
   justify-content: center;
   margin-top: 40px;
+  position: relative;
+
   position: sticky;
   top: 80px;
   @media (max-width: 768px) {

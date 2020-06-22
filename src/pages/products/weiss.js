@@ -6,22 +6,19 @@ import { Container } from 'react-bootstrap'
 import ProductPageContainer from '../../components/Products/ProductPageContainer'
 import FilterProductCategory from '../../components/Products/FilterProductCategory'
 import WeissProductCard from '../../components/Weiss/WeissProductCard'
-// import WeissLandingProductCard from '../../components/Weiss/WeissLandingProductCard'
+
+const lowestPrice = pricings => {
+  return Math.min.apply(
+    Math,
+    pricings.map(function(pricing) {
+      return pricing.price / pricing.quantity
+    })
+  )
+}
 
 const Weiss = ({ data, location }) => {
   const weissProductData = data.weissProducts.edges
-  // const comiketEventInfo = data.comiketEventInfo.edges
-  //   .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
-  //   .slice()
 
-  // var currentEventKey = ''
-  // var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
-  //   const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
-  //   if (comiketEventInfoEdge.currentEvent) {
-  //     currentEventKey = comiketEventInfoEdge.eventName
-  //   }
-  //   return comiketEventInfoEdge.eventName
-  // })
   var productTypeFilterList = ['All']
   weissProductData.map(edge => {
     const curProductType = edge.node.frontmatter.producttype
@@ -49,8 +46,10 @@ const Weiss = ({ data, location }) => {
           className={'col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12'}
         >
           <div css={filterContainer} className="stickyFilter">
-            <FilterProductCategory filterName="Product Type"
-            currentFilter={productTypeFilterItem}>
+            <FilterProductCategory
+              filterName="Product Type"
+              currentFilter={productTypeFilterItem}
+            >
               {productTypeFilterList.map(filterItem => (
                 <div
                   key={filterItem}
@@ -68,8 +67,9 @@ const Weiss = ({ data, location }) => {
                 </div>
               ))}
             </FilterProductCategory>
-            <FilterProductCategory filterName="Series"
-            currentFilter={seriesFilterItem}
+            <FilterProductCategory
+              filterName="Series"
+              currentFilter={seriesFilterItem}
             >
               {seriesFilterList.map(filterItem => (
                 <div
@@ -95,7 +95,7 @@ const Weiss = ({ data, location }) => {
           className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-xs-12"
         >
           <div css={productCategoryHeaderContainer}>
-            <div css={productCategoryHeader}></div>
+            <div css={productCategoryHeader}>Weiss</div>
             <div css={productHeaderSubtitleText}></div>
           </div>
           <div className="row" css={productContentWrapper}>
@@ -112,23 +112,22 @@ const Weiss = ({ data, location }) => {
               })
               .map(edge => {
                 console.log(edge)
+                const preorder =
+                  edge.node.frontmatter.preorder !== 'Invalid date'
+                    ? edge.node.frontmatter.preorder
+                    : '';
+
                 return (
                   <WeissProductCard
                     displayName={edge.node.frontmatter.displayName}
                     productType={edge.node.frontmatter.producttype}
+                    lowPrice={lowestPrice(edge.node.frontmatter.pricings)}
+                    preorder={preorder}
+                    color={edge.node.frontmatter.color}
                     key={edge.node.frontmatter.asin}
                     imgData={edge.node.frontmatter.image.childImageSharp.fluid}
                     url={'/products' + edge.node.fields.slug}
                   />
-                  // <WeissProductCard
-                  //   key={edge.node.frontmatter.asin}
-                  //   asin={edge.node.frontmatter.asin}
-                  //   imgData={edge.node.frontmatter.image.childImageSharp.fluid}
-                  //   price={edge.node.frontmatter.pricings[0].price}
-                  //   productType={edge.node.frontmatter.producttype}
-                  //   eventName={edge.node.frontmatter.eventName}
-                  //   url={'/products' + edge.node.fields.slug}
-                  // />
                 )
               })}
           </div>

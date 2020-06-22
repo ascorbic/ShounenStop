@@ -13,8 +13,7 @@ const ComiketProductPageContainer = ({
   price,
   eventInfo,
 }) => {
-  console.log(eventInfo)
-  const {preorder, receive} = eventInfo
+  const { preorder, receive } = eventInfo
   return (
     <ContextConsumer>
       {context => {
@@ -27,7 +26,7 @@ const ComiketProductPageContainer = ({
                     css={productImageContainer}
                     className="col-xl-6 col-lg-5 col-md-6 col-sm-12 col-12"
                   >
-                    <div css={imgContainer}>
+                    <div className="img-zoom" css={imgContainer}>
                       <Img css={imgStyles} fluid={imgData} />
                     </div>
                   </div>
@@ -36,10 +35,10 @@ const ComiketProductPageContainer = ({
                     className="col-xl-6 col-lg-3 col-md-4 col-sm-12 col-12"
                   >
                     <div css={productInformationContainer}>
+                      <div css={productTypeText}>{'Single ' + productType}</div>
                       <div css={productTypeContainer}>
                         {eventName + ' ' + productType}
                       </div>
-                      <div css={productTypeText}>{'Single ' + productType}</div>
                       <div css={priceText}>{'$' + price}</div>
                       <div css={dateTextContainer}>
                         <div css={dateField}>Preorder By</div>
@@ -87,23 +86,20 @@ const productPageWrapper = css`
 
 const productTypeText = css`
   font-family: varela round;
-  font-size: 25px;
-  color: #666;
+  font-size: 20px;
+  color: #0f346c;
   padding-top: 10px;
 `
 
 const productTypeContainer = css`
   font-family: varela round;
   font-size: 30px;
-  color: #0f346c;
-  font-weight: 700;
+  color: #151515;
 `
 
 const productInformationContainer = css``
 
-const dateValue = css`
-
-`
+const dateValue = css``
 
 const dateField = css`
   font-weight: 700;
@@ -116,7 +112,7 @@ const dateTextContainer = css`
 const priceText = css`
   font-family: varela round;
   font-size: 30px;
-  color: #151515;
+  color: #0f346c;
   height: 100px;
   display: flex;
   align-items: center;
@@ -159,13 +155,18 @@ const imgStyles = css`
 
 const productContentContainer = css`
   width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  margin-top: 35px;
+  padding-bottom: 50px;
+  margin-left: 25px;
+  margin-right: 25px;
   padding-left: 15px;
   padding-right: 15px;
   display: flex;
   justify-content: center;
   max-width: 1140px;
+  box-shadow: 0px 2px 8px 0px rgba(31, 32, 68, 0.16);
+  background-color: #fff;
+  border-radius: 12px;
 `
 const productPageContainer = css`
   margin-top: 20px;
@@ -182,7 +183,7 @@ const addToCartButton = css`
   -o-transition: all 0.2s;
   transition: all 0.2s;
   cursor: pointer;
-  margin-top:20px;
+  margin-top: 20px;
   border: solid 1px #0f346c;
   background-color: #0f346c;
   color: #a1bce6;

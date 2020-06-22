@@ -16,7 +16,6 @@ const CartProduct = ({
   initialCartQuantity,
   updateCartQuantity,
 }) => {
-  console.log(url)
   const [cartQuantity, setCartQuantity] = useState(initialCartQuantity)
 
   const productItemStyle = css`
@@ -25,9 +24,7 @@ const CartProduct = ({
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 9px;
-    // border:solid 1px ${primaryColor};
     box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
-    // border-left: solid 1px ${primaryColor};
     display: inline-flex;
     justify-content: space-between;
     flex-wrap: nowrap;

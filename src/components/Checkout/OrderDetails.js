@@ -14,7 +14,6 @@ const OrderDetails = ({ productData }) => {
       <div css={orderDetailsContainer}>
         {Object.keys(productData).map(key => {
           const cartProductData = productData[key]
-          console.log(cartProductData)
           const imgData = cartProductData.metadata.image.childImageSharp.fluid
           const asin = cartProductData.metadata.asin
           const productName =

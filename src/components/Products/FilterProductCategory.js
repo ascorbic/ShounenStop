@@ -89,14 +89,12 @@ const selectedFilterList = css`
   line-height: 40px;
   padding-left: 15px;
   color: #444;
-  background-color:#dcecff;
+
+  background-color:#B9D9FF;
   cursor: pointer;
+  letter-spacing: 1.1px;
   color: #0f346c;
   transition: all 0.2s ease-in-out;
-  // &:hover,
-  // active {
-  //   background-color: #f0f7ff;
-  // }
 `
 
 const paddingBottomList = css`

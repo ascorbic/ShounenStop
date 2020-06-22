@@ -79,11 +79,17 @@ collections:
           widget: boolean,
           default: false,
         }
-      - { label: Event Description, name: eventDesc, widget: string, required: false }
+      - {
+          label: Event Description,
+          name: eventDesc,
+          widget: string,
+          required: false,
+        }
       - {
           label: Preorder date,
           name: preorder,
           widget: datetime,
+          default: '',
           required: false,
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
@@ -92,6 +98,7 @@ collections:
           label: Estimated Receive date,
           name: receive,
           widget: datetime,
+          default: '',
           required: false,
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
@@ -156,6 +163,7 @@ collections:
           label: Preorder date,
           name: preorder,
           widget: datetime,
+          default: '',
           required: false,
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
@@ -164,6 +172,7 @@ collections:
           label: Release date,
           name: release,
           widget: datetime,
+          default: '',
           required: false,
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,

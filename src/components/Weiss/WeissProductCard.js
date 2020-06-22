@@ -8,14 +8,83 @@ const WeissProductCard = ({
   imgData,
   displayName,
   asin,
+  color,
   productType,
-  price,
+  preorder,
+  lowPrice,
   url,
 }) => {
+  const productTypeText = css`
+    padding-top: 3px;
+    font-size: 14px;
+    color: #b4b9c4;
+    width: 65%;
+
+    float: left;
+    clear: left;
+    @media only screen and (max-width: 450px) {
+      padding-top: 2px;
+      font-size: 13px;
+    }
+  `
+
+  const priceText = css`
+    position: relative;
+    font-weight: 400;
+    color: ${color};
+    float: right;
+    font-size: 18px;
+    text-align: right;
+    width: 35%;
+    // @media only screen and (max-width: 450px) {
+    //   padding-top: 2px;
+    //   font-size: 13px;
+    // }
+  `
+
+  const nameText = css`
+    position: relative;
+    font-weight: 700;
+    color: ${color};
+    width: 65%;
+    float: left;
+  `
+
+  const cardBottom = css`
+    display: inline-block;
+    font-family: varela round;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border: none;
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 10px;
+    left: 7px;
+    background-color: #fff;
+    border-top: solid 3px ${color};
+
+    width: calc(100% - 14px);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    @media only screen and (max-width: 450px) {
+      // height: 30px;
+    }
+  `
+
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
         <div css={cardPadding} className="row-card">
+          <div css={cardStatus}>{preorder !== null ? preorder : ''}</div>
           <div css={cardContainer}>
             <Link to={url} className="link-no-style">
               <div css={imgContainer}>
@@ -23,8 +92,9 @@ const WeissProductCard = ({
               </div>
             </Link>
             <div css={cardBottom}>
+              <div css={nameText}>{displayName}</div>
+              <div css={priceText}>{'From $' + lowPrice.toFixed(2)}</div>
               <div css={productTypeText}>{productType}</div>
-              <div css={priceText}>{'From $' + price}</div>
             </div>
           </div>
         </div>
@@ -32,27 +102,6 @@ const WeissProductCard = ({
     </ContextConsumer>
   )
 }
-
-const cardBottom = css`
-  font-family: varela round;
-  position: relative;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
-  border: none;
-  width: 100%;
-  height: 80px;
-  background-color: #fff;
-
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  @media only screen and (max-width: 450px) {
-    height: 30px;
-  }
-`
 
 const cardPadding = css`
   margin-top: 25px;
@@ -83,14 +132,11 @@ const cardContainer = css`
   }
 `
 
-const addToCartImgWrapper = css`
-  width: 30px;
-`
-
 const imgContainer = css`
   position: relative;
   width: 100%;
   cursor: pointer;
+  padding-bottom: 85px;
 `
 
 const imgStyles = css`
@@ -100,82 +146,27 @@ const imgStyles = css`
   transition-duration: 300ms, 300ms, 300ms, 300ms;
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
+
   &:hover {
     transform: scale(1.03);
   }
+  
 `
 
-const productTypeText = css`
-  padding-top: 3px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #151515;
-  float: left;
-  @media only screen and (max-width: 450px) {
-    padding-top: 2px;
-    font-size: 13px;
-  }
-`
-
-const priceText = css`
-  padding-top: 3px;
-  position: relative;
-  padding-right: 6px;
-  font-weight: 400;
-  color: #0f346c;
-  float: right;
-  font-size: 18px;
-  @media only screen and (max-width: 450px) {
-    padding-top: 2px;
-    font-size: 13px;
-  }
-`
-
-const addToCartButton = css`
-  -webkit-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
-  margin-top: 0px;
-  margin-right: -4px;
-  padding-left: 2px;
-  cursor: pointer;
-  background-color: #0f346c;
-  color: #a1bce6;
-  font-family: montserrat;
-  font-weight: 300;
-  line-height: 35px;
-  border-radius: 8px;
-  height: 30px;
-  width: 30px;
-  font-size: 22px;
-  position: relative;
-  float: right;
-  display: flex;
-  border: solid 1px #0f346c;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  text-align: center;
+const cardStatus = css`
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 15px;
+  left: 0;
+  font-size: 14px;
   letter-spacing: 1.5px;
-  @media only screen and (max-width: 450px) {
-    height: 22px;
-    width: 22px;
-    margin-top: -1px;
-    border-radius: 6px;
-    margin-right:-5px;
-  }
-
-  &:hover {
-    color: #0f346c;
-    transform:scale(1.08)
-
-    border: solid 1px #0f346c;
-    background-color: #fff;
-  }
-
-  // &:active {
-  //   background-color: #cfcfcf;
-  // }
+  line-height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: 300;
+  background-color: #0f346c;
+  z-index: 1;
+  color: #fff;
 `
 
 export default WeissProductCard

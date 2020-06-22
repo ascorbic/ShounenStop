@@ -107,7 +107,6 @@ const ShopNavbar = ({ pageInfo, title }) => {
                 disabled
                   rootCloseEvent="onClick"
                   onClick={() => {
-                    console.log('omg')
                   }}
                   renderMenuOnMount
                   title="PRODUCTS"
@@ -119,8 +118,8 @@ const ShopNavbar = ({ pageInfo, title }) => {
                     }}
                   >
                     <Img fixed={cardImage.childImageSharp.fixed} />
-                    <Link to="/products/weiss" activeClassName="active">
-                      <Nav.Link as="span">WEISS</Nav.Link>
+                    <Link to="/products/weiss">
+                      <Nav.Link as="span" href="/products/weiss">WEISS</Nav.Link>
                     </Link>
                   </div>
                   <div
@@ -131,7 +130,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   >
                     <Img fixed={playmatImage.childImageSharp.fixed} />
                     <Link to="/products/comiket" activeClassName="active">
-                      <Nav.Link as="span">COMIKET</Nav.Link>
+                      <Nav.Link as="span" href="/products/comiket">COMIKET</Nav.Link>
                     </Link>
                   </div>
                 </NavDropdown>
@@ -295,10 +294,10 @@ const navbarCart = css`
 const navbarCollapse = css`
   border-top: solid 1px #f0f0f0;
   justify-content: left;
-  span.nav-link.active {
-    font-weight: bold;
-    color: #0f346c !important;
-  }
+  // span.nav-link.active {
+  //   font-weight: bold;
+  //   color: #0f346c !important;
+  // }
 `
 
 export default ShopNavbar

@@ -111,7 +111,6 @@ const Weiss = ({ data, location }) => {
                   : true
               })
               .map(edge => {
-                console.log(edge)
                 const preorder =
                   edge.node.frontmatter.preorder !== 'Invalid date'
                     ? edge.node.frontmatter.preorder

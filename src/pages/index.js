@@ -8,6 +8,7 @@ import SEO from '../components/Common/seo'
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
+  console.log(data)
   const {
     landingText,
     landingSubtitle,
@@ -18,13 +19,13 @@ const IndexPage = () => {
   } = data.landingPageInfo.frontmatter
   const newReleaseData = {
     release1: data.weissProducts.edges.find(
-      x => x.node.frontmatter.asin === release1
+      x => x.node.frontmatter.asin.toLowerCase() === release1.toLowerCase()
     ).node,
     release2: data.weissProducts.edges.find(
-      x => x.node.frontmatter.asin === release2
+      x => x.node.frontmatter.asin.toLowerCase() === release2.toLowerCase()
     ).node,
     release3: data.weissProducts.edges.find(
-      x => x.node.frontmatter.asin === release3
+      x => x.node.frontmatter.asin.toLowerCase() === release3.toLowerCase()
     ).node,
   }
 
@@ -63,7 +64,7 @@ export const query = graphql`
       }
     }
     weissProducts: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/weiss/" } }
+      filter: { frontmatter: { merchandise: { eq: "weiss" } } }
     ) {
       edges {
         node {

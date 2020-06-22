@@ -33,8 +33,16 @@ const CartProductList = ({ productData, updateCartQuantity }) => {
           const productType = cartProductData.metadata.producttype
           const primaryColor = cartProductData.metadata.color
           const price = cartProductData.price
-          const url = '/products/' + cartProductData.metadata.merchandise + '/' + asin.toLowerCase()
-          const releaseDate = cartProductData.metadata.release
+          const url =
+            '/products/' +
+            cartProductData.metadata.merchandise +
+            '/' +
+            asin.toLowerCase() +
+            '/'
+          const releaseDate =
+            cartProductData.metadata.release !== 'Invalid date'
+              ? cartProductData.metadata.release
+              : ''
           const initialCartQuantity = cartProductData.quantity
           return (
             <CartProduct

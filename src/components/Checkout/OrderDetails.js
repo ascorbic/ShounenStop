@@ -31,7 +31,10 @@ const OrderDetails = ({ productData }) => {
             '/' +
             asin.toLowerCase() +
             '/'
-          const releaseDate = cartProductData.metadata.release
+          const releaseDate =
+            cartProductData.metadata.release !== 'Invalid date'
+              ? cartProductData.metadata.release
+              : ''
           const initialCartQuantity = cartProductData.quantity
           return (
             <CartProduct

@@ -111,7 +111,6 @@ const CartProduct = ({
               onInput={e => {
                 const value = e.target.value.replace(/[^0-9]/g, '')
                 if (typeof Number(value) === 'number') {
-                  // updateCartQuantity(asin, pricingQuantity, value)
                   setCartQuantity(value)
                 }
               }}

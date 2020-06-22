@@ -147,7 +147,8 @@ input[type='number']::-webkit-outer-spin-button {
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
   input[type='checkbox'],
-  input[type='radio'] {
+  input[type='radio'], 
+  textarea {
     --active: #009cde;
     --active-inner: #fff;
     --focus: 2px rgba(39, 94, 254, 0.3);

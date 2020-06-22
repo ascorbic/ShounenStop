@@ -141,7 +141,7 @@ const priceText = css`
   float: right;
   font-size: 18px;
   @media only screen and (max-width: 450px) {
-    padding-top: 2px;
+    padding-right:2px;
     font-size: 13px;
   }
 `

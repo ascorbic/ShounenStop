@@ -182,17 +182,20 @@ const WeissProductPageContainer = ({
                       >
                         ADD TO CART
                       </div>
-                      <div css={productInfoContainer}>
-                        <div css={productInfoHeader}>Product Information</div>
-                        <div css={infoRow}>
-                          <div css={infoLeft}>Preorder By</div>
-                          <div css={infoRight}>{preorderDate}</div>
+                      {preorderDate !== 'Invalid date' ? (
+                        <div css={productInfoContainer}>
+                          <div css={productInfoHeader}>Product Information</div>
+
+                          <div css={infoRow}>
+                            <div css={infoLeft}>Preorder By</div>
+                            <div css={infoRight}>{preorderDate}</div>
+                          </div>
+                          <div css={infoRow}>
+                            <div css={infoLeft}>Release Date</div>
+                            <div css={infoRight}>{releaseDate}</div>
+                          </div>
                         </div>
-                        <div css={infoRow}>
-                          <div css={infoLeft}>Release Date</div>
-                          <div css={infoRight}>{releaseDate}</div>
-                        </div>
-                      </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -251,6 +254,10 @@ const pricingQuantityPrice = css`
   float: right;
   font-size: 16px;
   color: #666;
+
+  @media only screen and (max-width: 400px) {
+    font-size:14px;
+  }
 `
 
 const itemPriceText = css`
@@ -295,10 +302,6 @@ const pricingContainer = css`
   display: flex;
   flex-wrap: wrap;
   position: relative;
-
-  @media only screen and (max-width: 400px) {
-    height: 30px;
-  }
 `
 
 const productInformationContainer = css``

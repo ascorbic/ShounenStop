@@ -22,6 +22,10 @@ const WeissProductCard = ({
 
     float: left;
     clear: left;
+    max-height:50px;
+
+    overflow:hidden;
+    // text-overflow: ellipsis;
     @media only screen and (max-width: 450px) {
       padding-top: 2px;
       font-size: 13px;
@@ -36,18 +40,32 @@ const WeissProductCard = ({
     font-size: 18px;
     text-align: right;
     width: 35%;
-    // @media only screen and (max-width: 450px) {
-    //   padding-top: 2px;
-    //   font-size: 13px;
-    // }
+
+    @media only screen and (max-width: 768px) {
+      padding-top: 2px;
+      font-size: 15px;
+    }
+    @media only screen and (max-width: 450px) {
+      padding-top: 2px;
+      font-size: 11px;
+    }
   `
 
   const nameText = css`
     position: relative;
+    font-size: 20px;
+
     font-weight: 700;
     color: ${color};
     width: 65%;
     float: left;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    overflow: hidden;  
+    @media only screen and (max-width: 450px) {
+      padding-top: 2px;
+      font-size: 13px;
+    }
   `
 
   const cardBottom = css`
@@ -76,7 +94,7 @@ const WeissProductCard = ({
     padding-left: 10px;
     padding-right: 10px;
     @media only screen and (max-width: 450px) {
-      // height: 30px;
+      height: 80px;
     }
   `
 

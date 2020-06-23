@@ -1,9 +1,11 @@
 import React from 'react'
 import { navigate } from 'gatsby'
 import { css } from '@emotion/core'
-import { Formik } from 'formik'
+import { Formik, Form } from 'formik'
 import { Container, Row } from 'react-bootstrap'
 import * as Yup from 'yup'
+
+const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
 const ContactContainer = () => {
   const alpha = /^[a-zA-Z_]+( [a-zA-Z_]+)*$/
@@ -12,13 +14,9 @@ const ContactContainer = () => {
     <Formik
       initialValues={{
         email: '',
-        firstName: '',
-        lastName: '',
-        address: '',
-        apt: '',
-        city: '',
-        state: '',
-        zip: '',
+        name: '',
+        subject: '',
+        message: '',
       }}
       validationSchema={Yup.object({
         email: Yup.string()
@@ -35,10 +33,21 @@ const ContactContainer = () => {
           .required('Required'),
       })}
       onSubmit={values => {
-        return false
+        console.log('omg')
+        delay(10000).then(() => {
+          return false
+        })
       }}
     >
-      {({ handleBlur, handleChange, values, errors, touched }) => {
+      {({
+        handleBlur,
+        handleChange,
+        values,
+        errors,
+        touched,
+        isValid,
+        dirty,
+      }) => {
         return (
           <Container css={contactWrapper} fluid>
             <Row>
@@ -46,133 +55,149 @@ const ContactContainer = () => {
                 css={contactContainer}
                 className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
               >
-                <div css={userInfoContainer}>
-                  <div css={contactContainerHeader}>Contact Us</div>
+                <Form>
+                  <div css={userInfoContainer}>
+                    <div css={contactContainerHeader}>Contact Us</div>
 
-                  <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div css={userInfoTop}>
-                      <label
+                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div css={userInfoTop}>
+                        <label
+                          className={
+                            touched.name && !errors.name ? 'validatedInfo' : ''
+                          }
+                          css={userInfoLabel}
+                          htmlFor="name"
+                        >
+                          Name
+                        </label>
+                        {touched.name && errors.name ? (
+                          <div css={userInfoError}>{errors.name}</div>
+                        ) : null}
+                      </div>
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
                         className={
-                          touched.name && !errors.name ? 'validatedInfo' : ''
-                        }
-                        css={userInfoLabel}
-                        htmlFor="name"
-                      >
-                        Name
-                      </label>
-                      {touched.name && errors.name ? (
-                        <div css={userInfoError}>{errors.name}</div>
-                      ) : null}
-                    </div>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      className={
-                        touched.name && errors.name ? 'userInfoErrorInput' : ''
-                      }
-                      css={userInfoInput}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.name}
-                    />
-                  </div>
-                  <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div css={userInfoTop}>
-                      <label
-                        className={
-                          touched.subject && !errors.subject
-                            ? 'validatedInfo'
+                          touched.name && errors.name
+                            ? 'userInfoErrorInput'
                             : ''
                         }
-                        css={userInfoLabel}
-                        htmlFor="subject"
-                      >
-                        Subject
-                      </label>
-                      {touched.subject && errors.subject ? (
-                        <div css={userInfoError}>{errors.subject}</div>
-                      ) : null}
+                        css={userInfoInput}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.name}
+                      />
                     </div>
-                    <input
-                      id="subject"
-                      name="subject"
-                      type="text"
-                      className={
-                        touched.subject && errors.subject
-                          ? 'userInfoErrorInput'
-                          : ''
-                      }
-                      css={userInfoInput}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.subject}
-                    />
-                  </div>
-                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div css={userInfoTop}>
-                      <label
+                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div css={userInfoTop}>
+                        <label
+                          className={
+                            touched.subject && !errors.subject
+                              ? 'validatedInfo'
+                              : ''
+                          }
+                          css={userInfoLabel}
+                          htmlFor="subject"
+                        >
+                          Subject
+                        </label>
+                        {touched.subject && errors.subject ? (
+                          <div css={userInfoError}>{errors.subject}</div>
+                        ) : null}
+                      </div>
+                      <input
+                        id="subject"
+                        name="subject"
+                        type="text"
                         className={
-                          touched.email && !errors.email ? 'validatedInfo' : ''
-                        }
-                        css={userInfoLabel}
-                        htmlFor="email"
-                      >
-                        Email Address
-                      </label>
-                      {touched.email && errors.email ? (
-                        <div css={userInfoError}>{errors.email}</div>
-                      ) : null}
-                    </div>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      className={
-                        touched.email && errors.email
-                          ? 'userInfoErrorInput'
-                          : ''
-                      }
-                      css={userInfoInput}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email}
-                    />
-                  </div>
-                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div css={userInfoTop}>
-                      <label
-                        className={
-                          touched.message && !errors.message
-                            ? 'validatedInfo'
+                          touched.subject && errors.subject
+                            ? 'userInfoErrorInput'
                             : ''
                         }
-                        css={userInfoLabel}
-                        htmlFor="message"
-                      >
-                        Message
-                      </label>
-                      {touched.message && errors.message ? (
-                        <div css={userInfoError}>{errors.message}</div>
-                      ) : null}
+                        css={userInfoInput}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.subject}
+                      />
                     </div>
-                    <textarea
-                      id="message"
-                      name="message"
-                      type="text"
-                      rows="5"
-                      className={
-                        touched.message && errors.message
-                          ? 'userInfoErrorInput'
-                          : ''
-                      }
-                      css={textAreaInput}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.message}
-                    />
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div css={userInfoTop}>
+                        <label
+                          className={
+                            touched.email && !errors.email
+                              ? 'validatedInfo'
+                              : ''
+                          }
+                          css={userInfoLabel}
+                          htmlFor="email"
+                        >
+                          Email Address
+                        </label>
+                        {touched.email && errors.email ? (
+                          <div css={userInfoError}>{errors.email}</div>
+                        ) : null}
+                      </div>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        className={
+                          touched.email && errors.email
+                            ? 'userInfoErrorInput'
+                            : ''
+                        }
+                        css={userInfoInput}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                      />
+                    </div>
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div css={userInfoTop}>
+                        <label
+                          className={
+                            touched.message && !errors.message
+                              ? 'validatedInfo'
+                              : ''
+                          }
+                          css={userInfoLabel}
+                          htmlFor="message"
+                        >
+                          Message
+                        </label>
+                        {touched.message && errors.message ? (
+                          <div css={userInfoError}>{errors.message}</div>
+                        ) : null}
+                      </div>
+                      <textarea
+                        id="message"
+                        name="message"
+                        type="text"
+                        rows="5"
+                        className={
+                          touched.message && errors.message
+                            ? 'userInfoErrorInput'
+                            : ''
+                        }
+                        css={textAreaInput}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.message}
+                      />
+                    </div>
+                    <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <button
+                        css={submitButton}
+                        type="submit"
+                        className={!isValid || !dirty ? 'buttonDisabled' : ''}
+                        disabled={!isValid || !dirty}
+                      >
+                        Submit
+                      </button>
+                    </div>
                   </div>
-                </div>
+                </Form>
               </div>
             </Row>
           </Container>
@@ -181,6 +206,35 @@ const ContactContainer = () => {
     </Formik>
   )
 }
+
+const submitButton = css`
+  margin-top: 15px;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 45px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: varela round;
+  letter-spacing: 1.5px;
+  color: #a1bce6;
+  border: none;
+
+  &:hover {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  &:active {
+    color: #fff;
+  }
+  background-color: #0f346c;
+`
 
 const contactWrapper = css`
   display: flex;
@@ -260,7 +314,7 @@ const userInfoError = css`
 `
 
 const contactContainer = css`
-  margin-top: 50px;
+  margin-top: 20px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 5px;

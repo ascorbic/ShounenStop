@@ -19,6 +19,7 @@ const CartProductList = ({ productData, updateCartQuantity }) => {
           header="Your Cart"
           headerNavigate={() => navigate('/')}
         />
+
         {/* TODO: make no items in cart thing */}
         {Object.keys(productData).map(key => {
           const cartProductData = productData[key]

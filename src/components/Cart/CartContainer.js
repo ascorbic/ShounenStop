@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql, navigate } from 'gatsby'
+import { useStaticQuery, graphql, navigate, Link } from 'gatsby'
 import { css } from '@emotion/core'
 import { Container, Row } from 'react-bootstrap'
 import ContextConsumer from '../LayoutItems/CartContext'
@@ -23,7 +23,11 @@ const CartContainer = ({}) => {
         var totalItems = 0
         Object.keys(context).map(key => {
           const cartQuantity = context[key]
-          if (key !== 'updateCartQuantity' && key !== 'addQuantityToCart' && cartQuantity!==undefined) {
+          if (
+            key !== 'updateCartQuantity' &&
+            key !== 'addQuantityToCart' &&
+            cartQuantity !== undefined
+          ) {
             const pricingQuantity = Number(getProduct(key)[1])
 
             const asin = getProduct(key)[0]
@@ -60,7 +64,7 @@ const CartContainer = ({}) => {
           productData: productData,
           totalItems: totalItems,
           subTotal: totalPrice,
-          totalPrice: (totalPrice+shippingData.standardShipping.price),
+          totalPrice: totalPrice + shippingData.standardShipping.price,
           shippingInfo: shippingData,
         }
         return (
@@ -70,25 +74,34 @@ const CartContainer = ({}) => {
                 <CheckoutProgress orderContext={orderContext} phase={1} />
               </Row>
               <Row>
-                <CartProductList
-                  productData={productData}
-                  updateCartQuantity={context.updateCartQuantity}
-                />
-                {/* {pass subtotal and total price} */}
-                <OrderSummary
-                  checkoutNavigate={() =>
-                    navigate('/checkout', {
-                      state: { orderContext },
-                    })
-                  }
-                  fees={0}
-                  orderContext={orderContext}
-                  subTotal={orderContext.subTotal}
-                  totalItems={orderContext.totalItems}
-                  shippingInfo={orderContext.shippingInfo}
-                  navigateMessage="Checkout"
-                  disableButton={orderContext.totalItems===0}
-                />
+                {Object.keys(productData).length < 1 ? (
+                  <div css={cartEmpty}>
+                    <div css={cartEmptyText}>CART EMPTY</div>
+                    
+                    <Link to="/" css={cartEmptyHome}>RETURN HOME</Link>
+                  </div>
+                ) : (
+                  <>
+                    <CartProductList
+                      productData={productData}
+                      updateCartQuantity={context.updateCartQuantity}
+                    />
+                    <OrderSummary
+                      checkoutNavigate={() =>
+                        navigate('/checkout', {
+                          state: { orderContext },
+                        })
+                      }
+                      fees={0}
+                      orderContext={orderContext}
+                      subTotal={orderContext.subTotal}
+                      totalItems={orderContext.totalItems}
+                      shippingInfo={orderContext.shippingInfo}
+                      navigateMessage="Checkout"
+                      disableButton={orderContext.totalItems === 0}
+                    />
+                  </>
+                )}
               </Row>
             </Container>
           </div>
@@ -100,9 +113,27 @@ const CartContainer = ({}) => {
 
 export default CartContainer
 
+const cartEmptyHome = css`
+  width:100%;
+`
+
+const cartEmptyText = css`
+  width:100%;
+`
+
+const cartEmpty = css`
+  font-size: 40px;
+  height: 400px;
+  display: flex;
+  flex-wrap:wrap;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`
+
 const cartStyles = css`
   min-height: calc(100vh - 120px);
-  // background-color: #fff;
 `
 
 const containerStyles = css`

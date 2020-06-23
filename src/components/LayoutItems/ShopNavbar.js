@@ -156,7 +156,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
               <Link to="/contact" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={contactImage.childImageSharp.fixed} />
-                  <Nav.Link as="span">CONTACT</Nav.Link>
+                  <Nav.Link as="span" href="/contact">CONTACT</Nav.Link>
                 </div>
               </Link>
             </Nav>

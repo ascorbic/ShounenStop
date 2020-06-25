@@ -5,10 +5,10 @@ import { css } from '@emotion/core'
 import { Container } from 'react-bootstrap'
 import ProductPageContainer from '../../components/Products/ProductPageContainer'
 
-const Figures = ({ data }) => {
+const Other = ({ data }) => {
   return (
     <Container css={productPageContainer} fluid>
-      <ProductPageContainer selectedProductCategory="Figures">
+      <ProductPageContainer selectedProductCategory="Other">
         <div
           css={containerNoPadding}
           className={'col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12'}
@@ -20,7 +20,7 @@ const Figures = ({ data }) => {
   )
 }
 
-export default Figures
+export default Other
 
 const empty = css`
   font-size: 40px;

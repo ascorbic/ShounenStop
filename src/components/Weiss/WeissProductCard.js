@@ -25,7 +25,6 @@ const WeissProductCard = ({
     max-height:50px;
 
     overflow:hidden;
-    // text-overflow: ellipsis;
     @media only screen and (max-width: 450px) {
       padding-top: 2px;
       font-size: 13px;
@@ -101,7 +100,7 @@ const WeissProductCard = ({
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
-        <div css={cardPadding} className="row-card">
+        <div css={cardPadding} className="row-card fadeItem">
           <div css={cardStatus}>{preorder !== null ? preorder : ''}</div>
           <div css={cardContainer}>
             <Link to={url} className="link-no-style">

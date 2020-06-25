@@ -28,13 +28,13 @@ const CartProduct = ({
     display: inline-flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    width:100%;
+    width: 100%;
     transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
+      cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
+      cubic-bezier(0.645, 0.045, 0.355, 1);
     transition-duration: 300ms, 300ms, 300ms, 300ms;
-    &:hover{
-      box-shadow:0px 8px 32px 0px rgba(31,32,68,0.16);
+    &:hover {
+      box-shadow: 0px 8px 32px 0px rgba(31, 32, 68, 0.16);
     }
   `
 
@@ -84,7 +84,9 @@ const CartProduct = ({
         {updateCartQuantity !== undefined ? (
           <div css={quantityChangerContainer}>
             <div
-              onClick={e => {
+              tabIndex={0}
+              role="button"
+              onClick={_ => {
                 var newCartQuantity = Number(cartQuantity) + 1
                 if (newCartQuantity < 10) {
                   updateCartQuantity(asin, pricingQuantity, newCartQuantity)
@@ -104,6 +106,9 @@ const CartProduct = ({
               </svg>
             </div>
             <input
+              tabIndex={0}
+              role="button"
+              label="quantity"
               type="text"
               css={inputQuantity}
               maxLength="1"
@@ -121,7 +126,9 @@ const CartProduct = ({
               value={cartQuantity}
             ></input>
             <div
-              onClick={e => {
+              tabIndex={0}
+              role="button"
+              onClick={_ => {
                 var newCartQuantity = Number(cartQuantity) - 1
                 if (newCartQuantity >= 0) {
                   updateCartQuantity(asin, pricingQuantity, newCartQuantity)
@@ -149,7 +156,7 @@ const CartProduct = ({
         <div css={subtotalContainer}>
           {updateCartQuantity !== undefined && (
             <div
-              onClick={e => {
+              onClick={_ => {
                 updateCartQuantity(asin, pricingQuantity, 0)
               }}
               css={removeItem}
@@ -157,7 +164,9 @@ const CartProduct = ({
               x
             </div>
           )}
-          <div css={subtotalStyles}>{'$' + (price * cartQuantity).toFixed(2)}</div>
+          <div css={subtotalStyles}>
+            {'$' + (price * cartQuantity).toFixed(2)}
+          </div>
         </div>
       </div>
     </div>
@@ -238,14 +247,14 @@ const removeItem = css`
 `
 
 const subtotalStyles = css`
-  margin-top:-1px;
+  margin-top: -1px;
   color: #151515;
   align-self: center;
   font-weight: 700;
   font-size: 18px;
   @media only screen and (max-width: 350px) {
     font-size: 14px;
-    margin-left:5px;
+    margin-left: 5px;
     margin-right: -15px;
   }
 `

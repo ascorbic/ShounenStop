@@ -8,10 +8,15 @@ const productsKey = 'products'
 const defaultContextValue = {
   updateCartQuantity: () => {},
   addQuantityToCart: () => {},
+  clearCart: () => {},
 }
 
 const getFlatProduct = (product, pricingQuantity) => {
   return product + '|' + pricingQuantity
+}
+
+const getProduct = flatProduct => {
+  return flatProduct.split('|')
 }
 
 const { Provider, Consumer } = React.createContext(defaultContextValue)
@@ -22,6 +27,8 @@ class CartContext extends React.Component {
 
     this.updateCartQuantity = this.updateCartQuantity.bind(this)
     this.addQuantityToCart = this.addQuantityToCart.bind(this)
+    this.clearCart = this.clearCart.bind(this)
+    this.clearCartQuantity = this.clearCartQuantity.bind(this)
     this.notifyCartUpdate = this.notifyCartUpdate.bind(this)
     this.notifyFailedToUpdate = this.notifyFailedToUpdate.bind(this)
 
@@ -29,6 +36,7 @@ class CartContext extends React.Component {
       ...defaultContextValue,
       updateCartQuantity: this.updateCartQuantity,
       addQuantityToCart: this.addQuantityToCart,
+      clearCart: this.clearCart,
     }
   }
 
@@ -89,9 +97,27 @@ class CartContext extends React.Component {
     )
   }
 
+  clearCart() {
+    sessionStorage.clear()
+    Object.keys(this.state).map(key => {
+      if (
+        key !== 'updateCartQuantity' &&
+        key !== 'addQuantityToCart' &&
+        key !== 'clearCart'
+      ) {
+        this.clearCartQuantity(key)
+      }
+    })
+  }
+
+  clearCartQuantity(productKey) {
+    const asin = getProduct(productKey)[0]
+    const pricingQuantity = Number(getProduct(productKey)[1])
+    this.updateCartQuantity(asin, pricingQuantity, 0)
+  }
+
   updateCartQuantity(productAsin, pricingQuantity, cartQuantity) {
     const flatProduct = getFlatProduct(productAsin, pricingQuantity)
-    console.log(flatProduct, cartQuantity)
     this.setState(
       prevState => {
         if (Number(cartQuantity) === 0) {
@@ -103,7 +129,6 @@ class CartContext extends React.Component {
         }
       },
       () => {
-        console.log(this.state)
         this.saveCart(this.state)
       }
     )
@@ -208,7 +233,6 @@ const nameText = css`
 
 const productTypeText = css`
   direction: ltr;
-  // color: #b4b9c4;
   font-size: 14px;
   font-weight: 400;
 `

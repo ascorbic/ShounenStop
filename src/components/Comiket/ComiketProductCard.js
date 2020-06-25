@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import React from 'react'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
@@ -15,7 +15,7 @@ const ComiketProductCard = ({
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
-        <div css={cardPadding} className='row-card'>
+        <div css={cardPadding} className='row-card fadeItem'>
           <div css={cardContainer}>
             <Link to={url} className="link-no-style">
             <div css={imgContainer}>
@@ -96,10 +96,6 @@ const cardContainer = css`
 
   &:hover .cardBottom {
   }
-`
-
-const addToCartImgWrapper = css`
-  width: 30px;
 `
 
 const imgContainer = css`

@@ -5,11 +5,12 @@ import { css } from '@emotion/core'
 import { Container, Row } from 'react-bootstrap'
 import CheckoutProgress from '../Checkout/CheckoutProgress'
 import CheckoutHeader from '../Checkout/CheckoutHeader'
+import ContextConsumer from '../LayoutItems/CartContext'
 
 const ConfirmationContainer = ({ orderContext }) => {
   const checkmarkImageData = useStaticQuery(query).checkmarkImage
     .childImageSharp.fluid
-  console.log(checkmarkImageData)
+  
   return (
     <Container fluid>
       <Row css={shiftRight}>

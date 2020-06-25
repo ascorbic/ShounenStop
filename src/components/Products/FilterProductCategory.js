@@ -1,5 +1,4 @@
 import React from 'react'
-import { useStaticQuery, graphql, navigate } from 'gatsby'
 import { css } from '@emotion/core'
 import { Collapse } from 'react-bootstrap'
 
@@ -94,6 +93,9 @@ const selectedFilterList = css`
   cursor: pointer;
   letter-spacing: 1.1px;
   color: #0f346c;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  overflow:hidden;
   transition: all 0.2s ease-in-out;
 `
 
@@ -133,10 +135,6 @@ const rightLine = css`
   right: 3px;
   top: 14px;
   position: absolute;
-`
-
-const productContentContainer = css`
-  margin-top: 10px;
 `
 
 const filterHeader = css`

@@ -147,7 +147,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
   input[type='checkbox'],
-  input[type='radio'], 
+  input[type='radio'],
   textarea {
     --active: #009cde;
     --active-inner: #fff;
@@ -165,6 +165,7 @@ input[type='number']::-webkit-outer-spin-button {
     position: relative;
     margin: 0;
     cursor: pointer;
+    -webkit-appearance: none;
     border: 1px solid var(--bc, var(--border));
     background: var(--b, var(--background));
     -webkit-transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
@@ -687,6 +688,7 @@ li *:last-child {
 p *:last-child {
   margin-bottom: 0;
 }
+
 li > p {
   margin-bottom: calc(1.45rem / 2);
 }
@@ -765,6 +767,32 @@ pre tt:after {
   content: '';
 }
 
+.mainContainer{
+  min-height: calc(100vh - 120px);
+  margin-top: 40px;
+  margin-left: auto;
+  padding: 0px;
+  padding-top: 0px;
+  font-family: 'montserrat';
+  font-weight: 300;
+}
+
+.svgIcon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.svgIcon path,
+.svgIcon polygon,
+.svgIcon rect {
+  fill: #a1bce6;
+}
+
+.svgIcon circle {
+  stroke: #a1bce6;
+  stroke-width: 1;
+}
+
 .col-xl-4 {
   font-size: 16px;
 }
@@ -782,7 +810,7 @@ pre tt:after {
   padding-bottom: 4px;
 }
 
-.dropdownNavWrapper{
+.dropdownNavWrapper {
   display: inline-flex;
   align-items: flex-start;
   padding-left: 0.65rem;
@@ -795,12 +823,12 @@ pre tt:after {
   display: block !important;
 }
 
-.dropdown.nav-item{
+.dropdown.nav-item {
   transition: all 0.2s ease-in-out;
 }
 
 .dropdown.nav-item:hover {
-  padding-left:0px;
+  padding-left: 0px;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -888,7 +916,7 @@ pre tt:after {
 }
 
 .selectedProductCategoryCard:last-child {
-  transform: scale(1.00, 1.02);
+  transform: scale(1, 1.02);
 }
 
 .validatedInfo {
@@ -907,6 +935,21 @@ pre tt:after {
 .stickyFilter {
   position: sticky;
   top: 70px;
+}
+
+.fadeItem {
+  animation: fadeIn 0.5s linear;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 @media (min-width: 300px) {

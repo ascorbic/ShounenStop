@@ -166,6 +166,9 @@ const filterListItem = css`
   color: #444;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  overflow:hidden;
   &:hover,
   active {
     background-color: #f0f7ff;

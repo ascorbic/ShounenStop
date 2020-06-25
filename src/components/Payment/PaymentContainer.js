@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql, navigate } from 'gatsby'
+import { StaticQuery, graphql, navigate, Link } from 'gatsby'
 import { css } from '@emotion/core'
 import Img from 'gatsby-image'
 import axios from 'axios'
@@ -9,7 +9,7 @@ import CheckoutProgress from '../Checkout/CheckoutProgress'
 import OrderSummary from '../Cart/OrderSummary'
 import OrderDetails from '../Checkout/OrderDetails'
 import ShippingDetails from '../Checkout/ShippingDetails'
-import QACardList from './QACardList'
+import ContextConsumer from '../LayoutItems/CartContext'
 
 const sendOrderData = false
 
@@ -44,6 +44,12 @@ class PaymentContainer extends React.Component {
     this.resetTimeLimit = this.resetTimeLimit.bind(this)
   }
 
+  componentDidUpdate = () => {
+    window.onbeforeunload = () => {
+      return true
+    }
+  }
+
   startValidatingPayment() {
     if (!this.state.isValidating) {
       this.setState({
@@ -63,6 +69,7 @@ class PaymentContainer extends React.Component {
               console.log(response)
               if (response.data === 'VALID') {
                 clearInterval(self.state.validateTimerId)
+                sessionStorage.clear()
                 navigate('/confirmation', {
                   state: { orderContext: self.props.orderContext },
                 })
@@ -125,224 +132,369 @@ class PaymentContainer extends React.Component {
   //place order
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <CheckoutProgress orderContext={this.props.orderContext} phase={3} />
-        </Row>
-        <Row>
-          <div
-            css={paymentContainer}
-            className="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-xs-12"
-          >
-            <CheckoutHeader
-              header="Payment"
-              headerNavigate={() => {
-                this.stopTimeLimit()
-                navigate('/checkout', {
-                  state: { orderContext: this.props.orderContext },
-                })
-              }}
-            />
-            <StaticQuery
-              query={graphql`
-                query {
-                  paypalMeImage: file(
-                    relativePath: { eq: "paypalmewhitetoned.png" }
-                  ) {
-                    childImageSharp {
-                      fluid(maxWidth: 500) {
-                        ...GatsbyImageSharpFluid
+      <ContextConsumer>
+        {context => (
+          <Container fluid>
+            <Row>
+              <CheckoutProgress
+                orderContext={this.props.orderContext}
+                phase={3}
+              />
+            </Row>
+            <Row>
+              <div
+                css={paymentContainer}
+                className="col-xl-8 col-lg-7 col-md-12 col-sm-12 col-xs-12"
+              >
+                <CheckoutHeader
+                  header="Payment"
+                  headerNavigate={() => {
+                    this.stopTimeLimit()
+                    navigate('/checkout', {
+                      state: { orderContext: this.props.orderContext },
+                    })
+                  }}
+                />
+                <StaticQuery
+                  query={graphql`
+                    query {
+                      paypalMeImage: file(
+                        relativePath: { eq: "paypalmewhitetoned.png" }
+                      ) {
+                        childImageSharp {
+                          fluid(maxWidth: 400) {
+                            ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                      lockImage: file(relativePath: { eq: "lock.png" }) {
+                        childImageSharp {
+                          fluid(maxWidth: 100) {
+                            ...GatsbyImageSharpFluid
+                          }
+                        }
+                      }
+                      facebookImage: file(
+                        relativePath: { eq: "facebookLogo.png" }
+                      ) {
+                        childImageSharp {
+                          fixed(width: 57, height: 57) {
+                            ...GatsbyImageSharpFixed
+                          }
+                        }
+                      }
+                      ebayImage: file(relativePath: { eq: "ebayLogo.png" }) {
+                        childImageSharp {
+                          fixed(width: 60, height: 60) {
+                            ...GatsbyImageSharpFixed
+                          }
+                        }
                       }
                     }
-                  }
-                  lockImage: file(relativePath: { eq: "lock.png" }) {
-                    childImageSharp {
-                      fluid(maxWidth: 500) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                }
-              `}
-              render={data => {
-                return (
-                  <>
-                    <div
-                      css={paypalContainer}
-                      className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                    >
-                      <div css={paypalSecure}>
-                        <Img
-                          css={lockImgStyles}
-                          fluid={data.lockImage.childImageSharp.fluid}
-                        />
-                        Secured by Paypal
-                      </div>
-                      <div css={timeLimitContainer}>
-                        {'Session: ' + secondsToMinutes(this.state.timeLimit)}
-                      </div>
+                  `}
+                  render={data => {
+                    return (
+                      <>
+                        <div
+                          css={paypalContainer}
+                          className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                        >
+                          <div css={paypalSecure}>
+                            <Img
+                              css={lockImgStyles}
+                              fluid={data.lockImage.childImageSharp.fluid}
+                            />
+                            Secured by Paypal
+                          </div>
+                          <div css={timeLimitContainer}>
+                            {'Session: ' +
+                              secondsToMinutes(this.state.timeLimit)}
+                          </div>
 
-                      <div css={paypalProcess}>
-                        <div css={priceContainer}>
-                          <Row css={priceText}>
-                            <div css={dollarTop}>$</div>
-                            <div css={priceActual}>
-                              {this.state.currentTotal.toFixed(2)}
+                          <div css={paypalProcess}>
+                            <div css={priceContainer}>
+                              <Row css={priceText}>
+                                <div css={dollarTop}>$</div>
+                                <div css={priceActual}>
+                                  {this.state.currentTotal.toFixed(2)}
+                                </div>
+                              </Row>
+                              <div css={currency}>USD</div>
                             </div>
-                          </Row>
-                          <div css={currency}>USD</div>
+                            <div
+                              css={paypalButton}
+                              onClick={() => {
+                                if (sendOrderData) {
+                                  this.sendCheckoutData()
+                                  this.startValidatingPayment()
+                                  const paypalLink =
+                                    'https://paypal.me/jonathanwu70/' +
+                                    this.props.orderContext.totalPrice.toFixed(
+                                      2
+                                    ) +
+                                    'USD'
+                                  window.open(paypalLink, '_blank')
+                                } else {
+                                  context.clearCart()
+                                  navigate('/confirmation', {
+                                    state: {
+                                      orderContext: this.props.orderContext,
+                                    },
+                                  })
+                                }
+                              }}
+                            >
+                              <Img
+                                css={imgStyles}
+                                fluid={data.paypalMeImage.childImageSharp.fluid}
+                              />
+                            </div>
+                          </div>
+                          <Form.Group controlId="formBasicCheckbox">
+                            <Form.Check
+                              onClick={() => {
+                                this.setState(prevState => {
+                                  var total = prevState.currentTotal
+                                  console.log(total)
+                                  console.log(this.state.paypalFees)
+                                  if (prevState.paypalFeesEnabled) {
+                                    total -= this.state.paypalFees
+                                  } else {
+                                    total += this.state.paypalFees
+                                  }
+                                  return {
+                                    paypalFeesEnabled: !prevState.paypalFeesEnabled,
+                                    currentTotal: total,
+                                  }
+                                })
+                              }}
+                              css={paypalGoodsCheckbox}
+                              type="checkbox"
+                              label="Enable Paypal Goods and Services for a fee."
+                            />
+                          </Form.Group>
+                          <div css={disclaimerContainer}>
+                            <div css={feeHeader}>Fee Information</div>
+                            <div css={disclaimerTextGoods}>
+                              - Please pay the exact amount or the transaction
+                              will <b>NOT</b> succeed. <br />- For Paypal Goods
+                              and Services Protection, you must enable it here
+                              for a fee.
+                            </div>
+                            <div css={disclaimerTextReasons}>
+                              - This allows us to offer the best price by not
+                              having to pay a fee. You can verify our
+                              credibility as a seller below.
+                            </div>
+                          </div>
+                          <div css={credibilityInformation}>
+                            <div css={credibilityHeader}>Credibility</div>
+                            <div className="row">
+                              <div
+                                css={credibilityItem}
+                                className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
+                              >
+                                <div css={credibilityImgWrapper}>
+                                  <a
+                                    target="_blank"
+                                    href="https://www.facebook.com/groups/WeissSchwarzInternational"
+                                  >
+                                    <Img
+                                      css={credibilityImgStyles}
+                                      fixed={
+                                        data.facebookImage.childImageSharp.fixed
+                                      }
+                                    />
+                                  </a>
+                                </div>
+                                <div css={credibilityItemText}>
+                                  <div css={credibilityItemHeader}>
+                                    Facebook Weiss Groups
+                                  </div>
+                                  <div css={credibilityItemDesc}>
+                                    Reference Check me by searching Leon Shum
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                css={credibilityItem}
+                                className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
+                              >
+                                <div css={credibilityImgWrapper}>
+                                  <a
+                                    target="_blank"
+                                    href="https://www.facebook.com/Shounen-Stop-112480440503469"
+                                  >
+                                    <Img
+                                      css={credibilityImgStyles}
+                                      fixed={
+                                        data.facebookImage.childImageSharp.fixed
+                                      }
+                                    />
+                                  </a>
+                                </div>
+                                <div css={credibilityItemText}>
+                                  <div css={credibilityItemHeader}>
+                                    Shounen Stop Facebook Page
+                                  </div>
+                                  <div css={credibilityItemDesc}>
+                                    Check out our Facebook page for more info
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                css={credibilityItem}
+                                className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
+                              >
+                                <div css={credibilityImgWrapper}>
+                                  <a target="_blank">
+                                    <Img
+                                      css={credibilityImgStyles}
+                                      fixed={
+                                        data.facebookImage.childImageSharp.fixed
+                                      }
+                                    />
+                                  </a>
+                                </div>
+                                <div css={credibilityItemText}>
+                                  <div css={credibilityItemHeader}>
+                                    Leon Shum on Facebook
+                                  </div>
+                                  <div css={credibilityItemDesc}>
+                                    My Facebook profile page
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                css={credibilityItem}
+                                className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
+                              >
+                                <div css={credibilityImgWrapper}>
+                                  <a
+                                    target="_blank"
+                                    href="https://www.ebay.com/fdbk/feedback_profile/shounenstop?filter=feedback_page:All&_trksid=p2545226.m2531.l4585"
+                                  >
+                                    <Img
+                                      css={credibilityImgStyles}
+                                      fixed={
+                                        data.ebayImage.childImageSharp.fixed
+                                      }
+                                    />
+                                  </a>
+                                </div>
+                                <div css={credibilityItemText}>
+                                  <div css={credibilityItemHeader}>Ebay</div>
+                                  <div css={credibilityItemDesc}>
+                                    My Ebay account with over 150 positive reviews
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                         <div
-                          css={paypalButton}
-                          onClick={() => {
-                            if (sendOrderData) {
-                              this.sendCheckoutData()
-                              this.startValidatingPayment()
-                              const paypalLink =
-                                'https://paypal.me/jonathanwu70/' +
-                                this.props.orderContext.totalPrice.toFixed(2) +
-                                'USD'
-                              window.open(paypalLink, '_blank')
-                            } else {
-                              navigate('/confirmation', {
-                                state: {
-                                  orderContext: this.props.orderContext,
-                                },
-                              })
-                            }
-                          }}
+                          css={QACardListContainer}
+                          className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
                         >
-                          <Img
-                            css={imgStyles}
-                            fluid={data.paypalMeImage.childImageSharp.fluid}
-                          />
+                          {/* <QACardList /> */}
                         </div>
-                      </div>
-                      <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check
-                          onClick={() => {
-                            this.setState(prevState => {
-                              var total = prevState.currentTotal
-                              console.log(total)
-                              console.log(this.state.paypalFees)
-                              if (prevState.paypalFeesEnabled) {
-                                total -= this.state.paypalFees
-                              } else {
-                                total += this.state.paypalFees
-                              }
-                              return {
-                                paypalFeesEnabled: !prevState.paypalFeesEnabled,
-                                currentTotal: total,
-                              }
-                            })
-                          }}
-                          css={paypalGoodsCheckbox}
-                          type="checkbox"
-                          label="Enable Paypal Goods and Services for a fee."
-                        />
-                      </Form.Group>
-                      <div css={disclaimerContainer}>
-                        <div css={feeHeader}>Fee Information</div>
-                        <div css={disclaimerTextGoods}>
-                          - Please pay the exact amount or the transaction will{' '}
-                          <b>NOT</b> succeed. <br />- For Paypal Goods and
-                          Services Protection, you must enable it here for a
-                          fee.
-                        </div>
-                        <div css={disclaimerTextReasons}>
-                          - This allows us to offer the best price by not having
-                          to pay a fee. You can verify our credibility as a
-                          seller below.
-                        </div>
-                      </div>
-                      <div css={credibilityInformation}>
-                        <div css={credibilityHeader}>Credibility</div>
-                        <div className="row">
-                          <div
-                            css={credibilityItem}
-                            className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
-                          >
-                            Facebook
-                          </div>
-                          <div
-                            css={credibilityItem}
-                            className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
-                          >
-                            <div></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      css={QACardListContainer}
-                      className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                    >
-                      {/* <QACardList /> */}
-                    </div>
-                  </>
-                )
-              }}
-            />
-          </div>
-
-          <OrderSummary
-            orderContext={this.props.orderContext}
-            subTotal={this.props.orderContext.subTotal}
-            fees={this.state.paypalFeesEnabled ? this.state.paypalFees : 0}
-            totalItems={this.props.orderContext.totalItems}
-            shippingInfo={this.props.orderContext.shippingInfo}
-          >
-            <ShippingDetails
-              shippingData={this.props.orderContext.shippingInfo}
-              userInfo={this.props.orderContext.userInfo}
-            />
-            <OrderDetails productData={this.props.orderContext.productData} />
-
-            {/* Add shipping summary */}
-          </OrderSummary>
-        </Row>
-        {this.state.isValidating && (
-          <div css={loadingScreenContainer}>
-            <div
-              css={closeLoadingButton}
-              onClick={() => {
-                this.setState({ isValidating: false })
-              }}
-            >
-              x
-            </div>
-            <div css={loadingSpinnerWrapper}>
-              <div class="spinner">
-                <div class="double-bounce1"></div>
-                <div class="double-bounce2"></div>
+                      </>
+                    )
+                  }}
+                />
               </div>
-            </div>
 
-            <div css={loadingConfirmationText}>
-              Please wait for Paypal to Confirm
-              <br />
-              If you refresh you, will lose your progress
-              <br />
-              Confirmation can take up to a minute but usually only takes 15
-              seconds
-            </div>
-          </div>
+              <OrderSummary
+                orderContext={this.props.orderContext}
+                subTotal={this.props.orderContext.subTotal}
+                fees={this.state.paypalFeesEnabled ? this.state.paypalFees : 0}
+                totalItems={this.props.orderContext.totalItems}
+                shippingInfo={this.props.orderContext.shippingInfo}
+              >
+                <ShippingDetails
+                  shippingData={this.props.orderContext.shippingInfo}
+                  userInfo={this.props.orderContext.userInfo}
+                />
+                <OrderDetails
+                  productData={this.props.orderContext.productData}
+                />
+              </OrderSummary>
+            </Row>
+            {this.state.isValidating && (
+              <div css={loadingScreenContainer}>
+                <div
+                  css={closeLoadingButton}
+                  onClick={() => {
+                    this.setState({ isValidating: false })
+                  }}
+                >
+                  x
+                </div>
+                <div css={loadingSpinnerWrapper}>
+                  <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                  </div>
+                </div>
+                <div css={loadingConfirmationText}>
+                  Please wait for Paypal to Confirm
+                  <br />
+                  If you refresh you, will lose your progress
+                  <br />
+                  Confirmation can take up to a minute but usually only takes 15
+                  seconds
+                </div>
+              </div>
+            )}
+          </Container>
         )}
-      </Container>
+      </ContextConsumer>
     )
   }
 }
 
+const credibilityItemDesc = css`
+  font-size: 13px;
+  text-align: center;
+`
+
+const credibilityItemHeader = css`
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+`
+
+const credibilityItemText = css`
+  font-family: lato;
+`
+
+const credibilityImgWrapper = css`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+const credibilityImgStyles = css`
+  transition: all 0.2s ease-in-out;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
+`
+
 const credibilityItem = css`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
 `
 
 const credibilityInformation = css`
   text-align: left;
   width: 100%;
   padding-bottom: 10px;
-
   flex-wrap: wrap;
 `
 
@@ -352,6 +504,8 @@ const credibilityHeader = css`
   font-weight: 700;
   color: #0f346c;
   padding-top: 5px;
+  padding-bottom: 15px;
+
   font-size: 24px;
 `
 

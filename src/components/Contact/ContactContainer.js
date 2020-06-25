@@ -1,5 +1,4 @@
 import React from 'react'
-import { navigate } from 'gatsby'
 import { css } from '@emotion/core'
 import { Formik, Form } from 'formik'
 import { Container, Row } from 'react-bootstrap'
@@ -8,8 +7,8 @@ import * as Yup from 'yup'
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
 const ContactContainer = () => {
-  const alpha = /^[a-zA-Z_]+( [a-zA-Z_]+)*$/
-  var userInfo = {}
+  // const alpha = /^[a-zA-Z_]+( [a-zA-Z_]+)*$/
+  // var userInfo = {}
   return (
     <Formik
       initialValues={{
@@ -283,17 +282,6 @@ const userInfoTop = css`
   position: relative;
   margin-bottom: 0px;
   margin-top: 15px;
-`
-
-const userInfoLabelOptional = css`
-  font-size: 16px;
-  float: left;
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-  letter-spacing: 1.5px;
-  color: #6a6d75;
 `
 
 const userInfoLabel = css`

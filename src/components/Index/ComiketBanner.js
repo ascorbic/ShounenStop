@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import BackgroundImage from 'gatsby-background-image'
@@ -29,7 +29,6 @@ const ComiketBanner = () => {
           <div css={lineBreakSm}></div>
           <span css={shippingText}>COMING SOON</span>
         </div>
-        {/* <div css={lineBreakLg}></div> */}
       </div>
     </BackgroundImage>
   )
@@ -59,32 +58,6 @@ const shippingText = css`
   width: 80%;
   font-size: 20px;
   color: #f0f0f0;
-`
-
-const shopNow = css`
-  font-size: 22px;
-  letter-spacing: 2px;
-  width: 180px;
-  height: 80px;
-  border: solid 1px #fff;
-  display: flex;
-  color: #fff;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-
-  &:hover {
-    font-size: 24px;
-    background-color: #fff;
-    color: #000;
-    width: 190px;
-    height: 90px;
-  }
 `
 
 const landingSection = css`

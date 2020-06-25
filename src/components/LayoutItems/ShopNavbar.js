@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import Img from 'gatsby-image'
 import ContextConsumer from './CartContext'
 
-import { Nav, Navbar, NavItem, NavDropdown } from 'react-bootstrap'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 const ShopNavbar = ({ pageInfo, title }) => {
   const {
@@ -83,12 +83,12 @@ const ShopNavbar = ({ pageInfo, title }) => {
               <Img fixed={cartImage.childImageSharp.fixed} />
               {Object.keys(context).filter(key => context[key] !== undefined)
                 .length -
-                2 !==
+                3 !==
                 0 && (
                 <span css={cartSizeStyles}>
                   {Object.keys(context).filter(
                     key => context[key] !== undefined
-                  ).length - 2}
+                  ).length - 3}
                 </span>
               )}
             </Nav>
@@ -104,10 +104,9 @@ const ShopNavbar = ({ pageInfo, title }) => {
               >
                 <Img fixed={merchandiseImage.childImageSharp.fixed} />
                 <NavDropdown
-                disabled
+                  disabled
                   rootCloseEvent="onClick"
-                  onClick={() => {
-                  }}
+                  onClick={() => {}}
                   renderMenuOnMount
                   title="PRODUCTS"
                 >
@@ -119,7 +118,9 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   >
                     <Img fixed={cardImage.childImageSharp.fixed} />
                     <Link to="/products/weiss">
-                      <Nav.Link as="span" href="/products/weiss">WEISS</Nav.Link>
+                      <Nav.Link as="span" href="/products/weiss">
+                        WEISS
+                      </Nav.Link>
                     </Link>
                   </div>
                   <div
@@ -130,7 +131,9 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   >
                     <Img fixed={playmatImage.childImageSharp.fixed} />
                     <Link to="/products/comiket" activeClassName="active">
-                      <Nav.Link as="span" href="/products/comiket">COMIKET</Nav.Link>
+                      <Nav.Link as="span" href="/products/comiket">
+                        COMIKET
+                      </Nav.Link>
                     </Link>
                   </div>
                 </NavDropdown>
@@ -156,7 +159,9 @@ const ShopNavbar = ({ pageInfo, title }) => {
               <Link to="/contact" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={contactImage.childImageSharp.fixed} />
-                  <Nav.Link as="span" href="/contact">CONTACT</Nav.Link>
+                  <Nav.Link as="span" href="/contact">
+                    CONTACT
+                  </Nav.Link>
                 </div>
               </Link>
             </Nav>
@@ -168,14 +173,11 @@ const ShopNavbar = ({ pageInfo, title }) => {
 }
 
 const dropdownHover = css`
-cursor:pointer;
-&:hover div a{
-  color: #0f346c !important;
-}
+  cursor: pointer;
+  &:hover div a {
+    color: #0f346c !important;
+  }
 `
-
-const imagePadding=css`
-align-items:center;`
 
 const navbar = css`
   background-color: #fff;

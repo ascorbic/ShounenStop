@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql, navigate } from 'gatsby'
 import { ToastContainer, Slide } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 import { CartContext } from './CartContext'
 import { css } from '@emotion/core'
 
@@ -16,7 +16,6 @@ class Layout extends React.Component {
   }
 
   render() {
-    // good way to use const for props const {children, pageInfo} = this.props
     return (
       <StaticQuery
         query={graphql`
@@ -33,7 +32,9 @@ class Layout extends React.Component {
             <ToastContainer
               closeButton={false}
               closeOnClick
-              onClick={() => {window.location.pathname !== "/cart" && navigate('/cart')}}
+              onClick={() => {
+                window.location.pathname !== '/cart' && navigate('/cart')
+              }}
               transition={Slide}
               limit={3}
               css={toastStyles}
@@ -44,15 +45,8 @@ class Layout extends React.Component {
               title={data.site.siteMetadata.title}
             />
             <div
-              style={{
-                minHeight: `calc(100vh - 120px)`,
-                marginTop: `40px`,
-                marginLeft: ` auto`,
-                padding: `0px`,
-                paddingTop: '0px',
-                fontFamily: 'montserrat',
-                fontWeight: 300,
-              }}
+              css={mainContainerStyles}
+              className="mainContainer"
             >
               {this.props.children}
             </div>
@@ -64,15 +58,21 @@ class Layout extends React.Component {
   }
 }
 
+const mainContainerStyles = css`
+  @media (max-width: 450px) {
+    min-height: calc(100vh - 200px);
+  }
+`
+
 const toastStyles = css`
-  .Toastify__progress-bar{
-    border-bottom-right-radius:4px;
+  .Toastify__progress-bar {
+    border-bottom-right-radius: 4px;
   }
 
   .Toastify__toast--rtl {
     font-family: varela round;
-    border-radius:4px;
-    color:#0f346c;
+    border-radius: 4px;
+    color: #0f346c;
 
     margin-bottom: 20px;
 

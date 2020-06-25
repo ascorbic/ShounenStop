@@ -11,7 +11,6 @@ import OrderDetails from './OrderDetails'
 
 const CheckoutContainer = ({ orderContext }) => {
   const alpha = /^[a-zA-Z_]+( [a-zA-Z_]+)*$/
-  console.log(orderContext)
   orderContext.userInfo = {}
   return (
     <Formik

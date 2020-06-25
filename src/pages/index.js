@@ -8,7 +8,6 @@ import SEO from '../components/Common/seo'
 
 const IndexPage = () => {
   const data = useStaticQuery(query)
-  console.log(data)
   const {
     landingText,
     landingSubtitle,

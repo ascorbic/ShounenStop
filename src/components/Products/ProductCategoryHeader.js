@@ -100,8 +100,6 @@ const imgStyles = css`
   }
 `
 
-const ProductCategoryText = css``
-
 export default ProductCategoryHeader
 
 export const query = graphql`

@@ -242,6 +242,53 @@ collections:
           widget: 'hidden',
           default: 'comiket',
         }
+  - name: other
+    label: Other Goods
+    create: true
+    folder: content/other
+    media_folder: 'images'
+    slug: '{{slug}}'
+    identifier_field: 'asin'
+    fields:
+      - { label: Name, name: name, widget: string }
+      - { label: Image, name: image, widget: image }
+      - { label: 'Product Type', name: producttype, widget: string }
+      - { label: 'Ebay Link', name: ebayLink, widget: string }
+      - { label: 'Shipping From Location', name: shippingFrom, widget: string }
+      - label: Pricings
+        name: pricings
+        widget: list
+        hint: 'Please specify the one price'
+        minimize_collapsed: false
+        collapsed: false
+        summary: '{{fields.quantity}} cost(s) ${{fields.price}}'
+        fields:
+          - label: Quantity
+            name: quantity
+            widget: number
+            min: 1
+            default: 1
+            valueType: int
+          - label: Price
+            name: price
+            min: 0
+            widget: number
+            valueType: float
+      - {
+          label: Shipping Weight,
+          name: weight,
+          widget: number,
+          valueType: float,
+          required: false,
+          min: 0,
+        }
+      - { label: ASIN, name: asin, widget: ncw-id, hidden: true }
+      - {
+          label: 'Merchandise',
+          name: 'merchandise',
+          widget: 'hidden',
+          default: 'other',
+        }
   - name: questions
     label: Questions and Answers
     create: true

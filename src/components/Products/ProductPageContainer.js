@@ -1,11 +1,9 @@
 import React from 'react'
-import { useStaticQuery, graphql, navigate } from 'gatsby'
-import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import { Container, Row } from 'react-bootstrap'
 import ProductCategoryHeader from '../Products/ProductCategoryHeader'
 
-const ProductPageContainer = ({ selectedProductCategory, productHeaderSubtitle, children }) => {
+const ProductPageContainer = ({ selectedProductCategory, children }) => {
   return (
     <Container css={containerNoPadding} fluid>
       <ProductCategoryHeader

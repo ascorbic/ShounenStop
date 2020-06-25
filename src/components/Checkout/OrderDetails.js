@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link, navigate } from 'gatsby'
 import { css } from '@emotion/core'
 import CartProduct from '../Cart/CartProduct'
 

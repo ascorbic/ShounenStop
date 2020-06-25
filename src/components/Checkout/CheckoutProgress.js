@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 import { css } from '@emotion/core'
 
 const CheckoutProgress = ({ phase, orderContext }) => {
@@ -26,7 +26,7 @@ const CheckoutProgress = ({ phase, orderContext }) => {
       <div
         css={progressContainer}
         onClick={_ => {
-          phase == 3 && 
+          phase === 3 && 
             navigate('/checkout', {
               state: { orderContext },
             })

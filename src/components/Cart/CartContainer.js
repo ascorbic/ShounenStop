@@ -12,7 +12,7 @@ const getProduct = flatProduct => {
   return flatProduct.split('|')
 }
 
-const CartContainer = ({}) => {
+const CartContainer = () => {
   const edges = useStaticQuery(query).products.edges
 
   return (
@@ -26,6 +26,7 @@ const CartContainer = ({}) => {
           if (
             key !== 'updateCartQuantity' &&
             key !== 'addQuantityToCart' &&
+            key !== 'clearCart' &&
             cartQuantity !== undefined
           ) {
             const pricingQuantity = Number(getProduct(key)[1])
@@ -49,6 +50,7 @@ const CartContainer = ({}) => {
             totalPrice += Number(subtotal)
             totalItems += Number(cartQuantity)
           }
+          return null;
         })
 
         //make variable later
@@ -77,8 +79,7 @@ const CartContainer = ({}) => {
                 {Object.keys(productData).length < 1 ? (
                   <div css={cartEmpty}>
                     <div css={cartEmptyText}>CART EMPTY</div>
-                    
-                    <Link to="/" css={cartEmptyHome}>RETURN HOME</Link>
+                    <Link to="/" css={cartEmptyHome}>SHOP NOW</Link>
                   </div>
                 ) : (
                   <>

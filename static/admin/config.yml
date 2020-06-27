@@ -113,7 +113,6 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: Name, name: name, widget: string }
-      - { label: ASIN, name: asin, widget: string }
       - {
           label: Product Type,
           name: producttype,
@@ -177,6 +176,7 @@ collections:
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
+      - { label: ASIN, name: asin, widget: ncw-id, hidden: true }
       - {
           label: 'Merchandise',
           name: 'merchandise',

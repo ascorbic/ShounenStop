@@ -1,6 +1,5 @@
 ---
 name: FGO Absolute Demonic Front Bablyonia
-asin: B084L95ZGN
 producttype: Booster Box
 displayName: FGO Bablyonia
 series: Fate Grand Order
@@ -22,7 +21,8 @@ pricings:
   - quantity: 16
     price: 1.6
 weight: 1
-preorder: 2020-06-27T03:07:01.172Z
-release: 2020-07-11T03:07:02.056Z
+preorder: 2020-06-27T03:37:43.068Z
+release: 2020-09-22T03:37:44.159Z
+asin: nEfDuso5m
 merchandise: weiss
 ---

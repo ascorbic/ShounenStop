@@ -2,7 +2,7 @@
 landingText: Weiss Boxes and Comiket Merchandise at a great price
 landingSubtitle: $5 Shipping on all products
 landingImage: images/sao.jpg
-release1: B084L95ZGN
-release2: A90dkab102
-release3: C41847984
+release1: PcAKrgqSU
+release2: nEfDuso5m
+release3: zwOWW7RPH
 ---

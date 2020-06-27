@@ -1,6 +1,5 @@
 ---
 name: RE:Zero - Bond of Ice
-asin: C41847984
 producttype: Extra Booster
 displayName: RE:Zero - Bond of Ice
 series: RE:Zero
@@ -19,7 +18,8 @@ pricings:
   - quantity: 12
     price: 250
 weight: 1
-preorder: 2020-06-27T03:11:59.190Z
-release: 2020-07-17T03:11:59.978Z
+preorder: 2020-07-03T04:00:00.000Z
+release: 2020-08-21T03:39:02.258Z
+asin: PcAKrgqSU
 merchandise: weiss
 ---

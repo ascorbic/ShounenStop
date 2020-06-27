@@ -1,6 +1,5 @@
 ---
 name: Date A Live
-asin: A90dkab102
 producttype: Trial Deck+
 displayName: Date A Live
 series: Date A Live
@@ -20,7 +19,8 @@ pricings:
   - quantity: 12
     price: 600
 weight: 1
-preorder: 2020-06-27T03:04:16.613Z
-release: 2020-07-03T03:04:17.377Z
+preorder: 2020-06-27T03:36:30.077Z
+release: 2020-08-20T03:36:30.706Z
+asin: zwOWW7RPH
 merchandise: weiss
 ---

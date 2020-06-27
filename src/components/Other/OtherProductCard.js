@@ -87,7 +87,7 @@ text-overflow: ellipsis;
 display: -webkit-box;
 -webkit-line-clamp: 2;
 -webkit-box-orient: vertical;
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 400px) {
   padding-top: 2px;
   font-size: 13px;
 }
@@ -107,7 +107,7 @@ padding-right: 10px;
   padding-top: 2px;
   font-size: 14px;
 }
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 400px) {
   padding-top: 2px;
   font-size: 11px;
 }
@@ -128,7 +128,7 @@ text-overflow: ellipsis;
 display: -webkit-box;
 -webkit-line-clamp: 2;
 -webkit-box-orient: vertical;
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 400px) {
   padding-top: 2px;
   font-size: 13px;
 }
@@ -208,11 +208,11 @@ const addToCartButton = css`
   user-select: none;
   text-align: center;
   z-index: 20;
-  @media only screen and (max-width: 450px) {
-    height: 16px;
-    width: 16px;
+  @media only screen and (max-width: 400px) {
+    height: 20px;
+    width: 20px;
     font-size: 16px;
-    bottom: 6px;
+    bottom: 4px;
   }
 
   &:hover {

@@ -6,12 +6,33 @@ const sgMail = require('@sendgrid/mail')
 
 exports.handler = async (event, context, callback) => {
   sgMail.setApiKey(SENDGRID_API_KEY)
-  const msg = {
-    to: 'test@example.com',
-    from: 'shounenstop@gmail.com',
-    subject: 'Sending with Twilio SendGrid is Fun',
-    text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+
+  const orderConfirmation = {
+    "personalizations": [
+      {
+        "to": [
+          {
+            "email": "jonathanwu70@gmail.com",
+            "name": "Jonathan Wu"
+          }
+        ],
+        "dynamic_template_data": {
+          "userInfo":{
+            "email":"jonathanwu70@gmail.com"
+          }
+        },
+        "subject": "Order Confirmation!"
+      }
+    ],
+    "from": {
+      "email": "shounenstop@gmail.com",
+      "name": "Shounen Stop"
+    },
+    "reply_to": {
+      "email": "shounenstop@gmail.com",
+      "name": "Shounen Stop"
+    },
+    "template_id": "d-92b3e2e517114c869eb5c7e221ba85e2"
   }
   // const payload = JSON.parse(event.body)
   // const { email, subject } = payload

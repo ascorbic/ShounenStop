@@ -74,6 +74,7 @@ const CartProductList = ({ productData, updateCartQuantity }) => {
 const productListContainer = css`
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom:10px;
 `
 
 export default CartProductList

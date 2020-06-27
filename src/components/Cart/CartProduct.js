@@ -84,8 +84,6 @@ const CartProduct = ({
         {updateCartQuantity !== undefined ? (
           <div css={quantityChangerContainer}>
             <div
-              tabIndex={0}
-              role="button"
               onClick={_ => {
                 var newCartQuantity = Number(cartQuantity) + 1
                 if (newCartQuantity < 10) {
@@ -106,8 +104,6 @@ const CartProduct = ({
               </svg>
             </div>
             <input
-              tabIndex={0}
-              role="button"
               label="quantity"
               type="text"
               css={inputQuantity}
@@ -126,8 +122,6 @@ const CartProduct = ({
               value={cartQuantity}
             ></input>
             <div
-              tabIndex={0}
-              role="button"
               onClick={_ => {
                 var newCartQuantity = Number(cartQuantity) - 1
                 if (newCartQuantity >= 0) {

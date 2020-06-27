@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React, { useState } from 'react'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-const ComiketProductCard = ({
+const OtherProductCard = ({
   imgData,
+  name,
   asin,
-  eventName,
   productType,
   price,
   url,
@@ -19,13 +19,15 @@ const ComiketProductCard = ({
           <div css={cardContainer}>
             <div css={imgContainer}>
               <div css={imgCover}>
-                <div css={productTypeText}>{productType}</div>
-                <div css={priceText}>{'$' + price}</div>
-                <div
+                <div css={cardBottom}>
+                  <div css={nameText}>{name}</div>
+                  <div css={priceText}>{'$' + price}</div>
+                  <div css={productTypeText}>{productType}</div>
+                  <div
                   onClick={() => {
                     addQuantityToCart(
                       asin,
-                      eventName + ' ' + productType,
+                      name,
                       productType,
                       imgData,
                       1,
@@ -36,9 +38,10 @@ const ComiketProductCard = ({
                 >
                   +
                 </div>
+                </div>
               </div>
               <Link to={url} className="link-no-style">
-                <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
+                <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 0.7 }} />
               </Link>
             </div>
           </div>
@@ -60,15 +63,82 @@ const imgCover = css`
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.05) 70%,
+    rgba(0, 0, 0, 0.03) 60%,
+    rgba(0, 0, 0, 0.15) 70%,
     rgba(0, 0, 0, 0.4) 82%,
-    rgba(0, 0, 0, 0.7) 100%
+    rgba(0, 0, 0, 0.5) 100%
   );
   z-index: 1;
-  border-radius: 8px;
+  border-radius: 6px;
+`
+
+const productTypeText = css`
+padding-left: 10px;
+font-size: 14px;
+color: #fff;
+width: 65%;
+position: relative;
+
+float: left;
+clear: left;
+max-height: 50px;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+@media only screen and (max-width: 450px) {
+  padding-top: 2px;
+  font-size: 13px;
+}
+`
+
+const priceText = css`
+position: relative;
+font-weight: 700;
+color: #fff;
+float: right;
+font-size: 18px;
+text-align: right;
+width: 35%;
+padding-right: 10px;
+
+@media only screen and (max-width: 768px) {
+  padding-top: 2px;
+  font-size: 14px;
+}
+@media only screen and (max-width: 450px) {
+  padding-top: 2px;
+  font-size: 11px;
+}
+`
+
+const nameText = css`
+position: relative;
+font-size: 18px;
+padding-left: 10px;
+
+font-weight: 700;
+letter-spacing: 1.3px;
+color: #fff;
+width: 65%;
+float: left;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+@media only screen and (max-width: 450px) {
+  padding-top: 2px;
+  font-size: 13px;
+}
 `
 
 const cardPadding = css`
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-duration: 300ms, 300ms, 300ms, 300ms;
   margin-top: 25px;
   margin-bottom: 5px;
   position: relative;
@@ -76,67 +146,41 @@ const cardPadding = css`
   padding-right: 10px;
   border: none;
   margin-bottom: 2px;
-  border-radius: 8px;
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
+  border-radius: 12px;
   &:hover {
     transform: scale(1.03);
   }
-`
+  `
 
 const cardContainer = css`
   background-color: #fff;
   box-shadow: 0px 2px 8px 0px rgba(31, 32, 68, 0.16);
-
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-duration: 300ms, 300ms, 300ms, 300ms;
-  border-radius: 8px;
+  border-radius: 12px;
   position: relative;
-
   &:hover {
     box-shadow: 0px 8px 12px 0px rgba(31, 32, 68, 0.16);
   }
 `
 
 const imgContainer = css`
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
   position: relative;
   width: 100%;
   cursor: pointer;
 `
 
 const imgStyles = css`
-  border-radius: 8px;
+  border-radius: 6px;
 `
 
-const productTypeText = css`
-  bottom: 5px;
-  left: 10px;
+const cardBottom = css`
+  max-height: 120px;
+  bottom: 6px;
+  left: 0px;
   position: absolute;
-  font-size: 20px;
-  color: #fff;
-  @media only screen and (max-width: 450px) {
-    font-size: 13px;
-  }
-`
-
-const priceText = css`
-  bottom: 5px;
-  right: 40px;
-  position: absolute;
-  color: #fff;
-  font-size: 18px;
-  @media only screen and (max-width: 450px) {
-    font-size: 13px;
-    right: 30px;
-  }
 `
 
 const addToCartButton = css`
@@ -155,7 +199,7 @@ const addToCartButton = css`
   height: 24px;
   width: 24px;
   font-size: 22px;
-  bottom: 8px;
+  bottom: 3px;
   right: 7px;
   position: absolute;
   display: flex;
@@ -177,4 +221,4 @@ const addToCartButton = css`
   }
 `
 
-export default ComiketProductCard
+export default OtherProductCard

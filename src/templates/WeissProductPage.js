@@ -24,9 +24,9 @@ const WeissProductPage = ({ data }) => {
     <>
       <WeissProductPageContainer
         name={name}
-        displayName={displayName}
+        displayName={displayName+ ' 🇯🇵'}
         asin={asin}
-        series={series + ' 🇯🇵'}
+        series={series}
         productType={producttype}
         preorderDate={preorder}
         releaseDate={release}

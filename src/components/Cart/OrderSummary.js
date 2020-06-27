@@ -91,6 +91,7 @@ const pricingContainer = css`
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 20px;
+
 `
 
 const pricesContainer = css`

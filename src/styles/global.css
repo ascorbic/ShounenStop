@@ -823,6 +823,11 @@ pre tt:after {
   display: block !important;
 }
 
+.dropdown-menu{
+  left: -30px !important;
+  min-width: 6rem !important;
+}
+
 .dropdown.nav-item {
   transition: all 0.2s ease-in-out;
 }

@@ -59,7 +59,7 @@ const WeissProductPageContainer = ({
     margin-top: 20px;
     border: solid 1px ${color};
     background-color: ${color};
-    color: #fff;
+    color: rgba(255, 255, 255, 0.75);
     font-family: varela round;
     font-weight: 400;
     line-height: 45px;
@@ -71,25 +71,33 @@ const WeissProductPageContainer = ({
     text-align: center;
     letter-spacing: 1.5px;
     &:hover {
-      color: ${color};
-      background-color: #fff;
-      border: solid 1px ${color};
+      color: rgba(255, 255, 255, 1);
+      letter-spacing: 2px;
     }
 
     &:active {
-      background-color: #cfcfcf;
+      color: ${color};
     }
   `
 
   const priceText = css`
     font-family: varela round;
-    font-size: 30px;
+    font-size: 28px;
     color: ${color};
     height: 70px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
   `
+
+const pricingText = css`
+    font-weight:700;
+`
+
+const totalText = css`
+    font-weight:400;
+    padding-left:10px;
+`
 
   const productInfoHeader = css`
     padding-top: 30px;
@@ -132,10 +140,13 @@ const WeissProductPageContainer = ({
                           : 'Single ' + productType}
                       </div>
                       <div css={productTypeContainer}>{name}</div>
+                      <div css={seriesContainer}>{series}</div>
                       <div css={priceText}>
-                        {'$' +
-                          pricings.find(x => x.quantity === quantity).price +
-                          ' Total'}
+                        <span css={pricingText}>
+                          {'$' +
+                            pricings.find(x => x.quantity === quantity).price}
+                        </span>
+                        <span css={totalText}>Total</span>
                       </div>
                       <div css={pricingQuantityContainer}>
                         <div css={pricingQuantityText}>Quantity</div>
@@ -185,7 +196,6 @@ const WeissProductPageContainer = ({
                       {preorderDate !== 'Invalid date' ? (
                         <div css={productInfoContainer}>
                           <div css={productInfoHeader}>Product Information</div>
-
                           <div css={infoRow}>
                             <div css={infoLeft}>Preorder By</div>
                             <div css={infoRight}>{preorderDate}</div>
@@ -209,6 +219,10 @@ const WeissProductPageContainer = ({
 }
 
 export default WeissProductPageContainer
+
+const seriesContainer = css`
+  font-size: 18px;
+`
 
 const infoRow = css`
   clear: both;
@@ -256,7 +270,7 @@ const pricingQuantityPrice = css`
   color: #666;
 
   @media only screen and (max-width: 400px) {
-    font-size:14px;
+    font-size: 14px;
   }
 `
 

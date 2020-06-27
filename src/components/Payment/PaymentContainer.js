@@ -70,6 +70,13 @@ class PaymentContainer extends React.Component {
               if (response.data === 'VALID') {
                 clearInterval(self.state.validateTimerId)
                 sessionStorage.clear()
+                if (window.history.replaceState) {
+                  window.history.replaceState(
+                    null,
+                    null,
+                    window.location.href
+                  )
+                }
                 navigate('/confirmation', {
                   state: { orderContext: self.props.orderContext },
                 })
@@ -235,6 +242,7 @@ class PaymentContainer extends React.Component {
                                     'USD'
                                   window.open(paypalLink, '_blank')
                                 } else {
+                                  console.log(this.props.orderContext)
                                   context.clearCart()
                                   navigate('/confirmation', {
                                     state: {
@@ -347,7 +355,10 @@ class PaymentContainer extends React.Component {
                                 className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
                               >
                                 <div css={credibilityImgWrapper}>
-                                  <a target="_blank">
+                                  <a
+                                    target="_blank"
+                                    href="https://www.facebook.com/shumleon19"
+                                  >
                                     <Img
                                       css={credibilityImgStyles}
                                       fixed={
@@ -385,7 +396,8 @@ class PaymentContainer extends React.Component {
                                 <div css={credibilityItemText}>
                                   <div css={credibilityItemHeader}>Ebay</div>
                                   <div css={credibilityItemDesc}>
-                                    My Ebay account with over 150 positive reviews
+                                    My Ebay account with over 150 positive
+                                    reviews
                                   </div>
                                 </div>
                               </div>
@@ -723,12 +735,16 @@ const paypalContainer = css`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  position:sticky;
+  top: 70px;
 `
 
 const paymentContainer = css`
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 5px;
+
+
 `
 
 const QACardListContainer = css`

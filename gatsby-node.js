@@ -95,11 +95,9 @@ exports.createPages = async ({ graphql, actions }) => {
     //       slug: node.fields.slug,
     //     },
     //   })
-    // } 
+    // }
     if (node.fields.slug.startsWith('/weiss/')) {
-      console.log(node.fields.slug)
       createPage({
-
         path: '/products' + node.fields.slug,
         component: path.resolve(`./src/templates/WeissProductPage.js`),
         context: {
@@ -108,11 +106,20 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: node.fields.slug,
         },
       })
-    }
-    else if (node.fields.slug.startsWith('/comiket/')) {
+    } else if (node.fields.slug.startsWith('/comiket/')) {
       createPage({
         path: '/products' + node.fields.slug,
         component: path.resolve(`./src/templates/ComiketProductPage.js`),
+        context: {
+          // Data passed to context is available
+          // in page queries as GraphQL variables.
+          slug: node.fields.slug,
+        },
+      })
+    } else if (node.fields.slug.startsWith('/other/')) {
+      createPage({
+        path: '/products' + node.fields.slug,
+        component: path.resolve(`./src/templates/OtherProductPage.js`),
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.

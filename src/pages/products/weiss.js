@@ -5,7 +5,7 @@ import { css } from '@emotion/core'
 import { Container } from 'react-bootstrap'
 import ProductPageContainer from '../../components/Products/ProductPageContainer'
 import FilterProductCategory from '../../components/Products/FilterProductCategory'
-import WeissProductCard from '../../components/Weiss/WeissProductCard'
+import WeissProductCardNew from '../../components/Weiss/WeissProductCardNew'
 
 const lowestPrice = pricings => {
   return Math.min.apply(
@@ -115,9 +115,8 @@ const Weiss = ({ data, location }) => {
                   edge.node.frontmatter.preorder !== 'Invalid date'
                     ? edge.node.frontmatter.preorder
                     : '';
-
                 return (
-                  <WeissProductCard
+                  <WeissProductCardNew
                     displayName={edge.node.frontmatter.displayName}
                     productType={edge.node.frontmatter.producttype}
                     lowPrice={lowestPrice(edge.node.frontmatter.pricings)}

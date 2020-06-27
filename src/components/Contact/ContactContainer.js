@@ -208,6 +208,7 @@ const ContactContainer = () => {
 
 const submitButton = css`
   margin-top: 15px;
+  margin-bottom:5px;
   transition: all 0.2s ease-in-out;
   display: flex;
   justify-content: center;

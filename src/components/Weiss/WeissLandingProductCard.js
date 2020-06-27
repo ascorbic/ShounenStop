@@ -77,7 +77,7 @@ const WeissLandingProductCard = ({
     position: absolute;
     border: solid 1px ${color};
     background-color: ${color};
-    color: #fff;
+    color: rgba(255, 255, 255, 0.75);
     font-family: varela round;
     font-weight: 400;
     line-height: 45px;
@@ -91,13 +91,12 @@ const WeissLandingProductCard = ({
     text-align: center;
     letter-spacing: 1.5px;
     &:hover {
-      background-color: #fff;
-      border: solid 1px ${color};
-      color: ${color};
+      color: rgba(255, 255, 255, 1);
+      letter-spacing: 2px;
     }
 
     &:active {
-      background-color: #cfcfcf;
+      color: ${color};
     }
   `
 
@@ -174,7 +173,7 @@ const WeissLandingProductCard = ({
       {({ addQuantityToCart }) => (
         <div css={cardPadding} className={cardClassName}>
           <div css={cardStatus}>PREORDER</div>
-          <div css={cardContainer}>
+          <div css={cardContainer} className="fadeItem">
             <Link to={url} className="link-no-style">
               <div css={imgContainer}>
                 <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />

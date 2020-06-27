@@ -1,31 +1,39 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { Container } from 'react-bootstrap'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import ProductPageContainer from '../Products/ProductPageContainer'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-const ComiketProductPageContainer = ({
+const OtherProductPageContainer = ({
   imgData,
   asin,
-  eventName,
+  series,
+  name,
   productType,
   price,
-  eventInfo,
+  shippingFrom,
+  ebayLink,
+  url,
 }) => {
-  const { preorder, receive } = eventInfo
+  const ebayImageData = useStaticQuery(query).ebayImage.childImageSharp.fixed
+
   return (
     <ContextConsumer>
       {context => {
         return (
           <Container css={productPageContainer} fluid>
-            <ProductPageContainer selectedProductCategory="Comiket">
+            <ProductPageContainer selectedProductCategory="Other">
               <div css={productPageWrapper}>
                 <div className="row" css={productContentContainer}>
                   <div
                     css={productImageContainer}
                     className="col-xl-6 col-lg-5 col-md-6 col-sm-12 col-12"
                   >
+                    <a href={ebayLink} target="_blank" css={ebayImgWrapper}>
+                      <Img css={ebayImgStyles} fixed={ebayImageData} />
+                    </a>
                     <div className="img-zoom" css={imgContainer}>
                       <Img css={imgStyles} fluid={imgData} />
                     </div>
@@ -36,15 +44,14 @@ const ComiketProductPageContainer = ({
                   >
                     <div css={productInformationContainer}>
                       <div css={productTypeText}>{'Single ' + productType}</div>
-                      <div css={productTypeContainer}>
-                        {eventName + ' ' + productType}
-                      </div>
+                      <div css={productTypeContainer}>{name}</div>
+                      <div css={seriesContainer}>{series}</div>
                       <div css={priceText}>{'$' + price}</div>
                       <div
                         onClick={() => {
                           context.addQuantityToCart(
                             asin,
-                            eventName + ' ' + productType,
+                            name,
                             productType,
                             imgData,
                             1,
@@ -57,16 +64,22 @@ const ComiketProductPageContainer = ({
                         ADD TO CART
                       </div>
                       <div css={productInfoContainer}>
-                          <div css={productInfoHeader}>Product Information</div>
-                          <div css={infoRow}>
-                            <div css={infoLeft}>Preorder By</div>
-                            <div css={infoRight}>{preorder}</div>
-                          </div>
-                          <div css={infoRow}>
-                            <div css={infoLeft}>Estimated Arrival</div>
-                            <div css={infoRight}>{receive}</div>
-                          </div>
+                        <div css={productInfoHeader}>Product Information</div>
+                        <div css={infoRow}>
+                          <div css={infoLeft}>Ships From</div>
+                          <div css={infoRight}>{shippingFrom}</div>
                         </div>
+                        <div css={infoRow}>
+                          <div css={infoLeft}>Also Listed On</div>
+                          <a
+                            href={ebayLink}
+                            target="_blank"
+                            css={infoRightLink}
+                          >
+                            Ebay
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -79,18 +92,7 @@ const ComiketProductPageContainer = ({
   )
 }
 
-export default ComiketProductPageContainer
-
-
-
-const productInfoHeader = css`
-  padding-top: 30px;
-  font-family: varela round;
-  color: #0f346c;
-  font-size: 25px;
-  width: 100%;
-  font-weight: 700;
-`
+export default OtherProductPageContainer
 
 const infoRow = css`
   clear: both;
@@ -100,6 +102,11 @@ const infoLeft = css`
   float: left;
   font-weight: 700;
   color: #444;
+`
+
+const infoRightLink = css`
+  float: right;
+  color: #0f346c;
 `
 
 const infoRight = css`
@@ -118,42 +125,15 @@ const productPageWrapper = css`
   justify-content: center;
 `
 
-const productTypeText = css`
-  font-family: varela round;
-  font-size: 20px;
-  color: #0f346c;
-  padding-top: 10px;
-`
-
-const productTypeContainer = css`
-  font-family: varela round;
-  font-size: 30px;
-  color: #151515;
+const seriesContainer = css`
+  font-size: 18px;
 `
 
 const productInformationContainer = css``
 
-const dateValue = css``
-
-const dateField = css`
-  font-weight: 700;
-`
-const dateTextContainer = css`
-  font-family: varela round;
-  font-size: 20px;
-`
-
-const priceText = css`
-  font-family: varela round;
-  font-size: 30px;
-  color: #0f346c;
-  height: 100px;
-  display: flex;
-  align-items: center;
-`
-
 const productInformationWrapper = css`
   margin-top: 40px;
+  max-width: 400px;
 `
 
 const productImageContainer = css`
@@ -161,6 +141,8 @@ const productImageContainer = css`
   align-self: flex-start;
   justify-content: center;
   margin-top: 40px;
+  position: relative;
+
   position: sticky;
   top: 80px;
   @media (max-width: 768px) {
@@ -169,23 +151,21 @@ const productImageContainer = css`
   }
 `
 
-const imgContainer = css`
-  width: 100%;
-  cursor: pointer;
-  max-width: 500px;
-`
+const imgStyles = css``
 
-const imgStyles = css`
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-  border-radius: 8px;
-  box-shadow: 0px 20px 30px 10px rgba(31, 32, 68, 0.3);
+const ebayImgWrapper = css`
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 0px;
+  left: 0;
+  z-index: 1;
   &:hover {
     transform: scale(1.03);
   }
 `
+
+const ebayImgStyles = css``
 
 const productContentContainer = css`
   width: 100%;
@@ -212,6 +192,35 @@ const productPageContainer = css`
   justify-content: space-between;
 `
 
+const imgContainer = css`
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-duration: 300ms, 300ms, 300ms, 300ms;
+  width: 100%;
+  cursor: pointer;
+  max-width: 500px;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  &:hover {
+    transform: scale(1.03);
+  }
+`
+
+const productTypeText = css`
+  font-family: varela round;
+  font-size: 20px;
+  color: #0f346c;
+  padding-top: 10px;
+`
+
+const productTypeContainer = css`
+  font-family: varela round;
+  font-size: 30px;
+  color: #151515;
+`
+
 const addToCartButton = css`
   -webkit-transition: all 0.2s;
   -o-transition: all 0.2s;
@@ -220,7 +229,7 @@ const addToCartButton = css`
   margin-top: 20px;
   border: solid 1px #0f346c;
   background-color: #0f346c;
-  color: #a1bce6;
+  color: rgba(255, 255, 255, 0.75);
   font-family: varela round;
   font-weight: 400;
   line-height: 45px;
@@ -232,12 +241,42 @@ const addToCartButton = css`
   text-align: center;
   letter-spacing: 1.5px;
   &:hover {
-    color: #0f346c;
-    background-color: #fff;
-    border: solid 1px #0f346c;
+    color: rgba(255, 255, 255, 1);
+    letter-spacing: 2px;
   }
 
   &:active {
-    background-color: #cfcfcf;
+    color: #0f346c;
+  }
+`
+
+const priceText = css`
+  font-family: varela round;
+  font-size: 30px;
+  color: #0f346c;
+  height: 70px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+`
+
+const productInfoHeader = css`
+  padding-top: 30px;
+  font-family: varela round;
+  color: #0f346c;
+  font-size: 25px;
+  width: 100%;
+  font-weight: 700;
+`
+
+export const query = graphql`
+  query {
+    ebayImage: file(relativePath: { eq: "ebayLogo.png" }) {
+      childImageSharp {
+        fixed(width: 60, height: 60) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
   }
 `

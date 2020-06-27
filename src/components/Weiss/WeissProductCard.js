@@ -23,8 +23,11 @@ const WeissProductCard = ({
     float: left;
     clear: left;
     max-height:50px;
-
     overflow:hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     @media only screen and (max-width: 450px) {
       padding-top: 2px;
       font-size: 13px;
@@ -36,7 +39,7 @@ const WeissProductCard = ({
     font-weight: 400;
     color: ${color};
     float: right;
-    font-size: 18px;
+    font-size: 16px;
     text-align: right;
     width: 35%;
 
@@ -52,15 +55,17 @@ const WeissProductCard = ({
 
   const nameText = css`
     position: relative;
-    font-size: 20px;
+    font-size: 18px;
 
     font-weight: 700;
     color: ${color};
     width: 65%;
     float: left;
+    overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; 
-    overflow: hidden;  
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     @media only screen and (max-width: 450px) {
       padding-top: 2px;
       font-size: 13px;
@@ -77,8 +82,7 @@ const WeissProductCard = ({
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     border: none;
-    width: 100%;
-    height: 100px;
+    height: 120px;
     position: absolute;
     bottom: 10px;
     left: 7px;
@@ -93,7 +97,7 @@ const WeissProductCard = ({
     padding-left: 10px;
     padding-right: 10px;
     @media only screen and (max-width: 450px) {
-      height: 80px;
+      height: 90px;
     }
   `
 
@@ -153,7 +157,7 @@ const imgContainer = css`
   position: relative;
   width: 100%;
   cursor: pointer;
-  padding-bottom: 85px;
+  padding-bottom: 105px;
 `
 
 const imgStyles = css`

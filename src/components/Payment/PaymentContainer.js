@@ -44,6 +44,12 @@ class PaymentContainer extends React.Component {
     this.resetTimeLimit = this.resetTimeLimit.bind(this)
   }
 
+  // componentDidMount =() => {
+  //   window.onbeforeunload = () => {
+  //     return true
+  //   }
+  // }
+
   componentDidUpdate = () => {
     window.onbeforeunload = () => {
       return true
@@ -71,11 +77,7 @@ class PaymentContainer extends React.Component {
                 clearInterval(self.state.validateTimerId)
                 sessionStorage.clear()
                 if (window.history.replaceState) {
-                  window.history.replaceState(
-                    null,
-                    null,
-                    window.location.href
-                  )
+                  window.history.replaceState(null, null, window.location.href)
                 }
                 navigate('/confirmation', {
                   state: { orderContext: self.props.orderContext },
@@ -244,6 +246,14 @@ class PaymentContainer extends React.Component {
                                 } else {
                                   console.log(this.props.orderContext)
                                   context.clearCart()
+                                  axios
+                                    .post(
+                                      '/.netlify/functions/sendOrderEmail',
+                                      this.props.orderContext
+                                    )
+                                    .then(function(response) {
+                                      console.log(response)
+                                    })
                                   navigate('/confirmation', {
                                     state: {
                                       orderContext: this.props.orderContext,
@@ -735,7 +745,7 @@ const paypalContainer = css`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  position:sticky;
+  position: sticky;
   top: 70px;
 `
 
@@ -743,8 +753,6 @@ const paymentContainer = css`
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 5px;
-
-
 `
 
 const QACardListContainer = css`

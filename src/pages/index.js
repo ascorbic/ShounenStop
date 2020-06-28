@@ -16,16 +16,30 @@ const IndexPage = () => {
     release2,
     release3,
   } = data.landingPageInfo.frontmatter
-  const newReleaseData = {
-    release1: data.weissProducts.edges.find(
+
+  var release1Data
+  if (release1 !== '') {
+    release1Data = data.weissProducts.edges.find(
       x => x.node.frontmatter.asin.toLowerCase() === release1.toLowerCase()
-    ).node,
-    release2: data.weissProducts.edges.find(
+    ).node
+  }
+  var release2Data
+  if (release2 !== '') {
+    release2Data = data.weissProducts.edges.find(
       x => x.node.frontmatter.asin.toLowerCase() === release2.toLowerCase()
-    ).node,
-    release3: data.weissProducts.edges.find(
+    ).node
+  }
+  var release3Data
+  if (release3 !== '') {
+    release3Data = data.weissProducts.edges.find(
       x => x.node.frontmatter.asin.toLowerCase() === release3.toLowerCase()
-    ).node,
+    ).node
+  }
+
+  const newReleaseData = {
+    release1: release1Data,
+    release2: release2Data,
+    release3: release3Data,
   }
 
   return (
@@ -76,7 +90,7 @@ export const query = graphql`
             color
             image {
               childImageSharp {
-                fluid(maxWidth:500, quality: 100) {
+                fluid(maxWidth: 500, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }

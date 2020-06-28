@@ -1,12 +1,11 @@
 require('dotenv').config()
-// const client = require('@sendgrid/client')
 const { SENDGRID_API_KEY } = process.env
-// client.setApiKey(SENDGRID_API_KEY)
 const sgMail = require('@sendgrid/mail')
 
 exports.handler = async (event, context, callback) => {
   sgMail.setApiKey(SENDGRID_API_KEY)
 
+  const payload = JSON.parse(event.body)
   const orderConfirmation = {
     "personalizations": [
       {
@@ -16,11 +15,7 @@ exports.handler = async (event, context, callback) => {
             "name": "Jonathan Wu"
           }
         ],
-        "dynamic_template_data": {
-          "userInfo":{
-            "email":"jonathanwu70@gmail.com"
-          }
-        },
+        "dynamic_template_data": payload,
         "subject": "Order Confirmation!"
       }
     ],
@@ -34,7 +29,9 @@ exports.handler = async (event, context, callback) => {
     },
     "template_id": "d-92b3e2e517114c869eb5c7e221ba85e2"
   }
-  // const payload = JSON.parse(event.body)
+
+  console.log(orderConfirmation.personalizations[0].dynamic_template_data)
+
   // const { email, subject } = payload
   // const request = {
   //   method: 'GET',
@@ -58,18 +55,21 @@ exports.handler = async (event, context, callback) => {
   //   subject: subject ? subject : 'Contact Form Submission',
   //   html: body,
   // }
-
-  try {
-    await sgMail.send(msg)
-
     return {
       statusCode: 200,
-      body: 'Message sent',
+      body: "context",
     }
-  } catch (e) {
-    return {
-      statusCode: e.code,
-      body: e.message,
-    }
-  }
+  // try {
+  //   await sgMail.send(msg)
+
+  //   return {
+  //     statusCode: 200,
+  //     body: 'Message sent',
+  //   }
+  // } catch (e) {
+  //   return {
+  //     statusCode: e.code,
+  //     body: e.message,
+  //   }
+  // }
 }

@@ -14,6 +14,7 @@ const WeissProductPage = ({ data }) => {
     series,
     color,
     image,
+    description,
     weight,
     pricings,
     preorder,
@@ -27,6 +28,7 @@ const WeissProductPage = ({ data }) => {
         displayName={displayName+ ' 🇯🇵'}
         asin={asin}
         series={series}
+        description = {description}
         productType={producttype}
         preorderDate={preorder}
         releaseDate={release}
@@ -51,6 +53,7 @@ export const WeissProductTemplateQuery = graphql`
         producttype
         series
         color
+        description
         image {
           childImageSharp {
             fluid(maxWidth: 500, quality: 100) {

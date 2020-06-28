@@ -60,7 +60,8 @@ class CartContext extends React.Component {
     productType,
     imgData,
     pricingQuantity,
-    cartQuantity
+    cartQuantity,
+    quantityLimit
   ) {
     const flatProduct = getFlatProduct(productAsin, pricingQuantity)
 
@@ -168,12 +169,13 @@ class CartContext extends React.Component {
     productName,
     productType,
     pricingQuantity,
+    quantityLimit,
     imgData
   ) => {
     toast(
       <div css={toastStyles}>
         <div css={toastText}>
-          <div>FAILED: Limit of 9</div>
+          <div>{'FAILED: Limit of ' + quantityLimit}</div>
           <div css={nameText}>{productName}</div>
           <div css={productTypeText}>
             {pricingQuantity > 1

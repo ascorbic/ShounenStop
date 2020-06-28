@@ -114,6 +114,7 @@ legend {
 }
 textarea {
   box-shadow: none !important;
+  -webkit-appearance: none;
   overflow: auto;
 }
 [type='checkbox'],

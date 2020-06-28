@@ -11,6 +11,7 @@ const OtherProductPageContainer = ({
   asin,
   series,
   name,
+  description,
   productType,
   price,
   shippingFrom,
@@ -79,6 +80,12 @@ const OtherProductPageContainer = ({
                             Ebay
                           </a>
                         </div>
+                        {description !== null ? (
+                          <div css={infoRow}>
+                            <div css={infoLeft}>Description</div>
+                            <div css={infoRight}>{description}</div>
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </div>

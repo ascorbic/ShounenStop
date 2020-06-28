@@ -18,6 +18,8 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
 
   return (
     <Container css={productsContainer}>
+    {
+      release1 !== undefined ?
       <WeissLandingProductCard
         cardClassName={cardClassName}
         asin={release1.frontmatter.asin}
@@ -32,7 +34,10 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         color={release1.frontmatter.color}
         imgData={release1.frontmatter.image.childImageSharp.fluid}
         url={'/products'+release1.fields.slug}
-      />
+      /> : null
+    }
+    {
+      release2 !== undefined ?
       <WeissLandingProductCard
         cardClassName={cardClassName}
         asin={release2.frontmatter.asin}
@@ -47,7 +52,10 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         color={release2.frontmatter.color}
         imgData={release2.frontmatter.image.childImageSharp.fluid}
         url={'/products'+release2.fields.slug}
-      />
+      /> : null
+    }
+        {
+      release3 !== undefined ?
       <WeissLandingProductCard
         cardClassName={cardClassName}
         asin={release3.frontmatter.asin}
@@ -62,7 +70,8 @@ const NewReleasesList = ({ release1, release2, release3 }) => {
         color={release3.frontmatter.color}
         imgData={release3.frontmatter.image.childImageSharp.fluid}
         url={'/products'+release3.fields.slug}
-      />
+      /> : null
+    }
     </Container>
   )
 }

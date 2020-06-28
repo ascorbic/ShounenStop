@@ -12,6 +12,7 @@ const OtherProductPage = ({ data }) => {
     asin,
     producttype,
     series,
+    description,
     shippingFrom,
     image,
     weight,
@@ -27,6 +28,7 @@ const OtherProductPage = ({ data }) => {
         name={name}
         series ={series}
         shippingFrom = {shippingFrom}
+        description = {description}
         imgData={image.childImageSharp.fluid}
         asin={asin}
         productType={producttype}
@@ -47,6 +49,7 @@ export const OtherProductTemplateQuery = graphql`
         producttype
         name
         series
+        description
         shippingFrom
         ebayLink
         image {

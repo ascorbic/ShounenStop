@@ -24,6 +24,7 @@ collections:
               label: New Release 1,
               name: release1,
               widget: relation,
+              required: false,
               collection: weiss,
               searchFields: ['series', 'producttype', 'name', 'asin'],
               valueField: 'asin',
@@ -33,6 +34,7 @@ collections:
               label: New Release 2,
               name: release2,
               widget: relation,
+              required: false,
               collection: weiss,
               searchFields: ['series', 'producttype', 'name', 'asin'],
               valueField: 'asin',
@@ -42,6 +44,7 @@ collections:
               label: New Release 3,
               name: release3,
               widget: relation,
+              required: false,
               collection: weiss,
               searchFields: ['series', 'producttype', 'name', 'asin'],
               valueField: 'asin',
@@ -254,6 +257,7 @@ collections:
       - { label: Image, name: image, widget: image }
       - { label: 'Product Type', name: producttype, widget: string }
       - { label: Series, name: series, widget: string }
+      - { label: Description, name: description, widget: text, required: false }
       - { label: 'Ebay Link', name: ebayLink, widget: string }
       - { label: 'Shipping From Location', name: shippingFrom, widget: string }
       - label: Pricings

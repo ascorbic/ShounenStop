@@ -15,6 +15,7 @@ const WeissProductPageContainer = ({
   preorderDate,
   releaseDate,
   pricings,
+  description,
   price,
   color,
   url,
@@ -90,14 +91,14 @@ const WeissProductPageContainer = ({
     align-items: center;
   `
 
-const pricingText = css`
-    font-weight:700;
-`
+  const pricingText = css`
+    font-weight: 700;
+  `
 
-const totalText = css`
-    font-weight:400;
-    padding-left:10px;
-`
+  const totalText = css`
+    font-weight: 400;
+    padding-left: 10px;
+  `
 
   const productInfoHeader = css`
     padding-top: 30px;
@@ -204,6 +205,12 @@ const totalText = css`
                             <div css={infoLeft}>Release Date</div>
                             <div css={infoRight}>{releaseDate}</div>
                           </div>
+                        </div>
+                      ) : null}
+                      {description !== null ? (
+                        <div css={infoRow}>
+                          <div css={infoLeft}>Description</div>
+                          <div css={infoRight}>{description}</div>
                         </div>
                       ) : null}
                     </div>

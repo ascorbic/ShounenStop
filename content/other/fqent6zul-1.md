@@ -12,7 +12,7 @@ ebayLink: https://www.ebay.com/itm/New-article-not-opened-Play-Arts-Kai-FF7-clou
 shippingFrom: Hong Kong
 pricings:
   - quantity: 1
-    price: 200
+    price: 200.46
 weight: 9
 asin: fqeNT6ZUl
 merchandise: other

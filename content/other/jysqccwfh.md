@@ -10,7 +10,7 @@ ebayLink: https://www.ebay.com/itm/Bushiroad-Deck-Holder-Box-Vol-184-Love-Live-A
 shippingFrom: New Jersey
 pricings:
   - quantity: 1
-    price: 20
+    price: 19.42
 asin: JysqCcwFh
 merchandise: other
 ---

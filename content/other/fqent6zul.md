@@ -1,6 +1,6 @@
 ---
 name: Final Fantasy VII Remake PLAY ARTS -KAI- Cloud Strife Ver. 2
-image: images/cloud-2.jpg
+image: images/cloud.jpg
 producttype: Figures
 series: Final Fantasy VII
 description: >-

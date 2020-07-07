@@ -65,6 +65,7 @@ const cardBottom = css`
   bottom: 6px;
   left: 0px;
   position: absolute;
+  width:100%;
 `
 
 const productTypeText = css`

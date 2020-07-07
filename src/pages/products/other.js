@@ -9,7 +9,6 @@ import FilterProductCategory from '../../components/Products/FilterProductCatego
 
 const Other = ({ data, location }) => {
   const otherProductData = data.otherProducts.edges
-  console.log(otherProductData)
   var productTypeFilterList = ['All']
   otherProductData.map(edge => {
     const curProductType = edge.node.frontmatter.producttype

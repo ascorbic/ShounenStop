@@ -154,6 +154,7 @@ const priceText = css`
 
 const productInformationWrapper = css`
   margin-top: 40px;
+  max-width:400px;
 `
 
 const productImageContainer = css`
@@ -181,7 +182,7 @@ const imgStyles = css`
     cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-duration: 300ms, 300ms, 300ms, 300ms;
   border-radius: 8px;
-  box-shadow: 0px 20px 30px 10px rgba(31, 32, 68, 0.3);
+box-shadow: rgba(0, 0, 0, 0.2) 0px 30px 60px -10px, rgba(0, 0, 0, 0.22) 0px 18px 36px -18px;
   &:hover {
     transform: scale(1.03);
   }

@@ -194,25 +194,29 @@ const WeissProductPageContainer = ({
                       >
                         ADD TO CART
                       </div>
-                      {preorderDate !== 'Invalid date' ? (
-                        <div css={productInfoContainer}>
-                          <div css={productInfoHeader}>Product Information</div>
+                      <div css={productInfoContainer}>
+                        {preorderDate !== 'Invalid date' ? (
+                          <>
+                            <div css={productInfoHeader}>
+                              Product Information
+                            </div>
+                            <div css={infoRow}>
+                              <div css={infoLeft}>Preorder By</div>
+                              <div css={infoRight}>{preorderDate}</div>
+                            </div>
+                            <div css={infoRow}>
+                              <div css={infoLeft}>Release Date</div>
+                              <div css={infoRight}>{releaseDate}</div>
+                            </div>
+                          </>
+                        ) : null}
+                        {description !== null ? (
                           <div css={infoRow}>
-                            <div css={infoLeft}>Preorder By</div>
-                            <div css={infoRight}>{preorderDate}</div>
+                            <div css={infoLeft}>Description</div>
+                            <div css={infoRight}>{description}</div>
                           </div>
-                          <div css={infoRow}>
-                            <div css={infoLeft}>Release Date</div>
-                            <div css={infoRight}>{releaseDate}</div>
-                          </div>
-                        </div>
-                      ) : null}
-                      {description !== null ? (
-                        <div css={infoRow}>
-                          <div css={infoLeft}>Description</div>
-                          <div css={infoRight}>{description}</div>
-                        </div>
-                      ) : null}
+                        ) : null}
+                      </div>
                     </div>
                   </div>
                 </div>

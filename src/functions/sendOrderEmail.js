@@ -30,8 +30,15 @@ exports.handler = async (event, context, callback) => {
     "template_id": "d-92b3e2e517114c869eb5c7e221ba85e2"
   }
 
-  console.log(orderConfirmation.personalizations[0].dynamic_template_data)
+  // console.log(orderConfirmation.personalizations[0].dynamic_template_data)
+  // orderConfirmation.personalizations[0].dynamic_template_data.each((data)=>{
+  //   console.log(data)
+  // })
+  Object.keys(orderConfirmation.personalizations[0].dynamic_template_data.productData).map((key)=>{
 
+      console.log(orderConfirmation.personalizations[0].dynamic_template_data.productData[key])
+
+  })
   // const { email, subject } = payload
   // const request = {
   //   method: 'GET',

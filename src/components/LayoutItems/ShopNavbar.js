@@ -121,7 +121,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   <div
                     className="navWrapper"
                     style={{
-                      marginLeft: '-2px',
+                      marginLeft: '-4px',
                     }}
                   >
                     <Img fixed={cardImage.childImageSharp.fixed} />
@@ -134,7 +134,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   <div
                     className="navWrapper"
                     style={{
-                      marginLeft: '-2px',
+                      marginLeft: '-1px',
                     }}
                   >
                     <Img fixed={playmatImage.childImageSharp.fixed} />
@@ -147,7 +147,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   <div
                     className="navWrapper"
                     style={{
-                      marginLeft: '-2px',
+                      marginLeft: '0px',
                     }}
                   >
                     <Img fixed={comicBookImage.childImageSharp.fixed} />

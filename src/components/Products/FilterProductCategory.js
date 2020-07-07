@@ -8,10 +8,11 @@ class FilterProductCategory extends React.Component {
     this.state = {
       open: false,
     }
+    this.resize = this.resize.bind(this)
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.resize.bind(this))
+    window.addEventListener('resize', this.resize)
     this.resize()
   }
 
@@ -84,18 +85,18 @@ const selectedFilterList = css`
   border-radius: 6px;
   font-family: lato;
   height: 40px;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   line-height: 40px;
   padding-left: 15px;
   color: #444;
 
-  background-color:#B9D9FF;
+  background-color: #b9d9ff;
   cursor: pointer;
   letter-spacing: 1.1px;
   color: #0f346c;
   text-overflow: ellipsis;
-  white-space: nowrap; 
-  overflow:hidden;
+  white-space: nowrap;
+  overflow: hidden;
   transition: all 0.2s ease-in-out;
 `
 

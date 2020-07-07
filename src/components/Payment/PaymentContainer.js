@@ -315,7 +315,7 @@ class PaymentContainer extends React.Component {
                                 <div css={credibilityImgWrapper}>
                                   <a
                                     target="_blank"
-                                    href="https://www.facebook.com/groups/WeissSchwarzInternational"
+                                    href="https://www.facebook.com/search/top/?q=Weiss%20Schwarz%20&epa=SEARCH_BOX"
                                   >
                                     <Img
                                       css={credibilityImgStyles}
@@ -497,12 +497,18 @@ const credibilityImgWrapper = css`
 `
 
 const credibilityImgStyles = css`
+    filter: grayscale(.75);
+
   transition: all 0.2s ease-in-out;
   width: 56px;
   height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 2.5px 5px -1px rgba(50,50,93,.25),0 1.5px 3px -1.5px rgba(0,0,0,.3);
   cursor: pointer;
-  &:hover {
-    transform: scale(1.1);
+  &:hover { 
+        filter: grayscale(0);
+    transform: scale(.95);
+    box-shadow: 0 5px 10px -1px rgba(50,50,93,.6),0 1.5px 3px -1.5px rgba(0,0,0,.5);
   }
 `
 

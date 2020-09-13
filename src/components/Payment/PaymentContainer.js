@@ -80,7 +80,10 @@ class PaymentContainer extends React.Component {
                   window.history.replaceState(null, null, window.location.href)
                 }
                 navigate('/confirmation', {
-                  state: { orderContext: self.props.orderContext },
+                  state: { 
+                    orderContext: self.props.orderContext,
+                    paypalFeeInfo: self.state
+                   },
                 })
               }
             })
@@ -244,7 +247,7 @@ class PaymentContainer extends React.Component {
                                     'USD'
                                   window.open(paypalLink, '_blank')
                                 } else {
-                                  console.log(this.props.orderContext)
+                                  this.props.orderContext.paypalFeeInfo = this.state
                                   context.clearCart()
                                   axios
                                     .post(
@@ -256,7 +259,7 @@ class PaymentContainer extends React.Component {
                                     })
                                   navigate('/confirmation', {
                                     state: {
-                                      orderContext: this.props.orderContext,
+                                      orderContext: this.props.orderContext
                                     },
                                   })
                                 }

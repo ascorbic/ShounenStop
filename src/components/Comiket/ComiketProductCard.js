@@ -147,7 +147,8 @@ const addToCartButton = css`
   padding-left: 0px;
   cursor: pointer;
   background-color: #fff;
-  color: #a1bce6;
+  color: #0f346c;
+
   font-family: montserrat;
   font-weight: 300;
   line-height: 35px;
@@ -172,7 +173,7 @@ const addToCartButton = css`
   }
 
   &:hover {
-    color: #0f346c;
+    color: #a1bce6;
     font-size: 24px;
   }
 `

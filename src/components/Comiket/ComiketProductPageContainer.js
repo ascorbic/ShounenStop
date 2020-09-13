@@ -221,7 +221,6 @@ const addToCartButton = css`
   margin-top: 20px;
   border: solid 1px #0f346c;
   background-color: #0f346c;
-  color: rgba(255, 255, 255, 0.75);
   font-family: varela round;
   font-weight: 400;
   line-height: 45px;
@@ -231,10 +230,12 @@ const addToCartButton = css`
   border-radius: 3px;
   user-select: none;
   text-align: center;
-  letter-spacing: 1.5px;
+
+  color: rgba(255, 255, 255, 1);
+  letter-spacing: 2px;
   &:hover {
-    color: rgba(255, 255, 255, 1);
-    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 1.5px;
   }
 
   &:active {

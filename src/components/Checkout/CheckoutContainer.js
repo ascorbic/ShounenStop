@@ -82,6 +82,7 @@ const CheckoutContainer = ({ orderContext }) => {
                 />
                 <div css={userInfoContainer}>
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div css={header}>Delivery Address</div>
                     <div css={userInfoTop}>
                       <label
                         className={
@@ -402,10 +403,18 @@ const userInfoError = css`
   color: #d20d0d;
 `
 
+const header = css`
+  font-family: varela round;
+  font-weight: 700;
+  color: #0f346c;
+  padding-top: 5px;
+  font-size: 24px;
+`
+
 const deliveryContainer = css`
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom:5px;
+  padding-bottom: 5px;
 `
 
 const userInfoContainer = css`
@@ -418,8 +427,8 @@ const userInfoContainer = css`
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
   display: flex;
   flex-wrap: wrap;
-  position:sticky;
-  top:70px;
+  position: sticky;
+  top: 70px;
   width: 100%;
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),

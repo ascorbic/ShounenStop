@@ -45,6 +45,7 @@ module.exports = {
         background_color: `#0f346c`,
         theme_color: `#0f346c`,
         display: `minimal-ui`,
+        icon: 'src/images/shounenStopLogo.png',
       }
     },
     `gatsby-plugin-sharp`,

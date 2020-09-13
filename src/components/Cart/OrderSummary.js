@@ -196,13 +196,13 @@ const checkoutButton = css`
   cursor: pointer;
   font-size: 16px;
   font-family: varela round;
-  letter-spacing: 1.5px;
-  color: #a1bce6;
+  color: #fff;
+  letter-spacing: 2px;
 
   &:hover {
     font-size: 16px;
-    letter-spacing: 2px;
-    color: #fff;
+    letter-spacing: 1.5px;
+    color: #a1bce6;
   }
   background-color: #0f346c;
 

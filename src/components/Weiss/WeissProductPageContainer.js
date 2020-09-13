@@ -60,7 +60,7 @@ const WeissProductPageContainer = ({
     margin-top: 20px;
     border: solid 1px ${color};
     background-color: ${color};
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 1);
     font-family: varela round;
     font-weight: 400;
     line-height: 45px;
@@ -70,10 +70,10 @@ const WeissProductPageContainer = ({
     border-radius: 3px;
     user-select: none;
     text-align: center;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     &:hover {
-      color: rgba(255, 255, 255, 1);
-      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 1.5px;
     }
 
     &:active {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useLayoutEffect,useMemo, useEffect, useCallback } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import iconInfo from '../../images/infoIcon.svg'
 
@@ -21,18 +21,18 @@ function dismissBanner() {
   sessionStorage.setItem(bannerDismissedKey, true)
 }
 
-const BottomBanner = ({}) => {
+const BottomBanner = () => {
   const data = useStaticQuery(query)
   console.log(data)
   const [bannerDismissed, setBannerDismissed] = useState(false)
 
-  useEffect(()=>{
+  useLayoutEffect(()=>{
     setBannerDismissed(getBannerDismissed())
   })
 
-  return (
-    !bannerDismissed && (
-      <div css={bottomBannerContainer}>
+  const Banner = useCallback(() => (
+    (
+      !bannerDismissed && <div css={bottomBannerContainer}>
         <div css={bannerTextStyles}>
           <img css={infoIconStyles} src={iconInfo}></img>
           {data.bottomBannerText.frontmatter.bannerText}
@@ -47,8 +47,9 @@ const BottomBanner = ({}) => {
           Dismiss
         </div>
       </div>
-    )
-  )
+  )))
+
+  return(<div><Banner/></div>)
 }
 
 const infoIconStyles = css`

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import iconInfo from '../../images/infoIcon.svg'
 
@@ -25,7 +25,11 @@ function dismissBanner() {
 const BottomBanner = ({}) => {
   const data = useStaticQuery(query)
   console.log(data)
-  const [bannerDismissed, setBannerDismissed] = useState(getBannerDismissed())
+  const [bannerDismissed, setBannerDismissed] = useState(false)
+
+  useLayoutEffect(()=>{
+    setBannerDismissed(getBannerDismissed())
+  })
 
   return (
     !bannerDismissed && (

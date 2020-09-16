@@ -55,7 +55,7 @@ const ContactContainer = () => {
                 className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
               >
                 <div css={contactInfoContainer}>
-                  <h1 css={helpHeaderText}>How can we help?</h1>
+                  <h1><span css={helpHeaderText}>How can we help?</span></h1>
                   <div>
                     Send us your inquiries and we will get back to you as soon
                     as we can.
@@ -361,7 +361,9 @@ const contactInfoContainer = css`
 `
 
 const helpHeaderText = css`
-  color: #0f346c;
+  background: linear-gradient(to right, #13346c, #4c91a9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `
 
 export default ContactContainer

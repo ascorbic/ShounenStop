@@ -11,7 +11,7 @@ const OrderSummary = ({
   disableButton,
   children,
 }) => {
-  const shippingPrice = shippingInfo['standardShipping'].price
+  const shippingPrice = shippingInfo.shippingMethod.price
   const totalPrice = subTotal + shippingPrice + fees
 
   return (
@@ -30,7 +30,7 @@ const OrderSummary = ({
           </div>
           <div css={shippingTotalContainer}>
             <div css={shippingTotalText}>
-              {shippingInfo['standardShipping'].name}
+              {shippingInfo.shippingMethod.name}
             </div>
             <div css={shippingTotalAmount}>
               {'$' + shippingPrice.toFixed(2)}

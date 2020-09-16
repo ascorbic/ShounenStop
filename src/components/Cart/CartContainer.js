@@ -55,10 +55,10 @@ const CartContainer = () => {
 
         //make variable later
         const shippingData = {
-          standardShipping: {
-            name: 'Standard Shipping',
+          shippingMethod: {
+            name: 'Shounen Style Shipping',
             price: 0,
-            speed: '2-4 Weeks',
+            speed: '1-2 Weeks',
           },
         }
 
@@ -66,7 +66,7 @@ const CartContainer = () => {
           productData: productData,
           totalItems: totalItems,
           subTotal: totalPrice,
-          totalPrice: totalPrice + shippingData.standardShipping.price,
+          totalPrice: totalPrice + shippingData.shippingMethod.price,
           shippingInfo: shippingData,
         }
         return (

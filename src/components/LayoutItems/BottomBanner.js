@@ -3,9 +3,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import iconInfo from '../../images/infoIcon.svg'
 
 import { css } from '@emotion/core'
-import { bool } from 'prop-types'
-
-// sessionStorage.setItem(productsKey, JSON.stringify(memProducts))
 
 const bannerDismissedKey = 'bannerDismissed'
 

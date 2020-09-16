@@ -13,12 +13,12 @@ const ShippingDetails = ({ shippingData, userInfo }) => {
         <div css={shippingMethodContainer}>
           <div css={shippingMethodHeader}>Shipping Method</div>
           <div css={shippingMethodText}>
-            <span css={shippingLine}>{shippingData.standardShipping.name}</span>
+            <span css={shippingLine}>{shippingData.shippingMethod.name}</span>
             <span css={shippingLine}>
-              {shippingData.standardShipping.speed}
+              {shippingData.shippingMethod.speed}
             </span>
             <span css={shippingLine}>
-              {'$' + shippingData.standardShipping.price}
+              {'$' + shippingData.shippingMethod.price}
             </span>
           </div>
         </div>

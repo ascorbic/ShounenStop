@@ -14,6 +14,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
     merchandiseImage,
     playmatImage,
     contactImage,
+    userImage,
     comicBookImage,
   } = useStaticQuery(graphql`
     query {
@@ -55,6 +56,13 @@ const ShopNavbar = ({ pageInfo, title }) => {
       contactImage: file(relativePath: { eq: "contact.png" }) {
         childImageSharp {
           fixed(width: 27, height: 27) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      userImage: file(relativePath: { eq: "userIcon.png" }) {
+        childImageSharp {
+          fixed(width: 21, height: 21) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -194,6 +202,14 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   <Img fixed={contactImage.childImageSharp.fixed} />
                   <Nav.Link as="span" href="/contact">
                     CONTACT
+                  </Nav.Link>
+                </div>
+              </Link>
+              <Link to="/about" activeClassName="active">
+                <div className="navWrapper">
+                  <Img fixed={userImage.childImageSharp.fixed} />
+                  <Nav.Link as="span" href="/about">
+                    ABOUT
                   </Nav.Link>
                 </div>
               </Link>

@@ -59,13 +59,13 @@ const ConfirmationContainer = ({ orderContext }) => {
                     <div css={shippingMethodHeader}>Shipping Method</div>
                     <div css={shippingMethodText}>
                       <span css={shippingLine}>
-                        {orderContext.shippingInfo.standardShipping.name}
+                        {orderContext.shippingInfo.shippingMethod.name}
                       </span>
                       <span css={shippingLine}>
-                        {orderContext.shippingInfo.standardShipping.speed}
+                        {orderContext.shippingInfo.shippingMethod.speed}
                       </span>
                       <span css={shippingLine}>
-                        {'$' + orderContext.shippingInfo.standardShipping.price}
+                        {'$' + orderContext.shippingInfo.shippingMethod.price}
                       </span>
                     </div>
                   </div>
@@ -163,13 +163,11 @@ const ConfirmationContainer = ({ orderContext }) => {
                 </div>
                 <div css={shippingTotalContainer}>
                   <div css={shippingTotalText}>
-                    {orderContext.shippingInfo['standardShipping'].name}
+                    {orderContext.shippingInfo.shippingMethod.name}
                   </div>
                   <div css={shippingTotalAmount}>
                     {'$' +
-                      orderContext.shippingInfo[
-                        'standardShipping'
-                      ].price.toFixed(2)}
+                      orderContext.shippingInfo.shippingMethod.price.toFixed(2)}
                   </div>
                 </div>
                 <div css={feesTotalContainer}>

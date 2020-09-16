@@ -8,9 +8,9 @@ const NewReleases = ({ releaseList }) => {
     <div css={releasesContainer}>
       <div css={releasesContent}>
         <div css={header}>
-          <div css={headerBar}></div>
+          <div css={headerBarLeft}></div>
           <div css={releasesHeader}>New Releases</div>
-          <div css={headerBar}></div>
+          <div css={headerBarRight}></div>
         </div>
         <NewReleasesList
           release1={releaseList.release1}
@@ -45,10 +45,16 @@ const header = css`
   align-items: center;
 `
 
-const headerBar = css`
+const headerBarLeft = css`
   height: 1.5px;
   flex-grow: 1;
-  background-color: #0f346c;
+  background-color: #13346c;
+`
+
+const headerBarRight = css`
+  height: 1.5px;
+  flex-grow: 1;
+  background-color: #4c91a9;
 `
 
 const releasesHeader = css`
@@ -56,7 +62,9 @@ const releasesHeader = css`
   font-size: 30px;
   font-family: 'lato';
   margin: 0px 20px;
-  color: #0f346c;
+  background: linear-gradient(to right, #13346c, #4c91a9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `
 
 export default NewReleases

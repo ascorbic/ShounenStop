@@ -1,9 +1,8 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import iconInfo from '../../images/infoIcon.svg'
 
 import { css } from '@emotion/core'
-import { useEffect } from 'react'
 import { bool } from 'prop-types'
 
 // sessionStorage.setItem(productsKey, JSON.stringify(memProducts))
@@ -27,7 +26,7 @@ const BottomBanner = ({}) => {
   console.log(data)
   const [bannerDismissed, setBannerDismissed] = useState(false)
 
-  useLayoutEffect(()=>{
+  useEffect(()=>{
     setBannerDismissed(getBannerDismissed())
   })
 
@@ -35,12 +34,7 @@ const BottomBanner = ({}) => {
     !bannerDismissed && (
       <div css={bottomBannerContainer}>
         <div css={bannerTextStyles}>
-          <img css={infoIconStyles} src={iconInfo}></img> {'bannerDismissed'}
-          {data.bottomBannerText.frontmatter.bannerText}
-          {data.bottomBannerText.frontmatter.bannerText}
-          {data.bottomBannerText.frontmatter.bannerText}
-          {data.bottomBannerText.frontmatter.bannerText}
-          {data.bottomBannerText.frontmatter.bannerText}
+          <img css={infoIconStyles} src={iconInfo}></img>
           {data.bottomBannerText.frontmatter.bannerText}
         </div>
         <div
@@ -58,11 +52,12 @@ const BottomBanner = ({}) => {
 }
 
 const infoIconStyles = css`
-  height: 18px;
-  width: 18px;
+  height: 20px;
+  width: 20px;
   // vertical-align: middle;
   position: relative;
   top:-2px;
+  padding-right:5px;
   `
 
 const dismissButton = css`

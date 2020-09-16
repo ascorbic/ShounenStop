@@ -26,7 +26,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
       }
       cartImage: file(relativePath: { eq: "shopping-cart.png" }) {
         childImageSharp {
-          fixed(width: 30, height: 30) {
+          fixed(width: 24, height: 24) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -219,7 +219,7 @@ const navbar = css`
 
 const navbarBrand = css`
   letter-spacing: 2px;
-
+  margin-right: 1.9rem;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
@@ -245,7 +245,7 @@ const navbarBurger = css`
   .navbar-toggle {
     border: none;
     background: transparent !important;
-
+    padding-left: 0px !important;
     &:hover {
       background: transparent !important;
     }
@@ -309,14 +309,14 @@ const cartSizeStyles = css`
   position: absolute;
   background-color: #0f346c;
   color: #fff;
-  height: 21px;
-  width: 21px;
+  height: 19px;
+  width: 19px;
   font-size: 11px;
-  line-height: 18px;
+  line-height: 16px;
   border-radius: 50%;
-  padding: 3px 3px 0 3px;
-  right: -6px;
-  top: -5px;
+  padding: 2px 3px 0 3px;
+  right: -8px;
+  top: -7px;
 
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;

@@ -302,14 +302,14 @@ const productPricing = css`
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  border: solid 1px #dedede;
+  // border: solid 1px #dedede;
   flex: 0 0 auto;
   margin-right: 4px;
   margin-bottom: 4px;
   color: #151515;
   width: 50px;
   height: 50px;
-  background-color: #fff;
+  background-color: #f6f6f6;
   transition: all 0.2s ease-in-out;
   user-select: none;
   cursor: pointer;
@@ -326,6 +326,7 @@ const pricingContainer = css`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  font-family: varela round;
   position: relative;
 `
 

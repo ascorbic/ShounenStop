@@ -54,6 +54,19 @@ const ContactContainer = () => {
                 css={contactContainer}
                 className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
               >
+                <div css={contactInfoContainer}>
+                  <h1 css={helpHeaderText}>How can we help?</h1>
+                  <div>
+                    Send us your inquiries and we will get back to you as soon
+                    as we can.
+                  </div>
+                  <div>
+                    {' '}
+                    We can also ship to customer’s in certain countries outside
+                    of the U.S., just send us an email or facebook message.
+                  </div>
+                </div>
+
                 <Form>
                   <div css={userInfoContainer}>
                     <div css={contactContainerHeader}>Contact Us</div>
@@ -192,7 +205,7 @@ const ContactContainer = () => {
                         className={!isValid || !dirty ? 'buttonDisabled' : ''}
                         disabled={!isValid || !dirty}
                       >
-                        Submit
+                        Contact Us
                       </button>
                     </div>
                   </div>
@@ -208,7 +221,7 @@ const ContactContainer = () => {
 
 const submitButton = css`
   margin-top: 15px;
-  margin-bottom:5px;
+  margin-bottom: 5px;
   transition: all 0.2s ease-in-out;
   display: flex;
   justify-content: center;
@@ -340,6 +353,15 @@ const userInfoContainer = css`
   &:hover {
     box-shadow: 0px 8px 32px 0px rgba(31, 32, 68, 0.16);
   }
+`
+
+const contactInfoContainer = css`
+  padding-top: 20px;
+  padding-bottom: 30px;
+`
+
+const helpHeaderText = css`
+  color: #0f346c;
 `
 
 export default ContactContainer

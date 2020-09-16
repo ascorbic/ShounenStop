@@ -82,7 +82,13 @@ const CheckoutContainer = ({ orderContext }) => {
                 />
                 <div css={userInfoContainer}>
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div css={header}>Delivery Address</div>
+                    <div css={header}>Shipping Information</div>
+                    <div>$5 for </div>
+                  </div>
+                </div>
+                <div css={userInfoContainer}>
+                  <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div css={header}>Delivery Information</div>
                     <div css={userInfoTop}>
                       <label
                         className={

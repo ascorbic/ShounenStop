@@ -91,8 +91,11 @@ const ShopNavbar = ({ pageInfo, title }) => {
           </Navbar.Toggle>
           <Link to="/" activeClassName="active">
             <Navbar.Brand as="span" css={navbarBrand}>
-              <Img fixed={siteLogo.childImageSharp.fixed} css={siteLogoStyles}/>
-              HOUNEN STOP
+              <Img
+                fixed={siteLogo.childImageSharp.fixed}
+                css={siteLogoStyles}
+              />
+              <div css={navbarBrandText}>HOUNEN STOP</div>
             </Navbar.Brand>
           </Link>
           <Link to="/cart" className="order-lg-last ml-auto">
@@ -119,7 +122,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                 }}
                 css={dropdownHover}
               >
-                <Img fixed={merchandiseImage.childImageSharp.fixed}/>
+                <Img fixed={merchandiseImage.childImageSharp.fixed} />
                 <NavDropdown
                   disabled
                   rootCloseEvent="onClick"
@@ -216,16 +219,22 @@ const navbar = css`
 
 const navbarBrand = css`
   letter-spacing: 2px;
-  color: #0f346c !important;
+
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   &:hover {
     margin-left: -5px;
     letter-spacing: 3px;
   }
+`
+
+const navbarBrandText = css`
+  background: linear-gradient(to right, #13346c, #4c91a9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `
 
 const navbarBurger = css`
@@ -292,10 +301,9 @@ const navbarBurger = css`
 `
 
 const siteLogoStyles = css`
-  margin-right:-2px;
-  margin-top:-1px;
+  margin-right: -2px;
+  margin-top: -1px;
 `
-
 
 const cartSizeStyles = css`
   position: absolute;

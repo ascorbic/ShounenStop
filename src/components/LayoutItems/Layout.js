@@ -8,6 +8,7 @@ import { css } from '@emotion/core'
 import ShopNavbar from './ShopNavbar'
 import LayoutFooter from './LayoutFooter'
 import 'react-toastify/dist/ReactToastify.min.css'
+import BottomBanner from './BottomBanner'
 
 class Layout extends React.Component {
   constructor(props) {
@@ -23,6 +24,13 @@ class Layout extends React.Component {
             site {
               siteMetadata {
                 title
+              }
+            }
+            bottomBannerInfo: file(relativePath: { eq: "shopping-cart.png" }) {
+              childImageSharp {
+                fixed(width: 30, height: 30) {
+                  ...GatsbyImageSharpFixed
+                }
               }
             }
           }
@@ -51,6 +59,7 @@ class Layout extends React.Component {
               {this.props.children}
             </div>
             <LayoutFooter />
+            <BottomBanner />
           </CartContext>
         )}
       />

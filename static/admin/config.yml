@@ -294,6 +294,15 @@ collections:
           widget: 'hidden',
           default: 'other',
         }
+  - label: 'Bottom Banner'
+    name: 'Bottom Banner'
+    files:
+      - label: 'Bottom Banner'
+        name: bottomBanner
+        file: content/bottomBanner.md
+        media_folder: 'images'
+        fields:
+          - { label: Banner Text, name: bannerText, widget: string }
   - name: questions
     label: Questions and Answers
     create: true

@@ -959,6 +959,20 @@ pre tt:after {
   }
 }
 
+.bannerFade {  
+  animation: fadeInSlow 0.5s linear;
+}
+
+@keyframes fadeInSlow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 @media (min-width: 300px) {
   .row-card {
     flex: 0 0 50%;

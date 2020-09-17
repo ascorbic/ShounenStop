@@ -83,7 +83,28 @@ const CheckoutContainer = ({ orderContext }) => {
                 <div css={userInfoContainer}>
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div css={header}>Shipping Information</div>
-                    <div>$5 for </div>
+                    <ul>
+                      <li>
+                        $5 Shounen-Style Shipping (EMS/e-Express) on all
+                        shopping carts (unless otherwise stated)
+                      </li>
+                      <li>
+                        Arrival in 7-14 days working days with tracking (by HK
+                        Post e-Express)
+                      </li>
+                      <li>
+                        Pre-ordered BP Weiss boxes over the quantity of 5 will
+                        be shipped in multiple packages
+                      </li>
+                      <li>
+                        Pre-ordered items over the weight of (2kg/4.4lb) will be
+                        shipped in multiple packages
+                      </li>
+                      <li>
+                        Items pre-ordered with separate release dates will ship
+                        together once all items are released
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 <div css={userInfoContainer}>
@@ -414,6 +435,7 @@ const header = css`
   font-weight: 700;
   color: #0f346c;
   padding-top: 5px;
+  padding-bottom:10px;
   font-size: 24px;
 `
 

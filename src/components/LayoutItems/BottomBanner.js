@@ -46,7 +46,7 @@ const BottomBanner = () => {
       </div>
   )))
 
-  return(<div class="bannerFade"><Banner/></div>)
+  return(<div className="bannerFade"><Banner/></div>)
 }
 
 const infoIconStyles = css`

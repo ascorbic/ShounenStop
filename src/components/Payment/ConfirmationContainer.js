@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useStaticQuery, graphql, navigate } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
@@ -14,6 +14,12 @@ const getProduct = flatProduct => {
 const ConfirmationContainer = ({ orderContext }) => {
   const checkmarkImageData = useStaticQuery(query).checkmarkImage
     .childImageSharp.fluid
+
+  useEffect(()=>{
+    window.onbeforeunload = () => {
+      return false
+    }
+  })
 
   return (
     <Container fluid css={centerContainer}>

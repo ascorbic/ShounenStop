@@ -99,7 +99,7 @@ class CartContext extends React.Component {
   }
 
   clearCart() {
-    sessionStorage.clear()
+    sessionStorage.removeItem(productsKey)
     Object.keys(this.state).map(key => {
       if (
         key !== 'updateCartQuantity' &&

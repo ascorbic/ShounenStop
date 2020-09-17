@@ -195,11 +195,9 @@ const WeissProductPageContainer = ({
                         ADD TO CART
                       </div>
                       <div css={productInfoContainer}>
+                        <div css={productInfoHeader}>Product Information</div>
                         {preorderDate !== 'Invalid date' ? (
                           <>
-                            <div css={productInfoHeader}>
-                              Product Information
-                            </div>
                             <div css={infoRow}>
                               <div css={infoLeft}>Preorder By</div>
                               <div css={infoRight}>{preorderDate}</div>
@@ -210,6 +208,16 @@ const WeissProductPageContainer = ({
                             </div>
                           </>
                         ) : null}
+                        <div css={infoRow}>
+                          <div css={infoLeft}>Details</div>
+                          <div css={infoRight}>
+                            Pre-ordered BP Weiss boxes over the quantity of 5
+                            will be shipped in multiple packages. The staff of
+                            Shounen Stop will never purposely tamper with sealed
+                            products to affect the fairness of distribution to
+                            purchasers.
+                          </div>
+                        </div>
                         {description !== null ? (
                           <div css={infoRow}>
                             <div css={infoLeft}>Description</div>
@@ -316,7 +324,7 @@ const productPricing = css`
 
   &:hover {
     transition: none;
-    border: solid 1px #151515;
+    border: solid 1px #d6d6d6;
   }
 `
 

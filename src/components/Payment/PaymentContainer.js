@@ -75,15 +75,15 @@ class PaymentContainer extends React.Component {
               console.log(response)
               if (response.data === 'VALID') {
                 clearInterval(self.state.validateTimerId)
-                sessionStorage.clear()
+                sessionStorage.removeItem('products')
                 if (window.history.replaceState) {
                   window.history.replaceState(null, null, window.location.href)
                 }
                 navigate('/confirmation', {
-                  state: { 
+                  state: {
                     orderContext: self.props.orderContext,
-                    paypalFeeInfo: self.state
-                   },
+                    paypalFeeInfo: self.state,
+                  },
                 })
               }
             })
@@ -259,7 +259,7 @@ class PaymentContainer extends React.Component {
                                     })
                                   navigate('/confirmation', {
                                     state: {
-                                      orderContext: this.props.orderContext
+                                      orderContext: this.props.orderContext,
                                     },
                                   })
                                 }
@@ -296,17 +296,21 @@ class PaymentContainer extends React.Component {
                           </Form.Group>
                           <div css={disclaimerContainer}>
                             <div css={feeHeader}>Fee Information</div>
-                            <div css={disclaimerTextGoods}>
-                              - Please pay the exact amount or the transaction
-                              will <b>NOT</b> succeed. <br />- For Paypal Goods
-                              and Services Protection, you must enable it here
-                              for a fee.
-                            </div>
-                            <div css={disclaimerTextReasons}>
-                              - This allows us to offer the best price by not
-                              having to pay a fee. You can verify our
-                              credibility as a seller below.
-                            </div>
+                            <ul>
+                              <li css={disclaimerText}>
+                                Please pay the exact amount or the transaction
+                                will <b>NOT</b> succeed.
+                              </li>
+                              <li css={disclaimerText}>
+                                For Paypal Goods and Services Protection, you
+                                must enable it here for a fee.
+                              </li>
+                              <li css={disclaimerText}>
+                                This allows us to offer the best price by not
+                                having to pay a fee. You can verify our
+                                credibility as a seller below.
+                              </li>
+                            </ul>
                           </div>
                           <div css={credibilityInformation}>
                             <div css={credibilityHeader}>Credibility</div>
@@ -500,18 +504,20 @@ const credibilityImgWrapper = css`
 `
 
 const credibilityImgStyles = css`
-    filter: grayscale(.75);
+  filter: grayscale(0.75);
 
   transition: all 0.2s ease-in-out;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  box-shadow: 0 2.5px 5px -1px rgba(50,50,93,.25),0 1.5px 3px -1.5px rgba(0,0,0,.3);
+  box-shadow: 0 2.5px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1.5px 3px -1.5px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  &:hover { 
-        filter: grayscale(0);
-    transform: scale(.95);
-    box-shadow: 0 5px 10px -1px rgba(50,50,93,.6),0 1.5px 3px -1.5px rgba(0,0,0,.5);
+  &:hover {
+    filter: grayscale(0);
+    transform: scale(0.95);
+    box-shadow: 0 5px 10px -1px rgba(50, 50, 93, 0.6),
+      0 1.5px 3px -1.5px rgba(0, 0, 0, 0.5);
   }
 `
 
@@ -600,15 +606,10 @@ const feeHeader = css`
   font-size: 24px;
 `
 
-const disclaimerTextReasons = css`
-  // padding-top: 10px;
+const disclaimerText = css`
   font-size: 15px;
   font-family: lato;
-`
-
-const disclaimerTextGoods = css`
-  font-family: lato;
-  font-size: 15px;
+  margin-bottom:3px;
 `
 
 const disclaimerContainer = css`

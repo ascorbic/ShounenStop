@@ -18,6 +18,7 @@ const CartContainer = () => {
   return (
     <ContextConsumer>
       {context => {
+        var anyWeiss = false;
         var productData = {}
         var totalPrice = 0
         var totalItems = 0
@@ -36,6 +37,10 @@ const CartContainer = () => {
             productMetadata = edges.find(x => x.node.frontmatter.asin === asin)
               .node.frontmatter
 
+            if(productMetadata.merchandise === 'weiss'){
+              anyWeiss = true;
+            }
+
             const productPrice = productMetadata['pricings'].find(
               x => x.quantity === pricingQuantity
             ).price
@@ -53,11 +58,12 @@ const CartContainer = () => {
           return null;
         })
 
+
         //make variable later
         const shippingData = {
           shippingMethod: {
             name: 'Shounen Style Shipping',
-            price: 0,
+            price: anyWeiss ? 5 : 0,
             speed: '1-2 Weeks',
           },
         }

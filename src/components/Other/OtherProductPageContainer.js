@@ -253,7 +253,7 @@ const addToCartButton = css`
   }
 
   &:active {
-    color: #0f346c;
+    color: #fff;
   }
 `
 

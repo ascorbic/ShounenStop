@@ -455,7 +455,6 @@ const userInfoContainer = css`
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
   display: flex;
   flex-wrap: wrap;
-  position: sticky;
   top: 70px;
   width: 100%;
   transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),

@@ -77,7 +77,7 @@ const WeissProductPageContainer = ({
     }
 
     &:active {
-      color: ${color};
+      color: #fff;
     }
   `
 

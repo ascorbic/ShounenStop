@@ -108,7 +108,6 @@ const infoRight = css`
 
 const productInfoContainer = css`
   font-family: varela round;
-
   width: 100%;
 `
 
@@ -239,6 +238,6 @@ const addToCartButton = css`
   }
 
   &:active {
-    color: #0f346c;
+    color: #fff;
   }
 `

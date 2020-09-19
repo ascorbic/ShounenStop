@@ -96,7 +96,7 @@ const WeissLandingProductCard = ({
     }
 
     &:active {
-      color: ${color};
+      color: #fff;
     }
   `
 

@@ -769,7 +769,7 @@ pre tt:after {
   content: '';
 }
 
-.mainContainer{
+.mainContainer {
   min-height: calc(100vh - 120px);
   margin-top: 40px;
   margin-left: auto;
@@ -803,6 +803,9 @@ pre tt:after {
   color: #6a6d75 !important;
 }
 
+.Toastify__progress-bar--default {
+  background: linear-gradient(to right, #13346c, #4c91a9);
+}
 
 /* .nav-link.active{
   color: #4c91a9 !important;
@@ -814,9 +817,9 @@ ul {
 }
 
 ul li::before {
-  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
   color: #0f346c; /* Change the color */
-  padding-right:15px;
+  padding-right: 15px;
 }
 
 .navWrapper {
@@ -841,7 +844,7 @@ ul li::before {
   display: block !important;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   left: -30px !important;
   min-width: 6rem !important;
 }
@@ -975,7 +978,7 @@ ul li::before {
   }
 }
 
-.bannerFade {  
+.bannerFade {
   animation: fadeInSlow 0.5s linear;
 }
 
@@ -983,14 +986,13 @@ ul li::before {
   0% {
     opacity: 0;
   }
-  30%{
+  30% {
     opacity: 0;
   }
   100% {
     opacity: 1;
   }
 }
-
 
 @media (min-width: 300px) {
   .row-card {

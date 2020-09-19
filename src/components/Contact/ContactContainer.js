@@ -361,7 +361,9 @@ const contactInfoContainer = css`
 `
 
 const helpHeaderText = css`
-  background: linear-gradient(to right, #13346c, #4c91a9);
+-webkit-box-decoration-break: clone;
+
+  background: repeating-linear-gradient(to right, #13346c, #4c91a9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `

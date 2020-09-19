@@ -85,7 +85,7 @@ const bottomBannerContainer = css`
   // right: 0;
   // top: 0;
   width: 100%;
-  color: rgba(255, 255, 255, 0.6);
+  color: #dcecff;
   font-size: 16px;
   padding-left: 10px;
   padding-top: 10px;

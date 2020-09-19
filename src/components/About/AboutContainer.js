@@ -1,7 +1,12 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import Img from 'gatsby-image'
+import { useStaticQuery, graphql } from 'gatsby'
+
 import { Container, Row } from 'react-bootstrap'
 const AboutContainer = () => {
+  const data = useStaticQuery(query)
+
   return (
     <Container css={contactWrapper} fluid>
       <Row>
@@ -13,16 +18,60 @@ const AboutContainer = () => {
             <h1 css={helpHeaderText}>
               About <span css={shounenStyles}>Shounen Stop</span>
             </h1>
-            <div>
+            <p>
               For Shounen Stop, it’s all about value & ease. We are a small
               group of enthusiasts based in Hong Kong that aims to deliver goods
               to customers at an affordable price and conveniently through
               efficient payment and shipping methods.
+            </p>
+            <p css={whoWeAreHeader}>Who we are</p>
+            <div css={personDescription} className="row">
+              <div
+                css={userImageStyles}
+                className="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12"
+              >
+                <div css={userImageInner}>
+                  <Img
+                    // css={credibilityImgStyles}
+                    fluid={data.leonImage.childImageSharp.fluid}
+                  />
+                </div>
+              </div>
+              <div className="col-xl-9 col-lg-8 col-md-8 col-sm-8 col-12">
+                <h3 css={personTitleStyles}>Leon Shum</h3>
+                <span css={titleHeader}>FOUNDER</span>{' '}
+                <div css={personBorder}></div>
+                <p>
+                  A Weiss Schwarz player from New Jersey that relocated to Hong
+                  Kong for work. He runs the main operations of the store. Feel
+                  free to contact him with any inquiries related to Shounen
+                  Stop.
+                </p>
+              </div>
             </div>
-            <div>
-              {' '}
-              We can also ship to customer’s in certain countries outside of the
-              U.S., just send us an email or facebook message.
+            <div css={personDescription} className="row">
+              <div
+                css={userImageStyles}
+                className="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12"
+              >
+                <div css={userImageInner}>
+                  <Img
+                    // css={credibilityImgStyles}
+                    fluid={data.jonImage.childImageSharp.fluid}
+                  />
+                </div>
+              </div>
+              <div className="col-xl-9 col-lg-8 col-md-8 col-sm-8 col-12">
+                <h3 css={personTitleStyles}>Jonathan Wu</h3>
+                <span css={titleHeader}>DEVELOPER</span>
+                <div css={personBorder}></div>
+                <p>
+                  A Weiss Schwarz player from New Jersey that relocated to Hong
+                  Kong for work. He runs the main operations of the store. Feel
+                  free to contact him with any inquiries related to Shounen
+                  Stop.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -31,8 +80,62 @@ const AboutContainer = () => {
   )
 }
 
+const userImageStyles = css`
+  display: flex;
+  justify-content: center;
+`
+
+const userImageInner = css`
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  max-width: 350px;
+  & > div {
+    border-radius: 12px;
+  }
+
+  @media only screen and (max-width: 592px) {
+    margin-bottom: 30px;
+  }
+`
+
+const personTitleStyles = css`
+  color: #4c91a9;
+  margin-bottom: 10px;
+`
+
+const personBorder = css`
+  background-color: #b4c3ca;
+  width: 30px;
+  height: 1px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+`
+
+const personDescription = css`
+  padding-top: 15px;
+  padding-bottom: 35px;
+`
+
+const titleHeader = css`
+  font-weight: 300;
+  font-size: 18px;
+  color: #8091a5;
+`
+
+const whoWeAreHeader = css`
+  color: #0f346c;
+  font-size: 35px;
+  font-weight: 600;
+  padding-top: 10px;
+  text-align: left;
+  @media only screen and (max-width: 592px) {
+    text-align: center;
+  }
+`
+
 const shounenStyles = css`
   background: linear-gradient(to right, #13346c, #4c91a9);
+  -webkit-box-decoration-break: clone;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `
@@ -135,8 +238,8 @@ const userInfoError = css`
 
 const contactContainer = css`
   margin-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 5px;
   max-width: 1000px;
 `
@@ -183,3 +286,22 @@ const helpHeaderText = css`
 `
 
 export default AboutContainer
+
+export const query = graphql`
+  query AboutContainerQuery {
+    leonImage: file(relativePath: { eq: "lPhoto.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, quality: 90) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    jonImage: file(relativePath: { eq: "jPhoto.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`

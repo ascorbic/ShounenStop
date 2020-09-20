@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import { Container, Row } from 'react-bootstrap'
 const AboutContainer = () => {
-  const data = useStaticQuery(query)
+  const images = useStaticQuery(query)
 
   return (
     <Container css={contactWrapper} fluid>
@@ -31,10 +31,7 @@ const AboutContainer = () => {
                 className="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12"
               >
                 <div css={userImageInner}>
-                  <Img
-                    // css={credibilityImgStyles}
-                    fluid={data.leonImage.childImageSharp.fluid}
-                  />
+                  <Img fluid={images.leonImage.childImageSharp.fluid} />
                 </div>
               </div>
               <div className="col-xl-9 col-lg-8 col-md-8 col-sm-8 col-12">
@@ -47,6 +44,29 @@ const AboutContainer = () => {
                   free to contact him with any inquiries related to Shounen
                   Stop.
                 </p>
+                <div css={logoCloud}>
+                  <a
+                    css={logoHover}
+                    target="_blank"
+                    href="https://www.facebook.com/shumleon19"
+                  >
+                    <Img fixed={images.facebookImage.childImageSharp.fixed} />
+                  </a>
+                  <a
+                    css={logoHover}
+                    target="_blank"
+                    href="https://linkedin.com/in/shumleon"
+                  >
+                    <Img fixed={images.linkedinImage.childImageSharp.fixed} />
+                  </a>
+                  <div css={logoContainer}>
+                    <a href="mailto: shumleon@yahoo.com">
+                      <svg css={emailLogo} viewBox="0 0 20 20">
+                        <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
             <div css={personDescription} className="row">
@@ -55,10 +75,7 @@ const AboutContainer = () => {
                 className="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12"
               >
                 <div css={userImageInner}>
-                  <Img
-                    // css={credibilityImgStyles}
-                    fluid={data.jonImage.childImageSharp.fluid}
-                  />
+                  <Img fluid={images.jonImage.childImageSharp.fluid} />
                 </div>
               </div>
               <div className="col-xl-9 col-lg-8 col-md-8 col-sm-8 col-12">
@@ -66,11 +83,26 @@ const AboutContainer = () => {
                 <span css={titleHeader}>DEVELOPER</span>
                 <div css={personBorder}></div>
                 <p>
-                  A Weiss Schwarz player from New Jersey that relocated to Hong
-                  Kong for work. He runs the main operations of the store. Feel
-                  free to contact him with any inquiries related to Shounen
-                  Stop.
+                  Created the site and is responsible for the UI/UX design. Feel
+                  free to contact him if you have a website you would like to
+                  improve or want to create a website.
                 </p>
+                <div css={logoCloud}>
+                  <a
+                    css={logoHover}
+                    target="_blank"
+                    href="https://linkedin.com/in/jonmwu"
+                  >
+                    <Img fixed={images.linkedinImage.childImageSharp.fixed} />
+                  </a>
+                  <div css={logoContainer}>
+                    <a href="mailto: jonathanwu70@gmail.com">
+                      <svg css={emailLogo} viewBox="0 0 20 20">
+                        <path d="M17.388,4.751H2.613c-0.213,0-0.389,0.175-0.389,0.389v9.72c0,0.216,0.175,0.389,0.389,0.389h14.775c0.214,0,0.389-0.173,0.389-0.389v-9.72C17.776,4.926,17.602,4.751,17.388,4.751 M16.448,5.53L10,11.984L3.552,5.53H16.448zM3.002,6.081l3.921,3.925l-3.921,3.925V6.081z M3.56,14.471l3.914-3.916l2.253,2.253c0.153,0.153,0.395,0.153,0.548,0l2.253-2.253l3.913,3.916H3.56z M16.999,13.931l-3.921-3.925l3.921-3.925V13.931z"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -79,6 +111,28 @@ const AboutContainer = () => {
     </Container>
   )
 }
+
+const logoHover = css`
+  &:hover {
+    transform: scale(0.9);
+  }
+`
+
+const logoContainer = css`
+  width: 47px;
+  height: 47px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  border-radius: 50%;
+  // border: solid 1px #4c91a9;
+  padding: 10px;
+  margin-top: -3px;
+  background-color: #dcecff;
+  &:hover {
+    transform: scale(0.9);
+  }
+`
 
 const userImageStyles = css`
   display: flex;
@@ -140,34 +194,16 @@ const shounenStyles = css`
   -webkit-text-fill-color: transparent;
 `
 
-const submitButton = css`
-  margin-top: 15px;
-  margin-bottom: 5px;
-  transition: all 0.2s ease-in-out;
+const logoCloud = css`
   display: flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  height: 45px;
-  width: 100%;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: varela round;
-  color: #fff;
-  letter-spacing: 2px;
-  border: none;
-
-  &:hover {
-    font-size: 16px;
-    letter-spacing: 1.5px;
-    color: #a1bce6;
+  & > * {
+    margin-right: 10px;
   }
+`
 
-  &:active {
-    color: #fff;
-  }
-  background-color: #0f346c;
+const emailLogo = css`
+  fill: #4c91a9;
 `
 
 const contactWrapper = css`
@@ -176,104 +212,12 @@ const contactWrapper = css`
   justify-content: center;
 `
 
-const textAreaInput = css`
-  font-size: 18px;
-  min-height: 100px;
-
-  border: none;
-  border-bottom: solid 1px #dfdfdf;
-  -webkit-appearance: none;
-  width: 100%;
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-  &:focus {
-    border-bottom: solid 1px #0f346c;
-  }
-`
-
-const userInfoInput = css`
-  height: 25px;
-  line-height: 0px;
-  font-size: 18px;
-  width: 100%;
-  border: none;
-  border-bottom: solid 1px #dfdfdf;
-  -webkit-appearance: none;
-
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-
-  &:focus {
-    border-bottom: solid 1px #0f346c;
-  }
-`
-
-const userInfoTop = css`
-  width: 100%;
-  position: relative;
-  margin-bottom: 0px;
-  margin-top: 15px;
-`
-
-const userInfoLabel = css`
-  font-size: 16px;
-  float: left;
-  letter-spacing: 1.5px;
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-  color: #6a6d75;
-`
-const userInfoError = css`
-  font-size: 16px;
-  float: right;
-  letter-spacing: 1.1px;
-  color: #d20d0d;
-`
-
 const contactContainer = css`
   margin-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 5px;
   max-width: 1000px;
-`
-
-const contactContainerHeader = css`
-  padding-left: 15px;
-  font-family: varela round;
-  font-weight: 700;
-  color: #0f346c;
-  padding-top: 5px;
-  font-size: 24px;
-  width: 100%;
-`
-
-const userInfoContainer = css`
-  padding: 10px;
-  background-color: #fff;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 9px;
-  font-family: Lato;
-  box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
-  display: flex;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 70px;
-  width: 100%;
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-  &:hover {
-    box-shadow: 0px 8px 32px 0px rgba(31, 32, 68, 0.16);
-  }
 `
 
 const contactInfoContainer = css`
@@ -300,6 +244,27 @@ export const query = graphql`
       childImageSharp {
         fluid(maxWidth: 400, quality: 100) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    linkedinImage: file(relativePath: { eq: "linkedinLogo.png" }) {
+      childImageSharp {
+        fixed(width: 50, height: 50) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    facebookImage: file(relativePath: { eq: "facebookLogo.png" }) {
+      childImageSharp {
+        fixed(width: 45, height: 45) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    emailImage: file(relativePath: { eq: "email.png" }) {
+      childImageSharp {
+        fixed(width: 50, height: 50) {
+          ...GatsbyImageSharpFixed
         }
       }
     }

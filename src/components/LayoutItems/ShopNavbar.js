@@ -251,6 +251,8 @@ const navbarBrandText = css`
   background: linear-gradient(to right, #13346c, #4c91a9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  border-top:1px solid white;
+  outline:1px solid white;
 `
 
 const navbarBurger = css`

@@ -36,6 +36,7 @@ const releasesContent = css`
   padding-top: 25px;
   padding-left: 8%;
   padding-right: 8%;
+  padding-bottom: 25px;
 `
 
 const header = css`

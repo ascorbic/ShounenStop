@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { navigate } from 'gatsby'
 import { css } from '@emotion/core'
 import { Formik } from 'formik'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Row, Card, Accordion } from 'react-bootstrap'
 import CheckoutProgress from './CheckoutProgress'
 import CheckoutHeader from '../Checkout/CheckoutHeader'
 import * as Yup from 'yup'
@@ -10,6 +10,8 @@ import OrderSummary from '../Cart/OrderSummary'
 import OrderDetails from './OrderDetails'
 
 const CheckoutContainer = ({ orderContext }) => {
+  const [expanded, setExpanded] = useState(false)
+
   const alpha = /^[a-zA-Z_]+( [a-zA-Z_]+)*$/
   orderContext.userInfo = {}
   return (
@@ -100,6 +102,52 @@ const CheckoutContainer = ({ orderContext }) => {
                         Items pre-ordered with <b>separate release dates</b>{' '}
                         will ship together once all items are released
                       </li>
+                      <Accordion>
+                        <Accordion.Toggle
+                          css={upsShipping}
+                          as={Row}
+                          eventKey="0"
+                          onClick={() => {
+                            setExpanded(!expanded)
+                          }}
+                        >
+                          <svg
+                            className={expanded ? 'rotated' : ''}
+                            css={upsExpandIcon}
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path d="M0 0h24v24H0V0z" fill="none" />
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+                          </svg>
+                          <div css={upsHeader}>UPS (Special shipping accomodation)</div>
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey="0">
+                          <ul css={upsInner}>
+                            <div>
+                              Weiss BP cases can be shipped as one package thru
+                              UPS for an extra US$ 20 with arrival in 1 - 2
+                              working days.
+                            </div>
+                            <div css={paddingTop}>Customers need to:</div>
+                            <ol>
+                              <li>
+                                Check out and pay normally for an order of a
+                                Weiss BP case.
+                              </li>
+                              <li>
+                                Send an additional $20 separately through Paypal{' '}
+                              </li>
+                              <li>
+                                Send shounenstop@gmail.com an email with order
+                                number with screenshot of $20 dollars paid
+                              </li>
+                            </ol>
+                          </ul>
+                        </Accordion.Collapse>
+                      </Accordion>
                     </ul>
                   </div>
                 </div>
@@ -371,6 +419,34 @@ const CheckoutContainer = ({ orderContext }) => {
   )
 }
 
+const paddingTop = css`
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight:700;
+`
+
+const upsHeader = css`
+  font-weight:700;
+`
+
+const upsInner = css`
+  padding-top: 10px;
+  padding-left: 25px;
+`
+
+const upsExpandIcon = css`
+  fill: #c5d2d8;
+  margin-right: 5px;
+  transition: all 0.2s ease-in-out;
+`
+
+const upsShipping = css`
+  color: #4c91a9;
+  padding-left: 8px;
+  cursor: pointer;
+  user-select: none;
+`
+
 const userInfoInput = css`
   height: 25px;
   line-height: 0px;
@@ -443,9 +519,10 @@ const deliveryContainer = css`
 
 const userInfoContainer = css`
   padding: 10px;
+  padding-bottom: 20px;
   background-color: #fff;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 9px;
   font-family: Lato;
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;

@@ -807,6 +807,10 @@ pre tt:after {
   background: linear-gradient(to right, #13346c, #4c91a9);
 }
 
+.rotated {
+  transform: rotate(90deg);
+}
+
 /* .nav-link.active{
   color: #4c91a9 !important;
 } */
@@ -816,10 +820,19 @@ ul {
   margin: 0;
 }
 
+ol li::before{
+  content: '' !important;
+}
+
 ul li::before {
-  content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
-  color: #0f346c; /* Change the color */
+  content: '\2022';
+  color: #c5d2d8;
   padding-right: 15px;
+}
+
+ul li {
+  color: rgb(83, 97, 113);
+  font-size: 17px;
 }
 
 .navWrapper {

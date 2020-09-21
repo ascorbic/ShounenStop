@@ -151,7 +151,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                       </Nav.Link>
                     </Link>
                   </div>
-                  <div
+                  {/* <div
                     className="navWrapper"
                     style={{
                       marginLeft: '-1px',
@@ -163,7 +163,7 @@ const ShopNavbar = ({ pageInfo, title }) => {
                         COMIKET
                       </Nav.Link>
                     </Link>
-                  </div>
+                  </div> */}
                   <div
                     className="navWrapper"
                     style={{

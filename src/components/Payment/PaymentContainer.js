@@ -609,7 +609,7 @@ const feeHeader = css`
 const disclaimerText = css`
   font-size: 15px;
   font-family: lato;
-  margin-bottom:3px;
+  margin-bottom: 3px;
 `
 
 const disclaimerContainer = css`
@@ -747,7 +747,7 @@ const paypalProcess = css`
 
 const paypalContainer = css`
   border-radius: 9px;
-
+  margin-top: 20px;
   align-items: center;
   justify-content: center;
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;

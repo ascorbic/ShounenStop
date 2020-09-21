@@ -317,8 +317,8 @@ const userInfoError = css`
 
 const contactContainer = css`
   margin-top: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 5px;
   max-width: 1000px;
 `

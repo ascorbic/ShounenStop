@@ -31,7 +31,10 @@ const AboutContainer = () => {
                 className="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12"
               >
                 <div css={userImageInner}>
-                  <Img fluid={images.leonImage.childImageSharp.fluid} />
+                  <Img
+                    css={testImageAbove}
+                    fluid={images.leonImage.childImageSharp.fluid}
+                  />
                 </div>
               </div>
               <div className="col-xl-9 col-lg-8 col-md-8 col-sm-8 col-12">
@@ -75,7 +78,10 @@ const AboutContainer = () => {
                 className="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12"
               >
                 <div css={userImageInner}>
-                  <Img fluid={images.jonImage.childImageSharp.fluid} />
+                  <Img
+                    css={testImageAbove}
+                    fluid={images.jonImage.childImageSharp.fluid}
+                  />
                 </div>
               </div>
               <div className="col-xl-9 col-lg-8 col-md-8 col-sm-8 col-12">
@@ -112,7 +118,43 @@ const AboutContainer = () => {
   )
 }
 
+const testImageAbove = css`
+  border-radius: 12px;
+  box-shadow: 0 5px 10px -1px rgba(50, 50, 93, 0.25),
+  0 2px 3px -1.5px rgba(0, 0, 0, 0.3);
+`
+
+const testImageUnder = css`
+  & > * {
+    position: relative;
+    margin-top: -90%;
+    z-index: -999;
+    width: 95%;
+    height: 100%;
+    left: 2.5%;
+
+    border-radius: 50px !important;
+
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+  }
+`
+
 const logoHover = css`
+  & > * {
+    transition: all 0.2s ease-in-out;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2.5px 5px -1px rgba(50, 50, 93, 0.25),
+      0 1.5px 3px -1.5px rgba(0, 0, 0, 0.3);
+  }
+
+  & > *:hover {
+    box-shadow: 0 5px 10px -1px rgba(50, 50, 93, 0.6),
+      0 1.5px 3px -1.5px rgba(0, 0, 0, 0.5);
+  }
+
   &:hover {
     transform: scale(0.9);
   }
@@ -127,10 +169,14 @@ const logoContainer = css`
   border-radius: 50%;
   // border: solid 1px #4c91a9;
   padding: 10px;
-  margin-top: -3px;
+  margin-top: -8px;
   background-color: #dcecff;
+  box-shadow: 0 2.5px 5px -1px rgba(50, 50, 93, 0.25),
+    0 1.5px 3px -1.5px rgba(0, 0, 0, 0.3);
   &:hover {
     transform: scale(0.9);
+    box-shadow: 0 5px 10px -1px rgba(50, 50, 93, 0.6),
+      0 1.5px 3px -1.5px rgba(0, 0, 0, 0.5);
   }
 `
 
@@ -143,9 +189,6 @@ const userImageInner = css`
   width: 100%;
   transition: all 0.2s ease-in-out;
   max-width: 350px;
-  & > div {
-    border-radius: 12px;
-  }
 
   @media only screen and (max-width: 592px) {
     margin-bottom: 30px;
@@ -249,7 +292,7 @@ export const query = graphql`
     }
     linkedinImage: file(relativePath: { eq: "linkedinLogo.png" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 48, height: 48) {
           ...GatsbyImageSharpFixed
         }
       }

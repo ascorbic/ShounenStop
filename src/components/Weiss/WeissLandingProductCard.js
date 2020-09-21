@@ -329,7 +329,8 @@ const linearFadeLeft = css`
 `
 
 const cardPadding = css`
-  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
   position: relative;
 `
 
@@ -388,8 +389,6 @@ const imgStyles = css`
     cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
     cubic-bezier(0.645, 0.045, 0.355, 1);
   transition-duration: 300ms, 300ms, 300ms, 300ms;
-
-
 `
 
 const productTypeText = css`

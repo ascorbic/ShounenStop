@@ -13,7 +13,7 @@ pricings:
   - quantity: 6
     price: 324
   - quantity: 9
-    price: 447
+    price: 477
   - quantity: 18
     price: 954
 weight: 14

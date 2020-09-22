@@ -6,7 +6,7 @@ local_backend: true
 
 media_folder: 'static/images'
 public_folder: '/images/'
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 
 collections:
   - label: 'Page Info'

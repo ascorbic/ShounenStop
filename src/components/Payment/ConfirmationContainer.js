@@ -15,11 +15,17 @@ const ConfirmationContainer = ({ orderContext }) => {
   const checkmarkImageData = useStaticQuery(query).checkmarkImage
     .childImageSharp.fluid
 
-  useEffect(()=>{
-    window.onbeforeunload = () => {
-      return false
-    }
-  })
+  // useEffect(()=>{
+  //   window.onbeforeunload = () => {
+  //     return false
+  //   }
+
+  //   return ()=>{
+  //     window.onbeforeunload = function () {
+  //       // blank function do nothing
+  //     }
+  //   }
+  // })
 
   return (
     <Container fluid css={centerContainer}>

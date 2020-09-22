@@ -50,10 +50,14 @@ class PaymentContainer extends React.Component {
   //   }
   // }
 
-  componentDidUpdate = () => {
+  componentDidMount = () => {
     window.onbeforeunload = () => {
       return true
     }
+  }
+
+  componentWillUnmount() {
+    window.onbeforeunload = null
   }
 
   startValidatingPayment() {
@@ -79,6 +83,8 @@ class PaymentContainer extends React.Component {
                 if (window.history.replaceState) {
                   window.history.replaceState(null, null, window.location.href)
                 }
+                window.onbeforeunload = null
+
                 navigate('/confirmation', {
                   state: {
                     orderContext: self.props.orderContext,
@@ -257,6 +263,8 @@ class PaymentContainer extends React.Component {
                                     .then(function(response) {
                                       console.log(response)
                                     })
+                                  window.onbeforeunload = null
+
                                   navigate('/confirmation', {
                                     state: {
                                       orderContext: this.props.orderContext,

@@ -294,8 +294,8 @@ collections:
           widget: 'hidden',
           default: 'other',
         }
-  - label: 'Bottom Banner'
-    name: 'Bottom Banner'
+  - label: 'BottomBanner'
+    name: bottomBanner
     files:
       - label: 'Bottom Banner'
         name: bottomBanner

@@ -1,0 +1,20 @@
+---
+name: Love Live! Nijigasaki High School Idol Club
+producttype: Trial Deck
+displayName: Love Live Nijigasaki
+series: Love Live! Nijigasaki High School Idol Club
+color: "#f1c640"
+image: images/組立画像_lnj.png
+pricings:
+  - quantity: 1
+    price: 19
+  - quantity: 2
+    price: 31
+  - quantity: 6
+    price: 86
+weight: 5.6
+preorder: 2020-11-10T16:00:00.000Z
+release: 2020-12-10T16:00:00.000Z
+asin: _-YIVoGHv
+merchandise: weiss
+---

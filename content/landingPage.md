@@ -1,8 +1,8 @@
 ---
-landingText: Weiss Boxes and Comiket Merchandise at a great price
+landingText: Weiss Schwarz products and anime merchandise at a great price
 landingSubtitle: $5 Shipping on all products
 landingImage: images/sao.jpg
-release1: nEfDuso5m
-release2: PcAKrgqSU
-release3: zwOWW7RPH
+release1: _-YIVoGHv
+release2: C7v46tn7C
+release3: 8XOjUU0WV
 ---

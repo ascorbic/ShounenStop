@@ -12,8 +12,8 @@ pricings:
     price: 31
   - quantity: 6
     price: 86
-weight: 5.6
-preorder: 2020-11-10T16:00:00.000Z
+weight: 5.7
+preorder: 2020-11-11T16:00:00.000Z
 release: 2020-12-10T16:00:00.000Z
 asin: _-YIVoGHv
 merchandise: weiss

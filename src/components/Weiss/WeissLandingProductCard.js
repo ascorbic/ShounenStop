@@ -148,7 +148,7 @@ const WeissLandingProductCard = ({
     justify-content: center;
     border-radius: 5px;
     flex: 0 0 auto;
-    margin-right: 5%;
+    margin-right: 3%;
     color: #151515;
     width: 17%;
     height: 100%;
@@ -217,8 +217,8 @@ const WeissLandingProductCard = ({
                 </div>
               </div>
               <div css={fadeContainer}>
-                <div css={linearFadeLeft}></div>
-                <div css={linearFadeRight}></div>
+                {/* <div css={linearFadeLeft}></div>
+                <div css={linearFadeRight}></div> */}
                 <ScrollContainer
                   vertical={false}
                   className="scroll-container"

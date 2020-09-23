@@ -803,9 +803,9 @@ pre tt:after {
   color: #6a6d75 !important;
 }
 
-.Toastify__progress-bar--default {
+/* .Toastify__progress-bar--default {
   background: linear-gradient(to right, #13346c, #4c91a9);
-}
+} */
 
 .rotated {
   transform: rotate(90deg);

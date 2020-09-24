@@ -1,5 +1,5 @@
 ---
-name: Bushiroad Deck Holder Box Vol.184 "Love Live!" Ayase Eri Eli Free Shipping
+name: 'Bushiroad Deck Holder Box Vol.184 "Love Live!" Ayase Eri Eli '
 image: images/s-l400-1-.jpg
 producttype: deckbox
 series: Love Live

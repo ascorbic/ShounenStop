@@ -3,7 +3,7 @@ name: Max Factory Konosuba Aqua figma with bonus face
 image: images/47821-gsc-limited-bonus-figma-aqua-konosuba.jpg
 producttype: figure
 series: Konosuba
-description: New and unopened
+description: Free shipping, new and unopened
 ebayLink: https://www.ebay.com/itm/164072753765?ssPageName=STRK:MESELX:IT&_trksid=p3984.m1555.l2649
 shippingFrom: US
 pricings:

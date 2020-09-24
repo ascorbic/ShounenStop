@@ -1,0 +1,14 @@
+---
+name: "Ann Panther Persona 5 P5 Figma "
+image: images/s-l500-1-.jpg
+producttype: figure
+series: Persona 5
+description: new and unopened
+ebayLink: http://ebay.us/oyigwR?cmpnId=5338273189
+shippingFrom: HK
+pricings:
+  - quantity: 1
+    price: 153.9
+asin: v1lDFT7C3
+merchandise: other
+---

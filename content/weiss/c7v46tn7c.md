@@ -4,6 +4,7 @@ producttype: Booster Box
 displayName: Bofuri
 series: "Bofuri: I Don't Want to Get Hurt, so I'll Max Out My Defense "
 color: "#67b168"
+description: 18 boxes will be a full case
 image: images/防振り_箱組み立て.png
 pricings:
   - quantity: 1

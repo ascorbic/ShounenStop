@@ -4,6 +4,7 @@ producttype: Booster Box
 displayName: Fate Heaven's Feel Vol. 2
 series: Fate Series
 color: "#939393"
+description: 18 boxes will be a full case
 image: images/bp_now-printing_a-1-1.png
 pricings:
   - quantity: 1

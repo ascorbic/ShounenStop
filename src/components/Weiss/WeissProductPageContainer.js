@@ -102,7 +102,8 @@ const WeissProductPageContainer = ({
 
   const productInfoHeader = css`
     border-top: solid 1px #ddd;
-    padding-top: 70px;
+    margin-top:30px;
+    padding-top: 30px;
     font-family: varela round;
     color: ${color};
     font-size: 25px;

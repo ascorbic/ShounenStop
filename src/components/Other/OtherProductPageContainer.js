@@ -208,7 +208,7 @@ const ebayImgWrapper = css`
 const ebayImgStyles = css`
   border-radius: 50%;
   background-color: #fff;
-  box-shadow: 0px 10px 20px 0px rgba(31, 32, 68, 0.4);
+  box-shadow: 0px 5px 10px 0px rgba(31, 32, 68, 0.2);
 `
 
 const productContentContainer = css`
@@ -306,8 +306,8 @@ const priceText = css`
 
 const productInfoHeader = css`
   border-top: solid 1px #ddd;
-
-  padding-top: 70px;
+  margin-top:30px;
+  padding-top: 30px;
   font-family: varela round;
   color: #0f346c;
   font-size: 25px;

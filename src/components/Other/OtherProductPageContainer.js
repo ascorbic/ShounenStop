@@ -89,11 +89,10 @@ const OtherProductPageContainer = ({
                         <div css={infoRow}>
                           <div css={infoLeft}>Notes</div>
                           <div css={infoRight}>
-                            Free shipping, each customer may only order 1 of
+                            Each customer may only order 1 of
                             this item.
-                            <br />
                             {hasEbay
-                              ? `For more photos please visit the corresponding ebay
+                              ? ` For more photos please visit the corresponding ebay
                             listing. The price here is reduced due to not
                             needing to pay ebay fees. There is also no sales
                             tax. Please send us an email if you reside in a
@@ -299,7 +298,7 @@ const priceText = css`
   font-size: 30px;
   color: #0f346c;
   height: 70px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
 `

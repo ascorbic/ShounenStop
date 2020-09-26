@@ -1,6 +1,6 @@
 ---
 name: Fate/stay night [Heaven’s Feel] Vol.2
-producttype: Booster Box
+producttype: Booster Pack Box
 displayName: Fate Heaven's Feel Vol. 2
 series: Fate Series
 color: "#939393"

@@ -18,6 +18,7 @@ const NewReleases = ({ releaseList }) => {
           release3={releaseList.release3}
         />
       </div>
+      <div css={viewAllWeissButton}></div>
     </div>
   )
 }
@@ -56,6 +57,10 @@ const headerBarRight = css`
   height: 1.5px;
   flex-grow: 1;
   background-color: #4c91a9;
+`
+
+const viewAllWeissButton = css`
+  
 `
 
 const releasesHeader = css`

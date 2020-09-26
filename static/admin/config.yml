@@ -109,10 +109,12 @@ collections:
       - { label: ID, name: id, widget: ncw-id, hidden: true }
   - name: weiss
     label: Weiss
+    editor:
+      preview: false
     create: true
     folder: content/weiss
     media_folder: 'images'
-    identifier_field: asin
+    identifier_field: name
     slug: '{{slug}}'
     fields:
       - { label: Name, name: name, widget: string }
@@ -125,18 +127,17 @@ collections:
               'Trial Deck',
               'Trial Deck+',
               'Box of Trial Decks',
-              'Booster Box',
+              'Booster Pack Box',
               'Carton of Booster Boxes',
               'Extra Booster',
               'Other',
             ],
-          default: ['Booster Box'],
+          default: ['Booster Pack Box'],
         }
       - { label: Display Name, name: displayName, widget: string }
       - { label: Series, name: series, widget: string }
-      - { label: Product Primary Color Hex, name: color, widget: string }
-      - { label: Description, name: description, widget: text, required: false }
       - { label: Image, name: image, widget: image }
+      - { label: Product Primary Color Hex, name: color, widget: string }
       - label: Pricings
         name: pricings
         widget: list
@@ -153,6 +154,7 @@ collections:
             min: 0
             widget: number
             valueType: float
+      - { label: Description, name: description, widget: text, required: false }
       - {
           label: Shipping Weight,
           name: weight,
@@ -251,7 +253,7 @@ collections:
     folder: content/other
     media_folder: 'images'
     slug: '{{slug}}'
-    identifier_field: 'asin'
+    identifier_field: name
     fields:
       - { label: Name, name: name, widget: string }
       - { label: Image, name: image, widget: image }

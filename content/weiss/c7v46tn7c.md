@@ -1,6 +1,6 @@
 ---
 name: "Bofuri: I Don't Want to Get Hurt, so I'll Max Out My Defense "
-producttype: Booster Box
+producttype: Booster Pack Box
 displayName: Bofuri
 series: "Bofuri: I Don't Want to Get Hurt, so I'll Max Out My Defense "
 color: "#67b168"

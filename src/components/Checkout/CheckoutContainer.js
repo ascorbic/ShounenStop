@@ -95,12 +95,12 @@ const CheckoutContainer = ({ orderContext }) => {
                         e-Express)
                       </li>
                       <li>
-                        Items over the weight of <b>4.4lbs</b> (i.e., 5+ Weiss
+                        Items over the weight of <b>4.4lbs</b> (e.g., 5+ Weiss
                         BP) will be shipped in <b>multiple packages</b>
                       </li>
                       <li>
                         Items pre-ordered with <b>separate release dates</b>{' '}
-                        will ship together once all items are released
+                        will ship <b>together</b> once all items are released
                       </li>
                       <Accordion>
                         <Accordion.Toggle
@@ -122,7 +122,9 @@ const CheckoutContainer = ({ orderContext }) => {
                             <path d="M0 0h24v24H0V0z" fill="none" />
                             <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
                           </svg>
-                          <div css={upsHeader}>UPS (Special shipping accomodation)</div>
+                          <div css={upsHeader}>
+                            UPS (special shipping accommodation)
+                          </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                           <ul css={upsInner}>
@@ -134,7 +136,7 @@ const CheckoutContainer = ({ orderContext }) => {
                             <div css={paddingTop}>Customers need to:</div>
                             <ol>
                               <li>
-                                Check out and pay normally for an order of a
+                                Check out and pay normally for an order with a
                                 Weiss BP case.
                               </li>
                               <li>
@@ -422,11 +424,11 @@ const CheckoutContainer = ({ orderContext }) => {
 const paddingTop = css`
   padding-top: 10px;
   padding-bottom: 10px;
-  font-weight:700;
+  font-weight: 700;
 `
 
 const upsHeader = css`
-  font-weight:700;
+  font-weight: 700;
 `
 
 const upsInner = css`

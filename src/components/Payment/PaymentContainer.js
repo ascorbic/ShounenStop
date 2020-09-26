@@ -208,6 +208,15 @@ class PaymentContainer extends React.Component {
                           }
                         }
                       }
+                      linkedinImage: file(
+                        relativePath: { eq: "linkedinLogo.png" }
+                      ) {
+                        childImageSharp {
+                          fixed(width: 60, height: 60) {
+                            ...GatsbyImageSharpFixed
+                          }
+                        }
+                      }
                     }
                   `}
                   render={data => {
@@ -342,10 +351,37 @@ class PaymentContainer extends React.Component {
                                 </div>
                                 <div css={credibilityItemText}>
                                   <div css={credibilityItemHeader}>
-                                    Facebook Weiss Groups
+                                    Weiss Facebook Groups
                                   </div>
                                   <div css={credibilityItemDesc}>
-                                    Reference Check me by searching Leon Shum
+                                    Make a reference check post about Shounen
+                                    Stop or Leon Shum
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                css={credibilityItem}
+                                className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
+                              >
+                                <div css={credibilityImgWrapper}>
+                                  <a
+                                    target="_blank"
+                                    href="https://linkedin.com/in/shumleon"
+                                  >
+                                    <Img
+                                      css={credibilityImgStyles}
+                                      fixed={
+                                        data.linkedinImage.childImageSharp.fixed
+                                      }
+                                    />
+                                  </a>
+                                </div>
+                                <div css={credibilityItemText}>
+                                  <div css={credibilityItemHeader}>
+                                    The Founder’s Linkedin
+                                  </div>
+                                  <div css={credibilityItemDesc}>
+                                    Leon Shum’s professional profile
                                   </div>
                                 </div>
                               </div>
@@ -371,33 +407,7 @@ class PaymentContainer extends React.Component {
                                     Shounen Stop Facebook Page
                                   </div>
                                   <div css={credibilityItemDesc}>
-                                    Check out our Facebook page for more info
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                css={credibilityItem}
-                                className="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-6"
-                              >
-                                <div css={credibilityImgWrapper}>
-                                  <a
-                                    target="_blank"
-                                    href="https://www.facebook.com/shumleon19"
-                                  >
-                                    <Img
-                                      css={credibilityImgStyles}
-                                      fixed={
-                                        data.facebookImage.childImageSharp.fixed
-                                      }
-                                    />
-                                  </a>
-                                </div>
-                                <div css={credibilityItemText}>
-                                  <div css={credibilityItemHeader}>
-                                    Leon Shum on Facebook
-                                  </div>
-                                  <div css={credibilityItemDesc}>
-                                    My Facebook profile page
+                                  Our official Facebook page
                                   </div>
                                 </div>
                               </div>
@@ -421,7 +431,7 @@ class PaymentContainer extends React.Component {
                                 <div css={credibilityItemText}>
                                   <div css={credibilityItemHeader}>Ebay</div>
                                   <div css={credibilityItemDesc}>
-                                    My Ebay account with over 150 positive
+                                    Our ebay account with over 150 positive
                                     reviews
                                   </div>
                                 </div>

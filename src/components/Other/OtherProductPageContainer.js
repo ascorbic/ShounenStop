@@ -19,6 +19,7 @@ const OtherProductPageContainer = ({
   url,
 }) => {
   const ebayImageData = useStaticQuery(query).ebayImage.childImageSharp.fixed
+  const hasEbay = ebayLink != null && ebayLink !== ''
 
   return (
     <ContextConsumer>
@@ -32,9 +33,11 @@ const OtherProductPageContainer = ({
                     css={productImageContainer}
                     className="col-xl-6 col-lg-5 col-md-6 col-sm-12 col-12"
                   >
-                    <a href={ebayLink} target="_blank" css={ebayImgWrapper}>
-                      <Img css={ebayImgStyles} fixed={ebayImageData} />
-                    </a>
+                    {hasEbay ? (
+                      <a href={ebayLink} target="_blank" css={ebayImgWrapper}>
+                        <Img css={ebayImgStyles} fixed={ebayImageData} />
+                      </a>
+                    ) : null}
                     <div className="img-zoom" css={imgContainer}>
                       <Img css={imgStyles} fluid={imgData} />
                     </div>
@@ -48,6 +51,7 @@ const OtherProductPageContainer = ({
                       <div css={productTypeContainer}>{name}</div>
                       <div css={seriesContainer}>{series}</div>
                       <div css={priceText}>{'$' + price}</div>
+                      <div css={freeShippingText}>FREE shipping</div>
                       <div
                         onClick={() => {
                           context.addQuantityToCart(
@@ -70,15 +74,32 @@ const OtherProductPageContainer = ({
                           <div css={infoLeft}>Ships From</div>
                           <div css={infoRight}>{shippingFrom}</div>
                         </div>
+                        {hasEbay ? (
+                          <div css={infoRow}>
+                            <div css={infoLeft}>Also Listed On</div>
+                            <a
+                              href={ebayLink}
+                              target="_blank"
+                              css={infoRightLink}
+                            >
+                              Ebay
+                            </a>
+                          </div>
+                        ) : null}
                         <div css={infoRow}>
-                          <div css={infoLeft}>Also Listed On</div>
-                          <a
-                            href={ebayLink}
-                            target="_blank"
-                            css={infoRightLink}
-                          >
-                            Ebay
-                          </a>
+                          <div css={infoLeft}>Notes</div>
+                          <div css={infoRight}>
+                            Free shipping, each customer may only order 1 of
+                            this item.
+                            <br />
+                            {hasEbay
+                              ? `For more photos please visit the corresponding ebay
+                            listing. The price here is reduced due to not
+                            needing to pay ebay fees. There is also no sales
+                            tax. Please send us an email if you reside in a
+                            country other than the US.`
+                              : ''}
+                          </div>
                         </div>
                         {description !== null ? (
                           <div css={infoRow}>
@@ -101,8 +122,19 @@ const OtherProductPageContainer = ({
 
 export default OtherProductPageContainer
 
+const freeShippingText = css`
+  font-weight: 700;
+`
+
 const infoRow = css`
   clear: both;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  &:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
 `
 
 const infoLeft = css`
@@ -117,6 +149,7 @@ const infoRightLink = css`
 `
 
 const infoRight = css`
+  font-size: 17px;
   float: right;
 `
 
@@ -172,7 +205,11 @@ const ebayImgWrapper = css`
   }
 `
 
-const ebayImgStyles = css``
+const ebayImgStyles = css`
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0px 10px 20px 0px rgba(31, 32, 68, 0.4);
+`
 
 const productContentContainer = css`
   width: 100%;
@@ -268,7 +305,9 @@ const priceText = css`
 `
 
 const productInfoHeader = css`
-  padding-top: 30px;
+  border-top: solid 1px #ddd;
+
+  padding-top: 70px;
   font-family: varela round;
   color: #0f346c;
   font-size: 25px;

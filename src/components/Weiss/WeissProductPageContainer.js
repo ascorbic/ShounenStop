@@ -101,7 +101,8 @@ const WeissProductPageContainer = ({
   `
 
   const productInfoHeader = css`
-    padding-top: 30px;
+    border-top: solid 1px #ddd;
+    padding-top: 70px;
     font-family: varela round;
     color: ${color};
     font-size: 25px;
@@ -209,13 +210,14 @@ const WeissProductPageContainer = ({
                           </>
                         ) : null}
                         <div css={infoRow}>
-                          <div css={infoLeft}>Details</div>
+                          <div css={infoLeft}>Notes</div>
                           <div css={infoRight}>
-                            Pre-ordered BP Weiss boxes over the quantity of 5
-                            will be shipped in multiple packages. The staff of
-                            Shounen Stop will never purposely tamper with sealed
+                            Items over the weight of 4.4lbs (e.g., 5 or more
+                            Weiss BP boxes) will be shipped in multiple
+                            packages, each with tracking. The staff of Shounen
+                            Stop will never purposely tamper with sealed
                             products to affect the fairness of distribution to
-                            purchasers.
+                            customers.
                           </div>
                         </div>
                         {description !== null ? (
@@ -245,6 +247,13 @@ const seriesContainer = css`
 
 const infoRow = css`
   clear: both;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  &:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
 `
 
 const infoLeft = css`

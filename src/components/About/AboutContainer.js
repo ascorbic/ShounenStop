@@ -43,18 +43,11 @@ const AboutContainer = () => {
                 <div css={personBorder}></div>
                 <p>
                   A Weiss Schwarz player from New Jersey that relocated to Hong
-                  Kong for work. He runs the main operations of the store. Feel
+                  Kong for work. He runs the main operations of Shounen Stop. Feel
                   free to contact him with any inquiries related to Shounen
                   Stop.
                 </p>
                 <div css={logoCloud}>
-                  <a
-                    css={logoHover}
-                    target="_blank"
-                    href="https://www.facebook.com/shumleon19"
-                  >
-                    <Img fixed={images.facebookImage.childImageSharp.fixed} />
-                  </a>
                   <a
                     css={logoHover}
                     target="_blank"

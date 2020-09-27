@@ -1,9 +1,9 @@
 import React from 'react'
 import { css } from '@emotion/core'
+import { Link } from 'gatsby'
 import NewReleasesList from './NewReleasesList'
 
 const NewReleases = ({ releaseList }) => {
-
   return (
     <div css={releasesContainer}>
       <div css={releasesContent}>
@@ -17,13 +17,25 @@ const NewReleases = ({ releaseList }) => {
           release2={releaseList.release2}
           release3={releaseList.release3}
         />
+        <div css={viewAllRow}>
+          <Link to="/products/weiss">
+            <button css={viewAllWeissButton}>
+              <span css={innerText}>VIEW ALL WEISS</span>
+            </button>
+          </Link>
+        </div>
       </div>
-      <div css={viewAllWeissButton}></div>
     </div>
   )
 }
 
+const viewAllRow = css`
+  display: flex;
+  justify-content: center;
+`
+
 const releasesContainer = css`
+  margin-bottom: 40px;
   background-color: #f4f7f9;
 `
 
@@ -60,7 +72,38 @@ const headerBarRight = css`
 `
 
 const viewAllWeissButton = css`
-  
+  transition: all 0.2s ease-in-out;
+  margin-top: 20px;
+  border: 2.5px solid;
+  height: 80px;
+  width: 230px;
+  margin-bottom: 20px;
+  border-image-slice: 1;
+  border-width: 2.5px;
+  background-color: #f4f7f9;
+  border-image-source: linear-gradient(to right, #13346c, #4c91a9);
+  font-size: 22px;
+
+  &:hover {
+    transform: translateY(-4px);
+    background: linear-gradient(to right, #13346c, #4c91a9);
+    & > span {
+      -webkit-text-fill-color: unset;
+      color: #fff;
+      font-size: 24px;
+    }
+    margin-bottom: 10px;
+
+    height: 90px;
+    width: 250px;
+  }
+`
+
+const innerText = css`
+  transition: all 0.2s ease-in-out;
+  background: linear-gradient(to right, #13346c, #4c91a9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `
 
 const releasesHeader = css`

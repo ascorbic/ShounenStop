@@ -50,7 +50,7 @@ const OtherProductPageContainer = ({
                       <div css={productTypeText}>{'Single ' + productType}</div>
                       <div css={productTypeContainer}>{name}</div>
                       <div css={seriesContainer}>{series}</div>
-                      <div css={priceText}>{'$' + price}</div>
+                      <div css={priceText}>{'$' + price.toFixed(2)}</div>
                       <div css={freeShippingText}>FREE shipping</div>
                       <div
                         onClick={() => {
@@ -89,11 +89,9 @@ const OtherProductPageContainer = ({
                         <div css={infoRow}>
                           <div css={infoLeft}>Notes</div>
                           <div css={infoRight}>
-                            Each customer may only order 1 of
-                            this item.
+                            Each customer may only order 1 of this item.
                             {hasEbay
-                              ? ` For more photos please visit the corresponding ebay
-                            listing. The price here is reduced due to not
+                              ? ` For more photos, visit the corresponding ebay listing. The price here is reduced due to not
                             needing to pay ebay fees. There is also no sales
                             tax. Please send us an email if you reside in a
                             country other than the US.`
@@ -305,7 +303,7 @@ const priceText = css`
 
 const productInfoHeader = css`
   border-top: solid 1px #ddd;
-  margin-top:30px;
+  margin-top: 30px;
   padding-top: 30px;
   font-family: varela round;
   color: #0f346c;

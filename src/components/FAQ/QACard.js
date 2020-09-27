@@ -29,7 +29,8 @@ const cardContainer = css`
   box-shadow: rgba(31, 32, 68, 0.16) 0px 2px 8px 0px;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 10px;  
+  margin-bottom: 10px;
   margin-top: 10px;
   border-radius: 12px;
   font-size: 15px;

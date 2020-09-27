@@ -205,6 +205,14 @@ const ShopNavbar = ({ pageInfo, title }) => {
                   </Nav.Link>
                 </div>
               </Link>
+              <Link to="/faq" activeClassName="active">
+                <div className="navWrapper">
+                  <Img fixed={contactImage.childImageSharp.fixed} />
+                  <Nav.Link as="span" href="/faq">
+                  FAQ
+                  </Nav.Link>
+                </div>
+              </Link>
               <Link to="/about" activeClassName="active">
                 <div className="navWrapper">
                   <Img fixed={userImage.childImageSharp.fixed} />
@@ -235,7 +243,8 @@ const navbar = css`
 
 const navbarBrand = css`
   letter-spacing: 2px;
-  margin-right: 1.9rem;
+  margin-left:.1rem;
+  margin-right: .1rem;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
@@ -346,9 +355,13 @@ const cartSizeStyles = css`
 
 const navbarCart = css`
   color: #5e727d;
-  position: absolute;
-  right: 16px;
-  top: 7px;
+  display:flex;
+  flex-wrap:nowrap;
+  margin-right:-20px
+  align-items:center;
+  // position: absolute;
+  // right: 16px;
+  // top: 9px;
   &:hover span {
     cursor: pointer;
     transform: scale(1.1);

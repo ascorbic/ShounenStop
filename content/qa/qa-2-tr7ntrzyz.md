@@ -5,7 +5,7 @@ answer: >
   We assure you that this situation is very uncommon, as the US has much higher
   duties & tax threshold than most countries. If you are contacting us to
   purchase from a different country, please also understand that there is always
-  a chance that your order can be delayed or seized by the customs of your
+  a chance that your item(s) can be delayed or seized by the customs of your
   country. We take no responsibility for packages ultimately seized by customs,
   as such a situation is beyond our control.
 order: 2

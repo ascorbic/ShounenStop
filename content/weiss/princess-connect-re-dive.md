@@ -16,6 +16,7 @@ pricings:
     price: 477
   - quantity: 18
     price: 954
+description: 18 boxes will be a full case
 preorder: 2020-12-08T16:00:00.000Z
 release: 2021-01-08T16:00:00.000Z
 asin: P1UVrSv8E

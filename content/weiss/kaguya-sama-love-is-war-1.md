@@ -1,7 +1,7 @@
 ---
 name: "Kaguya-sama: Love Is War"
 producttype: Trial Deck+
-displayName: Kaguya-sama TD+
+displayName: "Kaguya-sama "
 series: "Kaguya-sama: Love Is War"
 image: images/gg-del-later.png
 color: "#e50073"

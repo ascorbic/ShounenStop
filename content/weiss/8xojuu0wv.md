@@ -18,7 +18,7 @@ pricings:
     price: 954
 description: 18 boxes will be a full case
 preorder: 2020-11-03T16:00:00.000Z
-release: 2020-12-03T16:26:51.803Z
+release: 2020-12-04T16:26:51.803Z
 asin: 8XOjUU0WV
 merchandise: weiss
 ---

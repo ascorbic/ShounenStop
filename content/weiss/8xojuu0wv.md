@@ -4,7 +4,7 @@ producttype: Booster Pack Box
 displayName: Fate Heaven's Feel Vol. 2
 series: Fate Series
 image: images/10724847b.jpg
-color: F497DA
+color: "#F497DA"
 pricings:
   - quantity: 1
     price: 56

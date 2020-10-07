@@ -20,9 +20,9 @@ const AboutContainer = () => {
             </h1>
             <p>
               For Shounen Stop, it’s all about value & ease. We are a small
-              group of enthusiasts based in Hong Kong that aims to deliver goods
-              to customers at an affordable price and conveniently through
-              efficient payment and shipping methods.
+              group of enthusiasts based in Hong Kong that aims to deliver items
+              to friends and site visitors at an affordable and convenient
+              manner through efficient payment and shipping methods.
             </p>
             <p css={whoWeAreHeader}>Who we are</p>
             <div css={personDescription} className="row">
@@ -43,8 +43,8 @@ const AboutContainer = () => {
                 <div css={personBorder}></div>
                 <p>
                   A Weiss Schwarz player from New Jersey that relocated to Hong
-                  Kong for work. He runs the main operations of Shounen Stop. Feel
-                  free to contact him with any inquiries related to Shounen
+                  Kong for work. He runs the main operations of Shounen Stop.
+                  Feel free to contact him with any inquiries related to Shounen
                   Stop.
                 </p>
                 <div css={logoCloud}>
@@ -114,7 +114,7 @@ const AboutContainer = () => {
 const testImageAbove = css`
   border-radius: 12px;
   box-shadow: 0 5px 10px -1px rgba(50, 50, 93, 0.25),
-  0 2px 3px -1.5px rgba(0, 0, 0, 0.3);
+    0 2px 3px -1.5px rgba(0, 0, 0, 0.3);
 `
 
 const testImageUnder = css`

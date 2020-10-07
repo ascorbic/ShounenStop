@@ -20,7 +20,7 @@ const LandingImage = ({ landingImageData, landingText, landingSubtitle }) => {
         <div css={lineBreakLg}></div>
         <Link to="/products/weiss">
           <div css={shopNow}>
-            <span>SHOP NOW</span>
+            <span>EXPLORE NOW</span>
           </div>
         </Link>
       </div>
@@ -55,7 +55,7 @@ const shippingText = css`
 const shopNow = css`
   font-size: 22px;
   letter-spacing: 2px;
-  width: 180px;
+  width: 240px;
   height: 80px;
   border: solid 1px #fff;
   display: flex;
@@ -73,7 +73,7 @@ const shopNow = css`
     font-size: 24px;
     background-color: #fff;
     color: #000;
-    width: 190px;
+    width: 260px;
     height: 90px;
   }
 `

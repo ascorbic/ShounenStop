@@ -57,7 +57,7 @@ const ComiketProductPageContainer = ({
                         ADD TO CART
                       </div>
                       <div css={productInfoContainer}>
-                          <div css={productInfoHeader}>Product Information</div>
+                          <div css={productInfoHeader}>Information</div>
                           <div css={infoRow}>
                             <div css={infoLeft}>Preorder By</div>
                             <div css={infoRight}>{preorder}</div>

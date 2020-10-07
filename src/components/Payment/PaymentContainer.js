@@ -315,7 +315,7 @@ class PaymentContainer extends React.Component {
                             <div css={feeHeader}>Fee Information</div>
                             <ul>
                               <li css={disclaimerText}>
-                                Please pay the exact amount or the transaction
+                                Please pay the exact amount or the confirmation
                                 will <b>NOT</b> succeed.
                               </li>
                               <li css={disclaimerText}>
@@ -323,9 +323,9 @@ class PaymentContainer extends React.Component {
                                 must enable it here for a fee.
                               </li>
                               <li css={disclaimerText}>
-                                This allows us to offer the best price by not
+                                This allows us to offer the value to everyone by not
                                 having to pay a fee. You can verify our
-                                credibility as a seller below.
+                                credibility below.
                               </li>
                             </ul>
                           </div>

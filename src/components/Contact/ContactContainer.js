@@ -62,7 +62,7 @@ const ContactContainer = () => {
                   </div>
                   <div>
                     {' '}
-                    We can also ship to customer’s in certain countries outside
+                    We can also ship items to countries outside
                     of the U.S., just send us an email or facebook message.
                   </div>
                 </div>

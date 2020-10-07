@@ -47,7 +47,7 @@ const ConfirmationContainer = ({ orderContext }) => {
 
           <div css={receiptContainer}>
             <div css={receiptHeader}>
-              <div>Your Order Has Been Placed</div>
+              <div>Your Request Has Been Placed</div>
               <Img css={checkmarkImage} fluid={checkmarkImageData}></Img>
             </div>
             <div css={thanksContainer}>
@@ -57,7 +57,7 @@ const ConfirmationContainer = ({ orderContext }) => {
                   <b>{orderContext.userInfo.email}</b>
                 </p>
                 <p>
-                  Once your order is shipped, you will receive another email
+                  Once we ship your item(s), you will receive another email
                   with tracking instructions.{' '}
                 </p>
                 Thank you for choosing Shounen Stop.

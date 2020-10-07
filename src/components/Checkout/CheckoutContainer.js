@@ -87,7 +87,7 @@ const CheckoutContainer = ({ orderContext }) => {
                     <div css={header}>Shipping Information</div>
                     <ul>
                       <li>
-                        <b>$5</b> Shounen Style Shipping on all shopping carts
+                        <b>$5</b> Shounen Style Shipping on all carts
                         unless otherwise stated
                       </li>
                       <li>
@@ -99,7 +99,7 @@ const CheckoutContainer = ({ orderContext }) => {
                         BP) will be shipped in <b>multiple packages</b>
                       </li>
                       <li>
-                        Items pre-ordered with <b>separate release dates</b>{' '}
+                        Items with <b>separate release dates</b>{' '}
                         will ship <b>together</b> once all items are released
                       </li>
                       <Accordion>
@@ -133,10 +133,10 @@ const CheckoutContainer = ({ orderContext }) => {
                               UPS for an extra US$ 20 with arrival in 1 - 2
                               working days.
                             </div>
-                            <div css={paddingTop}>Customers need to:</div>
+                            <div css={paddingTop}>You need to:</div>
                             <ol>
                               <li>
-                                Check out and pay normally for an order with a
+                                Check out and pay normally for a cart with a
                                 Weiss BP case.
                               </li>
                               <li>

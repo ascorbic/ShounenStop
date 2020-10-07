@@ -39,7 +39,7 @@ const cardContainer = css`
 const answerContainer = css`
   position: relative;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
 `
 
 const questionContainer = css`

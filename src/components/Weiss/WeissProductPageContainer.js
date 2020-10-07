@@ -197,7 +197,7 @@ const WeissProductPageContainer = ({
                         ADD TO CART
                       </div>
                       <div css={productInfoContainer}>
-                        <div css={productInfoHeader}>Product Information</div>
+                        <div css={productInfoHeader}>Information</div>
                         {preorderDate !== 'Invalid date' ? (
                           <>
                             <div css={infoRow}>
@@ -217,8 +217,7 @@ const WeissProductPageContainer = ({
                             Weiss BP boxes) will be shipped in multiple
                             packages, each with tracking. The staff of Shounen
                             Stop will never purposely tamper with sealed
-                            products to affect the fairness of distribution to
-                            customers.
+                            products to affect the fairness of distribution.
                           </div>
                         </div>
                         {description !== null ? (

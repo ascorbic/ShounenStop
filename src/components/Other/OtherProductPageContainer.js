@@ -69,7 +69,7 @@ const OtherProductPageContainer = ({
                         ADD TO CART
                       </div>
                       <div css={productInfoContainer}>
-                        <div css={productInfoHeader}>Product Information</div>
+                        <div css={productInfoHeader}>Information</div>
                         <div css={infoRow}>
                           <div css={infoLeft}>Ships From</div>
                           <div css={infoRight}>{shippingFrom}</div>

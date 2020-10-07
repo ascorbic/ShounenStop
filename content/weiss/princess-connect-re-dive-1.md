@@ -3,7 +3,7 @@ name: Princess Connect! Re:Dive
 producttype: Trial Deck+
 displayName: Princess Connect! Re:Dive
 series: Princess Connect! Re:Dive
-image: images/del-later.png
+image: images/del-dlater.png
 color: "#FC7753"
 pricings:
   - quantity: 1

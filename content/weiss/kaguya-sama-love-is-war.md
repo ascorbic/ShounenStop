@@ -1,7 +1,7 @@
 ---
 name: "Kaguya-sama: Love Is War"
 producttype: Booster Pack Box
-displayName: Kaguya-sama
+displayName: Kaguya-sama BP
 series: "Kaguya-sama: Love Is War"
 image: images/bpkgl_box.png-del-later.png
 color: "#e50073"

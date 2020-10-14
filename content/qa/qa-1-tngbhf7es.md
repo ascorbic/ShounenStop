@@ -1,5 +1,5 @@
 ---
-question: What happens if my order gets lost in transit?
+question: What happens if my package(s) gets lost in transit?
 answer: >
   We will send an inquiry to the Hong Kong Post to perform an investigation on
   the status of the package(s). This process usually lasts 1-3 months, and if

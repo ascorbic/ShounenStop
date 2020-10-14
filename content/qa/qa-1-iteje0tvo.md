@@ -5,6 +5,6 @@ answer: "We offer Shounen Style Shipping by default on all carts. Item(s) will
   generally takes 7-14 days. Items exceeding over 4.4 lbs will be shipped in
   multiple packages, and we will offer alternative shipping for Weiss BP cases.
   For more information, visit the checkout page. "
-order: 1
+order: 3
 id: iteJe0Tvo
 ---

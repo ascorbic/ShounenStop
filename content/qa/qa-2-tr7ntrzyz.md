@@ -1,5 +1,5 @@
 ---
-question: What happens if my order is stuck in customs?
+question: What happens if my package is stuck in customs?
 answer: >
   Please continue to be patient and wait for your package(s) to clear customs.
   We assure you that this situation is very uncommon, as the US has much higher

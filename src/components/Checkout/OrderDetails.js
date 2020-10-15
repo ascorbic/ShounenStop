@@ -9,7 +9,7 @@ const getProduct = flatProduct => {
 const OrderDetails = ({ productData }) => {
   return (
     <div css={orderContainer}>
-      <div css={cartHeader}>Order Details</div>
+      <div css={cartHeader}>Details</div>
       <div css={orderDetailsContainer}>
         {Object.keys(productData).map(key => {
           const cartProductData = productData[key]

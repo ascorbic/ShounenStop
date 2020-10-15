@@ -87,8 +87,8 @@ const CheckoutContainer = ({ orderContext }) => {
                     <div css={header}>Shipping Information</div>
                     <ul>
                       <li>
-                        <b>$5</b> Shounen Style Shipping on all carts
-                        unless otherwise stated
+                        <b>$5</b> Shounen Style Shipping on all carts unless
+                        otherwise stated
                       </li>
                       <li>
                         Delivery in <b>7-14 days with tracking</b> (HK Post
@@ -99,8 +99,8 @@ const CheckoutContainer = ({ orderContext }) => {
                         BP) will be shipped in <b>multiple packages</b>
                       </li>
                       <li>
-                        Items with <b>separate release dates</b>{' '}
-                        will ship <b>together</b> once all items are released
+                        Items with <b>separate release dates</b> will ship{' '}
+                        <b>together</b> once all items are released
                       </li>
                       <Accordion>
                         <Accordion.Toggle
@@ -140,11 +140,12 @@ const CheckoutContainer = ({ orderContext }) => {
                                 Weiss BP case.
                               </li>
                               <li>
-                                Send an additional $20 separately through Paypal{' '}
+                                Send an additional $20 separately through
+                                Paypal.
                               </li>
                               <li>
-                                Send shounenstop@gmail.com an email with order
-                                number with screenshot of $20 dollars paid
+                                Once you receive a confirmation email from us,
+                                reply with a screenshot of $20 dollars paid.
                               </li>
                             </ol>
                           </ul>

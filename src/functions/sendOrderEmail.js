@@ -7,37 +7,45 @@ exports.handler = async (event, context, callback) => {
 
   const payload = JSON.parse(event.body)
   const orderConfirmation = {
-    "personalizations": [
+    personalizations: [
       {
-        "to": [
+        to: [
           {
-            "email": "jonathanwu70@gmail.com",
-            "name": "Jonathan Wu"
-          }
+            email: 'jonathanwu70@gmail.com',
+            name: 'Jonathan Wu',
+          },
         ],
-        "dynamic_template_data": payload,
-        "subject": "Order Confirmation!"
-      }
+        dynamic_template_data: payload,
+        subject: 'Order Confirmation!',
+      },
     ],
-    "from": {
-      "email": "shounenstop@gmail.com",
-      "name": "Shounen Stop"
+    from: {
+      email: 'shounenstop@gmail.com',
+      name: 'Shounen Stop',
     },
-    "reply_to": {
-      "email": "shounenstop@gmail.com",
-      "name": "Shounen Stop"
+    reply_to: {
+      email: 'shounenstop@gmail.com',
+      name: 'Shounen Stop',
     },
-    "template_id": "d-92b3e2e517114c869eb5c7e221ba85e2"
+    template_id: 'd-92b3e2e517114c869eb5c7e221ba85e2',
   }
 
   // console.log(orderConfirmation.personalizations[0].dynamic_template_data)
   // orderConfirmation.personalizations[0].dynamic_template_data.each((data)=>{
   //   console.log(data)
   // })
-  Object.keys(orderConfirmation.personalizations[0].dynamic_template_data.productData).map((key)=>{
 
-      console.log(orderConfirmation.personalizations[0].dynamic_template_data.productData[key])
-
+  console.log(
+    JSON.stringify(
+      orderConfirmation.personalizations[0].dynamic_template_data,
+      null,
+      20
+    )
+  )
+  Object.keys(
+    orderConfirmation.personalizations[0].dynamic_template_data.productData
+  ).map(key => {
+    // console.log(orderConfirmation.personalizations[0].dynamic_template_data.productData[key])
   })
   // const { email, subject } = payload
   // const request = {
@@ -62,10 +70,10 @@ exports.handler = async (event, context, callback) => {
   //   subject: subject ? subject : 'Contact Form Submission',
   //   html: body,
   // }
-    return {
-      statusCode: 200,
-      body: "context",
-    }
+  return {
+    statusCode: 200,
+    body: 'context',
+  }
   // try {
   //   await sgMail.send(msg)
 

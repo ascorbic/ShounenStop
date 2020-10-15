@@ -21,6 +21,19 @@ const secondsToMinutes = sec => {
   return minutes.substr(-2) + ':' + seconds.substr(-2)
 }
 
+const generateGuid = () => {
+  var result, i, j;
+  result = '';
+  for(j=0; j<32; j++) {
+    if( j == 8 || j == 12 || j == 16 || j == 20)
+      result = result + '-';
+    i = Math.floor(Math.random()*16).toString(16).toUpperCase();
+    result = result + i;
+  }
+  return result;
+}
+
+
 class PaymentContainer extends React.Component {
   constructor(props) {
     super(props)
@@ -36,6 +49,7 @@ class PaymentContainer extends React.Component {
       paypalFeesEnabled: false,
       paypalFees: paypalFeeAmount,
       currentTotal: props.orderContext.totalPrice,
+      orderId: generateGuid()
     }
 
     this.startValidatingPayment = this.startValidatingPayment.bind(this)
@@ -323,7 +337,7 @@ class PaymentContainer extends React.Component {
                                 must enable it here for a fee.
                               </li>
                               <li css={disclaimerText}>
-                                This allows us to offer the value to everyone by not
+                                This allows us to offer the best value to everyone by not
                                 having to pay a fee. You can verify our
                                 credibility below.
                               </li>

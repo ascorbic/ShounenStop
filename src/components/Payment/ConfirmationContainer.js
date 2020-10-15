@@ -111,7 +111,7 @@ const ConfirmationContainer = ({ orderContext }) => {
               </div>
             </div>
             <div css={receiptInner}>
-              <div css={orderDetailsHeader}>Order Details</div>
+              <div css={orderDetailsHeader}>Details</div>
               <>
                 {Object.keys(orderContext.productData).map(key => {
                   const cartProductData = orderContext.productData[key]
@@ -195,7 +195,7 @@ const ConfirmationContainer = ({ orderContext }) => {
                 </div>
                 <div css={totalBar}></div>
                 <div css={orderTotalContainer}>
-                  <div css={orderTotalText}>Order Total</div>
+                  <div css={orderTotalText}>Total</div>
                   <div css={orderTotalAmount}>
                     {'$' + orderContext.paypalFeeInfo.currentTotal.toFixed(2)}
                   </div>

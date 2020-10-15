@@ -20,7 +20,7 @@ const OrderSummary = ({
       css={pricingContainer}
     >
       <div css={pricesContainer}>
-        <div css={cartHeader}>Order Summary</div>
+        <div css={cartHeader}>Summary</div>
         <div css={orderSummary}>
           <div css={subTotalContainer}>
             <div css={subTotalText}>
@@ -42,7 +42,7 @@ const OrderSummary = ({
           </div>
           <div css={totalBar}></div>
           <div css={orderTotalContainer}>
-            <div css={orderTotalText}>Order Total</div>
+            <div css={orderTotalText}>Total</div>
             <div css={orderTotalAmount}>{'$' + totalPrice.toFixed(2)}</div>
           </div>
         </div>

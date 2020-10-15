@@ -1,5 +1,5 @@
 ---
-question: What happens if my order is stuck in customs?
+question: What happens when a shipment is stuck in customs?
 answer: >
   Please continue to be patient and wait for your package(s) to clear customs.
   We assure you that this situation is very uncommon, as the US has much higher
@@ -8,6 +8,6 @@ answer: >
   a chance that your item(s) can be delayed or seized by the customs of your
   country. We take no responsibility for packages ultimately seized by customs,
   as such a situation is beyond our control.
-order: 2
+order: 4
 id: tR7NtRZyz
 ---

@@ -3,9 +3,8 @@ name: Fate/stay night [Heaven’s Feel] Vol.2
 producttype: Booster Pack Box
 displayName: Fate Heaven's Feel Vol. 2
 series: Fate Series
-color: "#939393"
-description: 18 boxes will be a full case
-image: images/bp_now-printing_a-1-1.png
+image: images/weiss-schwarz-booster-pack-fate-stay-night-heaven-s-feel-vol-2.jpg-del-later.jpg
+color: "#F497DA"
 pricings:
   - quantity: 1
     price: 56
@@ -17,8 +16,9 @@ pricings:
     quantity: 9
   - quantity: 18
     price: 954
+description: 18 boxes will be a full case
 preorder: 2020-11-03T16:00:00.000Z
-release: 2020-12-03T16:26:51.803Z
+release: 2020-12-04T16:26:51.803Z
 asin: 8XOjUU0WV
 merchandise: weiss
 ---

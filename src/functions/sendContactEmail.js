@@ -6,12 +6,13 @@ exports.handler = async (event, context, callback) => {
   sgMail.setApiKey(SENDGRID_API_KEY)
 
   const payload = JSON.parse(event.body)
-  const orderConfirmation = {
+  const customerEmail = payload.email
+  const contactMessageCustomer = {
     personalizations: [
       {
         to: [
           {
-            email: 'jonathanwu70@gmail.com',
+            email: customerEmail,
             name: 'Jonathan Wu',
           },
         ],
@@ -27,64 +28,53 @@ exports.handler = async (event, context, callback) => {
       email: 'shounenstop@gmail.com',
       name: 'Shounen Stop',
     },
-    template_id: 'd-92b3e2e517114c869eb5c7e221ba85e2',
+    template_id: 'd-9e0cac89ef90474e9175b7f15140876f',
   }
 
-  // console.log(orderConfirmation.personalizations[0].dynamic_template_data)
-  // orderConfirmation.personalizations[0].dynamic_template_data.each((data)=>{
-  //   console.log(data)
-  // })
+  const contactMessageStore = {
+    personalizations: [
+      {
+        to: [
+          {
+            email: 'shounenstop@gmail.com',
+            name: 'Shounen Stop',
+          },
+        ],
+        dynamic_template_data: payload,
+        subject: 'Order Confirmation!',
+      },
+    ],
+    from: {
+      email: 'shounenstop@gmail.com',
+      name: 'Shounen Stop',
+    },
+    reply_to: {
+      email: customerEmail,
+      name: 'Jonathan Wu',
+    },
+    template_id: 'd-9e0cac89ef90474e9175b7f15140876f',
+  }
 
   console.log(
     JSON.stringify(
-      orderConfirmation.personalizations[0].dynamic_template_data,
+      contactMessageCustomer.personalizations[0].dynamic_template_data,
       null,
       20
     )
   )
-  Object.keys(
-    orderConfirmation.personalizations[0].dynamic_template_data.productData
-  ).map(key => {
-    // console.log(orderConfirmation.personalizations[0].dynamic_template_data.productData[key])
-  })
-  // const { email, subject } = payload
-  // const request = {
-  //   method: 'GET',
-  //   url: '/v3/api_keys'
-  // };
-  // client.request(request)
-  // .then(([response, body]) => {
-  //   console.log(response.statusCode);
-  //   console.log(body);
-  // })
 
-  // const body = Object.keys(payload)
-  //   .map(k => {
-  //     return `${k}: ${payload[k]}`
-  //   })
-  //   .join('<br><br>')
+  try {
+    await sgMail.send(contactMessageCustomer)
+    await sgMail.send(contactMessageStore)
 
-  // const msg = {
-  //   to: SENDGRID_TO_EMAIL,
-  //   from: 'shounenstop@gmail.com',
-  //   subject: subject ? subject : 'Contact Form Submission',
-  //   html: body,
-  // }
-  return {
-    statusCode: 200,
-    body: 'context',
+    return {
+      statusCode: 200,
+      body: 'Message sent',
+    }
+  } catch (e) {
+    return {
+      statusCode: e.code,
+      body: e.message,
+    }
   }
-  // try {
-  //   await sgMail.send(msg)
-
-  //   return {
-  //     statusCode: 200,
-  //     body: 'Message sent',
-  //   }
-  // } catch (e) {
-  //   return {
-  //     statusCode: e.code,
-  //     body: e.message,
-  //   }
-  // }
 }

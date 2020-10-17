@@ -3,6 +3,7 @@ import { css } from '@emotion/core'
 import { Formik, Form } from 'formik'
 import { Container, Row } from 'react-bootstrap'
 import * as Yup from 'yup'
+import axios from 'axios'
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
@@ -32,7 +33,12 @@ const ContactContainer = () => {
           .required('Required'),
       })}
       onSubmit={values => {
-        console.log('omg')
+        axios
+          .post('/.netlify/functions/sendContactEmail', values)
+          .then(function(response) {
+            console.log(response)
+          })
+
         delay(10000).then(() => {
           return false
         })
@@ -55,15 +61,17 @@ const ContactContainer = () => {
                 className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
               >
                 <div css={contactInfoContainer}>
-                  <h1><span css={helpHeaderText}>How can we help?</span></h1>
+                  <h1>
+                    <span css={helpHeaderText}>How can we help?</span>
+                  </h1>
                   <div>
                     Send us your inquiries and we will get back to you as soon
                     as we can.
                   </div>
                   <div>
                     {' '}
-                    We can also ship items to countries outside
-                    of the U.S., just send us an email or facebook message.
+                    We can also ship items to countries outside of the U.S.,
+                    just send us an email or facebook message.
                   </div>
                 </div>
 
@@ -361,7 +369,7 @@ const contactInfoContainer = css`
 `
 
 const helpHeaderText = css`
--webkit-box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 
   background: repeating-linear-gradient(to right, #13346c, #4c91a9);
   -webkit-background-clip: text;

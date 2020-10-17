@@ -70,21 +70,21 @@ exports.handler = async (event, context, callback) => {
   //   subject: subject ? subject : 'Contact Form Submission',
   //   html: body,
   // }
-  // return {
-  //   statusCode: 200,
-  //   body: 'context',
-  // }
-  try {
-    await sgMail.send(orderConfirmation)
-
-    return {
-      statusCode: 200,
-      body: 'Message sent',
-    }
-  } catch (e) {
-    return {
-      statusCode: e.code,
-      body: e.message,
-    }
+  return {
+    statusCode: 200,
+    body: 'context',
   }
+  // try {
+  //   await sgMail.send(msg)
+
+  //   return {
+  //     statusCode: 200,
+  //     body: 'Message sent',
+  //   }
+  // } catch (e) {
+  //   return {
+  //     statusCode: e.code,
+  //     body: e.message,
+  //   }
+  // }
 }

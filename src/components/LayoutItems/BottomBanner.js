@@ -20,7 +20,6 @@ function dismissBanner() {
 
 const BottomBanner = () => {
   const data = useStaticQuery(query)
-  console.log(data)
   const [bannerDismissed, setBannerDismissed] = useState(false)
 
   useLayoutEffect(()=>{

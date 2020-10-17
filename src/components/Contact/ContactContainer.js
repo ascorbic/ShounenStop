@@ -42,12 +42,7 @@ const ContactContainer = () => {
             if(response.status === 200){
               setFormSubmitted(true)
             }
-            console.log(response)
           })
-
-        delay(10000).then(() => {
-          return false
-        })
       }}
     >
       {({

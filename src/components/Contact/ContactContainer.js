@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/core'
 import { Formik, Form } from 'formik'
 import { Container, Row } from 'react-bootstrap'
@@ -8,6 +8,8 @@ import axios from 'axios'
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
 const ContactContainer = () => {
+
+  const [formSubmitted, setFormSubmitted] = useState(false)
   // const alpha = /^[a-zA-Z_]+( [a-zA-Z_]+)*$/
   // var userInfo = {}
   return (
@@ -32,10 +34,14 @@ const ContactContainer = () => {
           .min(10, 'Must be 10 characters or more')
           .required('Required'),
       })}
-      onSubmit={values => {
+      onSubmit={(values, {resetForm}) => {
         axios
           .post('/.netlify/functions/sendContactEmail', values)
           .then(function(response) {
+            resetForm({})
+            if(response.status === 200){
+              setFormSubmitted(true)
+            }
             console.log(response)
           })
 
@@ -218,6 +224,9 @@ const ContactContainer = () => {
                     </div>
                   </div>
                 </Form>
+                {formSubmitted && <div css={submitSuccess}>
+                    Message sent successfully.
+                </div>}
               </div>
             </Row>
           </Container>
@@ -226,6 +235,11 @@ const ContactContainer = () => {
     </Formik>
   )
 }
+
+const submitSuccess = css`
+  font-weight:700;
+  color: #0f346c;
+`
 
 const submitButton = css`
   margin-top: 15px;

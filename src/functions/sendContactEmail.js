@@ -72,6 +72,7 @@ exports.handler = async (event, context, callback) => {
       body: 'Message sent',
     }
   } catch (e) {
+    console.log(e)
     return {
       statusCode: e.code,
       body: e.message,

@@ -6,7 +6,7 @@ exports.handler = async (event, context, callback) => {
   sgMail.setApiKey(SENDGRID_API_KEY)
 
   const payload = JSON.parse(event.body)
-  const customerEmail = payload.email
+  const customerEmail = payload.userInfo.email
 
   const orderConfirmationCustomer = {
     personalizations: [
@@ -84,6 +84,7 @@ exports.handler = async (event, context, callback) => {
       body: 'Message sent',
     }
   } catch (e) {
+    console.log(e)
     return {
       statusCode: e.code,
       body: e.message,

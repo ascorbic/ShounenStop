@@ -72,11 +72,14 @@ const headerBarRight = css`
 `
 
 const viewAllWeissButton = css`
-  transition: all 0.2s ease-in-out;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-duration: 300ms, 300ms, 300ms, 300ms;
   margin-top: 20px;
   border: 2.5px solid;
   height: 80px;
-  width: 230px;
+  width: 250px;
   margin-bottom: 20px;
   border-image-slice: 1;
   border-width: 2.5px;
@@ -95,12 +98,15 @@ const viewAllWeissButton = css`
     margin-bottom: 10px;
 
     height: 90px;
-    width: 250px;
+    width: 270px;
   }
 `
 
 const innerText = css`
-  transition: all 0.2s ease-in-out;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-duration: 300ms, 300ms, 300ms, 300ms;
   background: linear-gradient(to right, #13346c, #4c91a9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

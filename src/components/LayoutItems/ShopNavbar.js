@@ -351,7 +351,7 @@ const cartSizeStyles = css`
   border-radius: 50%;
   padding: 2px 3px 0 3px;
   right: 8px;
-  top: 7px;
+  top: 2px;
 
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;

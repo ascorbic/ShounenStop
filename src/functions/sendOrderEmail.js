@@ -7,6 +7,8 @@ exports.handler = async (event, context, callback) => {
 
   const payload = JSON.parse(event.body)
   const customerEmail = payload.userInfo.email
+  const customerName = payload.userInfo.firstName + " " + payload.userInfo.lastName
+
 
   const orderConfirmationCustomer = {
     personalizations: [
@@ -14,7 +16,7 @@ exports.handler = async (event, context, callback) => {
         to: [
           {
             email: customerEmail,
-            name: 'Jonathan Wu',
+            name: customerName,
           },
         ],
         dynamic_template_data: payload,
@@ -51,7 +53,7 @@ exports.handler = async (event, context, callback) => {
     },
     reply_to: {
       email: customerEmail,
-      name: 'Jonathan Wu',
+      name: customerName,
     },
     template_id: 'd-92b3e2e517114c869eb5c7e221ba85e2',
   }

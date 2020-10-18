@@ -8,6 +8,6 @@ answer: >
   a chance that your item(s) can be delayed or seized by the customs of your
   country. We take no responsibility for packages ultimately seized by customs,
   as such a situation is beyond our control.
-order: 2
+order: 4
 id: tR7NtRZyz
 ---

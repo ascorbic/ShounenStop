@@ -1,5 +1,5 @@
 ---
-name: KonoSuba Yunyun Bunko Card Game Character Sleeves Collection HG
+name: KonoSuba Yunyun Bunko Character Sleeves HG
 image: images/s-l400.jpg
 producttype: sleeves
 series: Konosuba

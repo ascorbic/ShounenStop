@@ -85,7 +85,7 @@ class PaymentContainer extends React.Component {
                   axios
                     .post(
                       '/.netlify/functions/sendOrderEmail',
-                      this.props.orderContext
+                      self.props.orderContext
                     )
                     .then(function(response) {
                       console.log(response)

@@ -4,7 +4,7 @@ producttype: Booster Pack Box
 displayName: Princess Connect! Re:Dive
 series: Princess Connect! Re:Dive
 image: images/re-dive-delete-later.png
-color: "#eddedf"
+color: "#da4981"
 pricings:
   - quantity: 1
     price: 56

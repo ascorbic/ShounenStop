@@ -22,17 +22,17 @@ const secondsToMinutes = sec => {
 }
 
 const generateGuid = () => {
-  var result, i, j;
-  result = '';
-  for(j=0; j<32; j++) {
-    if( j == 8 || j == 12 || j == 16 || j == 20)
-      result = result + '-';
-    i = Math.floor(Math.random()*16).toString(16).toUpperCase();
-    result = result + i;
+  var result, i, j
+  result = ''
+  for (j = 0; j < 32; j++) {
+    if (j == 8 || j == 12 || j == 16 || j == 20) result = result + '-'
+    i = Math.floor(Math.random() * 16)
+      .toString(16)
+      .toUpperCase()
+    result = result + i
   }
-  return result;
+  return result
 }
-
 
 class PaymentContainer extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class PaymentContainer extends React.Component {
       paypalFeesEnabled: false,
       paypalFees: paypalFeeAmount,
       currentTotal: props.orderContext.totalPrice,
-      orderId: generateGuid()
+      orderId: generateGuid(),
     }
 
     this.startValidatingPayment = this.startValidatingPayment.bind(this)
@@ -71,41 +71,47 @@ class PaymentContainer extends React.Component {
       delay(10000).then(
         (this.state.validateTimerId = setInterval(() => {
           var self = this
-          axios
-            .get(
-              'https://us-central1-shounen-stop.cloudfunctions.net/CheckPaymentValidated?email=' +
-                this.props.orderContext.userInfo.email +
-                '&timestamp=' +
-                this.state.orderTimestamp
-            )
-            .then(function(response) {
-              console.log(response)
-              if (response.data === 'VALID') {
-                axios
-                  .post(
-                    '/.netlify/functions/sendOrderEmail',
-                    this.props.orderContext
-                  )
-                  .then(function(response) {
-                    console.log(response)
+          if (this.state.isValidating) {
+            axios
+              .get(
+                'https://us-central1-shounen-stop.cloudfunctions.net/CheckPaymentValidated?email=' +
+                  this.props.orderContext.userInfo.email +
+                  '&timestamp=' +
+                  this.state.orderTimestamp
+              )
+              .then(function(response) {
+                console.log(response)
+                if (response.data === 'VALID') {
+                  axios
+                    .post(
+                      '/.netlify/functions/sendOrderEmail',
+                      this.props.orderContext
+                    )
+                    .then(function(response) {
+                      console.log(response)
+                    })
+
+                  clearInterval(self.state.validateTimerId)
+                  sessionStorage.removeItem('products')
+                  if (window.history.replaceState) {
+                    window.history.replaceState(
+                      null,
+                      null,
+                      window.location.href
+                    )
+                  }
+                  window.onbeforeunload = null
+
+                  context.clearCart()
+                  navigate('/confirmation', {
+                    state: {
+                      orderContext: self.props.orderContext,
+                      paypalFeeInfo: self.state,
+                    },
                   })
-
-                clearInterval(self.state.validateTimerId)
-                sessionStorage.removeItem('products')
-                if (window.history.replaceState) {
-                  window.history.replaceState(null, null, window.location.href)
                 }
-                window.onbeforeunload = null
-
-                context.clearCart()
-                navigate('/confirmation', {
-                  state: {
-                    orderContext: self.props.orderContext,
-                    paypalFeeInfo: self.state,
-                  },
-                })
-              }
-            })
+              })
+          }
         }, 3000))
       )
     }
@@ -146,7 +152,6 @@ class PaymentContainer extends React.Component {
     this.setState({
       timeLimitStarted: true,
     })
-    console.log("omg");
     this.timer = setInterval(() => {
       this.setState(prevState => {
         if (prevState.timeLimit <= 0) {
@@ -345,9 +350,9 @@ class PaymentContainer extends React.Component {
                                 must enable it here for a fee.
                               </li>
                               <li css={disclaimerText}>
-                                This allows us to offer the best value to everyone by not
-                                having to pay a fee. You can verify our
-                                credibility below.
+                                This allows us to offer the best value to
+                                everyone by not having to pay a fee. You can
+                                verify our credibility below.
                               </li>
                             </ul>
                           </div>
@@ -429,7 +434,7 @@ class PaymentContainer extends React.Component {
                                     Shounen Stop Facebook Page
                                   </div>
                                   <div css={credibilityItemDesc}>
-                                  Our official Facebook page
+                                    Our official Facebook page
                                   </div>
                                 </div>
                               </div>

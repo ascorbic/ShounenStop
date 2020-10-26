@@ -1,5 +1,5 @@
 ---
-name: Deck Holder Collection Vol.139 Sword Art Online Leafa Bushiroad
+name: Deck Holder Collection Vol.139 Sword Art Online Leafa
 image: images/download-1-.jpg
 producttype: deckbox
 series: Sword Art Online

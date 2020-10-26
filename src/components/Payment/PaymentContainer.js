@@ -11,7 +11,7 @@ import OrderDetails from '../Checkout/OrderDetails'
 import ShippingDetails from '../Checkout/ShippingDetails'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-const sendOrderData = false
+const sendOrderData = true
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 
@@ -58,23 +58,12 @@ class PaymentContainer extends React.Component {
     this.resetTimeLimit = this.resetTimeLimit.bind(this)
   }
 
-  // componentDidMount =() => {
-  //   window.onbeforeunload = () => {
-  //     return true
-  //   }
-  // }
-
-  componentDidMount = () => {
-    window.onbeforeunload = () => {
-      return true
-    }
-  }
-
   componentWillUnmount() {
+    this.stopTimeLimit()
     window.onbeforeunload = null
   }
 
-  startValidatingPayment() {
+  startValidatingPayment(context) {
     if (!this.state.isValidating) {
       this.setState({
         isValidating: true,
@@ -84,7 +73,7 @@ class PaymentContainer extends React.Component {
           var self = this
           axios
             .get(
-              'https://us-central1-shounenstop.cloudfunctions.net/CheckPaymentValidated?email=' +
+              'https://us-central1-shounen-stop.cloudfunctions.net/CheckPaymentValidated?email=' +
                 this.props.orderContext.userInfo.email +
                 '&timestamp=' +
                 this.state.orderTimestamp
@@ -92,6 +81,15 @@ class PaymentContainer extends React.Component {
             .then(function(response) {
               console.log(response)
               if (response.data === 'VALID') {
+                axios
+                  .post(
+                    '/.netlify/functions/sendOrderEmail',
+                    this.props.orderContext
+                  )
+                  .then(function(response) {
+                    console.log(response)
+                  })
+
                 clearInterval(self.state.validateTimerId)
                 sessionStorage.removeItem('products')
                 if (window.history.replaceState) {
@@ -99,6 +97,7 @@ class PaymentContainer extends React.Component {
                 }
                 window.onbeforeunload = null
 
+                context.clearCart()
                 navigate('/confirmation', {
                   state: {
                     orderContext: self.props.orderContext,
@@ -113,6 +112,7 @@ class PaymentContainer extends React.Component {
   }
   stopTimeLimit() {
     clearInterval(this.timer)
+    clearInterval(this.state.validateTimerId)
   }
   resetTimeLimit() {
     this.setState({ timeLimit: 600, timeLimitStarted: false })
@@ -130,7 +130,7 @@ class PaymentContainer extends React.Component {
     if (sendOrderData) {
       axios
         .post(
-          'https://us-central1-shounenstop.cloudfunctions.net/Checkout',
+          'https://us-central1-shounen-stop.cloudfunctions.net/Checkout',
           orderInfo
         )
         .then(function(response) {
@@ -140,15 +140,22 @@ class PaymentContainer extends React.Component {
   }
 
   componentDidMount() {
+    window.onbeforeunload = () => {
+      return true
+    }
     this.setState({
       timeLimitStarted: true,
     })
+    console.log("omg");
     this.timer = setInterval(() => {
       this.setState(prevState => {
         if (prevState.timeLimit <= 0) {
           this.stopTimeLimit()
+          window.onbeforeunload = null
           navigate('/cart')
         }
+
+        console.log(prevState.timeLimit)
 
         return {
           timeLimit: prevState.timeLimit - 1,
@@ -158,6 +165,7 @@ class PaymentContainer extends React.Component {
   }
 
   componentWillUnmount() {
+    window.onbeforeunload = null
     this.stopTimeLimit()
   }
 
@@ -267,7 +275,7 @@ class PaymentContainer extends React.Component {
                               onClick={() => {
                                 if (sendOrderData) {
                                   this.sendCheckoutData()
-                                  this.startValidatingPayment()
+                                  this.startValidatingPayment(context)
                                   const paypalLink =
                                     'https://paypal.me/jonathanwu70/' +
                                     this.props.orderContext.totalPrice.toFixed(

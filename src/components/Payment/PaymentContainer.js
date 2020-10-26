@@ -103,10 +103,10 @@ class PaymentContainer extends React.Component {
                   window.onbeforeunload = null
 
                   context.clearCart()
+                  self.props.orderContext.paypalFeeInfo = self.state
                   navigate('/confirmation', {
                     state: {
-                      orderContext: self.props.orderContext,
-                      paypalFeeInfo: self.state,
+                      orderContext: self.props.orderContext
                     },
                   })
                 }

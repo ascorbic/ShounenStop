@@ -277,7 +277,7 @@ class PaymentContainer extends React.Component {
                                   this.sendCheckoutData()
                                   this.startValidatingPayment(context)
                                   const paypalLink =
-                                    'https://paypal.me/jonathanwu70/' +
+                                    'https://paypal.me/LeonShum' +
                                     this.props.orderContext.totalPrice.toFixed(
                                       2
                                     ) +

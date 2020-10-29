@@ -90,7 +90,7 @@ class PaymentContainer extends React.Component {
                     .then(function(response) {
                       console.log(response)
                     })
-
+                  self.stopTimeLimit()
                   clearInterval(self.state.validateTimerId)
                   sessionStorage.removeItem('products')
                   if (window.history.replaceState) {
@@ -167,11 +167,6 @@ class PaymentContainer extends React.Component {
         }
       })
     }, 1000)
-  }
-
-  componentWillUnmount() {
-    window.onbeforeunload = null
-    this.stopTimeLimit()
   }
 
   //place order

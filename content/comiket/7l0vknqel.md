@@ -1,5 +1,5 @@
 ---
-image: images/120414770_696097264332446_6184323319780693129_o.jpg
+image: images/94104327_589374585004715_7762749763673391104_o.jpg
 producttype: Sleeves
 eventName: Comiket 98
 pricings:

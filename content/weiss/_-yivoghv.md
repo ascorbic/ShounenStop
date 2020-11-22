@@ -1,7 +1,7 @@
 ---
 name: Love Live! Nijigasaki High School Idol Club
 producttype: Trial Deck
-displayName: Love Live Nijigasaki
+displayName: Love Live Nijigasakiiiiii
 series: Love Live! Nijigasaki High School Idol Club
 image: images/組立画像_lnj.png
 color: "#f1c640"

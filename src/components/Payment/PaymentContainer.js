@@ -11,7 +11,7 @@ import OrderDetails from '../Checkout/OrderDetails'
 import ShippingDetails from '../Checkout/ShippingDetails'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-const sendOrderData = false
+const sendOrderData = true
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t))
 

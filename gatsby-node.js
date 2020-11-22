@@ -107,6 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     } else if (node.fields.slug.startsWith('/comiket/')) {
+      console.log(node.fields.slug)
       createPage({
         path: '/products' + node.fields.slug,
         component: path.resolve(`./src/templates/ComiketProductPage.js`),
@@ -127,6 +128,5 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     }
-    // console.log(node.fields)
   })
 }

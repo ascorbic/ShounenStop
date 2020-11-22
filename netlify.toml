@@ -13,7 +13,7 @@
   functions = "functions"
 
   # Default build command.
-  command = "npm run build"
+  command = "CI= npm run build"
 
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"

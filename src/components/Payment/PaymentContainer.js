@@ -74,7 +74,7 @@ class PaymentContainer extends React.Component {
           if (this.state.isValidating) {
             axios
               .get(
-                'https://us-central1-shounen-stop.cloudfunctions.net/CheckPaymentValidated?email=' +
+                'https://hnmcbemfg2.execute-api.us-east-1.amazonaws.com/Production/CheckPaymentValidated?email=' +
                   this.props.orderContext.userInfo.email +
                   '&timestamp=' +
                   this.state.orderTimestamp
@@ -129,14 +129,14 @@ class PaymentContainer extends React.Component {
     var timestamp = new Date().toUTCString()
     this.setState({ orderTimestamp: timestamp })
     orderInfo.timestamp = timestamp
-    orderInfo.validated = false
     orderInfo.paypalFeesEnabled = this.state.paypalFeesEnabled
     orderInfo.totalPrice = this.state.currentTotal
+    console.log(orderInfo)
 
     if (sendOrderData) {
       axios
         .post(
-          'https://us-central1-shounen-stop.cloudfunctions.net/Checkout',
+          'https://hnmcbemfg2.execute-api.us-east-1.amazonaws.com/Production/Checkout',
           orderInfo
         )
         .then(function(response) {

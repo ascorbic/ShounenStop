@@ -80,7 +80,6 @@ class PaymentContainer extends React.Component {
                   this.state.orderTimestamp
               )
               .then(function(response) {
-                console.log(response);
                 if (response.data === 'VALID') {
                   axios
                     .post(
@@ -88,7 +87,6 @@ class PaymentContainer extends React.Component {
                       self.props.orderContext
                     )
                     .then(function(response) {
-                      console.log(response)
                     })
                   self.stopTimeLimit()
                   clearInterval(self.state.validateTimerId)
@@ -131,7 +129,6 @@ class PaymentContainer extends React.Component {
     orderInfo.timestamp = timestamp
     orderInfo.paypalFeesEnabled = this.state.paypalFeesEnabled
     orderInfo.totalPrice = this.state.currentTotal
-    console.log(orderInfo)
 
     if (sendOrderData) {
       axios
@@ -140,7 +137,6 @@ class PaymentContainer extends React.Component {
           orderInfo
         )
         .then(function(response) {
-          console.log(response)
         })
     }
   }
@@ -159,8 +155,6 @@ class PaymentContainer extends React.Component {
           window.onbeforeunload = null
           navigate('/cart')
         }
-
-        console.log(prevState.timeLimit)
 
         return {
           timeLimit: prevState.timeLimit - 1,
@@ -292,7 +286,6 @@ class PaymentContainer extends React.Component {
                                       this.props.orderContext
                                     )
                                     .then(function(response) {
-                                      console.log(response)
                                     })
                                   window.onbeforeunload = null
 
@@ -315,8 +308,6 @@ class PaymentContainer extends React.Component {
                               onClick={() => {
                                 this.setState(prevState => {
                                   var total = prevState.currentTotal
-                                  console.log(total)
-                                  console.log(this.state.paypalFees)
                                   if (prevState.paypalFeesEnabled) {
                                     total -= this.state.paypalFees
                                   } else {

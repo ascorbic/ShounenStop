@@ -25,7 +25,6 @@ const ConfirmationContainer = ({ orderContext }) => {
           css={confirmationContainer}
           className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12"
         >
-          {console.log(orderContext)}
           <CheckoutHeader
             header="Confirmation"
             headerNavigate={() => {
@@ -173,9 +172,6 @@ const ConfirmationContainer = ({ orderContext }) => {
                 <div css={feesTotalContainer}>
                   <div css={feesTotalText}>Goods and Services fees</div>
                   <div css={feesTotalAmount}>
-                    {console.log(orderContext.paypalFeeInfo.paypalFeesEnabled
-                      ? orderContext.paypalFeeInfo.paypalFees.toFixed(2)
-                      : 0)}
                     {'$' + (orderContext.paypalFeeInfo.paypalFeesEnabled
                       ? orderContext.paypalFeeInfo.paypalFees
                       : 0).toFixed(2)}

@@ -80,7 +80,7 @@ class PaymentContainer extends React.Component {
                   this.state.orderTimestamp
               )
               .then(function(response) {
-                console.log(response)
+                console.log(response);
                 if (response.data === 'VALID') {
                   axios
                     .post(

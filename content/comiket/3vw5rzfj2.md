@@ -1,7 +1,7 @@
 ---
+image: images/94129622_590585298216977_122824360879718400_o.jpg
 producttype: Sleeves
 eventName: Comiket 99
-image: images/94129622_590585298216977_122824360879718400_o.jpg
 pricings:
   - quantity: 1
     price: 15

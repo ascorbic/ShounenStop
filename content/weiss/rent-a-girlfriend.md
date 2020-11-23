@@ -4,7 +4,7 @@ producttype: Booster Pack Box
 displayName: Rent-A-Girlfriend
 series: Rent-A-Girlfriend
 image: images/del-later.png
-color: D83469
+color: "#D83469"
 pricings:
   - quantity: 1
     price: 56

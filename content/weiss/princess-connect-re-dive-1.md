@@ -12,7 +12,7 @@ pricings:
     price: 31
   - price: 86
     quantity: 6
-preorder: 2020-11-25T16:00:00.000Z
+preorder: 2020-12-05T05:29:02.541Z
 release: 2020-12-25T16:00:00.000Z
 asin: hG8PAWH41
 merchandise: weiss

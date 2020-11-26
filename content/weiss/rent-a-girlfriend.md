@@ -1,10 +1,10 @@
 ---
-name: Princess Connect! Re:Dive
+name: Rent-A-Girlfriend
 producttype: Booster Pack Box
-displayName: Princess Connect! Re:Dive
-series: Princess Connect! Re:Dive
-image: images/re-dive-delete-later.png
-color: "#da4981"
+displayName: Rent-A-Girlfriend
+series: Rent-A-Girlfriend
+image: images/del-later.png
+color: "#D83469"
 pricings:
   - quantity: 1
     price: 56
@@ -17,8 +17,8 @@ pricings:
   - quantity: 18
     price: 954
 description: 18 boxes will be a full case
-preorder: 2020-12-11T16:00:00.000Z
-release: 2021-01-08T16:00:00.000Z
-asin: P1UVrSv8E
+preorder: 2020-12-21T16:00:00.000Z
+release: 2021-01-21T16:00:00.000Z
+asin: 6kjTrpsLY
 merchandise: weiss
 ---

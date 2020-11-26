@@ -30,7 +30,7 @@ export default QACardList
 export const query = graphql`
   query QACardQuery {
     qaCards: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/qa/" } }
+      filter: { fileAbsolutePath: { regex: "/qa-/" } }
     ) {
       edges {
         node {

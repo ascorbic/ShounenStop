@@ -78,8 +78,8 @@ exports.handler = async (event, context, callback) => {
   })
   
   try {
-    await sgMail.send(orderConfirmationCustomer)
-    await sgMail.send(orderConfirmationStore)
+    // await sgMail.send(orderConfirmationCustomer)
+    // await sgMail.send(orderConfirmationStore)
 
     return {
       statusCode: 200,

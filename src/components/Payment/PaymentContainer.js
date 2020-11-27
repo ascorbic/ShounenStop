@@ -81,13 +81,13 @@ class PaymentContainer extends React.Component {
               )
               .then(function(response) {
                 if (response.data === 'VALID') {
-                  axios
-                    .post(
-                      '/.netlify/functions/sendOrderEmail',
-                      self.props.orderContext
-                    )
-                    .then(function(response) {
-                    })
+                  // axios
+                  //   .post(
+                  //     '/.netlify/functions/sendOrderEmail',
+                  //     self.props.orderContext
+                  //   )
+                  //   .then(function(response) {
+                  //   })
                   self.stopTimeLimit()
                   clearInterval(self.state.validateTimerId)
                   sessionStorage.removeItem('products')

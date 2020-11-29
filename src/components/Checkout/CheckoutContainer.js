@@ -165,7 +165,7 @@ const CheckoutContainer = ({ orderContext }) => {
                         css={userInfoLabel}
                         htmlFor="email"
                       >
-                        Email Address
+                        Email Address (Same as your Paypal email)
                       </label>
                       {touched.email && errors.email ? (
                         <div css={userInfoError}>{errors.email}</div>

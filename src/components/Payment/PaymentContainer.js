@@ -329,11 +329,11 @@ class PaymentContainer extends React.Component {
                             <ul>
                               <li css={disclaimerText}>
                                 Please pay the exact amount or the confirmation
-                                will <b>NOT</b> succeed.
+                                email from us will <b>NOT</b> succeed.
                               </li>
                               <li css={disclaimerText}>
                                 For Paypal Goods and Services Protection, you
-                                must enable it here for a fee.
+                                must enable it here <b>AND</b> on Paypal for a fee.
                               </li>
                               <li css={disclaimerText}>
                                 This allows us to offer the best value to
@@ -501,8 +501,7 @@ class PaymentContainer extends React.Component {
                   <br />
                   If you refresh you, will lose your progress
                   <br />
-                  Confirmation can take up to a minute but usually only takes 15
-                  seconds
+                  Confirmation can take up to 10 seconds, if not please contact us.
                 </div>
               </div>
             )}

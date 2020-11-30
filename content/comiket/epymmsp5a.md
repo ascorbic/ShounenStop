@@ -1,7 +1,6 @@
 ---
 image: images/engt1lgvgai5fzg.jpg
-producttype:
-  - Playmat
+producttype: Playmat
 eventName: Air Comiket 2
 pricings:
   - quantity: 1

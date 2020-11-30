@@ -240,6 +240,13 @@ collections:
             min: 0
             widget: number
             valueType: float
+      - { label: Description, name: description, widget: text, required: false }
+      - {
+          label: 'On Sale?',
+          name: onsale,
+          widget: boolean,
+          default: true,
+        }
       - { label: ASIN, name: asin, widget: ncw-id, hidden: true }
       - {
           label: 'Merchandise',

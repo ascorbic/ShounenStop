@@ -18,7 +18,7 @@ const CartContainer = () => {
   return (
     <ContextConsumer>
       {context => {
-        var anyWeiss = false;
+        var paidShipping = false;
         var productData = {}
         var totalPrice = 0
         var totalItems = 0
@@ -37,8 +37,8 @@ const CartContainer = () => {
             productMetadata = edges.find(x => x.node.frontmatter.asin === asin)
               .node.frontmatter
 
-            if(productMetadata.merchandise === 'weiss'){
-              anyWeiss = true;
+            if(productMetadata.merchandise === 'weiss' || productMetadata.merchandise === 'comiket'){
+              paidShipping = true;
             }
 
             const productPrice = productMetadata['pricings'].find(
@@ -63,7 +63,7 @@ const CartContainer = () => {
         const shippingData = {
           shippingMethod: {
             name: 'Shounen Style Shipping',
-            price: anyWeiss ? 5 : 0,
+            price: paidShipping ? 5 : 0,
             speed: '1-2 Weeks',
           },
         }

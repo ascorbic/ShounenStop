@@ -13,8 +13,9 @@ const getProduct = flatProduct => {
 }
 
 const CartContainer = () => {
-  const edges = useStaticQuery(query).products.edges
-  const {preorder, release} = useStaticQuery(query).comiketEventInfo.edges[0].node.frontmatter
+  const productQuery  = useStaticQuery(query);
+  const edges = productQuery.products.edges
+  const {preorder, release} = productQuery.comiketEventInfo.edges[0].node.frontmatter
   return (
     <ContextConsumer>
       {context => {

@@ -14,7 +14,8 @@ const getProduct = flatProduct => {
 
 const CartContainer = () => {
   const edges = useStaticQuery(query).products.edges
-
+  const {preorder, release} = useStaticQuery(query).comiketEventInfo.edges[0].node.frontmatter
+  console.log(release)
   return (
     <ContextConsumer>
       {context => {
@@ -177,6 +178,21 @@ export const query = graphql`
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
             merchandise
+          }
+        }
+      }
+    }
+    comiketEventInfo: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/comiketEvents/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            eventName
+            eventDesc
+            currentEvent
+            preorder(formatString: "MMM DD")
+            release(formatString: "MMM DD")
           }
         }
       }

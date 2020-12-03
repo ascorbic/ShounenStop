@@ -13,7 +13,7 @@ const ComiketProductPageContainer = ({
   price,
   eventInfo,
 }) => {
-  const { preorder, receive } = eventInfo
+  const { preorder, release } = eventInfo
   return (
     <ContextConsumer>
       {context => {
@@ -63,8 +63,8 @@ const ComiketProductPageContainer = ({
                             <div css={infoRight}>{preorder}</div>
                           </div>
                           <div css={infoRow}>
-                            <div css={infoLeft}>Estimated Arrival</div>
-                            <div css={infoRight}>{receive}</div>
+                            <div css={infoLeft}>Release Date</div>
+                            <div css={infoRight}>{release}</div>
                           </div>
                         </div>
                     </div>
@@ -80,8 +80,6 @@ const ComiketProductPageContainer = ({
 }
 
 export default ComiketProductPageContainer
-
-
 
 const productInfoHeader = css`
   padding-top: 30px;

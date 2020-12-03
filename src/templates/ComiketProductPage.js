@@ -67,7 +67,7 @@ export const ComiketProductTemplateQuery = graphql`
             eventDesc
             currentEvent
             preorder(formatString: "MMM DD")
-            receive(formatString: "MMM DD")
+            release(formatString: "MMM DD")
           }
         }
       }

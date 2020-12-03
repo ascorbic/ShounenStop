@@ -15,13 +15,13 @@ const Comiket = ({ data, location }) => {
 
   var currentEventKey = ''
   var currentPreorder = ''
-  var currentReceive = ''
+  var currentRelease = ''
   var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
     const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
     if (comiketEventInfoEdge.currentEvent) {
       currentEventKey = comiketEventInfoEdge.eventName
       currentPreorder = comiketEventInfoEdge.preorder
-      currentReceive = comiketEventInfoEdge.receive
+      currentRelease = comiketEventInfoEdge.release
     }
     return comiketEventInfoEdge.eventName
   })
@@ -90,8 +90,8 @@ const Comiket = ({ data, location }) => {
                   <div css={dateValue}>{currentPreorder}</div>
                 </div>
                 <div css={dateTextContainer}>
-                  <div css={dateField}>Estimated Arrival</div>
-                  <div css={dateValue}>{currentReceive}</div>
+                  <div css={dateField}>Release Date</div>
+                  <div css={dateValue}>{currentRelease}</div>
                 </div>
               </div>
             ) : null}
@@ -270,7 +270,7 @@ export const ComiketProductCategoryQuery = graphql`
             eventDesc
             currentEvent
             preorder(formatString: "MMM DD")
-            receive(formatString: "MMM DD")
+            release(formatString: "MMM DD")
           }
         }
       }

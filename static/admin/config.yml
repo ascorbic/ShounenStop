@@ -98,8 +98,8 @@ collections:
           timeFormat: false,
         }
       - {
-          label: Estimated Receive date,
-          name: receive,
+          label: Release Date,
+          name: release,
           widget: datetime,
           default: '',
           required: false,
@@ -115,7 +115,7 @@ collections:
     folder: content/weiss
     media_folder: 'images'
     identifier_field: name
-    slug: '{{slug}}'
+    slug: '{{asin}}'
     fields:
       - { label: Name, name: name, widget: string }
       - {
@@ -193,7 +193,7 @@ collections:
     create: true
     folder: content/comiket
     media_folder: 'images'
-    slug: '{{slug}}'
+    slug: '{{asin}}'
     identifier_field: 'asin'
     fields:
       - { label: Image, name: image, widget: image }
@@ -259,7 +259,7 @@ collections:
     create: true
     folder: content/other
     media_folder: 'images'
-    slug: '{{slug}}'
+    slug: '{{asin}}'
     identifier_field: name
     fields:
       - { label: Name, name: name, widget: string }

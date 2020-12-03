@@ -37,9 +37,12 @@ const generateGuid = () => {
 class PaymentContainer extends React.Component {
   constructor(props) {
     super(props)
+    const price = props.orderContext.totalPrice
     const paypalFeeAmount = Number(
-      (props.orderContext.totalPrice * 0.029 + 0.3).toFixed(2)
+      (((price + 0.300) / 0.971) - price).toFixed(2)
     )
+    console.log(props.orderContext.totalPrice)
+    console.log(paypalFeeAmount)
     this.state = {
       isValidating: false,
       timeLimitStarted: false,
@@ -129,7 +132,6 @@ class PaymentContainer extends React.Component {
     orderInfo.timestamp = timestamp
     orderInfo.paypalFeesEnabled = this.state.paypalFeesEnabled
     orderInfo.totalPrice = this.state.currentTotal
-    orderInfo.paypalFeeInfo = this.state
     if (sendOrderData) {
       axios
         .post(

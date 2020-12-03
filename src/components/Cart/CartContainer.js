@@ -14,8 +14,7 @@ const getProduct = flatProduct => {
 
 const CartContainer = () => {
   const edges = useStaticQuery(query).products.edges
-  // const {preorder, release} = useStaticQuery(query).comiketEventInfo.edges[0].node.frontmatter
-  // console.log(release)
+  const {preorder, release} = useStaticQuery(query).comiketEventInfo.edges[0].node.frontmatter
   return (
     <ContextConsumer>
       {context => {
@@ -40,6 +39,11 @@ const CartContainer = () => {
 
             if(productMetadata.merchandise === 'weiss' || productMetadata.merchandise === 'comiket'){
               paidShipping = true;
+            }
+
+            if(productMetadata.merchandise === 'comiket'){
+              productMetadata.preorder = preorder;
+              productMetadata.release = release;
             }
 
             const productPrice = productMetadata['pricings'].find(

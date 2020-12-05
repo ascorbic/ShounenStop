@@ -16,7 +16,6 @@ const ComiketProductPageContainer = ({
   onsale,
 }) => {
   const { preorder, release } = eventInfo
-  console.log(description)
   return (
     <ContextConsumer>
       {context => {

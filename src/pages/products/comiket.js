@@ -26,7 +26,7 @@ const Comiket = ({ data, location }) => {
     return comiketEventInfoEdge.eventName
   })
 
-  const productTypeFilterList = ['All', 'Playmat', 'Sleeves']
+  const productTypeFilterList = ['All', 'Playmat', 'Sleeves', 'Deckbox', 'Other']
   const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
     currentEventKey

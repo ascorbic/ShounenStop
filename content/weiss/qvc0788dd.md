@@ -4,7 +4,7 @@ producttype: Extra Booster
 displayName: Prisma Illya Prisma Phantasm
 series: Fate Series
 image: images/10742191.jpg
-color: "#a5f3fe"
+color: "#df8096"
 pricings:
   - quantity: 1
     price: 35

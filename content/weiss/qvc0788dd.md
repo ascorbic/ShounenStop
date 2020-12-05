@@ -1,0 +1,24 @@
+---
+name: Fate/kaleid liner Prisma Illya Prisma Phantasm
+producttype: Extra Booster
+displayName: Prisma Illya Prisma Phantasm
+series: Fate Series
+image: images/10742191.jpg
+color: "#a5f3fe"
+pricings:
+  - quantity: 1
+    price: 35
+  - price: 87
+    quantity: 3
+  - quantity: 6
+    price: 162
+  - price: 265
+    quantity: 10
+  - quantity: 30
+    price: 780
+description: 30 boxes will be a carton
+preorder: 2021-01-04T16:00:00.000Z
+release: 2021-02-12T03:57:04.788Z
+asin: QvC0788Dd
+merchandise: weiss
+---

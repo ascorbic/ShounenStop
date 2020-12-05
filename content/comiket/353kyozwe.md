@@ -1,0 +1,12 @@
+---
+image: images/127697751_202926978125481_8874719259065207244_n.jpg
+producttype: Other
+eventName: Air Comiket 2
+pricings:
+  - quantity: 1
+    price: 88
+description: This is a special large box
+onsale: true
+asin: 353KyOZwe
+merchandise: comiket
+---

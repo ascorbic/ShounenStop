@@ -11,11 +11,12 @@ const ComiketProductPageContainer = ({
   eventName,
   productType,
   price,
+  description,
   eventInfo,
   onsale,
 }) => {
   const { preorder, release } = eventInfo
-  console.log(onsale)
+  console.log(description)
   return (
     <ContextConsumer>
       {context => {
@@ -70,6 +71,12 @@ const ComiketProductPageContainer = ({
                             <div css={infoLeft}>Release Date</div>
                             <div css={infoRight}>{release}</div>
                           </div>
+                          {description !== null ? (
+                          <div css={infoRow}>
+                            <div css={infoLeft}>Description</div>
+                            <div css={infoRight}>{description}</div>
+                          </div>
+                        ) : null}
                         </div>
                     </div>
                   </div>

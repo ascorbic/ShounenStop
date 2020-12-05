@@ -115,7 +115,7 @@ const Comiket = ({ data, location }) => {
                   : true
               })
               .sort((a, b) =>{
-                return (a.node.frontmatter.onsale === false ? 1 : -1)
+                return (a.node.frontmatter.onsale === true ? -1 : 1)
               })
               .map(edge => (
                 <ComiketProductCard

@@ -96,6 +96,14 @@ const productInfoHeader = css`
 
 const infoRow = css`
   clear: both;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  &:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
 `
 
 const infoLeft = css`

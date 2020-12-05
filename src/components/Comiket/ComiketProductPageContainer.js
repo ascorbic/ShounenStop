@@ -12,8 +12,10 @@ const ComiketProductPageContainer = ({
   productType,
   price,
   eventInfo,
+  onsale,
 }) => {
   const { preorder, release } = eventInfo
+  console.log(onsale)
   return (
     <ContextConsumer>
       {context => {
@@ -42,16 +44,18 @@ const ComiketProductPageContainer = ({
                       <div css={priceText}>{'$' + price}</div>
                       <div
                         onClick={() => {
-                          context.addQuantityToCart(
-                            asin,
-                            eventName + ' ' + productType,
-                            productType,
-                            imgData,
-                            1,
-                            1
-                          )
+                          if(onsale){
+                            context.addQuantityToCart(
+                              asin,
+                              eventName + ' ' + productType,
+                              productType,
+                              imgData,
+                              1,
+                              1
+                            )
+                          }
                         }}
-                        className="addToCartButton"
+                        className={!onsale ? 'buttonDisabled' : ''}
                         css={addToCartButton}
                       >
                         ADD TO CART

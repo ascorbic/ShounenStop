@@ -11,6 +11,7 @@ const ComiketProductCard = ({
   productType,
   price,
   url,
+  onsale
 }) => {
   return (
     <ContextConsumer>
@@ -21,7 +22,7 @@ const ComiketProductCard = ({
               <div css={imgCover}>
                 <div css={productTypeText}>{productType}</div>
                 <div css={priceText}>{'$' + price}</div>
-                <div
+                {onsale && <div
                   onClick={() => {
                     addQuantityToCart(
                       asin,
@@ -35,7 +36,7 @@ const ComiketProductCard = ({
                   css={addToCartButton}
                 >
                   +
-                </div>
+                </div>}
               </div>
               <Link to={url} className="link-no-style">
                 <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />

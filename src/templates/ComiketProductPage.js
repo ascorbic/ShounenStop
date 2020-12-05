@@ -13,6 +13,7 @@ const ComiketProductPage = ({ data }) => {
     eventName,
     producttype,
     pricings,
+    onsale,
   } = data.comiketProduct.frontmatter
   const eventInfo = data.comiketEventInfo.edges.find(
     x => x.node.frontmatter.eventName === eventName
@@ -29,6 +30,7 @@ const ComiketProductPage = ({ data }) => {
         eventName={eventName}
         productType={producttype}
         price={price}
+        onsale={onsale}
       />
     </>
   )
@@ -50,6 +52,7 @@ export const ComiketProductTemplateQuery = graphql`
             }
           }
         }
+        onsale
         pricings {
           quantity
           price

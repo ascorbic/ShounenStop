@@ -114,6 +114,9 @@ const Comiket = ({ data, location }) => {
                       currentEventFilterListItem
                   : true
               })
+              .sort((a, b) =>{
+                return (a.node.frontmatter.onsale === false ? 1 : -1)
+              })
               .map(edge => (
                 <ComiketProductCard
                   key={edge.node.frontmatter.asin}
@@ -123,6 +126,7 @@ const Comiket = ({ data, location }) => {
                   productType={edge.node.frontmatter.producttype}
                   eventName={edge.node.frontmatter.eventName}
                   url={'/products' + edge.node.fields.slug}
+                  onsale={edge.node.frontmatter.onsale}
                 />
               ))}
           </div>
@@ -251,6 +255,7 @@ export const ComiketProductCategoryQuery = graphql`
               quantity
               price
             }
+            onsale
             weight
             merchandise
           }

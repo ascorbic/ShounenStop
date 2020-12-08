@@ -1,7 +1,7 @@
 ---
 image: images/128590952_1792326530925261_2993071922012298774_n.jpg
 producttype: Playmat
-eventName: Air Comiket 2
+eventName: Air Comiket 2 (Eatos)
 pricings:
   - quantity: 1
     price: 65

@@ -1,7 +1,7 @@
 ---
 image: images/128798861_1792326217591959_3502400363402817148_n.jpg
 producttype: Sleeves
-eventName: Air Comiket 2
+eventName: Air Comiket 2 (Eatos)
 pricings:
   - quantity: 1
     price: 25

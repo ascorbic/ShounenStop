@@ -1,6 +1,6 @@
 ---
 image: images/127697751_202926978125481_8874719259065207244_n.jpg
-producttype: Other
+producttype: Deckbox
 eventName: Air Comiket 2
 pricings:
   - quantity: 1

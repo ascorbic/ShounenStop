@@ -1,10 +1,11 @@
 ---
 image: images/ejueyaeucaeol0l.jpg
-producttype: Playmat
+producttype: Sleeves
 eventName: Air Comiket 2 (Eatos)
+weight: 2
 pricings:
   - quantity: 1
-    price: 65
+    price: 25
 onsale: true
 asin: KWwCQp924
 merchandise: comiket

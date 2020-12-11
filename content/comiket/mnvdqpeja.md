@@ -5,6 +5,7 @@ eventName: Air Comiket 2 (Eatos)
 pricings:
   - quantity: 1
     price: 65
+description: n/a
 onsale: true
 asin: MNvDqpEjA
 merchandise: comiket

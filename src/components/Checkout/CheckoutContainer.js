@@ -130,7 +130,7 @@ const CheckoutContainer = ({ orderContext }) => {
                           <ul css={upsInner}>
                             <div>
                               Weiss BP cases can be shipped as one package by
-                              EMS for an extra US$ 20 with arrival in 2 - 12
+                              EMS for an extra US$ 30 with arrival in 2 - 12
                               working days.
                             </div>
                             <div css={paddingTop}>You need to:</div>

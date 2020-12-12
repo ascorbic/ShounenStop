@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 65
 description: n/a
-onsale: true
+onsale: false
 asin: MNvDqpEjA
 merchandise: comiket
 ---

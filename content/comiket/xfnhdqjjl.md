@@ -1,0 +1,11 @@
+---
+image: images/131102964_1799314426893138_4182567807808542635_n.jpg
+producttype: Sleeves
+eventName: Air Comiket 2
+pricings:
+  - quantity: 1
+    price: 65
+onsale: true
+asin: xfNHdqJjL
+merchandise: comiket
+---

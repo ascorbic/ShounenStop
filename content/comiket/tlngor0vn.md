@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 25
 description: ""
-onsale: true
+onsale: false
 asin: tlnGoR0vN
 merchandise: comiket
 ---

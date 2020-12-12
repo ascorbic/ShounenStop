@@ -123,14 +123,14 @@ const CheckoutContainer = ({ orderContext }) => {
                             <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
                           </svg>
                           <div css={upsHeader}>
-                            UPS (special shipping accommodation)
+                            EMS (special shipping accommodation)
                           </div>
                         </Accordion.Toggle>
                         <Accordion.Collapse eventKey="0">
                           <ul css={upsInner}>
                             <div>
-                              Weiss BP cases can be shipped as one package thru
-                              UPS for an extra US$ 20 with arrival in 1 - 2
+                              Weiss BP cases can be shipped as one package by
+                              EMS for an extra US$ 20 with arrival in 2 - 12
                               working days.
                             </div>
                             <div css={paddingTop}>You need to:</div>
@@ -140,12 +140,12 @@ const CheckoutContainer = ({ orderContext }) => {
                                 Weiss BP case.
                               </li>
                               <li>
-                                Send an additional $20 separately through
+                                Send an additional $30 separately through
                                 Paypal.
                               </li>
                               <li>
                                 Once you receive a confirmation email from us,
-                                reply with a screenshot of $20 dollars paid.
+                                reply with a screenshot of $30 dollars paid.
                               </li>
                             </ol>
                           </ul>

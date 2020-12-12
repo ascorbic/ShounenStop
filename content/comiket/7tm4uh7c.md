@@ -6,6 +6,6 @@ pricings:
   - quantity: 1
     price: 25
 onsale: true
-asin: -7tm4UH7c
+asin: 7tm4UH7c
 merchandise: comiket
 ---

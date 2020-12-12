@@ -6,6 +6,6 @@ pricings:
   - quantity: 1
     price: 65
 onsale: true
-asin: -C-66WvMI
+asin: C-66WvMI
 merchandise: comiket
 ---

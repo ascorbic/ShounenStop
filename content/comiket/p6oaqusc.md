@@ -6,6 +6,6 @@ pricings:
   - quantity: 1
     price: 25
 onsale: true
-asin: -p6oAQuSc
+asin: p6oAQuSc
 merchandise: comiket
 ---

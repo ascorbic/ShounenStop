@@ -181,7 +181,7 @@ collections:
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
-      - { label: ASIN, name: asin, widget: ncw-id, hidden: true }
+      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, hidden: true }
       - {
           label: 'Merchandise',
           name: 'merchandise',
@@ -247,7 +247,7 @@ collections:
           widget: boolean,
           default: true,
         }
-      - { label: ASIN, name: asin, widget: ncw-id, hidden: true }
+      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, hidden: true }
       - {
           label: 'Merchandise',
           name: 'merchandise',
@@ -296,7 +296,7 @@ collections:
           required: false,
           min: 0,
         }
-      - { label: ASIN, name: asin, widget: ncw-id, hidden: true }
+      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, hidden: true }
       - {
           label: 'Merchandise',
           name: 'merchandise',

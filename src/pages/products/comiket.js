@@ -26,7 +26,16 @@ const Comiket = ({ data, location }) => {
     return comiketEventInfoEdge.eventName
   })
 
-  const productTypeFilterList = ['All', 'Playmat', 'Sleeves', 'Deckbox', 'Other']
+  const productTypeFilterList = ['All']
+
+  comiketProductData.map(edge => {
+    const curProductType = edge.node.frontmatter.producttype
+    if (!productTypeFilterList.includes(curProductType)) {
+      productTypeFilterList.push(curProductType)
+    }
+  })
+
+
   const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
     currentEventKey

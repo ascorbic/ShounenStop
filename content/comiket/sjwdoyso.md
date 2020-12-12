@@ -6,6 +6,6 @@ pricings:
   - quantity: 1
     price: 65
 onsale: true
-asin: -sJwdoYso
+asin: sJwdoYso
 merchandise: comiket
 ---

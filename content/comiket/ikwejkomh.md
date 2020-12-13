@@ -6,7 +6,7 @@ weight: 0
 pricings:
   - quantity: 1
     price: 65
-onsale: true
+onsale: false
 asin: ikweJkoMH
 merchandise: comiket
 ---

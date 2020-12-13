@@ -1,6 +1,6 @@
 ---
 image: images/130523629_1799315006893080_3559999554890860588_n.jpg
-producttype: Sleeves
+producttype: Playmat
 eventName: Air Comiket 2
 pricings:
   - quantity: 1

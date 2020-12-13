@@ -21,9 +21,11 @@ const ComiketProductCard = ({
 
   const [visible, setVisible] = useState(initialVisible);
   useEffect(() => {
-    setTimeout(() => {
+    let timer = setTimeout(() => {
       setVisible(true);
     }, delay);
+
+    return () => {clearTimeout(timer)}
   }, [delay]);
 
   return (

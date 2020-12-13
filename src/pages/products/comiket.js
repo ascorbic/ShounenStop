@@ -20,6 +20,9 @@ const Comiket = ({ data, location }) => {
     .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
     .slice()
 
+  const [iOS, setiOS] = React.useState(false);
+
+
   var currentEventKey = ''
 
   var eventFilterMap = {}
@@ -63,7 +66,12 @@ const Comiket = ({ data, location }) => {
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
     selectedEvent
   )
-  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+
+  React.useEffect(() => {
+    const userAgent =
+      typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+    setiOS(/iPad|iPhone|iPod/.test(userAgent))
+  })
 
   return (
     <Container css={productPageContainer} fluid>
@@ -182,7 +190,7 @@ const Comiket = ({ data, location }) => {
                   eventName={edge.node.frontmatter.eventName}
                   url={'/products' + edge.node.fields.slug}
                   onsale={edge.node.frontmatter.onsale}
-                  delay={iOS ? index/10 : index*10}
+                  delay={iOS ? index/10 : index*25}
                 />
               ))}
           </div>

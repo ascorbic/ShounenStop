@@ -4,67 +4,57 @@ import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-const ComiketProductCard = ({
-  imgData,
-  asin,
-  eventName,
-  productType,
-  price,
-  url,
-  onsale,
-  delay
-}) => {
-  var initialVisible = false
-  if(delay <= 0){
-    initialVisible = true;
+class ComiketProductCard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { visible: false }
+    setTimeout(() =>{
+      this.setState({visible:true});
+    }, this.props.delay);
   }
 
-  const [visible, setVisible] = useState(initialVisible);
-  useEffect(() => {
-    let timer = setTimeout(() =>{
-      setVisible(true);
-    }, delay);
+  componentDidMount() {
+    console.log(this.props.delay)
+    // let timer = 
+  }
 
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [delay]);
-
-  return (
-    visible &&
-    <ContextConsumer>
-      {({ addQuantityToCart }) => (
-        <div css={cardPadding} className="fadeItem row-card">
-          <div css={cardContainer}>
-            <div css={imgContainer}>
-              <div css={imgCover}>
-                <div css={productTypeText}>{productType}</div>
-                <div css={priceText}>{'$' + price}</div>
-                {onsale && <div
-                  onClick={() => {
-                    addQuantityToCart(
-                      asin,
-                      eventName + ' ' + productType,
-                      productType,
-                      imgData,
-                      1,
-                      1
-                    )
-                  }}
-                  css={addToCartButton}
-                >
-                  +
-                </div>}
+  render() {
+    return (this.state.visible &&
+      <ContextConsumer>
+            {({ addQuantityToCart }) => (
+              
+              <div css={cardPadding} className="fadeItem row-card">
+                <div css={cardContainer}>
+                  <div css={imgContainer}>
+                    <div css={imgCover}>
+                      <div css={productTypeText}>{this.props.productType}</div>
+                      <div css={priceText}>{'$' + this.props.price}</div>
+                      {this.props.onsale && <div
+                        onClick={() => {
+                          addQuantityToCart(
+                            this.props.asin,
+                            this.props.eventName + ' ' + this.props.productType,
+                            this.props.productType,
+                            this.props.imgData,
+                            1,
+                            1
+                          )
+                        }}
+                        css={addToCartButton}
+                      >
+                        +
+                      </div>}
+                    </div>
+                    <Link to={this.props.url} className="link-no-style">
+                      <Img css={imgStyles} fluid={{ ...this.props.imgData, aspectRatio: 1 }} />
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <Link to={url} className="link-no-style">
-                <Img css={imgStyles} fluid={{ ...imgData, aspectRatio: 1 }} />
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
-    </ContextConsumer>
-  )
+            )}
+          </ContextConsumer>
+    )
+  }
 }
 
 const imgCover = css`

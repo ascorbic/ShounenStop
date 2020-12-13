@@ -4,21 +4,6 @@ import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
 
-// Function.prototype.att = function(parent) {
-//   var f = this;
-//   var args = [];
-
-//   for (var a = 1; a < arguments.length; a++) {
-//       args[args.length] = arguments[a];
-//   }
-
-//   var temp = function() {
-//       return f.apply(parent, args);
-//   }
-//   console.log(temp)
-//   return(temp);
-// }
-
 const ComiketProductCard = ({
   imgData,
   asin,
@@ -36,18 +21,21 @@ const ComiketProductCard = ({
 
   const [visible, setVisible] = useState(initialVisible);
   useEffect(() => {
-    let timer = setTimeout(function() {
+    let timer = setTimeout(() =>{
       setVisible(true);
-    }.bind(this), delay);
+    }, delay);
 
-    return () => {clearTimeout(timer)}
+    return () => {
+      console.log("CLEAR")  
+      clearTimeout(timer)
+    }
   }, [delay]);
 
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
-        visible && 
-        <div css={cardPadding} className="row-card fadeItem">
+        visible &&
+        <div css={cardPadding} className="fadeItem row-card">
           <div css={cardContainer}>
             <div css={imgContainer}>
               <div css={imgCover}>
@@ -101,21 +89,21 @@ const imgCover = css`
 `
 
 const cardPadding = css`
-  margin-top: 25px;
-  margin-bottom: 5px;
-  position: relative;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: none;
-  margin-bottom: 2px;
-  border-radius: 8px;
-  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
-    cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-duration: 300ms, 300ms, 300ms, 300ms;
-  &:hover {
-    transform: scale(1.03);
-  }
+margin-top: 25px;
+margin-bottom: 5px;
+position: relative;
+padding-left: 10px;
+padding-right: 10px;
+border: none;
+margin-bottom: 2px;
+border-radius: 8px;
+transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
+  cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
+  cubic-bezier(0.645, 0.045, 0.355, 1);
+transition-duration: 300ms, 300ms, 300ms, 300ms;
+&:hover {
+  transform: scale(1.03);
+}
 `
 
 const cardContainer = css`

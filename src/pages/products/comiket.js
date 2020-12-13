@@ -70,7 +70,12 @@ const Comiket = ({ data, location }) => {
   React.useEffect(() => {
     const userAgent =
       typeof window.navigator === "undefined" ? "" : navigator.userAgent;
-    setiOS(/iPad|iPhone|iPod/.test(userAgent))
+      var ipad = !!(navigator.userAgent.match(/(iPad)/)
+      || (navigator.platform === "MacIntel" && typeof navigator.standalone !== "undefined"))
+      let isIOS = /iPad|iPhone|iPod/.test(navigator.platform)
+      || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+
+    setiOS(ipad || isIOS)
   })
 
   return (

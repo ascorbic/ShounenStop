@@ -63,6 +63,7 @@ const Comiket = ({ data, location }) => {
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
     selectedEvent
   )
+  var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   return (
     <Container css={productPageContainer} fluid>
@@ -181,7 +182,7 @@ const Comiket = ({ data, location }) => {
                   eventName={edge.node.frontmatter.eventName}
                   url={'/products' + edge.node.fields.slug}
                   onsale={edge.node.frontmatter.onsale}
-                  delay={index}
+                  delay={iOS ? index/10 : index*10}
                 />
               ))}
           </div>

@@ -8,15 +8,13 @@ import ComiketProductCard from '../../components/Comiket/ComiketProductCard'
 import FilterProductCategory from '../../components/Products/FilterProductCategory'
 import { query } from '../../components/Products/ProductCategoryHeader'
 
-
 const productTypeKey = 'producttype'
 const eventKey = 'event'
-const navigateSelected = (url, hash) =>{
-  navigate(url + '#' + hash,  { replace:true, token:Math.random()})
+const navigateSelected = (url, hash) => {
+  navigate(url + '#' + hash, { replace: true, token: Math.random() })
 }
 
 const Comiket = ({ data, location }) => {
-
   const comiketProductData = data.comiketProducts.edges
   const comiketEventInfo = data.comiketEventInfo.edges
     .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
@@ -27,11 +25,10 @@ const Comiket = ({ data, location }) => {
   var eventFilterMap = {}
   var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
     const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
-    eventFilterMap[comiketEventInfoEdge.eventName] =
-      { 
-        'preorder': comiketEventInfoEdge.preorder,
-        'release': comiketEventInfoEdge.release,
-      }
+    eventFilterMap[comiketEventInfoEdge.eventName] = {
+      preorder: comiketEventInfoEdge.preorder,
+      release: comiketEventInfoEdge.release,
+    }
     if (comiketEventInfoEdge.currentEvent) {
       currentEventKey = comiketEventInfoEdge.eventName
     }
@@ -47,21 +44,22 @@ const Comiket = ({ data, location }) => {
     }
   })
 
-
   var parsedHash = new URLSearchParams(location.hash.substr(1))
   var selectedProductType = parsedHash.get('producttype')
   var selectedEvent = parsedHash.get('event')
   const [queryString, setQueryString] = useState(parsedHash)
 
-  if( !selectedProductType || !selectedProductType in productTypeFilterList){
+  if (!selectedProductType || !selectedProductType in productTypeFilterList) {
     selectedProductType = 'All'
   }
 
-  if( !selectedEvent || !selectedEvent in productTypeFilterList){
+  if (!selectedEvent || !selectedEvent in productTypeFilterList) {
     selectedEvent = currentEventKey
   }
 
-  const [productTypeFilterItem, setProductTypeFilterItem] = useState(selectedProductType)
+  const [productTypeFilterItem, setProductTypeFilterItem] = useState(
+    selectedProductType
+  )
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
     selectedEvent
   )
@@ -74,7 +72,10 @@ const Comiket = ({ data, location }) => {
           className={'col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12'}
         >
           <div css={filterContainer} className="stickyFilter">
-            <FilterProductCategory filterName="Product Type" currentFilter={productTypeFilterItem}>
+            <FilterProductCategory
+              filterName="Product Type"
+              currentFilter={productTypeFilterItem}
+            >
               {productTypeFilterList.map(filterItem => (
                 <div
                   key={filterItem}
@@ -89,14 +90,20 @@ const Comiket = ({ data, location }) => {
                     qs.set(productTypeKey, filterItem)
                     setQueryString(qs)
                     setProductTypeFilterItem(filterItem)
-                    navigateSelected(location.pathname, qs.toString().replaceAll("\+","%20"))
+                    navigateSelected(
+                      location.pathname,
+                      qs.toString().replaceAll('+', '%20')
+                    )
                   }}
                 >
                   {filterItem}
                 </div>
               ))}
             </FilterProductCategory>
-            <FilterProductCategory filterName="Event" currentFilter={currentEventFilterListItem}>
+            <FilterProductCategory
+              filterName="Event"
+              currentFilter={currentEventFilterListItem}
+            >
               {eventFilterList.map(filterItem => (
                 <div
                   key={filterItem}
@@ -111,7 +118,10 @@ const Comiket = ({ data, location }) => {
                     qs.set(eventKey, filterItem)
                     setQueryString(qs)
                     setCurrentEventFilterListItem(filterItem)
-                    navigateSelected(location.pathname, qs.toString().replaceAll("\+","%20"))
+                    navigateSelected(
+                      location.pathname,
+                      qs.toString().replaceAll('+', '%20')
+                    )
                   }}
                 >
                   {filterItem}
@@ -126,18 +136,23 @@ const Comiket = ({ data, location }) => {
         >
           <div css={productCategoryHeaderContainer}>
             <div css={productCategoryHeader}>{currentEventFilterListItem}</div>
-              <div css={eventDateText}>
-                <div css={dateTextContainer}>
-                  <div css={dateField}>Preorder By</div>
-                  <div css={dateValue}>{eventFilterMap[currentEventFilterListItem].preorder}</div>
-                </div>
-                <div css={dateTextContainer}>
-                  <div css={dateField}>Release Date</div>
-                  <div css={dateValue}>{eventFilterMap[currentEventFilterListItem].release}</div>
+            <div css={eventDateText}>
+              <div css={dateTextContainer}>
+                <div css={dateField}>Preorder By</div>
+                <div css={dateValue}>
+                  {eventFilterMap[currentEventFilterListItem].preorder}
                 </div>
               </div>
+              <div css={dateTextContainer}>
+                <div css={dateField}>Release Date</div>
+                <div css={dateValue}>
+                  {eventFilterMap[currentEventFilterListItem].release}
+                </div>
+              </div>
+            </div>
             <div css={productHeaderSubtitleText}>
-              If we can't purchase the item at the event, we will refund you after the event is over
+              If we can't purchase the item at the event, we will refund you
+              after the event is over
             </div>
           </div>
           <div className="row" css={productContentWrapper}>
@@ -153,11 +168,11 @@ const Comiket = ({ data, location }) => {
                       currentEventFilterListItem
                   : true
               })
-              .sort((a, b) =>{
-                return (a.node.frontmatter.onsale === true ? -1 : 1)
+              .sort((a, b) => {
+                return a.node.frontmatter.onsale === true ? -1 : 1
               })
               .map((edge, index) => (
-            <ComiketProductCard
+                <ComiketProductCard
                   key={edge.node.frontmatter.asin}
                   asin={edge.node.frontmatter.asin}
                   imgData={edge.node.frontmatter.image.childImageSharp.fluid}
@@ -166,7 +181,7 @@ const Comiket = ({ data, location }) => {
                   eventName={edge.node.frontmatter.eventName}
                   url={'/products' + edge.node.fields.slug}
                   onsale={edge.node.frontmatter.onsale}
-                  delay={(index)*25 + index}
+                  delay={index}
                 />
               ))}
           </div>
@@ -211,8 +226,8 @@ const filterListItem = css`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-overflow: ellipsis;
-  white-space: nowrap; 
-  overflow:hidden;
+  white-space: nowrap;
+  overflow: hidden;
   &:hover,
   active {
     background-color: #f0f7ff;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
@@ -11,11 +11,25 @@ const ComiketProductCard = ({
   productType,
   price,
   url,
-  onsale
+  onsale,
+  delay
 }) => {
+  var initialVisible = false
+  if(delay <= 0){
+    initialVisible = true;
+  }
+
+  const [visible, setVisible] = useState(initialVisible);
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(true);
+    }, delay);
+  }, [delay]);
+
   return (
     <ContextConsumer>
       {({ addQuantityToCart }) => (
+        visible && 
         <div css={cardPadding} className="row-card fadeItem">
           <div css={cardContainer}>
             <div css={imgContainer}>

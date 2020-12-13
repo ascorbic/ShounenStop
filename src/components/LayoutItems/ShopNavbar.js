@@ -84,7 +84,6 @@ const ShopNavbar = ({ pageInfo, title }) => {
       }
     }
   `)
-  // const [isOpen, updateIsOpen] = useState(true)
   return (
     <ContextConsumer>
       {context => (

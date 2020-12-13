@@ -1,27 +1,39 @@
 import React, { useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 
 import { css } from '@emotion/core'
 import { Container } from 'react-bootstrap'
 import ProductPageContainer from '../../components/Products/ProductPageContainer'
 import ComiketProductCard from '../../components/Comiket/ComiketProductCard'
 import FilterProductCategory from '../../components/Products/FilterProductCategory'
+import { query } from '../../components/Products/ProductCategoryHeader'
+
+
+const productTypeKey = 'producttype'
+const eventKey = 'event'
+const navigateSelected = (url, hash) =>{
+  navigate(url + '#' + hash,  { replace:true, token:Math.random()})
+}
 
 const Comiket = ({ data, location }) => {
+
   const comiketProductData = data.comiketProducts.edges
   const comiketEventInfo = data.comiketEventInfo.edges
     .sort((a, b) => (a.node.frontmatter.currentEvent === true ? -1 : 1))
     .slice()
 
   var currentEventKey = ''
-  var currentPreorder = ''
-  var currentRelease = ''
+
+  var eventFilterMap = {}
   var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
     const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
+    eventFilterMap[comiketEventInfoEdge.eventName] =
+      { 
+        'preorder': comiketEventInfoEdge.preorder,
+        'release': comiketEventInfoEdge.release,
+      }
     if (comiketEventInfoEdge.currentEvent) {
       currentEventKey = comiketEventInfoEdge.eventName
-      currentPreorder = comiketEventInfoEdge.preorder
-      currentRelease = comiketEventInfoEdge.release
     }
     return comiketEventInfoEdge.eventName
   })
@@ -36,10 +48,24 @@ const Comiket = ({ data, location }) => {
   })
 
 
-  const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
+  var parsedHash = new URLSearchParams(location.hash.substr(1))
+  var selectedProductType = parsedHash.get('producttype')
+  var selectedEvent = parsedHash.get('event')
+  const [queryString, setQueryString] = useState(parsedHash)
+
+  if( !selectedProductType || !selectedProductType in productTypeFilterList){
+    selectedProductType = 'All'
+  }
+
+  if( !selectedEvent || !selectedEvent in productTypeFilterList){
+    selectedEvent = currentEventKey
+  }
+
+  const [productTypeFilterItem, setProductTypeFilterItem] = useState(selectedProductType)
   const [currentEventFilterListItem, setCurrentEventFilterListItem] = useState(
-    currentEventKey
+    selectedEvent
   )
+
   return (
     <Container css={productPageContainer} fluid>
       <ProductPageContainer selectedProductCategory="Comiket">
@@ -59,7 +85,11 @@ const Comiket = ({ data, location }) => {
                   }
                   css={filterListItem}
                   onClick={() => {
+                    var qs = queryString
+                    qs.set(productTypeKey, filterItem)
+                    setQueryString(qs)
                     setProductTypeFilterItem(filterItem)
+                    navigateSelected(location.pathname, qs.toString().replaceAll("\+","%20"))
                   }}
                 >
                   {filterItem}
@@ -77,7 +107,11 @@ const Comiket = ({ data, location }) => {
                   }
                   css={filterListItem}
                   onClick={() => {
+                    var qs = queryString
+                    qs.set(eventKey, filterItem)
+                    setQueryString(qs)
                     setCurrentEventFilterListItem(filterItem)
+                    navigateSelected(location.pathname, qs.toString().replaceAll("\+","%20"))
                   }}
                 >
                   {filterItem}
@@ -92,22 +126,18 @@ const Comiket = ({ data, location }) => {
         >
           <div css={productCategoryHeaderContainer}>
             <div css={productCategoryHeader}>{currentEventFilterListItem}</div>
-            {currentEventKey === currentEventFilterListItem ? (
               <div css={eventDateText}>
                 <div css={dateTextContainer}>
                   <div css={dateField}>Preorder By</div>
-                  <div css={dateValue}>{currentPreorder}</div>
+                  <div css={dateValue}>{eventFilterMap[currentEventFilterListItem].preorder}</div>
                 </div>
                 <div css={dateTextContainer}>
                   <div css={dateField}>Release Date</div>
-                  <div css={dateValue}>{currentRelease}</div>
+                  <div css={dateValue}>{eventFilterMap[currentEventFilterListItem].release}</div>
                 </div>
               </div>
-            ) : null}
             <div css={productHeaderSubtitleText}>
-              {currentEventKey === currentEventFilterListItem
-                ? "If we can't purchase the item at the event, we will refund you after the event is over"
-                : ''}
+              If we can't purchase the item at the event, we will refund you after the event is over
             </div>
           </div>
           <div className="row" css={productContentWrapper}>
@@ -126,8 +156,8 @@ const Comiket = ({ data, location }) => {
               .sort((a, b) =>{
                 return (a.node.frontmatter.onsale === true ? -1 : 1)
               })
-              .map(edge => (
-                <ComiketProductCard
+              .map((edge, index) => (
+            <ComiketProductCard
                   key={edge.node.frontmatter.asin}
                   asin={edge.node.frontmatter.asin}
                   imgData={edge.node.frontmatter.image.childImageSharp.fluid}
@@ -136,6 +166,7 @@ const Comiket = ({ data, location }) => {
                   eventName={edge.node.frontmatter.eventName}
                   url={'/products' + edge.node.fields.slug}
                   onsale={edge.node.frontmatter.onsale}
+                  delay={(index)*25 + index}
                 />
               ))}
           </div>

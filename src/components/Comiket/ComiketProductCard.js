@@ -4,6 +4,21 @@ import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import ContextConsumer from '../LayoutItems/CartContext'
 
+Function.prototype.att = function(parent) {
+  var f = this;
+  var args = [];
+
+  for (var a = 1; a < arguments.length; a++) {
+      args[args.length] = arguments[a];
+  }
+
+  var temp = function() {
+      return f.apply(parent, args);
+  }
+
+  return(temp);
+}
+
 const ComiketProductCard = ({
   imgData,
   asin,
@@ -21,9 +36,9 @@ const ComiketProductCard = ({
 
   const [visible, setVisible] = useState(initialVisible);
   useEffect(() => {
-    let timer = setTimeout(() => {
+    let timer = setTimeout(function() {
       setVisible(true);
-    }, delay);
+    }.att(this), delay);
 
     return () => {clearTimeout(timer)}
   }, [delay]);

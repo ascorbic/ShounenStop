@@ -1,7 +1,7 @@
 ---
 name: "Ann Panther Persona 5 P5 Figma "
 image: images/s-l500-1-.jpg
-producttype: figure
+producttype: Figure
 series: Persona 5
 description: new and unopened
 ebayLink: http://ebay.us/oyigwR?cmpnId=5338273189

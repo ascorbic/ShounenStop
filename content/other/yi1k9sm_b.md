@@ -1,7 +1,7 @@
 ---
 name: "Bushiroad Rubber mat Vol.42 Love Live Maki "
 image: images/s-l1600-1-.jpg
-producttype: playmat
+producttype: Playmat
 series: Love Live
 ebayLink: https://www.ebay.com/itm/163249407374?ssPageName=STRK:MESELX:IT&_trksid=p3984.m1555.l2648
 shippingFrom: US

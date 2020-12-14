@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 
 import { css } from '@emotion/core'
 import { Container } from 'react-bootstrap'
@@ -14,6 +14,12 @@ const lowestPrice = pricings => {
       return pricing.price / pricing.quantity
     })
   )
+}
+
+const productTypeKey = 'producttype'
+const seriesKey = 'event'
+const navigateSelected = (url, hash) => {
+  navigate(url + '#' + hash, { replace: true, token: Math.random() })
 }
 
 const Weiss = ({ data, location }) => {
@@ -35,8 +41,21 @@ const Weiss = ({ data, location }) => {
     }
   })
 
-  const [productTypeFilterItem, setProductTypeFilterItem] = useState('All')
-  const [seriesFilterItem, setSeriesFilterItem] = useState('All')
+
+  var parsedHash = new URLSearchParams(location.hash.substr(1))
+  var selectedProductType = parsedHash.get(productTypeKey)
+  var selectedSeries = parsedHash.get(seriesKey)
+  const [queryString, setQueryString] = useState(parsedHash)
+  if (!selectedProductType || !productTypeFilterList.includes(selectedProductType)) {
+    selectedProductType = 'All'
+  }
+
+  if (!selectedSeries || !seriesFilterList.includes(selectedSeries)) {
+    selectedSeries = 'All'
+  }
+
+  const [productTypeFilterItem, setProductTypeFilterItem] = useState(selectedProductType)
+  const [seriesFilterItem, setSeriesFilterItem] = useState(selectedSeries)
 
   return (
     <Container css={productPageContainer} fluid>
@@ -60,7 +79,14 @@ const Weiss = ({ data, location }) => {
                   }
                   css={filterListItem}
                   onClick={() => {
+                    var qs = queryString
+                    qs.set(productTypeKey, filterItem)
+                    setQueryString(qs)
                     setProductTypeFilterItem(filterItem)
+                    navigateSelected(
+                      location.pathname,
+                      qs.toString().replaceAll('+', '%20')
+                    )
                   }}
                 >
                   {filterItem}
@@ -81,7 +107,14 @@ const Weiss = ({ data, location }) => {
                   }
                   css={filterListItem}
                   onClick={() => {
+                    var qs = queryString
+                    qs.set(seriesKey, filterItem)
+                    setQueryString(qs)
                     setSeriesFilterItem(filterItem)
+                    navigateSelected(
+                      location.pathname,
+                      qs.toString().replaceAll('+', '%20')
+                    )
                   }}
                 >
                   {filterItem}

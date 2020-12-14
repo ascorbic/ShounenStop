@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import { css } from '@emotion/core'
 
 import BackgroundImage from 'gatsby-background-image'
@@ -7,7 +7,7 @@ import BackgroundImage from 'gatsby-background-image'
 const ComiketBanner = () => {
   const { landingImage } = useStaticQuery(graphql`
     query {
-      landingImage: file(relativePath: { eq: "comiket.jpg" }) {
+      landingImage: file(relativePath: { eq: "AirComiket2.png" }) {
         childImageSharp {
           fluid(maxWidth: 3000) {
             ...GatsbyImageSharpFluid
@@ -25,17 +25,22 @@ const ComiketBanner = () => {
     >
       <div css={landingSection}>
         <div css={landingText}>
-          COMIKET MERCHANDISE 
+          AIR COMIKET 2
           <div css={lineBreakSm}></div>
-          <span css={shippingText}>COMING SOON</span>
+          <span css={shippingText}>All New Playmats and Sleeves!<br/> Preorder by December 6th </span>
         </div>
+        <div css={lineBreakLg}></div>
+        <Link to="/products/comiket">
+          <div css={shopNow}>
+            <span>SHOP NOW</span>
+          </div>
+        </Link>
       </div>
     </BackgroundImage>
   )
 }
 
 const landingStyles = css`
-  margin-top:50px;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   opacity: 1 !important;
@@ -44,14 +49,41 @@ const landingStyles = css`
   text-align: center;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2),0 1px 0 0 rgba(0,0,0,0.2);
-  margin-bottom:50px;
+  box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 50px;
+`
+
+const shopNow = css`
+  font-size: 22px;
+  letter-spacing: 2px;
+  width: 240px;
+  height: 80px;
+  border: solid 1px #fff;
+  display: flex;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
+    cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition-duration: 300ms, 300ms, 300ms, 300ms;
+
+  &:hover,
+  &:active {
+    font-size: 24px;
+    background-color: #fff;
+    color: #000;
+    width: 260px;
+    height: 90px;
+  }
 `
 
 const landingText = css`
-  width: 100%;
-  font-size: 25px;
-  color: #fff;
+width: 85%;
+font-size: 25px;
+color: #fff;
 `
 
 const shippingText = css`
@@ -61,8 +93,11 @@ const shippingText = css`
 `
 
 const landingSection = css`
+  margin-top: 120px;
   max-width: 800px;
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
 `
 
@@ -75,6 +110,5 @@ const lineBreakSm = css`
   height: 10px;
   width: 100%;
 `
-
 
 export default ComiketBanner

@@ -48,15 +48,15 @@ const Comiket = ({ data, location }) => {
   })
 
   var parsedHash = new URLSearchParams(location.hash.substr(1))
-  var selectedProductType = parsedHash.get('producttype')
-  var selectedEvent = parsedHash.get('event')
+  var selectedProductType = parsedHash.get(productTypeKey)
+  var selectedEvent = parsedHash.get(eventKey)
   const [queryString, setQueryString] = useState(parsedHash)
 
-  if (!selectedProductType || !selectedProductType in productTypeFilterList) {
+  if (!selectedProductType || !productTypeFilterList.includes(selectedProductType)) {
     selectedProductType = 'All'
   }
-
-  if (!selectedEvent || !selectedEvent in productTypeFilterList) {
+  
+  if (!selectedEvent || !eventFilterList.includes(selectedEvent)) {
     selectedEvent = currentEventKey
   }
 

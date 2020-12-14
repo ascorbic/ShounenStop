@@ -35,7 +35,6 @@ const viewAllRow = css`
 `
 
 const releasesContainer = css`
-  margin-bottom: 40px;
   background-color: #f4f7f9;
 `
 

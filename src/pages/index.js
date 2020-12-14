@@ -51,7 +51,7 @@ const IndexPage = () => {
         landingSubtitle={landingSubtitle}
       />
       <NewReleases releaseList={newReleaseData} />
-      {/* <ComiketBanner /> */}
+      <ComiketBanner />
     </>
   )
 }

@@ -32,7 +32,7 @@ const ComiketBanner = () => {
         <div css={lineBreakLg}></div>
         <Link to="/products/comiket">
           <div css={shopNow}>
-            <span>SHOP NOW</span>
+            <span>EXPLORE COMIKET</span>
           </div>
         </Link>
       </div>
@@ -56,7 +56,7 @@ const landingStyles = css`
 const shopNow = css`
   font-size: 22px;
   letter-spacing: 2px;
-  width: 240px;
+  width: 300px;
   height: 80px;
   border: solid 1px #fff;
   display: flex;
@@ -75,7 +75,7 @@ const shopNow = css`
     font-size: 24px;
     background-color: #fff;
     color: #000;
-    width: 260px;
+    width: 320px;
     height: 90px;
   }
 `

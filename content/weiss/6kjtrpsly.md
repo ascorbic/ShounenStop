@@ -13,7 +13,7 @@ pricings:
   - quantity: 6
     price: 338
   - quantity: 9
-    price: 498
+    price: 496
   - quantity: 18
     price: 990
 description: 18 boxes will be a full case

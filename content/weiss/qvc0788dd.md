@@ -8,11 +8,11 @@ color: "#df8096"
 pricings:
   - quantity: 1
     price: 35
-  - price: 87
+  - price: 90
     quantity: 3
   - quantity: 6
-    price: 162
-  - price: 265
+    price: 168
+  - price: 270
     quantity: 10
   - quantity: 30
     price: 780

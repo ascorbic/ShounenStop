@@ -7,15 +7,15 @@ image: images/del-later.png
 color: "#D83469"
 pricings:
   - quantity: 1
-    price: 58
+    price: 64
   - quantity: 4
-    price: 224
+    price: 230
   - quantity: 6
-    price: 330
+    price: 338
   - quantity: 9
-    price: 486
+    price: 498
   - quantity: 18
-    price: 972
+    price: 990
 description: 18 boxes will be a full case
 preorder: 2020-12-21T16:00:00.000Z
 release: 2021-01-21T16:00:00.000Z

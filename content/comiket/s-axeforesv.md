@@ -1,6 +1,6 @@
 ---
 image: images/eprjgc3vgaelud7.jpg
-producttype: Sleeves
+producttype: Mini sleeves
 eventName: Air Comiket 2
 pricings:
   - quantity: 1

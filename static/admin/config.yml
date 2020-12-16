@@ -201,7 +201,7 @@ collections:
           label: Product Type,
           name: producttype,
           widget: select,
-          options: ['Playmat', 'Sleeves', 'Deckbox', 'Other'],
+          options: ['Playmat', 'Sleeves', 'Deckbox', 'Mini sleeves', 'Other'],
           default: ['Playmat'],
         }
       - {

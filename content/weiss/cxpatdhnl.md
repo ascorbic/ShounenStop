@@ -16,7 +16,7 @@ pricings:
     price: 486
   - quantity: 18
     price: 972
-preorder: 2021-01-20T04:50:08.181Z
+preorder: 2021-01-04T04:50:08.181Z
 release: 2021-02-25T16:00:00.000Z
 asin: CxpAtDHnl
 merchandise: weiss

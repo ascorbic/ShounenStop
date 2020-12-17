@@ -5,7 +5,7 @@ eventName: Air Comiket 2
 weight: 1
 pricings:
   - quantity: 1
-    price: 70
+    price: 73
 description: |-
   This is a high end deck box. For reference, check out:
   http://cakerabbits.blog.fc2.com/blog-entry-26.html

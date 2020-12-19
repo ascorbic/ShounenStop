@@ -11,9 +11,9 @@ pricings:
   - quantity: 4
     price: 224
   - quantity: 6
-    price: 330
+    price: 333
   - quantity: 9
-    price: 486
+    price: 491
   - quantity: 18
     price: 972
 preorder: 2021-01-04T04:50:08.181Z

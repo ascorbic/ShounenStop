@@ -1,5 +1,5 @@
 ---
-image: images/ygo-deckbox.jpg
+image: images/epfwgbkucaek_0e.jpg
 producttype: Deckbox
 eventName: Air Comiket 2
 weight: 1

@@ -1,5 +1,5 @@
 ---
-image: images/deck-box-gawr-gura.jpg
+image: images/epgppl7veaa47as.jpg
 producttype: Deckbox
 eventName: Air Comiket 2
 pricings:

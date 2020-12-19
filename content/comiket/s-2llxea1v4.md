@@ -1,5 +1,5 @@
 ---
-image: images/deckbox-dmg.jpg
+image: images/epfwwo1veaaxzry.jpg
 producttype: Deckbox
 eventName: Air Comiket 2
 pricings:

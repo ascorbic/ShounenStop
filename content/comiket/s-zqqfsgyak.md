@@ -6,7 +6,7 @@ weight: 0
 pricings:
   - quantity: 1
     price: 25
-description: These are mini sleeves
+description: These are Mini sleeves
 onsale: true
 asin: s-zQqFsGyAK
 merchandise: comiket

@@ -6,7 +6,6 @@ import { Container } from 'react-bootstrap'
 import ProductPageContainer from '../../components/Products/ProductPageContainer'
 import ComiketProductCard from '../../components/Comiket/ComiketProductCard'
 import FilterProductCategory from '../../components/Products/FilterProductCategory'
-import { query } from '../../components/Products/ProductCategoryHeader'
 
 const productTypeKey = 'producttype'
 const eventKey = 'event'
@@ -315,7 +314,7 @@ export const ComiketProductCategoryQuery = graphql`
             eventName
             image {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 50) {
                   ...GatsbyImageSharpFluid
                 }
               }

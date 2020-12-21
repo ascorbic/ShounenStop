@@ -4,7 +4,8 @@ producttype: Playmat
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 65
+    price: 105
+description: This is a special holo foil playmat
 onsale: true
 asin: YCDXXDzsE
 merchandise: comiket

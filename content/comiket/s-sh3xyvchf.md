@@ -1,11 +1,12 @@
 ---
 image: images/eojxoxlvoaicfak.jpg
-producttype: Sleeves
+producttype: Mini sleeves
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 25
-description: Mini sized
+    price: 27
+description: The doujin circle selling this particular item is charging a
+  slightly higher price.
 onsale: true
 asin: s-sh3XyvChF
 merchandise: comiket

@@ -1,10 +1,10 @@
 ---
 image: images/eojxqpmvqayzlk3.jpg
-producttype: Sleeves
+producttype: Playmat
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 25
+    price: 65
 onsale: true
 asin: s-wOX24lLqD
 merchandise: comiket

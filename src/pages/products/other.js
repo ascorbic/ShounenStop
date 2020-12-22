@@ -245,7 +245,7 @@ export const OtherProductCategoryQuery = graphql`
             ebayLink
             image {
               childImageSharp {
-                fluid(maxWidth: 1000, quality: 100) {
+                fluid(maxWidth: 1000, quality: 90) {
                   ...GatsbyImageSharpFluid
                 }
               }

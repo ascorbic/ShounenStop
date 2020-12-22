@@ -66,7 +66,7 @@ export const query = graphql`
         producttype
         landingImage {
           childImageSharp {
-            fluid(maxWidth: 2000, quality: 100) {
+            fluid(maxWidth: 2000, quality: 90) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -90,7 +90,7 @@ export const query = graphql`
             color
             image {
               childImageSharp {
-                fluid(maxWidth: 500, quality: 100) {
+                fluid(maxWidth: 500, quality: 90) {
                   ...GatsbyImageSharpFluid
                 }
               }

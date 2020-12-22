@@ -9,7 +9,7 @@ const ComiketBanner = () => {
     query {
       landingImage: file(relativePath: { eq: "AirComiket2.png" }) {
         childImageSharp {
-          fluid(maxWidth: 3000) {
+          fluid(maxWidth: 3000, quality: 80) {
             ...GatsbyImageSharpFluid
           }
         }

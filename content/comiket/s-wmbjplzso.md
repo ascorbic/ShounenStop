@@ -4,7 +4,7 @@ producttype: Deckbox
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 225
+    price: 220
 onsale: true
 asin: s-WmbJPlzsO
 merchandise: comiket

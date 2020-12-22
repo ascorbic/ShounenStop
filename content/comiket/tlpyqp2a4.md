@@ -4,7 +4,7 @@ producttype: Sleeves
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 28
+    price: 105
 description: These are special foil sleeves
 onsale: true
 asin: tLpYqp2a4

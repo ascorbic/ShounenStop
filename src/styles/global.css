@@ -870,6 +870,11 @@ ul li {
   padding-left: 0px;
 }
 
+.collapse{
+  -webkit-transform: translateZ(0);
+  transform:translateZ(0);
+}
+
 .navbar-light .navbar-nav .nav-link {
   color: #6a6d75;
   font-size: 13px;

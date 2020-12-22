@@ -96,6 +96,7 @@ padding-right: 10px;
 border: none;
 margin-bottom: 2px;
 border-radius: 8px;
+will-change: transform, opacity;
 transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1),
   cubic-bezier(0.645, 0.045, 0.355, 1), cubic-bezier(0.645, 0.045, 0.355, 1),
   cubic-bezier(0.645, 0.045, 0.355, 1);

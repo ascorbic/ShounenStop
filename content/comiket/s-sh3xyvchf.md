@@ -4,7 +4,7 @@ producttype: Mini sleeves
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 27
+    price: 23
 description: ""
 onsale: true
 asin: s-sh3XyvChF

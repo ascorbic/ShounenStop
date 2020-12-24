@@ -1,10 +1,11 @@
 ---
-image: images/129958279_1796802407144340_2828143786303693599_n.jpg
+image: images/picture3.png
 producttype: Sleeves
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 25
+    price: 65
+description: This is a 3 sleeve set
 onsale: true
 asin: LWOtg7WVb
 merchandise: comiket

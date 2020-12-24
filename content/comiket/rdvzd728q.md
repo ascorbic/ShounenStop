@@ -4,7 +4,7 @@ producttype: Sleeves
 eventName: Air Comiket 2
 pricings:
   - quantity: 1
-    price: 27
+    price: 25
 description: "The doujin circles have priced these particular sleeves a little
   more than other items. "
 onsale: true

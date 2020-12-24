@@ -140,6 +140,7 @@ class PaymentContainer extends React.Component {
           orderInfo
         )
         .then(function(response) {
+          console.log(response)
         })
     }
   }
@@ -164,6 +165,8 @@ class PaymentContainer extends React.Component {
         }
       })
     }, 1000)
+
+    this.sendCheckoutData()
   }
 
   //place order
@@ -271,7 +274,7 @@ class PaymentContainer extends React.Component {
                               css={paypalButton}
                               onClick={() => {
                                 if (sendOrderData) {
-                                  this.sendCheckoutData()
+                                  this.sendCheckoutData(context)
                                   this.startValidatingPayment(context)
                                   const paypalLink =
                                     'https://www.paypal.com/paypalme/LeonShum/' +
@@ -320,6 +323,8 @@ class PaymentContainer extends React.Component {
                                     paypalFeesEnabled: !prevState.paypalFeesEnabled,
                                     currentTotal: total,
                                   }
+                                }, ()=>{
+                                  this.sendCheckoutData()
                                 })
                               }}
                               css={paypalGoodsCheckbox}

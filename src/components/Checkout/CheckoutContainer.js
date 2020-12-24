@@ -165,7 +165,7 @@ const CheckoutContainer = ({ orderContext }) => {
                         css={userInfoLabel}
                         htmlFor="email"
                       >
-                        Email Address (Same as your Paypal email)
+                        <span css={darkFont}>&nbsp;PayPal&nbsp;</span> Email Address
                       </label>
                       {touched.email && errors.email ? (
                         <div css={userInfoError}>{errors.email}</div>
@@ -421,6 +421,19 @@ const CheckoutContainer = ({ orderContext }) => {
     </Formik>
   )
 }
+
+const darkFont = css`
+  color: #0f346c;
+  // text-decoration: underline;
+  
+  background-color:#dcecff;
+  border-radius:3px;
+  font-weight:700;
+  padding-top:2px;
+  padding-bottom:2px;
+
+  // font-family:varela round
+`
 
 const paddingTop = css`
   padding-top: 10px;

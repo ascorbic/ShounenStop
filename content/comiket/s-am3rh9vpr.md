@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 25
 description: These are Mini sleeves
-onsale: true
+onsale: false
 asin: s-am3RH9vpR
 merchandise: comiket
 ---

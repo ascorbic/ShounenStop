@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 25
 description: these are mini sized
-onsale: true
+onsale: false
 asin: s-aXEForEsv
 merchandise: comiket
 ---

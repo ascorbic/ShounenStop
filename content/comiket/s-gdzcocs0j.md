@@ -5,7 +5,7 @@ eventName: Air Comiket 2
 pricings:
   - quantity: 1
     price: 27
-onsale: true
+onsale: false
 asin: s-gDZcoCS0J
 merchandise: comiket
 ---

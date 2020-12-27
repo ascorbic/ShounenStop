@@ -6,7 +6,7 @@ weight: 0
 pricings:
   - quantity: 1
     price: 25
-onsale: true
+onsale: false
 asin: tyn2fr3T_
 merchandise: comiket
 ---

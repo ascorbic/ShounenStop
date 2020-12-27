@@ -9,7 +9,7 @@ pricings:
 description: |-
   This is a high end deck box. For reference, check out:
   http://cakerabbits.blog.fc2.com/blog-entry-26.html
-onsale: true
+onsale: false
 asin: s-fHuqe4fZs
 merchandise: comiket
 ---

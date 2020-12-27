@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 105
 description: This is a special holo foil playmat
-onsale: true
+onsale: false
 asin: acRhyJ8GL
 merchandise: comiket
 ---

@@ -7,7 +7,7 @@ pricings:
     price: 27
 description: The doujin circle selling this particular item is charging a
   slightly higher price.
-onsale: true
+onsale: false
 asin: JYfHrA7t9
 merchandise: comiket
 ---

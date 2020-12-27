@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 46
 description: this is a sleeve set
-onsale: true
+onsale: false
 asin: s-M6awKj48l
 merchandise: comiket
 ---

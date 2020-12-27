@@ -10,7 +10,7 @@ description: Please note that this is a nsfw version of an existing good, we
   customers that purchase the original version. If you check out this item,
   please be prepared for the chance that you will receive the original version.
   We will notify you if you get this item once we ship your package(s).
-onsale: true
+onsale: false
 asin: s-_KSV6S3Ly
 merchandise: comiket
 ---

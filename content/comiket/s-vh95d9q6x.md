@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 25
 description: these are mini sized
-onsale: true
+onsale: false
 asin: s-VH95d9q6x
 merchandise: comiket
 ---

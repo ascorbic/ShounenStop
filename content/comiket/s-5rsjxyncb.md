@@ -10,7 +10,7 @@ description: >-
   link:
 
   http://cakerabbits.blog.fc2.com/blog-entry-26.html
-onsale: true
+onsale: false
 asin: s-5rSJxYNCB
 merchandise: comiket
 ---

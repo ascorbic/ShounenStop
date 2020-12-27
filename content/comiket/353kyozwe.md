@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 88
 description: This is a special large box
-onsale: true
+onsale: false
 asin: 353KyOZwe
 merchandise: comiket
 ---

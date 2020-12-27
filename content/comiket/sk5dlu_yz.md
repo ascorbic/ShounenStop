@@ -7,7 +7,7 @@ pricings:
     price: 25
 description: "The doujin circles have priced these particular sleeves a little
   more than other items. "
-onsale: true
+onsale: false
 asin: sk5dLu_YZ
 merchandise: comiket
 ---

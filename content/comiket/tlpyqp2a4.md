@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 105
 description: These are special foil sleeves
-onsale: true
+onsale: false
 asin: tLpYqp2a4
 merchandise: comiket
 ---

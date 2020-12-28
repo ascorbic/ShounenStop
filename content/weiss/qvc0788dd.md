@@ -3,8 +3,8 @@ name: Fate/kaleid liner Prisma Illya Prisma Phantasm
 producttype: Extra Booster
 displayName: Prisma Illya Prisma Phantasm
 series: Fate Series
-image: images/10742191.jpg
-color: "#df8096"
+image: images/eb_pi_box.png
+color: " #e72c90"
 pricings:
   - quantity: 1
     price: 35

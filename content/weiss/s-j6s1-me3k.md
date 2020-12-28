@@ -17,8 +17,9 @@ pricings:
     price: 491
   - quantity: 18
     price: 972
-preorder: ""
-release: 2021-01-24T16:00:00.000Z
+description: 18 boxes will be a case
+preorder: 2021-01-24T16:00:00.000Z
+release: 2021-03-25T16:00:00.000Z
 asin: s-j6S1-Me3k
 merchandise: weiss
 ---

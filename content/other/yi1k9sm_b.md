@@ -7,7 +7,7 @@ ebayLink: https://www.ebay.com/itm/163249407374?ssPageName=STRK:MESELX:IT&_trksi
 shippingFrom: US
 pricings:
   - quantity: 1
-    price: 61.75
+    price: 60
 weight: 0
 asin: yI1k9sM_B
 merchandise: other

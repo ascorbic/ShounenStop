@@ -1,6 +1,6 @@
 ---
 name: "Ann Panther Persona 5 P5 Figma "
-image: images/s-l500-1-.jpg
+image: images/ann-del-later.jpg
 producttype: Figure
 series: Persona 5
 description: new and unopened

@@ -1,6 +1,6 @@
 ---
 name: Dark Magician Girl KC Rare MVPL-JP001 NM
-image: images/s-l500.jpg
+image: images/dmg-del-later.jpg
 producttype: Yugioh Card
 series: Yugioh
 description: Very light wear on the back

@@ -1,5 +1,5 @@
 ---
-eventName: Sunshine Creation 2021 Winter (Eatos)
+eventName: "Sunshine Creation 2021 Winter "
 currentEvent: true
 eventDesc: ""
 preorder: 2020-12-14T16:00:00.000Z

@@ -1,7 +1,7 @@
 ---
 image: images/pieeee.png
 producttype: Mini sleeves
-eventName: Sunshine Creation 2021 Winter (Eatos)
+eventName: Sunshine Creation 2021 Winter
 pricings:
   - quantity: 1
     price: 65

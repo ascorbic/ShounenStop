@@ -1,7 +1,7 @@
 ---
 image: images/set-del-later.png
 producttype: Mini sleeves
-eventName: Sunshine Creation 2021 Winter (Eatos)
+eventName: Sunshine Creation 2021 Winter
 weight: 0
 pricings:
   - quantity: 1

@@ -1,7 +1,7 @@
 ---
 image: images/ergy6jjvqaaiudu.jpg
 producttype: Sleeves
-eventName: Sunshine Creation 2021 Winter (Eatos)
+eventName: Sunshine Creation 2021 Winter
 pricings:
   - quantity: 1
     price: 25

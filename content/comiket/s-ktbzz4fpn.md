@@ -1,7 +1,7 @@
 ---
 image: images/ers7hobveac-jxo.jpg
 producttype: Sleeves
-eventName: Sunshine Creation 2021 Winter (Eatos)
+eventName: Sunshine Creation 2021 Winter
 weight: 0
 pricings:
   - quantity: 1

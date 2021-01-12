@@ -1,5 +1,5 @@
 ---
-eventName: "Sunshine Creation 2021 Winter "
+eventName: "Sunshine Creation 2021 Winter"
 currentEvent: true
 eventDesc: ""
 preorder: 2021-01-14T16:00:00.000Z

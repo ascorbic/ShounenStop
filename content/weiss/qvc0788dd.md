@@ -14,9 +14,7 @@ pricings:
     price: 168
   - price: 270
     quantity: 10
-  - quantity: 30
-    price: 780
-description: 30 boxes will be a case
+description: ""
 preorder: 2021-01-21T16:00:00.000Z
 release: 2021-02-12T03:57:04.788Z
 asin: QvC0788Dd

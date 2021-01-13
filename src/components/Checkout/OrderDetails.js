@@ -6,6 +6,7 @@ const getProduct = flatProduct => {
   return flatProduct.split('|')
 }
 
+//TODO: Fix eventname here
 const OrderDetails = ({ productData }) => {
   return (
     <div css={orderContainer}>

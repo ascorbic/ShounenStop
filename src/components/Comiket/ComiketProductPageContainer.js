@@ -8,14 +8,13 @@ import ContextConsumer from '../LayoutItems/CartContext'
 const ComiketProductPageContainer = ({
   imgData,
   asin,
-  eventName,
   productType,
   price,
   description,
   eventInfo,
   onsale,
 }) => {
-  const { preorder, release } = eventInfo
+  const { preorder, release, eventName } = eventInfo
   return (
     <ContextConsumer>
       {context => {

@@ -24,6 +24,7 @@ const Comiket = ({ data, location }) => {
 
   var currentEventKey = ''
 
+  // inject event info somewhere here
   var eventFilterMap = {}
   var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
     const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
@@ -311,7 +312,7 @@ export const ComiketProductCategoryQuery = graphql`
           frontmatter {
             asin
             producttype
-            eventName
+            eventId
             image {
               childImageSharp {
                 fluid(maxWidth: 800, quality: 50) {
@@ -344,6 +345,7 @@ export const ComiketProductCategoryQuery = graphql`
             currentEvent
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
+            id
           }
         }
       }

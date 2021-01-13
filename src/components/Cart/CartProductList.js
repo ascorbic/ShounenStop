@@ -7,7 +7,7 @@ import CheckoutHeader from '../Checkout/CheckoutHeader'
 const getProduct = flatProduct => {
   return flatProduct.split('|')
 }
-
+// TODO: Fix eventname here
 const CartProductList = ({ productData, updateCartQuantity }) => {
   return (
     <>

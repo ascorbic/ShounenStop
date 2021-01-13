@@ -15,7 +15,9 @@ const getProduct = flatProduct => {
 const CartContainer = () => {
   const productQuery  = useStaticQuery(query);
   const edges = productQuery.products.edges
-  const {preorder, release} = productQuery.comiketEventInfo.edges[0].node.frontmatter
+
+  //TODO: this is broken
+  const {preorder, release, eventName} = productQuery.comiketEventInfo.edges[0].node.frontmatter
   return (
     <ContextConsumer>
       {context => {
@@ -164,7 +166,7 @@ export const query = graphql`
             asin
             name
             displayName
-            eventName
+            eventId
             producttype
             series
             color
@@ -198,6 +200,7 @@ export const query = graphql`
             currentEvent
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
+            id
           }
         }
       }

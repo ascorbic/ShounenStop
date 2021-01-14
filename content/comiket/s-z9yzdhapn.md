@@ -6,7 +6,7 @@ pricings:
   - quantity: 1
     price: 105
 description: this is a 5 sleeve set
-onsale: true
+onsale: false
 asin: s-z9yzdHApn
 merchandise: comiket
 ---

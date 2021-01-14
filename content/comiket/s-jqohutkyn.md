@@ -5,7 +5,7 @@ eventName: Sunshine Creation 2021 Winter
 pricings:
   - quantity: 1
     price: 65
-onsale: true
+onsale: false
 asin: s-jqohutkYn
 merchandise: comiket
 ---

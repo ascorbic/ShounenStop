@@ -15,7 +15,7 @@ description: >-
 
 
   We will try our best to send you the version you want, but please only purchase this item if you are fine with receiving either version.
-onsale: true
+onsale: false
 asin: s-AjlxwyhD1
 merchandise: comiket
 ---

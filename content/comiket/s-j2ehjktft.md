@@ -5,7 +5,7 @@ eventId: "O-dvjHAX5"
 pricings:
   - quantity: 1
     price: 27
-onsale: true
+onsale: false
 asin: s-J2ehJkTfT
 merchandise: comiket
 ---

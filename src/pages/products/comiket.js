@@ -21,16 +21,18 @@ const Comiket = ({ data, location }) => {
 
   const [iOS, setiOS] = React.useState(false);
 
-
   var currentEventKey = ''
 
+  var eventIdMap = {}
   var eventFilterMap = {}
   var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
     const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
     eventFilterMap[comiketEventInfoEdge.eventName] = {
+      eventId: comiketEventInfoEdge.id,
       preorder: comiketEventInfoEdge.preorder,
       release: comiketEventInfoEdge.release,
     }
+    eventIdMap[comiketEventInfoEdge.id] = comiketEventInfoEdge.eventName
     if (comiketEventInfoEdge.currentEvent) {
       currentEventKey = comiketEventInfoEdge.eventName
     }
@@ -40,6 +42,7 @@ const Comiket = ({ data, location }) => {
   const productTypeFilterList = ['All']
 
   comiketProductData.map(edge => {
+    edge.node.frontmatter.eventName = eventIdMap[edge.node.frontmatter.eventId]
     const curProductType = edge.node.frontmatter.producttype
     if (!productTypeFilterList.includes(curProductType)) {
       productTypeFilterList.push(curProductType)
@@ -311,7 +314,7 @@ export const ComiketProductCategoryQuery = graphql`
           frontmatter {
             asin
             producttype
-            eventName
+            eventId
             image {
               childImageSharp {
                 fluid(maxWidth: 800, quality: 50) {
@@ -344,6 +347,7 @@ export const ComiketProductCategoryQuery = graphql`
             currentEvent
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
+            id
           }
         }
       }

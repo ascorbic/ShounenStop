@@ -15,7 +15,8 @@ const getProduct = flatProduct => {
 const CartContainer = () => {
   const productQuery  = useStaticQuery(query);
   const edges = productQuery.products.edges
-  const {preorder, release} = productQuery.comiketEventInfo.edges[0].node.frontmatter
+  const comiketEventInfo = productQuery.comiketEventInfo.edges
+
   return (
     <ContextConsumer>
       {context => {
@@ -42,7 +43,9 @@ const CartContainer = () => {
               paidShipping = true;
             }
 
-            if(productMetadata.merchandise === 'comiket'){
+            if(productMetadata.merchandise === 'comiket'){              
+              const {preorder, release, eventName} = comiketEventInfo.find(x => x.node.frontmatter.id === productMetadata.eventId).node.frontmatter
+              productMetadata.eventName = eventName
               productMetadata.preorder = preorder;
               productMetadata.release = release;
             }
@@ -164,7 +167,7 @@ export const query = graphql`
             asin
             name
             displayName
-            eventName
+            eventId
             producttype
             series
             color
@@ -198,6 +201,7 @@ export const query = graphql`
             currentEvent
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
+            id
           }
         }
       }

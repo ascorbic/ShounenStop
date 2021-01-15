@@ -1,23 +1,21 @@
 import React from 'react'
-import Layout from '../components/LayoutItems/Layout'
 
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { css } from '@emotion/core'
 import ComiketProductPageContainer from '../components/Comiket/ComiketProductPageContainer'
 
 const ComiketProductPage = ({ data }) => {
   const {
     image,
     asin,
-    eventName,
+    eventId,
     producttype,
     pricings,
     description,
     onsale,
   } = data.comiketProduct.frontmatter
   const eventInfo = data.comiketEventInfo.edges.find(
-    x => x.node.frontmatter.eventName === eventName
+    x => x.node.frontmatter.id === eventId
   ).node.frontmatter
 
   const price = pricings[0].price
@@ -28,7 +26,6 @@ const ComiketProductPage = ({ data }) => {
         imgData={image.childImageSharp.fluid}
         asin={asin}
         eventInfo={eventInfo}
-        eventName={eventName}
         productType={producttype}
         price={price}
         description={description}
@@ -46,7 +43,7 @@ export const ComiketProductTemplateQuery = graphql`
       frontmatter {
         asin
         producttype
-        eventName
+        eventId
         image {
           childImageSharp {
             fluid(maxWidth: 800, quality: 100) {
@@ -74,6 +71,7 @@ export const ComiketProductTemplateQuery = graphql`
             currentEvent
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
+            id
           }
         }
       }

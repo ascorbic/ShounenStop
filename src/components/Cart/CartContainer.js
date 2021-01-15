@@ -15,9 +15,10 @@ const getProduct = flatProduct => {
 const CartContainer = () => {
   const productQuery  = useStaticQuery(query);
   const edges = productQuery.products.edges
+  const comiketEventInfo = productQuery.comiketEventInfo.edges
 
   //TODO: this is broken
-  const {preorder, release, eventName} = productQuery.comiketEventInfo.edges[0].node.frontmatter
+  const {preorder, release} = productQuery.comiketEventInfo.edges[0].node.frontmatter
   return (
     <ContextConsumer>
       {context => {
@@ -44,7 +45,10 @@ const CartContainer = () => {
               paidShipping = true;
             }
 
-            if(productMetadata.merchandise === 'comiket'){
+            if(productMetadata.merchandise === 'comiket'){              
+              const eventName = comiketEventInfo.find(x => x.node.frontmatter.id === productMetadata.eventId).node.frontmatter.eventName
+              console.log(eventName)
+              productMetadata.eventName = eventName
               productMetadata.preorder = preorder;
               productMetadata.release = release;
             }

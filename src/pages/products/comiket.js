@@ -21,17 +21,18 @@ const Comiket = ({ data, location }) => {
 
   const [iOS, setiOS] = React.useState(false);
 
-
   var currentEventKey = ''
 
-  // inject event info somewhere here
+  var eventIdMap = {}
   var eventFilterMap = {}
   var eventFilterList = Object.keys(comiketEventInfo).map(function(edge) {
     const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
     eventFilterMap[comiketEventInfoEdge.eventName] = {
+      eventId: comiketEventInfoEdge.id,
       preorder: comiketEventInfoEdge.preorder,
       release: comiketEventInfoEdge.release,
     }
+    eventIdMap[comiketEventInfoEdge.id] = comiketEventInfoEdge.eventName
     if (comiketEventInfoEdge.currentEvent) {
       currentEventKey = comiketEventInfoEdge.eventName
     }
@@ -41,11 +42,13 @@ const Comiket = ({ data, location }) => {
   const productTypeFilterList = ['All']
 
   comiketProductData.map(edge => {
+    edge.node.frontmatter.eventName = eventIdMap[edge.node.frontmatter.eventId]
     const curProductType = edge.node.frontmatter.producttype
     if (!productTypeFilterList.includes(curProductType)) {
       productTypeFilterList.push(curProductType)
     }
   })
+  console.log(comiketProductData)
 
   var parsedHash = new URLSearchParams(location.hash.substr(1))
   var selectedProductType = parsedHash.get(productTypeKey)

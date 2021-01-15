@@ -17,8 +17,6 @@ const CartContainer = () => {
   const edges = productQuery.products.edges
   const comiketEventInfo = productQuery.comiketEventInfo.edges
 
-  //TODO: this is broken
-  const {preorder, release} = productQuery.comiketEventInfo.edges[0].node.frontmatter
   return (
     <ContextConsumer>
       {context => {
@@ -46,8 +44,7 @@ const CartContainer = () => {
             }
 
             if(productMetadata.merchandise === 'comiket'){              
-              const eventName = comiketEventInfo.find(x => x.node.frontmatter.id === productMetadata.eventId).node.frontmatter.eventName
-              console.log(eventName)
+              const {preorder, release, eventName} = comiketEventInfo.find(x => x.node.frontmatter.id === productMetadata.eventId).node.frontmatter
               productMetadata.eventName = eventName
               productMetadata.preorder = preorder;
               productMetadata.release = release;

@@ -140,7 +140,7 @@ class PaymentContainer extends React.Component {
           orderInfo
         )
         .then(function(response) {
-          console.log(response)
+          // console.log(response)
         })
     }
   }

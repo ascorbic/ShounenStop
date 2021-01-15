@@ -48,7 +48,6 @@ const Comiket = ({ data, location }) => {
       productTypeFilterList.push(curProductType)
     }
   })
-  console.log(comiketProductData)
 
   var parsedHash = new URLSearchParams(location.hash.substr(1))
   var selectedProductType = parsedHash.get(productTypeKey)

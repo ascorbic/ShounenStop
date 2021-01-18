@@ -14,8 +14,6 @@ pricings:
     price: 342
   - quantity: 9
     price: 504
-  - quantity: 18
-    price: 990
 preorder: 2021-02-03T16:00:00.000Z
 release: 2021-02-25T16:00:00.000Z
 asin: CxpAtDHnl

@@ -6,6 +6,8 @@ series: "fate "
 image: images/eb_pi_box.png
 color: "#FF33F0"
 pricings:
+  - quantity: 1
+    price: 35
   - quantity: 10
     price: 280
 preorder: 2021-01-22T10:13:39.803Z

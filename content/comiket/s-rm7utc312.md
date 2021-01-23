@@ -1,7 +1,7 @@
 ---
 image: images/129260190_1794672180690696_6719605614761506249_n.jpg
 producttype: Sleeves
-eventName: Previous Events
+eventName: Available From Previous Events
 pricings:
   - quantity: 1
     price: 25

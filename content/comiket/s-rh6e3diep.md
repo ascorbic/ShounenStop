@@ -1,6 +1,6 @@
 ---
 image: images/set-del-later.png
-producttype: Mini sleeves
+producttype: 'Mini Sleeves'
 eventId: "O-dvjHAX5"
 weight: 0
 pricings:

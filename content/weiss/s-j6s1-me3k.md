@@ -1,6 +1,6 @@
 ---
 name: Tensei Shitara Slime Datta Ken vol. 2
-producttype: Booster Pack Box
+producttype: 'Booster Pack Box'
 displayName: Time Slime vol. 2
 series: Tensei Shitara Suraimu Datta Ken
 image: images/card-00013473.jpg

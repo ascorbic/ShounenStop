@@ -1,6 +1,6 @@
 ---
 name: Idol Master Shiny Colors
-producttype: Booster Pack Box
+producttype: 'Booster Pack Box'
 displayName: IMAS Shiny Colors
 series: Idol Master
 image: images/isc_bp-300x269-1.png

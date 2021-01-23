@@ -1,6 +1,6 @@
 ---
 image: images/129722113_1794671727357408_7894406716529906926_n.jpg
-producttype: Mini sleeves
+producttype: 'Mini Sleeves'
 eventId: "O-dvjHAX5"
 pricings:
   - quantity: 1

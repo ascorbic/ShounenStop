@@ -201,16 +201,16 @@ collections:
           label: Product Type,
           name: producttype,
           widget: select,
-          options: ['Playmat', 'Sleeves', 'Deckbox', 'Mini sleeves', 'Other'],
+          options: ['Playmat', 'Sleeves', 'Deckbox', 'Mini Sleeves', 'Other'],
           default: ['Playmat'],
         }
       - {
           label: Event Name,
-          name: eventName,
+          name: eventId,
           widget: relation,
           collection: comiketEventInfo,
           searchFields: ['eventName'],
-          valueField: 'eventName',
+          valueField: 'id',
           displayFields: ['eventName'],
         }
       - {

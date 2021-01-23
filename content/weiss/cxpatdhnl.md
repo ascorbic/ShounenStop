@@ -1,6 +1,6 @@
 ---
 name: Sword Art Online Alicization Vol 2
-producttype: Booster Pack Box
+producttype: 'Booster Pack Box'
 displayName: SAO Alicization Vol 2
 series: Sword Art Online
 image: images/saowou_bp_300x269.png

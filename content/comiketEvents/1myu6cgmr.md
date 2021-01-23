@@ -1,5 +1,5 @@
 ---
-eventName: In Stock
+eventName: "In Stock"
 currentEvent: false
 preorder: ""
 release: ""

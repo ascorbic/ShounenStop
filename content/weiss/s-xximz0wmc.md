@@ -1,6 +1,6 @@
 ---
 name: Love Live! Nijigasaki High School Idol Club
-producttype: Booster Pack Box
+producttype: 'Booster Pack Box'
 displayName: Love Live! Nijigasaki
 series: Love Live! Nijigasaki High School Idol Club
 image: images/lnj_box_bp-1.png

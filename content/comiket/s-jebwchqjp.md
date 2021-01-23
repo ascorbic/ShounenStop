@@ -1,6 +1,6 @@
 ---
 image: images/pieeee.png
-producttype: Mini sleeves
+producttype: 'Mini Sleeves'
 eventId: "O-dvjHAX5"
 pricings:
   - quantity: 1

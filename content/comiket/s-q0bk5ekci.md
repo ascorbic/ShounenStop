@@ -1,7 +1,7 @@
 ---
 image: images/eojxoxlvoaicfak.jpg
-producttype: Mini sleeves
-eventName: In Stock
+producttype: 'Mini Sleeves'
+eventId: "1mYu6cGMR"
 pricings:
   - quantity: 1
     price: 25

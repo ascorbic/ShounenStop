@@ -1,7 +1,6 @@
 ---
 image: images/128804034_1791056334385614_5318865431391491622_n.jpg
-producttype:
-  - Playmat
+producttype: Sleeves
 eventName: In Stock
 pricings:
   - quantity: 1

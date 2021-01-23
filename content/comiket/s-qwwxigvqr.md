@@ -1,0 +1,11 @@
+---
+image: images/130264923_1800227856801795_463631172258483468_n.jpg
+producttype: Mini sleeves
+eventName: In Stock
+pricings:
+  - quantity: 1
+    price: 30
+onsale: true
+asin: s-qwWxigVQr
+merchandise: comiket
+---

@@ -4,7 +4,7 @@ producttype: Sleeves
 eventName: In Stock
 pricings:
   - quantity: 1
-    price: 30
+    price: 25
 onsale: true
 asin: s-i_TCYQjyu
 merchandise: comiket

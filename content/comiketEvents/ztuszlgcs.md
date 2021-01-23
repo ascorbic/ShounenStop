@@ -1,5 +1,5 @@
 ---
-eventName: Available From Previous Events
+eventName: In Stock
 currentEvent: false
 preorder: ""
 release: ""

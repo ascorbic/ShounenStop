@@ -4,7 +4,9 @@ producttype: Sleeves
 eventName: In Stock
 pricings:
   - quantity: 1
-    price: 30
+    price: 33
+description: the text says "um...I realized the chest area of these clothes are
+  a bit too loose-fitting"
 onsale: true
 asin: s-3fipVVOvw
 merchandise: comiket

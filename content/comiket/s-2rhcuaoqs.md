@@ -1,7 +1,6 @@
 ---
 image: images/129658887_1795957727228808_1726795145918777299_n.jpg
-producttype:
-  - Playmat
+producttype: Mini sleeves
 eventName: In Stock
 pricings:
   - quantity: 1

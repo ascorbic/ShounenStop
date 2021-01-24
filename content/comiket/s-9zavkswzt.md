@@ -1,10 +1,10 @@
 ---
 image: images/129178780_1795136747310906_3462404918732137408_n.jpg
 producttype: Sleeves
-eventId: "1mYu6cGMR"
+eventId: 1mYu6cGMR
 pricings:
   - quantity: 1
-    price: 30
+    price: 29
 onsale: true
 asin: s-9ZAvksWzt
 merchandise: comiket

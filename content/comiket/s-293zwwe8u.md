@@ -1,6 +1,6 @@
 ---
 image: images/comic1140946789_1834745036683410_8522292662726549631_n.jpg
-producttype: Sleeves
+producttype: Playmat
 eventId: mkb4XfKk_
 pricings:
   - quantity: 1

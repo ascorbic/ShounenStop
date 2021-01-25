@@ -72,9 +72,9 @@ const Comiket = ({ data, location }) => {
   React.useEffect(() => {
     const userAgent =
       typeof window.navigator === "undefined" ? "" : navigator.userAgent;
-      var ipad = !!(navigator.userAgent.match(/(iPad)/)
+    var ipad = !!(navigator.userAgent.match(/(iPad)/)
       || (navigator.platform === "MacIntel" && typeof navigator.standalone !== "undefined"))
-      let isIOS = /iPad|iPhone|iPod/.test(navigator.platform)
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.platform)
       || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 
     setiOS(ipad || isIOS)
@@ -167,8 +167,9 @@ const Comiket = ({ data, location }) => {
               </div>
             </div>
             <div css={productHeaderSubtitleText}>
-              If we can't purchase the item at the event, we will refund you
-              after the event is over
+              First come first serve, if we can't purchase the item at the event, we will refund you afterwards.
+              We may provide you with updated prices or set purchase requirements as further information is 
+              released from the doujin circles, but only if necessary.
             </div>
           </div>
           <div className="row" css={productContentWrapper}>

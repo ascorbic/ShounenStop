@@ -29,6 +29,7 @@ const Comiket = ({ data, location }) => {
     const comiketEventInfoEdge = comiketEventInfo[edge].node.frontmatter
     eventFilterMap[comiketEventInfoEdge.eventName] = {
       eventId: comiketEventInfoEdge.id,
+      eventDesc: comiketEventInfoEdge.eventDesc,
       preorder: comiketEventInfoEdge.preorder,
       release: comiketEventInfoEdge.release,
     }
@@ -153,23 +154,21 @@ const Comiket = ({ data, location }) => {
           <div css={productCategoryHeaderContainer}>
             <div css={productCategoryHeader}>{currentEventFilterListItem}</div>
             <div css={eventDateText}>
-              <div css={dateTextContainer}>
+              {eventFilterMap[currentEventFilterListItem].preorder !== 'Invalid date' && <div css={dateTextContainer}>
                 <div css={dateField}>Preorder By</div>
                 <div css={dateValue}>
                   {eventFilterMap[currentEventFilterListItem].preorder}
                 </div>
-              </div>
-              <div css={dateTextContainer}>
+              </div>}
+              {eventFilterMap[currentEventFilterListItem].preorder !== 'Invalid date' && <div css={dateTextContainer}>
                 <div css={dateField}>Release Date</div>
                 <div css={dateValue}>
                   {eventFilterMap[currentEventFilterListItem].release}
                 </div>
-              </div>
+              </div>}
             </div>
             <div css={productHeaderSubtitleText}>
-              First come first serve, if we can't purchase the item at the event, we will refund you afterwards.
-              We may provide you with updated prices or set purchase requirements as further information is 
-              released from the doujin circles, but only if necessary.
+              {eventFilterMap[currentEventFilterListItem].eventDesc}
             </div>
           </div>
           <div className="row" css={productContentWrapper}>

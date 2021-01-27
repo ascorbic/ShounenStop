@@ -4,7 +4,7 @@ image: images/ann-del-later.jpg
 producttype: Figure
 series: Persona 5
 description: new and unopened
-ebayLink: http://ebay.us/oyigwR?cmpnId=5338273189
+ebayLink: https://www.ebay.com/itm/164668959781?ssPageName=STRK:MESELX:IT&_trksid=p3984.m1555.l2649
 shippingFrom: HK
 pricings:
   - quantity: 1

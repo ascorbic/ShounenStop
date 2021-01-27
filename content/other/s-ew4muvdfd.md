@@ -1,0 +1,13 @@
+---
+name: Play Arts Kai Tifa Lockhart
+image: images/s-l1600.jpg
+producttype: Figure
+series: Final Fantasy VII
+ebayLink: https://www.ebay.com/itm/164670805321?ssPageName=STRK:MESELX:IT&_trksid=p3984.m1555.l2649
+shippingFrom: HK
+pricings:
+  - quantity: 1
+    price: 205
+asin: s-eW4mUVDfd
+merchandise: other
+---

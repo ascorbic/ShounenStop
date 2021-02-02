@@ -1,7 +1,7 @@
 ---
 image: images/eojxoxlvoaicfak.jpg
-producttype: 'Mini Sleeves'
-eventId: "1mYu6cGMR"
+producttype: Mini Sleeves
+eventId: mkb4XfKk_
 pricings:
   - quantity: 1
     price: 25

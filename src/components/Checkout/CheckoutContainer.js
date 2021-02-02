@@ -51,7 +51,7 @@ const CheckoutContainer = ({ orderContext }) => {
           .max(15, 'Must be 15 characters or less')
           .required('Required'),
         zip: Yup.string()
-          .matches(/^[0-9]{5}$/, 'Must be exactly 5 digits')
+          .matches(/^[0-9]{4,7}$/, 'Must be exactly 5 digits')
           .required('Required'),
       })}
       onSubmit={values => {

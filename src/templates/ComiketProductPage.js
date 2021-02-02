@@ -12,7 +12,6 @@ const ComiketProductPage = ({ data }) => {
     producttype,
     pricings,
     description,
-    onsale,
   } = data.comiketProduct.frontmatter
   const eventInfo = data.comiketEventInfo.edges.find(
     x => x.node.frontmatter.id === eventId
@@ -29,7 +28,6 @@ const ComiketProductPage = ({ data }) => {
         productType={producttype}
         price={price}
         description={description}
-        onsale={onsale}
       />
     </>
   )
@@ -69,6 +67,7 @@ export const ComiketProductTemplateQuery = graphql`
             eventName
             eventDesc
             currentEvent
+            onsale
             preorder(formatString: "MMM DD")
             release(formatString: "MMM DD")
             id

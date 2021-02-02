@@ -83,6 +83,12 @@ collections:
           default: false,
         }
       - {
+          label: 'On Sale?',
+          name: onsale,
+          widget: boolean,
+          default: true,
+        }
+      - {
           label: Event Description,
           name: eventDesc,
           default: '',
@@ -242,12 +248,6 @@ collections:
             widget: number
             valueType: float
       - { label: Description, name: description, widget: text, required: false }
-      - {
-          label: 'On Sale?',
-          name: onsale,
-          widget: boolean,
-          default: true,
-        }
       - { label: ASIN, name: asin, widget: ncw-id, prefix: s, hidden: true }
       - {
           label: 'Merchandise',

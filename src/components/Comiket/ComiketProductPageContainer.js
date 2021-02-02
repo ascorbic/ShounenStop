@@ -12,9 +12,8 @@ const ComiketProductPageContainer = ({
   price,
   description,
   eventInfo,
-  onsale,
 }) => {
-  const { preorder, release, eventName } = eventInfo
+  const { preorder, release, eventName, onsale } = eventInfo
   return (
     <ContextConsumer>
       {context => {

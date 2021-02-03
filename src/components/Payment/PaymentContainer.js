@@ -510,6 +510,9 @@ class PaymentContainer extends React.Component {
                   If you refresh you, will lose your progress
                   <br />
                   Confirmation can take up to 10 seconds, if not please contact us.
+                  <br />
+                  <br />
+                  <b>Please make sure the email address you input is the same email used for Paypal.</b>
                 </div>
               </div>
             )}

@@ -52,7 +52,6 @@ const ConfirmationContainer = ({ orderContext }) => {
             </div>
             <div css={shippingContainer}>
               <div css={shippingContainerInner}>
-                {/* <div css={header}>Shipping Details</div> */}
                 <div css={shippingDetailsContainer}>
                   <div css={shippingMethodContainer}>
                     <div css={shippingMethodHeader}>Shipping Method</div>

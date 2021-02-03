@@ -221,6 +221,12 @@ collections:
           displayFields: ['eventName'],
         }
       - {
+          label: 'On Sale Override',
+          name: onsale,
+          widget: boolean,
+          required: false,
+        }
+      - {
           label: Shipping Weight,
           name: weight,
           widget: number,

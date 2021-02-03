@@ -48,8 +48,9 @@ const Comiket = ({ data, location }) => {
   const productTypeFilterList = ['All']
 
   comiketProductData.map(edge => {
-    console.log(edge.node.frontmatter.eventId)
-    edge.node.frontmatter.onsale = eventIdMap[edge.node.frontmatter.eventId].onsale
+    // console.log(edge.node.frontmatter.onsale)
+    // console.log(eventIdMap[edge.node.frontmatter.eventId].onsale)
+    edge.node.frontmatter.onsale = edge.node.frontmatter.onsale ?? eventIdMap[edge.node.frontmatter.eventId].onsale
     edge.node.frontmatter.eventName = eventIdMap[edge.node.frontmatter.eventId].eventName
     const curProductType = edge.node.frontmatter.producttype
     if (!productTypeFilterList.includes(curProductType)) {
@@ -322,6 +323,7 @@ export const ComiketProductCategoryQuery = graphql`
             asin
             producttype
             eventId
+            onsale
             image {
               childImageSharp {
                 fluid(maxWidth: 800, quality: 50) {

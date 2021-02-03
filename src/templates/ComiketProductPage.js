@@ -12,6 +12,7 @@ const ComiketProductPage = ({ data }) => {
     producttype,
     pricings,
     description,
+    onsale,
   } = data.comiketProduct.frontmatter
   const eventInfo = data.comiketEventInfo.edges.find(
     x => x.node.frontmatter.id === eventId
@@ -28,6 +29,7 @@ const ComiketProductPage = ({ data }) => {
         productType={producttype}
         price={price}
         description={description}
+        onsaleOverride={onsale}
       />
     </>
   )

@@ -12,8 +12,10 @@ const ComiketProductPageContainer = ({
   price,
   description,
   eventInfo,
+  onsaleOverride
 }) => {
-  const { preorder, release, eventName, onsale } = eventInfo
+  var { preorder, release, eventName, onsale } = eventInfo
+  onsale = onsaleOverride ?? onsale;
   return (
     <ContextConsumer>
       {context => {
@@ -60,14 +62,14 @@ const ComiketProductPageContainer = ({
                       </div>
                       <div css={productInfoContainer}>
                           <div css={productInfoHeader}>Information</div>
-                          <div css={infoRow}>
+                          {preorder !== 'Invalid date' && <div css={infoRow}>
                             <div css={infoLeft}>Preorder By</div>
                             <div css={infoRight}>{preorder}</div>
-                          </div>
-                          <div css={infoRow}>
+                          </div>}
+                          {release !== 'Invalid date' && <div css={infoRow}>
                             <div css={infoLeft}>Release Date</div>
                             <div css={infoRight}>{release}</div>
-                          </div>
+                          </div>}
                           {description !== null ? (
                           <div css={infoRow}>
                             <div css={infoLeft}>Description</div>

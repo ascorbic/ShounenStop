@@ -1,5 +1,5 @@
 ---
-image: images/comic1-130242417_1800227620135152_6756896158928643860_n.jpg
+image: images/comic1asdya130785445_213104747107704_8109006553117672362_n.jpg
 producttype: Playmat
 eventId: mkb4XfKk_
 weight: 0

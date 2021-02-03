@@ -14,6 +14,9 @@ const getProduct = flatProduct => {
 const ConfirmationContainer = ({ orderContext }) => {
   const checkmarkImageData = useStaticQuery(query).checkmarkImage
     .childImageSharp.fluid
+  useEffect(()=>{
+    window.onbeforeunload = null
+  })
 
   return (
     <Container fluid css={centerContainer}>

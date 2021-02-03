@@ -1,5 +1,5 @@
 ---
-image: images/comic1131487446_1801782563312991_5718635597979741649_n.jpg
+image: images/comic1sdfsaf342w42-agura.jpg
 producttype: Playmat
 eventId: mkb4XfKk_
 pricings:

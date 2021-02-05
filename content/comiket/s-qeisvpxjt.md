@@ -2,10 +2,10 @@
 image: images/comic142249136_1834744756683438_7785600378695004090_n.jpg
 producttype: Sleeves
 eventId: mkb4XfKk_
+onsale: false
 pricings:
   - quantity: 1
     price: 25
-onsale: true
 asin: s-QEiSVpxjt
 merchandise: comiket
 ---

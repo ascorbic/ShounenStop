@@ -1,11 +1,11 @@
 ---
 image: images/comic1esudc95u0amtffb.jpg
 producttype: Sleeves
-eventId: mkb4XfKk_
+eventId: 1mYu6cGMR
+onsale: true
 pricings:
   - quantity: 1
-    price: 25
-onsale: true
+    price: 30
 asin: s-UiR4Wg4Xt
 merchandise: comiket
 ---

@@ -2,7 +2,6 @@
 image: images/comic1es0s6vvu4aybhv3.jpg
 producttype: Sleeves
 eventId: mkb4XfKk_
-onsale: false
 weight: 1
 pricings:
   - quantity: 1

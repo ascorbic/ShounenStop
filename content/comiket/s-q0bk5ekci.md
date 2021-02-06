@@ -2,7 +2,6 @@
 image: images/eojxoxlvoaicfak.jpg
 producttype: Mini Sleeves
 eventId: 1mYu6cGMR
-onsale: true
 pricings:
   - quantity: 1
     price: 24

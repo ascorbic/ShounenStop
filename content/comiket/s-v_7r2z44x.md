@@ -5,7 +5,6 @@ eventId: mkb4XfKk_
 pricings:
   - quantity: 1
     price: 25
-onsale: true
 asin: s-v_7R2z44x
 merchandise: comiket
 ---

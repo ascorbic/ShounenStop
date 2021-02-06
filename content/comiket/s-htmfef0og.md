@@ -2,7 +2,6 @@
 image: images/comic1twinsetdelaterpls.png
 producttype: Mini Sleeves
 eventId: mkb4XfKk_
-onsale: true
 pricings:
   - quantity: 1
     price: 46

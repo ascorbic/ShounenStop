@@ -2,7 +2,6 @@
 image: images/comic1yugiohsetbeasthingde-later.png
 producttype: Mini Sleeves
 eventId: mkb4XfKk_
-onsale: true
 pricings:
   - quantity: 1
     price: 46

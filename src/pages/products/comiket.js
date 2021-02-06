@@ -48,8 +48,6 @@ const Comiket = ({ data, location }) => {
   const productTypeFilterList = ['All']
 
   comiketProductData.map(edge => {
-    // console.log(edge.node.frontmatter.onsale)
-    // console.log(eventIdMap[edge.node.frontmatter.eventId].onsale)
     edge.node.frontmatter.onsale = edge.node.frontmatter.onsale ?? eventIdMap[edge.node.frontmatter.eventId].onsale
     edge.node.frontmatter.eventName = eventIdMap[edge.node.frontmatter.eventId].eventName
     const curProductType = edge.node.frontmatter.producttype

@@ -5,7 +5,6 @@ eventId: "1mYu6cGMR"
 pricings:
   - quantity: 1
     price: 33
-onsale: true
 asin: s-urp-6KJ8t
 merchandise: comiket
 ---

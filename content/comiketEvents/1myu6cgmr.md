@@ -4,6 +4,6 @@ eventDesc: ""
 currentEvent: false
 preorder: ""
 release: ""
-onsale: false
+onsale: true
 id: 1mYu6cGMR
 ---

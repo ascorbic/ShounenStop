@@ -7,7 +7,6 @@ pricings:
     price: 33
 description: the text says "um...I realized the chest area of these clothes are
   a bit too loose-fitting"
-onsale: true
 asin: s-3fipVVOvw
 merchandise: comiket
 ---

@@ -2,6 +2,7 @@
 image: images/comic1dmguraraset.png
 producttype: Mini Sleeves
 eventId: mkb4XfKk_
+onsale: false
 pricings:
   - quantity: 1
     price: 46

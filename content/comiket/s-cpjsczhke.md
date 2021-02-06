@@ -2,6 +2,10 @@
 image: images/comic1other-yugioh-sethingy.png
 producttype: Mini Sleeves
 eventId: mkb4XfKk_
+<<<<<<< HEAD
+=======
+onsale: false
+>>>>>>> d0539816cd252e5865fc1280c0451281460d80b4
 pricings:
   - quantity: 1
     price: 46

@@ -2,6 +2,7 @@
 image: images/comic1143307003_1836531243171456_412419057542842297_n.jpg
 producttype: Playmat
 eventId: mkb4XfKk_
+onsale: false
 pricings:
   - quantity: 1
     price: 65

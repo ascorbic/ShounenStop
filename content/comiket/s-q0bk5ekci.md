@@ -1,10 +1,11 @@
 ---
 image: images/eojxoxlvoaicfak.jpg
 producttype: Mini Sleeves
-eventId: mkb4XfKk_
+eventId: 1mYu6cGMR
+onsale: true
 pricings:
   - quantity: 1
-    price: 25
+    price: 24
 description: This is a reference to Roland, the no. 1 Japanese gigolo/male prostitute
 asin: s-Q0Bk5Ekci
 merchandise: comiket

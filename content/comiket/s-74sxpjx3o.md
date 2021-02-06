@@ -1,10 +1,15 @@
 ---
 image: images/ysdgsfsadfs2.png
 producttype: Mini Sleeves
-eventId: mkb4XfKk_
+eventId: 1mYu6cGMR
+onsale: true
 pricings:
   - quantity: 1
+<<<<<<< HEAD
     price: 26
+=======
+    price: 30
+>>>>>>> d0539816cd252e5865fc1280c0451281460d80b4
 asin: s-74sxPjx3o
 merchandise: comiket
 ---

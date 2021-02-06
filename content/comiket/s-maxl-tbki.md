@@ -1,12 +1,11 @@
 ---
-image: images/comic1-quintiplet-sets-duo.png
+image: images/comic13viltwinsdiffisdfsd.png
 producttype: Sleeves
 eventId: mkb4XfKk_
-onsale: false
 pricings:
   - quantity: 1
     price: 46
 description: two sleeve set
-asin: s-LoEcdv_t6
+asin: s-Maxl-tBki
 merchandise: comiket
 ---

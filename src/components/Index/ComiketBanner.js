@@ -25,7 +25,7 @@ const ComiketBanner = () => {
     >
       <div css={landingSection}>
         <div css={landingText}>
-          AIR COMIKET 2
+          COMIC1 18
           <div css={lineBreakSm}></div>
           <span css={shippingText}>All New Playmats and Sleeves!<br/> Preorder by December 26th </span>
         </div>

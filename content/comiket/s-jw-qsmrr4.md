@@ -1,7 +1,7 @@
 ---
 image: images/picture1.png
-producttype: Playmat
-eventId: "1mYu6cGMR"
+producttype: Sleeves
+eventId: 1mYu6cGMR
 pricings:
   - quantity: 1
     price: 27

@@ -1,6 +1,6 @@
 ---
 image: images/cgm-3975.jpg
-producttype: Other
+producttype: Sleeves
 eventId: 1mYu6cGMR
 pricings:
   - quantity: 1
@@ -8,7 +8,7 @@ pricings:
 description: >
   Name: KMC Over-Sized Gold Over Sleeves Character Guard 
 
-  Details: Standard Sized, (Weiss Vanguard Pokemon Magic) 60 pcs
+  Details: Standard Sized (Weiss Vanguard Pokemon Magic), 60 pcs
 
 
   Eligible to be added to cart (max 9) if purchasing with other items, excluding other over sleeves.

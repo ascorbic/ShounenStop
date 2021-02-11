@@ -7,9 +7,9 @@ pricings:
     price: 5
 description: >
   Eligible to be added to cart (max 9) if purchasing with other items (excluding
-  other over sleeves). These are standard sized (Weiss Vanguard Pokemon Magic),
-  comes with 60 pcs. These are known as KMC Silver Floral Over-Sized Over
-  Sleeves / Character Guard
+  other over sleeves). These are standard-sized (Weiss, Vanguard, Pokemon,
+  Magic), comes with 60 pcs. These are known as KMC Silver Floral Over Sleeves /
+  Character Guard Sleeves
 asin: s-XLXi1sX_b
 merchandise: comiket
 ---

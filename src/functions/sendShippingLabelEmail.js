@@ -9,56 +9,7 @@ exports.handler = async (event, context, callback) => {
   const customerEmail = payload.userInfo.email
   const customerName = payload.userInfo.firstName + " " + payload.userInfo.lastName
 
-
-  const orderConfirmationCustomer = {
-    personalizations: [
-      {
-        to: [
-          {
-            email: customerEmail,
-            name: customerName,
-          },
-        ],
-        dynamic_template_data: payload,
-        subject: 'Order Confirmation!',
-      },
-    ],
-    from: {
-      email: 'shounenstop@gmail.com',
-      name: 'Shounen Stop',
-    },
-    reply_to: {
-      email: 'shounenstop@gmail.com',
-      name: 'Shounen Stop',
-    },
-    template_id: 'd-92b3e2e517114c869eb5c7e221ba85e2',
-  }
-
   const orderInformationStore = {
-    personalizations: [
-      {
-        to: [
-          {
-            email: 'shounenstop@gmail.com',
-            name: 'Shounen Stop',
-          },
-        ],
-        dynamic_template_data: payload,
-        subject: 'Shipping Information',
-      },
-    ],
-    from: {
-      email: 'shounenstop@gmail.com',
-      name: 'Shounen Stop',
-    },
-    reply_to: {
-      email: 'shounenstop@gmail.com',
-      name: 'Shounen Stop',
-    },
-    template_id: 'd-7ccebcdda57b4ffb88d2bc21407cc1f5',
-  }
-
-  const orderConfirmationStore = {
     personalizations: [
       {
         to: [
@@ -79,7 +30,7 @@ exports.handler = async (event, context, callback) => {
       email: customerEmail,
       name: customerName,
     },
-    template_id: 'd-92b3e2e517114c869eb5c7e221ba85e2',
+    template_id: 'd-7ccebcdda57b4ffb88d2bc21407cc1f5',
   }
 
 
@@ -102,8 +53,6 @@ exports.handler = async (event, context, callback) => {
   })
   
   try {
-    await sgMail.send(orderConfirmationCustomer)
-    await sgMail.send(orderConfirmationStore)
     await sgMail.send(orderInformationStore)
 
     return {

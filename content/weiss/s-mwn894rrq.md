@@ -10,8 +10,6 @@ pricings:
     price: 25
   - quantity: 6
     price: 126
-  - quantity: 9
-    price: 189
 description: Available from HK distributors, please allow a week for processing
   before shipping
 preorder: ""

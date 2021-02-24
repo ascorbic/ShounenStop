@@ -4,7 +4,7 @@ producttype: Playmat
 eventId: eUBdWMfNo
 pricings:
   - quantity: 1
-    price: 62
+    price: 65
 description: ""
 asin: s-x8Z4Yqmfd
 merchandise: comiket

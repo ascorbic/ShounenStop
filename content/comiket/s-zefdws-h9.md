@@ -4,7 +4,7 @@ producttype: Sleeves
 eventId: mkb4XfKk_
 pricings:
   - quantity: 1
-    price: 28
+    price: 27
 asin: s-zEfdws-h9
 merchandise: comiket
 ---

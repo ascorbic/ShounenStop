@@ -5,7 +5,7 @@ eventId: 1mYu6cGMR
 weight: 0
 pricings:
   - quantity: 1
-    price: 27
+    price: 25
 asin: s-nAzQgBuMP
 merchandise: comiket
 ---

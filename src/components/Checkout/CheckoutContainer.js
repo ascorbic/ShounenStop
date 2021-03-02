@@ -87,7 +87,7 @@ const CheckoutContainer = ({ orderContext }) => {
                     <div css={header}>Shipping Information</div>
                     <ul>
                       <li>
-                        <b>$5</b> Shounen Style Shipping on all carts unless
+                        <b>$8</b> Shounen Style Shipping on all carts unless
                         otherwise stated
                       </li>
                       <li>

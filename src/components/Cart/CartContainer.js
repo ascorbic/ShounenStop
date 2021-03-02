@@ -72,7 +72,7 @@ const CartContainer = () => {
         const shippingData = {
           shippingMethod: {
             name: 'Shounen Style Shipping',
-            price: paidShipping ? 5 : 0,
+            price: paidShipping ? 8 : 0,
             speed: '1-2 Weeks',
           },
         }

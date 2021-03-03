@@ -1,6 +1,6 @@
 ---
 image: images/sunshinespringevj6visvkaas6zz.jpg
-producttype: Sleeves
+producttype: Mini Sleeves
 eventId: eUBdWMfNo
 pricings:
   - quantity: 1

@@ -4,7 +4,7 @@ producttype: Mini Sleeves
 eventId: 1mYu6cGMR
 pricings:
   - quantity: 1
-    price: 27
+    price: 24
 asin: s-qwWxigVQr
 merchandise: comiket
 ---

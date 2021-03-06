@@ -4,7 +4,7 @@ producttype: Sleeves
 eventId: 1mYu6cGMR
 pricings:
   - quantity: 1
-    price: 30
+    price: 27
 description: the text says "um...I realized the chest area of these clothes are
   a bit too loose-fitting"
 asin: s-3fipVVOvw

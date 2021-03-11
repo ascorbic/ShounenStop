@@ -14,9 +14,7 @@ pricings:
     price: 285
   - quantity: 10
     price: 565
-  - quantity: 18
-    price: 999
-description: 18 boxes will be a case
+description: ""
 preorder: 2021-03-29T16:00:00.000Z
 release: 2021-04-08T16:00:00.000Z
 asin: s-QSL28cuzV

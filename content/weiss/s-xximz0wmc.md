@@ -14,8 +14,6 @@ pricings:
     price: 348
   - quantity: 9
     price: 513
-  - quantity: 18
-    price: 999
 description: 18 boxes will be a full case.
 preorder: 2021-03-22T16:00:00.000Z
 release: 2021-04-22T16:00:00.000Z

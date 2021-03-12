@@ -1,5 +1,5 @@
 ---
-image: images/sunshinespring-roland-set.png
+image: images/roland-set.png
 producttype: Mini Sleeves
 eventId: 1mYu6cGMR
 pricings:

@@ -4,5 +4,5 @@ landingSubtitle: $8 Shipping on all carts
 landingImage: images/sao.jpg
 release1: s-QSL28cuzV
 release2: s-Fn-RC6_X-
-release3: s-XXiMZ0WmC
+release3: ""
 ---

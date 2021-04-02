@@ -5,7 +5,7 @@ eventId: 1mYu6cGMR
 pricings:
   - quantity: 1
     price: 25
-description: we have two in stock
+description: ""
 asin: s-MB7C-hLkP
 merchandise: comiket
 ---

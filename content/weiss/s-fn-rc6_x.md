@@ -15,7 +15,7 @@ pricings:
   - quantity: 10
     price: 280
 description: ""
-preorder: 2021-03-07T08:37:35.159Z
+preorder: 2021-04-30T08:37:35.159Z
 release: 2021-05-15T08:37:07.750Z
 asin: s-Fn-RC6_X-
 merchandise: weiss

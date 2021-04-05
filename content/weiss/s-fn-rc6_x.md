@@ -9,14 +9,12 @@ pricings:
   - quantity: 1
     price: 35
   - quantity: 3
-    price: 88
+    price: 90
   - quantity: 6
-    price: 166
+    price: 172
   - quantity: 10
-    price: 272
-  - quantity: 30
-    price: 810
-description: 30 boxes will be a case
+    price: 280
+description: ""
 preorder: 2021-03-07T08:37:35.159Z
 release: 2021-05-15T08:37:07.750Z
 asin: s-Fn-RC6_X-

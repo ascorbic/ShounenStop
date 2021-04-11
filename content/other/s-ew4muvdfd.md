@@ -8,7 +8,7 @@ ebayLink: https://www.ebay.com/itm/164674908929?ssPageName=STRK:MESELX:IT&_trksi
 shippingFrom: HK
 pricings:
   - quantity: 1
-    price: 210
+    price: 195
 asin: s-eW4mUVDfd
 merchandise: other
 ---

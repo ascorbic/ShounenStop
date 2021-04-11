@@ -4,7 +4,7 @@ image: images/s-l1600.jpg
 producttype: Figure
 series: Final Fantasy VII
 description: New and unopened
-ebayLink: https://www.ebay.com/itm/373487718723
+ebayLink: https://www.ebay.com/itm/164775018976?ssPageName=STRK:MESELX:IT&_trksid=p3984.m1555.l2649
 shippingFrom: HK
 pricings:
   - quantity: 1

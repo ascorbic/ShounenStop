@@ -1,5 +1,5 @@
 ---
-image: images/air-comiket-3eymgcshuyaamt-u.jpg
+image: images/aircomiket3eymgcshuyaamt-u.jpg
 producttype: Playmat
 eventId: iuq6O2mCN
 pricings:

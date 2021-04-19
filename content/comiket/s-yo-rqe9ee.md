@@ -2,7 +2,7 @@
 image: images/aircomiket3ey8b_wmucam2aaa.jpg
 producttype: Sleeves
 eventId: iuq6O2mCN
-weight: 0
+weight: 2
 pricings:
   - quantity: 1
     price: 25

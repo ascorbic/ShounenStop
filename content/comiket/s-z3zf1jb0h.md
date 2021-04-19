@@ -1,7 +1,6 @@
 ---
 image: images/aircomiket3ezft9-rvcaiipj8.jpg
-producttype:
-  - Playmat
+producttype: Playmat
 eventId: iuq6O2mCN
 pricings:
   - quantity: 1

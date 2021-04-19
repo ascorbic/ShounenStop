@@ -5,6 +5,7 @@ eventId: iuq6O2mCN
 pricings:
   - quantity: 1
     price: 25
+description: sleeves
 asin: s-wr6-Ch1vL
 merchandise: comiket
 ---

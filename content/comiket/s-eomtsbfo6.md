@@ -4,7 +4,7 @@ producttype: Sleeves
 eventId: iuq6O2mCN
 pricings:
   - quantity: 1
-    price: 28
+    price: 29
 asin: s-EomtsBFO6
 merchandise: comiket
 ---

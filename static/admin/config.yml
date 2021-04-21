@@ -188,7 +188,7 @@ collections:
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
-      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, hidden: true }
+      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, postfix: s, hidden: true }
       - {
           label: 'Merchandise',
           name: 'merchandise',

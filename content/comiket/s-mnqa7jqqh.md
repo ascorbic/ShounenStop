@@ -5,7 +5,7 @@ eventId: iuq6O2mCN
 pricings:
   - quantity: 1
     price: 47
-description: 2 sleeve set 60 pcs
+description: 2 sleeve set 60 pcs each
 asin: s-MnQA7JQQH
 merchandise: comiket
 ---

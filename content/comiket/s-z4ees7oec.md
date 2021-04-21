@@ -1,7 +1,6 @@
 ---
 image: images/aircomiket3ipsetsffdsfs.png
-producttype:
-  - Playmat
+producttype: Mini Sleeves
 eventId: iuq6O2mCN
 pricings:
   - quantity: 1

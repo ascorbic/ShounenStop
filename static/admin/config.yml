@@ -113,7 +113,7 @@ collections:
           dateFormat: 'MM.DD.YYYY',
           timeFormat: false,
         }
-      - { label: ID, name: id, widget: ncw-id, hidden: true }
+      - { label: ID, name: id, widget: ncw-id, prefix: c, postfix: c, hidden: true }
   - name: weiss
     label: Weiss
     editor:
@@ -254,7 +254,7 @@ collections:
             widget: number
             valueType: float
       - { label: Description, name: description, widget: text, required: false }
-      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, hidden: true }
+      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, postfix: s, hidden: true }
       - {
           label: 'Merchandise',
           name: 'merchandise',
@@ -303,7 +303,7 @@ collections:
           required: false,
           min: 0,
         }
-      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, hidden: true }
+      - { label: ASIN, name: asin, widget: ncw-id, prefix: s, postfix: s, hidden: true }
       - {
           label: 'Merchandise',
           name: 'merchandise',
@@ -335,4 +335,4 @@ collections:
           widget: number,
           min: 1,
         }
-      - { label: ID, name: id, widget: ncw-id, hidden: true }
+      - { label: ID, name: id, widget: ncw-id, prefix: s, postfix: s, hidden: true }

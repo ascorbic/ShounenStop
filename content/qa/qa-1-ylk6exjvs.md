@@ -1,0 +1,9 @@
+---
+question: How many comiket events are during the year?
+answer: "Usually their are 6 of these events each year, Comiket, Comic1, and
+  Sunshine Creation that happen twice a year. When these event items are
+  announced, we will post on facebook to let everyone know. We recommend
+  following our facebook page for these details. "
+order: 1
+id: YLK6ExJvs
+---

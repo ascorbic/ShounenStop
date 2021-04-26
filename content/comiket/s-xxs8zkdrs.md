@@ -2,6 +2,7 @@
 image: images/aircomiket3ezlit8xviaiabdh.jpg
 producttype: Sleeves
 eventId: iuq6O2mCN
+onsale: false
 pricings:
   - quantity: 1
     price: 28

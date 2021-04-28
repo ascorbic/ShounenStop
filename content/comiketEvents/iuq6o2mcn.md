@@ -1,6 +1,6 @@
 ---
 eventName: Air Comiket 3 (Current)
-currentEvent: false
+currentEvent: true
 onsale: false
 eventDesc: "Deadline has passed. First come first serve, we may provide you with
   updated prices or set purchase requirements as further information is released

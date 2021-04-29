@@ -13,7 +13,7 @@ pricings:
   - price: 162
     quantity: 6
   - quantity: 10
-    price: 802
+    price: 265
   - quantity: 30
     price: 840
 description: 30 boxes will be a case

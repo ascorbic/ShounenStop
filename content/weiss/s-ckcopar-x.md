@@ -15,7 +15,7 @@ pricings:
   - quantity: 10
     price: 280
   - quantity: 30
-    price: 870
+    price: 840
 description: 30 boxes will be a case
 preorder: 2021-06-10T16:16:31.685Z
 release: 2021-07-01T16:16:18.429Z

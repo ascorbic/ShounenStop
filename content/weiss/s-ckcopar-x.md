@@ -3,8 +3,8 @@ name: Morfonica x Raise a Suilen
 producttype: Extra Booster
 displayName: Morfonica x Raise a Suilen
 series: BanG Dream!
-image: images/eb_now-printing.png
-color: "#b3b3b3"
+image: images/bd_mnrs_box.png
+color: "#58bdec"
 pricings:
   - quantity: 1
     price: 35

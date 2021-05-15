@@ -3,8 +3,8 @@ name: Poppin’Party×Roselia
 producttype: Extra Booster
 displayName: Poppin’Party×Roselia
 series: BanG Dream!
-image: images/eb_now-printing.png
-color: " #b3b3b3"
+image: images/bd_pprs_box.png
+color: "#ef8a95"
 pricings:
   - quantity: 1
     price: 35

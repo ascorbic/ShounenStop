@@ -9,8 +9,7 @@ answer: >
   country. We will declare all shipments as gifts and write the lowest
   reasonable value on the shipment to minimize the chance of any border delay.
   Please pay any import fees for delivery if required, we take no responsibility
-  for packages ultimately seized by customs, as such a situation is beyond our
-  control.
+  for packages delayed by customs, as such a situation is beyond our control.
 order: 4
 id: tR7NtRZyz
 ---

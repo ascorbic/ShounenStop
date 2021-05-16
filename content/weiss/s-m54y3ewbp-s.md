@@ -7,7 +7,7 @@ image: images/10777151.jpg
 color: "#ce9e00"
 pricings:
   - quantity: 1
-    price: 330
+    price: 325
 description: "5 playsets in stock. This price is based on the assumption of a 10
   RR (double rares) in this set, we will adjust the price accordingly if this
   changes. Please note that these playsets will be sourced from an affiliate

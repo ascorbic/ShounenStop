@@ -11,7 +11,7 @@ pricings:
   - quantity: 3
     price: 171
   - quantity: 5
-    price: 180
+    price: 280
   - quantity: 10
     price: 550
   - quantity: 18

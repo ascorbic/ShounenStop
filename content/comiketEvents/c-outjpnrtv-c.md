@@ -1,5 +1,5 @@
 ---
-eventName: Comic Treasure 37
+eventName: Comic Treasure 37 (Current)
 currentEvent: true
 onsale: true
 eventDesc: First come first serve, refunds will be provided for items that

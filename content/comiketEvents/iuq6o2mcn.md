@@ -1,5 +1,5 @@
 ---
-eventName: Air Comiket 3 (Current)
+eventName: Air Comiket 3
 currentEvent: true
 onsale: false
 eventDesc: "Deadline has passed. First come first serve, we may provide you with

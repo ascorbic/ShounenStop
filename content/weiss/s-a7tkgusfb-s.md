@@ -1,0 +1,16 @@
+---
+name: TD Variety Playset - Hololive Production
+producttype: Trial Deck+
+displayName: TD Playset Hololive
+series: Hololive VTubers
+image: images/71941-7.jpg
+color: "#e9847b"
+pricings:
+  - quantity: 1
+    price: 101
+description: "2 of each 7 kinds of opened tds "
+preorder: 2021-06-07T16:00:00.000Z
+release: 2021-09-23T16:00:00.000Z
+asin: s-A7tkGusFB-s
+merchandise: weiss
+---

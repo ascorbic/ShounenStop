@@ -4,7 +4,7 @@ producttype: Booster Pack Box
 displayName: Mushoku Tensei
 series: "Mushoku Tensei: Jobless Reincarnation"
 image: images/mti_bp_box.png
-color: "#939393"
+color: "#f1c640"
 pricings:
   - quantity: 1
     price: 63

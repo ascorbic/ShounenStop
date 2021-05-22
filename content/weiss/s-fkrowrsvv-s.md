@@ -1,7 +1,7 @@
 ---
 name: "Variety Pack: Hololive Production"
 producttype: Trial Deck+
-displayName: "Variety Pack: Hololive"
+displayName: Variety Pack - Hololive
 series: Hololive VTubers
 image: images/71941-7.jpg
 color: "#e9847b"

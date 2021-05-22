@@ -11,7 +11,7 @@ pricings:
   - quantity: 7
     price: 102
   - quantity: 14
-    price: 192
+    price: 193
 description: "Sets of 7 and 14 will come with 1 and 2 of each kind of TD+,
   respectively. If you select a quantity of 1, we will surprise you with a
   random TD. "

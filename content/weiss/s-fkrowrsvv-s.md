@@ -1,5 +1,5 @@
 ---
-name: "Variety Pack: Hololive Production"
+name: Variety Pack - Hololive Production
 producttype: Trial Deck+
 displayName: Variety Pack - Hololive
 series: Hololive VTubers

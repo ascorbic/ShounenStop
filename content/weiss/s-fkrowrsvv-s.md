@@ -10,11 +10,8 @@ pricings:
     price: 18
   - quantity: 7
     price: 102
-  - quantity: 14
-    price: 193
-description: "Sets of 7 and 14 will come with 1 and 2 of each kind of TD+,
-  respectively. If you select a quantity of 1, we will surprise you with a
-  random TD. "
+description: "Comes with 1 of each kind of TD+. If you select a quantity of 1,
+  we will surprise you with a random TD. "
 preorder: 2021-06-07T16:00:00.000Z
 release: 2021-09-23T16:00:00.000Z
 asin: s-fKRowRsvv-s

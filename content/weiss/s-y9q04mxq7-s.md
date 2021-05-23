@@ -13,6 +13,7 @@ pricings:
   - quantity: 6
     price: 87
 description: 6 tds will be a case
+weight: 3
 preorder: 2021-06-07T16:00:00.000Z
 release: 2021-09-23T16:00:00.000Z
 asin: s-Y9q04MxQ7-s

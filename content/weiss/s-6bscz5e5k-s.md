@@ -8,7 +8,7 @@ color: "#e9847b"
 pricings:
   - quantity: 1
     price: 18
-  - quantity: 1
+  - quantity: 2
     price: 29
   - quantity: 6
     price: 85

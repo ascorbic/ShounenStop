@@ -9,9 +9,9 @@ pricings:
   - quantity: 1
     price: 18
   - quantity: 2
-    price: 29
+    price: 30
   - quantity: 6
-    price: 85
+    price: 87
 description: 6 tds will be a case
 weight: ""
 preorder: 2021-06-07T16:00:00.000Z

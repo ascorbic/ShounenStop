@@ -12,6 +12,7 @@ pricings:
     price: 102
 description: "Comes with 1 of each kind of TD+. If you select a quantity of 1,
   we will surprise you with a random TD. "
+weight: 0
 preorder: 2021-06-07T16:00:00.000Z
 release: 2021-09-23T16:00:00.000Z
 asin: s-fKRowRsvv-s

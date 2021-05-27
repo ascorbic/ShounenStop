@@ -1,7 +1,7 @@
 ---
 eventName: Comic Treasure 37 (Current)
 currentEvent: true
-onsale: true
+onsale: false
 eventDesc: First come first serve, refunds will be provided for items that
   cannot be purchased at the event. Send reply to the confirmation email if you
   would like us to combine with your air comiket 3 items, and we will refund you

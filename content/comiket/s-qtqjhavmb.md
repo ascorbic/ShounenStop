@@ -5,6 +5,7 @@ eventId: c-vLkg_Y6KL-c
 pricings:
   - quantity: 1
     price: 47
+description: two sleeve set
 asin: s-QTqjHaVmb
 merchandise: comiket
 ---

@@ -8,7 +8,7 @@ eventDesc: First come first serve, we may provide you with updated prices or set
   spam for such communications, especially if you purchase close to the
   deadline. Refunds will be provided for items that cannot be purchased at the
   event.
-preorder: 2021-06-17T07:14:12.895Z
+preorder: 2021-06-16T07:14:12.895Z
 release: 2021-07-17T07:14:16.903Z
 id: c-vLkg_Y6KL-c
 ---

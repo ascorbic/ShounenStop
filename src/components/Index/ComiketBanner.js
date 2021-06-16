@@ -25,11 +25,11 @@ const ComiketBanner = () => {
     >
       <div css={landingSection}>
         <div css={landingText}>
-          COMIC1 18
+          Sunshine Summer 21
           <div css={lineBreakSm}></div>
           <span css={shippingText}>
             All New Playmats and Sleeves!
-            <br/> Preorder by February 4th
+            <br/> Preorder by June 16th
           </span>
         </div>
         <div css={lineBreakLg}></div>

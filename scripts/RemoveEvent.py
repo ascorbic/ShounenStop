@@ -33,3 +33,4 @@ for key in itemsToDelete:
       os.remove(itemsToDelete[key])
   else:
     print("Could not find:", itemsToDelete[key])
+

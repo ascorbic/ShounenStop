@@ -21,14 +21,14 @@ for filename in os.listdir(comiketDir):
         if eventId in fileBuffer:
           itemsToDelete[filePath] = imagePath
         else:
-          nonEventReferencedImages.push(imagePath)
+          nonEventReferencedImages.append(imagePath)
 
 for key in itemsToDelete:
   os.remove(key)
 
   if os.path.exists(itemsToDelete[key]):
     if itemsToDelete[key] in nonEventReferencedImages:
-      print("Cant delete referenced image.")
+      print("Cant delete referenced image:", itemsToDelete[key])
     else:
       os.remove(itemsToDelete[key])
   else:

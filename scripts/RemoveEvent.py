@@ -1,24 +1,35 @@
 import os
 
-comiketDir = "content/comiket"
-eventId = 'mkb4XfKk_'
-itemFiles = []
+eventId = 'eUBdWMfNo'
 
+comiketDir = "content/comiket"
+nonEventReferencedImages = []
+itemFiles = []
 itemsToDelete = {}
 
 for filename in os.listdir(comiketDir):
   if(filename.endswith(".md")):
     imageToDelete = ""
-    filePath = comiketDir+"/"+filename
+    filePath = comiketDir + "/" + filename
     file = open(filePath, encoding='utf-8')
     fileBuffer = file.read()
-    if eventId in fileBuffer:
-      lines = fileBuffer.split("\n")
-      for line in lines:
-        kvp = line.split(" ")
-        if kvp[0] == 'image:':
-          itemsToDelete[filePath] = kvp[1]
+    lines = fileBuffer.split("\n")
+    for line in lines:
+      kvp = line.split(" ")
+      if kvp[0] == 'image:':
+        imagePath = comiketDir + "/" + kvp[1]
+        if eventId in fileBuffer:
+          itemsToDelete[filePath] = imagePath
+        else:
+          nonEventReferencedImages.push(imagePath)
 
 for key in itemsToDelete:
-  # os.remove(key)
-  print(key, itemsToDelete[key])
+  os.remove(key)
+
+  if os.path.exists(itemsToDelete[key]):
+    if itemsToDelete[key] in nonEventReferencedImages:
+      print("Cant delete referenced image.")
+    else:
+      os.remove(itemsToDelete[key])
+  else:
+    print("Could not find:", itemsToDelete[key])

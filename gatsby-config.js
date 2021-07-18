@@ -65,12 +65,6 @@ module.exports = {
               backgroundColor: 'transparent', // required to display blurred image first
               linkImagesToOriginal: false // Important!
             },
-          },
-          {
-            resolve: `gatsby-remark-images-medium-zoom`, // Important!
-            options: {
-              //...
-            }
           }
         ],
       },
@@ -100,13 +94,6 @@ module.exports = {
     //   },
     // },
     'gatsby-plugin-emotion',
-    {
-      resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
-      options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ['./Global.css'],
-      },
-    },
     // must be after other CSS plugins
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
@@ -122,6 +109,7 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
+    'gatsby-plugin-remove-fingerprints',
     'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

@@ -31,6 +31,7 @@ for key in itemsToDelete:
       print("Cant delete referenced image:", itemsToDelete[key])
     else:
       os.remove(itemsToDelete[key])
+      print("Removed:", itemsToDelete[key])
   else:
     print("Could not find:", itemsToDelete[key])
 

@@ -66,6 +66,7 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
+    "@netlify/plugin-gatsby": "^1.0.3",
     "dotenv": "^8.2.0",
     "http-proxy-middleware": "^1.0.4",
     "netlify-lambda": "^1.6.3",

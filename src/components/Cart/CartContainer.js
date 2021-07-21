@@ -67,7 +67,6 @@ const CartContainer = () => {
           return null;
         })
 
-
         //make variable later
         const shippingData = {
           shippingMethod: {
